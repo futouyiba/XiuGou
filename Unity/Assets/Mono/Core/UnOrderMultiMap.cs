@@ -5,16 +5,13 @@ namespace ET
 {
 	public class UnOrderMultiMap<T, K>: Dictionary<T, List<K>>
 	{
-		private readonly List<K> Empty = new List<K>();
-		
 		public void Add(T t, K k)
 		{
 			List<K> list;
 			this.TryGetValue(t, out list);
 			if (list == null)
 			{
-				list = MonoPool.Instance.Fetch(typeof (List<K>)) as List<K>;
-				list.Clear();
+				list = new List<K>();
 				base[t] = list;
 			}
 			list.Add(k);
@@ -35,24 +32,7 @@ namespace ET
 			if (list.Count == 0)
 			{
 				this.Remove(t);
-				MonoPool.Instance.Recycle(list);
 			}
-			return true;
-		}
-		
-		public new bool Remove(T t)
-		{
-			List<K> list;
-			this.TryGetValue(t, out list);
-			if (list == null)
-			{
-				return false;
-			}
-
-			base.Remove(t);
-            
-			list.Clear();
-			MonoPool.Instance.Recycle(list);
 			return true;
 		}
 
@@ -82,14 +62,11 @@ namespace ET
 			get
 			{
 				List<K> list;
-				if (this.TryGetValue(t, out list))
-				{
-					return list;
-				}
-				return this.Empty;
+				this.TryGetValue(t, out list);
+				return list;
 			}
 		}
-		
+
 		public K GetOne(T t)
 		{
 			List<K> list;

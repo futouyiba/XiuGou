@@ -35,7 +35,7 @@ namespace ET
 		private BuildOptions buildOptions;
 		private BuildAssetBundleOptions buildAssetBundleOptions = BuildAssetBundleOptions.None;
 
-		[MenuItem("Tools/Build Tool")]
+		[MenuItem("Tools/打包工具")]
 		public static void ShowWindow()
 		{
 			GetWindow(typeof (BuildEditor));

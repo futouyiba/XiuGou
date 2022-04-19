@@ -29,8 +29,6 @@ namespace ET
 			SynchronizationContext.SetSynchronizationContext(ThreadSynchronizationContext.Instance);
 			
 			DontDestroyOnLoad(gameObject);
-			
-			LitJson.UnityTypeBindings.Register();
 
 			ETTask.ExceptionHandler += Log.Error;
 
@@ -39,8 +37,6 @@ namespace ET
 			Options.Instance = new Options();
 
 			CodeLoader.Instance.CodeMode = this.CodeMode;
-			Options.Instance.Develop = 1;
-			Options.Instance.LogLevel = 6;
 		}
 
 		private void Start()

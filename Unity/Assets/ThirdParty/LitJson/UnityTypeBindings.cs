@@ -1,16 +1,20 @@
 ﻿using System;
+
 using LitJson.Extensions;
 
 namespace LitJson
 {
+
+#if !SERVER
+#endif
     /// <summary>
     /// Unity内建类型拓展
     /// </summary>
-#if UNITY_EDITOR
-    [UnityEditor.InitializeOnLoad]
-#endif
     public static class UnityTypeBindings
     {
+
+        static bool registerd;
+
         static UnityTypeBindings()
         {
             Register();
@@ -18,6 +22,11 @@ namespace LitJson
 
         public static void Register()
         {
+
+            if (registerd) return;
+            registerd = true;
+
+
             // 注册Type类型的Exporter
             JsonMapper.RegisterExporter<Type>((v, w) =>
             {
@@ -28,7 +37,7 @@ namespace LitJson
             {
                 return Type.GetType(s);
             });
-            
+#if !SERVER
             // 注册Vector2类型的Exporter
             Action<UnityEngine.Vector2, JsonWriter> writeVector2 = (v, w) =>
             {
@@ -137,6 +146,7 @@ namespace LitJson
                 w.WriteProperty("right", v.right);
                 w.WriteObjectEnd();
             });
+#endif
         }
 
     }
