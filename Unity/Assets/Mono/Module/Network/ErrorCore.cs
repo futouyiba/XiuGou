@@ -74,11 +74,6 @@
                 return false;
             }
 
-            if (error < -100)
-            {
-                return false;
-            }
-
             return true;
         }
     }

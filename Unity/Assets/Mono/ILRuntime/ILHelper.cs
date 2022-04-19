@@ -5,7 +5,6 @@ using System.Net;
 using ILRuntime.Runtime.Intepreter;
 using ProtoBuf;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace ET
 {
@@ -42,8 +41,6 @@ namespace ET
             list.Add(typeof(ListComponent<ETTask>));
             list.Add(typeof(ListComponent<Vector3>));
             
-            
-            
             // 注册重定向函数
 
             // 注册委托
@@ -56,9 +53,8 @@ namespace ET
             appdomain.DelegateManager.RegisterMethodDelegate<long, MemoryStream>();
             appdomain.DelegateManager.RegisterMethodDelegate<long, IPEndPoint>();
             appdomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
-            appdomain.DelegateManager.RegisterMethodDelegate<Transform,int>();
             appdomain.DelegateManager.RegisterMethodDelegate<AsyncOperation>();
-
+            
             
             appdomain.DelegateManager.RegisterFunctionDelegate<UnityEngine.Events.UnityAction>();
             appdomain.DelegateManager.RegisterFunctionDelegate<System.Object, ET.ETTask>();
@@ -72,7 +68,13 @@ namespace ET
             appdomain.DelegateManager.RegisterFunctionDelegate<int, int, int>();//Linq
             appdomain.DelegateManager.RegisterFunctionDelegate<KeyValuePair<int, List<int>>, bool>();
             appdomain.DelegateManager.RegisterFunctionDelegate<KeyValuePair<int, int>, KeyValuePair<int, int>, int>();
-            
+            appdomain.DelegateManager.RegisterMethodDelegate<System.Int64, System.Collections.Generic.List<System.Int64>>();
+            appdomain.DelegateManager.RegisterMethodDelegate<System.Int64, System.Collections.Generic.List<ILRuntime.Runtime.Intepreter.ILTypeInstance>>();
+            appdomain.DelegateManager.RegisterFunctionDelegate<System.Int64, System.Collections.Generic.List<System.Int64>, System.Boolean>();
+            appdomain.DelegateManager.RegisterFunctionDelegate<System.Int64, System.Collections.Generic.List<ILRuntime.Runtime.Intepreter.ILTypeInstance>, System.Boolean>();
+
+            appdomain.DelegateManager.RegisterMethodDelegate<ET.AService>();
+
             appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction>((act) =>
             {
                 return new UnityEngine.Events.UnityAction(() =>
@@ -89,14 +91,6 @@ namespace ET
                 });
             });
             
-            appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction>((act) =>
-            {
-                return new UnityEngine.Events.UnityAction(() =>
-                {
-                    ((Action)act)();
-                });
-            });
-
             // 注册适配器
             RegisterAdaptor(appdomain);
             
@@ -121,6 +115,9 @@ namespace ET
         {
             //注册自己写的适配器
             appdomain.RegisterCrossBindingAdaptor(new IAsyncStateMachineClassInheritanceAdaptor());
+            appdomain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());
+            appdomain.RegisterValueTypeBinder(typeof(Vector3), new Vector3Binder());
+            appdomain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());
         }
     }
 }
