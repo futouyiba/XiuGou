@@ -11,8 +11,9 @@ namespace ET
     {
         protected bool IsMoving;
         protected Vector3 moveTarget = Vector3.positiveInfinity;
-        protected TextMeshPro nameTmp;
         
+        [SerializeField]
+        protected TextMeshPro nameTmp;
 
         [SerializeField] protected float moveSpeed;
 
@@ -71,6 +72,7 @@ namespace ET
             }
 
             this.transform.DOMove(targetPos, duration).OnComplete(this.MoveEnd);
+            Debug.Log($"going to {target}");
         }
 
         public void MoveEnd()
@@ -81,7 +83,7 @@ namespace ET
 
         public void SetName(string Name)
         {
-            nameTmp.SetText(name);
+            nameTmp.SetText(Name);
         }
 
         public void SetNameColor(Color color)

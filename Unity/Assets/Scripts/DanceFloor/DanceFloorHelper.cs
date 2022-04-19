@@ -23,6 +23,12 @@ namespace ET
             return goFind;
         }
 
+        public static float GetPivotY()
+        {
+            var pivot = GetGoFromScene("pivot").GetComponent<DanceFloorPivot>();
+            return pivot.transform.position.y;
+        }
+
         public static Vector2 PosUnified2Scene(Vector2 unifiedPos)
         {
             var pivot = GetGoFromScene("pivot").GetComponent<DanceFloorPivot>();
@@ -48,8 +54,9 @@ namespace ET
 
         public static Vector2 GetRandomDanceFloorPos()
         {
-            var randomX = Random.Range(0, 1);
-            var randomY = Random.Range(0, 1);
+            float randomX = Random.Range(0f, 1f);
+            float randomY = Random.Range(0f, 1f);
+            Debug.Log($"randomed pos is {randomX},{randomY}");
             return new Vector2(randomX, randomY);
         }
         

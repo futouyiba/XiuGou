@@ -9,7 +9,7 @@ namespace ET
     public class CharMgr : MonoBehaviour
     {
         [SerializeField]
-        protected GameObject charPrefab;
+        protected List<GameObject> charPrefabs;
 
         protected Dictionary<int, CharMain> charDict;
 
@@ -33,7 +33,10 @@ namespace ET
         // Update is called once per frame
         void Update()
         {
-        
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                CreateCharView(DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.cyan);
+            }
         }
 
         /// <summary>
@@ -45,13 +48,14 @@ namespace ET
         /// <returns></returns>
         public GameObject CreateCharView(Vector2 position, string name, Color color)
         {
-            var goCreated = GameObject.Instantiate(this.charPrefab);
+            var prefabIndex = Random.Range(0, charPrefabs.Count - 1);
+            var goCreated = GameObject.Instantiate(this.charPrefabs[prefabIndex]);
             var charView = goCreated.GetComponent<CharMain>();
             charView.SetName(name);
             charView.SetNameColor(color);
 
             var truePos = DanceFloorHelper.PosUnified2Scene(position);
-            goCreated.transform.position = truePos;
+            goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
             
             charDict.Add(id, charView);
             
