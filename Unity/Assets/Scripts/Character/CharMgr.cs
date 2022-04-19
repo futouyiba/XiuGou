@@ -28,6 +28,10 @@ namespace ET
         void Start()
         {
             charDict = new Dictionary<int, CharMain>();
+            for (int i = 0; i < 10; i++)
+            {
+                CreateCharView(DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.cyan);
+            }
         }
 
         // Update is called once per frame
@@ -39,6 +43,13 @@ namespace ET
             }
         }
 
+        public void CreateCharNativeCall(string _params)
+        {
+            CreateCharView(DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.cyan);
+            //todo send the random pos to native app
+        }
+        
+        
         /// <summary>
         /// 
         /// </summary>
