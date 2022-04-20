@@ -23,15 +23,16 @@ namespace ET
         void Start()
         {
             oriScaleX = transform.GetChild(0).localScale.x;
+            Move(DanceFloorHelper.GetRandomDanceFloorPos());
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!this.IsMoving)
-            {
-                Move(DanceFloorHelper.GetRandomDanceFloorPos());
-            }
+            // if (!this.IsMoving)
+            // {
+            //     Move(DanceFloorHelper.GetRandomDanceFloorPos());
+            // }
         }
         
         /// <summary>
@@ -72,15 +73,24 @@ namespace ET
             }
 
             this.transform.DOMove(targetPos, duration).OnComplete(this.MoveEnd);
-            Debug.Log($"going to {target}");
+            // Debug.Log($"going to {target}");
         }
 
         public void MoveEnd()
         {
             this.IsMoving = false;
             this.moveTarget = Vector3.positiveInfinity;
+            //
+            StartCoroutine(Wait(Random.Range(3, 8)));
         }
 
+        protected static IEnumerator Wait(int time)
+        {
+            // Debug.Log($"starting wait for {time} secs");
+            yield return new WaitForSeconds(time);
+            // Debug.Log($"ended wait for {time} secs");
+        }
+        
         public void SetName(string Name)
         {
             nameTmp.SetText(Name);

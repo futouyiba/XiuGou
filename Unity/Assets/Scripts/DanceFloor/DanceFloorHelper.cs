@@ -56,7 +56,7 @@ namespace ET
         {
             float randomX = Random.Range(0f, 1f);
             float randomY = Random.Range(0f, 1f);
-            Debug.Log($"randomed pos is {randomX},{randomY}");
+            // Debug.Log($"randomed pos is {randomX},{randomY}");
             return new Vector2(randomX, randomY);
         }
         
