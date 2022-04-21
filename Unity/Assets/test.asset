@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1083378141, guid: dcd2196c4e9166f499793f2007fcda35, type: 3}
+  m_Name: test
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"title":null,"summary":null,"pan":{"x":0.0,"y":0.0},"zoom":1.0,"elements":[{"nest":{"source":"Embed","macro":null,"embed":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":"Start","summary":null,"pan":{"x":-134.5,"y":4.0},"zoom":1.0,"elements":[{"coroutine":false,"defaultValues":{},"position":{"x":-205.0,"y":-215.0},"guid":"00e450d4-4b64-493d-b25a-3fdf19b01353","$version":"A","$type":"Bolt.OnEnterState","$id":"13"},{"coroutine":false,"defaultValues":{},"position":{"x":-161.0,"y":-38.0},"guid":"2df9806a-8a8f-4a52-9f4a-8f31f8017737","$version":"A","$type":"Bolt.Update"},{"coroutine":false,"defaultValues":{},"position":{"x":-205.0,"y":145.0},"guid":"5e1fcbbf-bb5c-4817-859a-61a56486e196","$version":"A","$type":"Bolt.OnExitState"},{"chainable":false,"member":{"name":"testMet","parameterTypes":[],"targetType":"ET.testCamera","targetTypeName":"ET.testCamera","$version":"A"},"defaultValues":{"target":null},"position":{"x":46.0,"y":-207.0},"guid":"109f0b68-f2d8-400e-9ff1-d5b05e8f5530","$version":"A","$type":"Bolt.InvokeMember","$id":"19"},{"sourceUnit":{"$ref":"13"},"sourceKey":"trigger","destinationUnit":{"$ref":"19"},"destinationKey":"enter","guid":"f19005d3-384f-4b6e-ad66-1755bfc9ffc9","$type":"Bolt.ControlConnection"}],"$version":"A"}},"isStart":true,"position":{"x":-86.0,"y":-15.0},"width":170.0,"guid":"abc3b2bb-74ed-4911-a7c8-44b35a947da4","$version":"A","$type":"Bolt.FlowState"}],"$version":"A"}}'
+    _objectReferences: []
