@@ -132,7 +132,6 @@ MonoBehaviour:
   maxChangeCookie: 1
   objs:
   - {fileID: 3497188899095792084}
-  - {fileID: 218631392735356190}
   cookieLight:
   - {fileID: 7175517776215289641}
   minUntilFlicker: 1
@@ -150,9 +149,8 @@ MonoBehaviour:
   - {r: 0, g: 0.17926931, b: 1, a: 0}
   - {r: 0.95149136, g: 1, b: 0, a: 0}
   - {r: 0, g: 0.7845664, b: 1, a: 0}
-  GOMaterials:
-  - {fileID: 218631392735356190}
-  timeChangeColor: 6
+  GOMaterials: []
+  timeChangeColor: 0
 --- !u!1 &913437511578856733
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +160,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4845929700753139481}
-  - component: {fileID: 3952896309626181059}
   - component: {fileID: 6174947248958521398}
   m_Layer: 0
   m_Name: 3
@@ -186,14 +183,6 @@ Transform:
   m_Father: {fileID: 2264154740378294844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3952896309626181059
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913437511578856733}
-  m_Mesh: {fileID: 4300004, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!114 &6174947248958521398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +295,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858831524350060370}
-  - component: {fileID: 7779018570487312475}
   - component: {fileID: 9127703243373963483}
   m_Layer: 0
   m_Name: 3
@@ -330,14 +318,6 @@ Transform:
   m_Father: {fileID: 1900758463102079623}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7779018570487312475
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573872313244455384}
-  m_Mesh: {fileID: 4300004, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!114 &9127703243373963483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +697,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2264154740378294844}
-  - component: {fileID: 5553724908840624096}
   - component: {fileID: 4519339481893741433}
   m_Layer: 0
   m_Name: 2
@@ -741,14 +720,6 @@ Transform:
   m_Father: {fileID: 3674398166735262634}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5553724908840624096
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6157015325775161005}
-  m_Mesh: {fileID: 4300002, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!114 &4519339481893741433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,8 +792,7 @@ MonoBehaviour:
   minChangeCookie: 1
   maxChangeCookie: 1
   objs:
-  - {fileID: 3168997461169079828}
-  - {fileID: 1266270080066312967}
+  - {fileID: 3497188899095792084}
   cookieLight:
   - {fileID: 4175046070726698699}
   minUntilFlicker: 1
@@ -840,9 +810,8 @@ MonoBehaviour:
   - {r: 0, g: 0.17926931, b: 1, a: 0}
   - {r: 0.95149136, g: 1, b: 0, a: 0}
   - {r: 0, g: 0.7845664, b: 1, a: 0}
-  GOMaterials:
-  - {fileID: 1266270080066312967}
-  timeChangeColor: 6
+  GOMaterials: []
+  timeChangeColor: 0
 --- !u!1 &6549303083489668299
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +821,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1900758463102079623}
-  - component: {fileID: 2432139784129863992}
   - component: {fileID: 1889106005758017464}
   m_Layer: 0
   m_Name: 2
@@ -876,14 +844,6 @@ Transform:
   m_Father: {fileID: 4597113358519521377}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2432139784129863992
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6549303083489668299}
-  m_Mesh: {fileID: 4300002, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!114 &1889106005758017464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,7 +875,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5836022091012671398}
-  - component: {fileID: 5722990150570480785}
   - component: {fileID: 192427449345002470}
   m_Layer: 0
   m_Name: 3
@@ -939,14 +898,6 @@ Transform:
   m_Father: {fileID: 3028377678813801525}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5722990150570480785
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6685843721306888942}
-  m_Mesh: {fileID: 4300004, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!114 &192427449345002470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -978,7 +929,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4597113358519521377}
-  - component: {fileID: 7790783909635135133}
   m_Layer: 0
   m_Name: Spot Light (4)
   m_TagString: Untagged
@@ -1001,14 +951,6 @@ Transform:
   m_Father: {fileID: 3562279859798486880}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -55.133, z: 0}
---- !u!33 &7790783909635135133
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7397043870455145253}
-  m_Mesh: {fileID: 4300000, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!1 &7788129218150625860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,8 +1082,7 @@ MonoBehaviour:
   minChangeCookie: 1
   maxChangeCookie: 1
   objs:
-  - {fileID: 1954639519579793774}
-  - {fileID: 7788129218150625860}
+  - {fileID: 3497188899095792084}
   cookieLight:
   - {fileID: 1660801950280475653}
   minUntilFlicker: 1
@@ -1159,9 +1100,8 @@ MonoBehaviour:
   - {r: 0, g: 0.17926931, b: 1, a: 0}
   - {r: 0.95149136, g: 1, b: 0, a: 0}
   - {r: 0, g: 0.7845664, b: 1, a: 0}
-  GOMaterials:
-  - {fileID: 7788129218150625860}
-  timeChangeColor: 6
+  GOMaterials: []
+  timeChangeColor: 0
 --- !u!1 &8226261135657835045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1111,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3028377678813801525}
-  - component: {fileID: 1232776731514285651}
   - component: {fileID: 5098854643616894965}
   m_Layer: 0
   m_Name: 2
@@ -1195,14 +1134,6 @@ Transform:
   m_Father: {fileID: 4762267238794219731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1232776731514285651
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8226261135657835045}
-  m_Mesh: {fileID: 4300002, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!114 &5098854643616894965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1165,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3674398166735262634}
-  - component: {fileID: 4424654234912106666}
   m_Layer: 0
   m_Name: Spot Light (1)
   m_TagString: Untagged
@@ -1257,14 +1187,6 @@ Transform:
   m_Father: {fileID: 3562279859798486880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4424654234912106666
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8808629300667351641}
-  m_Mesh: {fileID: 4300000, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
 --- !u!1 &8966880804991710522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1229,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4762267238794219731}
-  - component: {fileID: 8416505088585903008}
   m_Layer: 0
   m_Name: Spot Light (5)
   m_TagString: Untagged
@@ -1330,11 +1251,3 @@ Transform:
   m_Father: {fileID: 3562279859798486880}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 45.603, z: 0}
---- !u!33 &8416505088585903008
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8980093616166491003}
-  m_Mesh: {fileID: 4300000, guid: c125929a52973ba46ad9f7b4d5ac4d59, type: 3}
