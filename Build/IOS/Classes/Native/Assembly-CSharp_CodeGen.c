@@ -266,61 +266,85 @@ extern void U3CChangeBothColorsU3Ed__32_System_Collections_Generic_IEnumeratorU3
 extern void U3CChangeBothColorsU3Ed__32_System_Collections_IEnumerator_Reset_m4DA92D76C0DE1E2C3B9DB7BE1F88BF88F7942E9D (void);
 // 0x0000007F System.Object SmoothlyLight/<ChangeBothColors>d__32::System.Collections.IEnumerator.get_Current()
 extern void U3CChangeBothColorsU3Ed__32_System_Collections_IEnumerator_get_Current_m26CE1681C82B7F2DEB866321DE559C16BD22C278 (void);
-// 0x00000080 System.Void CameraStateBehaviour::Init(UnityEngine.Animator,UnityEngine.AnimatorStateInfo)
+// 0x00000080 System.Void ValakiUvScrollDemo::Start()
+extern void ValakiUvScrollDemo_Start_m2612D97ED7549997DA026069457C0B3D6D229812 (void);
+// 0x00000081 System.Void ValakiUvScrollDemo::LateUpdate()
+extern void ValakiUvScrollDemo_LateUpdate_m0F37ABA9A525AA00C91308370D5BAE879CA87EC0 (void);
+// 0x00000082 System.Void ValakiUvScrollDemo::.ctor()
+extern void ValakiUvScrollDemo__ctor_m785F94094ED191D3FEB25B85B3D590E84FA4BB9A (void);
+// 0x00000083 System.Void CameraStateBehaviour::Init(UnityEngine.Animator,UnityEngine.AnimatorStateInfo)
 extern void CameraStateBehaviour_Init_m6E0C76AB43940D5BBE0D5826463297AB7F29ECED (void);
-// 0x00000081 System.Void CameraStateBehaviour::OnStateEnter(UnityEngine.Animator,UnityEngine.AnimatorStateInfo,System.Int32)
+// 0x00000084 System.Void CameraStateBehaviour::OnStateEnter(UnityEngine.Animator,UnityEngine.AnimatorStateInfo,System.Int32)
 extern void CameraStateBehaviour_OnStateEnter_m260184BC9105837976499498F8C6CC71146A1096 (void);
-// 0x00000082 System.Void CameraStateBehaviour::.ctor()
+// 0x00000085 System.Void CameraStateBehaviour::.ctor()
 extern void CameraStateBehaviour__ctor_mBE4651D5077D3106C404BB3E8640BB0E77819C90 (void);
-// 0x00000083 System.Void ET.CharMain::Start()
+// 0x00000086 System.Void ET.testCamera::testMet()
+extern void testCamera_testMet_mBA05FBCF4D3414F38650A9B65F25C1B96AEE6D23 (void);
+// 0x00000087 System.Void ET.testCamera::.ctor()
+extern void testCamera__ctor_m2322949A4390F3EA102B594EF543DD26557EEFF0 (void);
+// 0x00000088 System.Void ET.CharMain::Start()
 extern void CharMain_Start_m77719FF265660BFCBB70109D4A57AC439726B4FA (void);
-// 0x00000084 System.Void ET.CharMain::Update()
+// 0x00000089 System.Void ET.CharMain::Update()
 extern void CharMain_Update_m10D0C8C7CC01AE34A562DFB93F0088ED68ABBC0D (void);
-// 0x00000085 System.Void ET.CharMain::Move(UnityEngine.Vector2)
+// 0x0000008A System.Void ET.CharMain::Move(UnityEngine.Vector2)
 extern void CharMain_Move_mC7353A8371CA5D49501FF45AAA39695C984A34C5 (void);
-// 0x00000086 System.Void ET.CharMain::MoveEnd()
+// 0x0000008B System.Void ET.CharMain::MoveEnd()
 extern void CharMain_MoveEnd_m560D0B02856AF95A7C4E6C7FFC8BC5014931F346 (void);
-// 0x00000087 System.Void ET.CharMain::SetName(System.String)
+// 0x0000008C System.Collections.IEnumerator ET.CharMain::Wait(System.Int32)
+extern void CharMain_Wait_mFCEAEC475DA405A83D59BA38594B472EE4A91940 (void);
+// 0x0000008D System.Void ET.CharMain::SetName(System.String)
 extern void CharMain_SetName_m08BA4741D6DC5732A3FC522400FFC0DA3EB8F926 (void);
-// 0x00000088 System.Void ET.CharMain::SetNameColor(UnityEngine.Color)
+// 0x0000008E System.Void ET.CharMain::SetNameColor(UnityEngine.Color)
 extern void CharMain_SetNameColor_m9EB37F54CF91C6F0A1B92B596391D36E49CD5416 (void);
-// 0x00000089 System.Void ET.CharMain::CharLeave()
+// 0x0000008F System.Void ET.CharMain::CharLeave()
 extern void CharMain_CharLeave_mE2461082FDDD979CCEA4EEC99CAC453CA4D56078 (void);
-// 0x0000008A System.Void ET.CharMain::.ctor()
+// 0x00000090 System.Void ET.CharMain::.ctor()
 extern void CharMain__ctor_m645F40CA6D379330D0F883FCF32195130FD66676 (void);
-// 0x0000008B System.Int32 ET.CharMgr::get_id()
+// 0x00000091 System.Void ET.CharMain/<Wait>d__10::.ctor(System.Int32)
+extern void U3CWaitU3Ed__10__ctor_m79D8BF18D3FC879ADCC5D7DB84F9BE257AB31E40 (void);
+// 0x00000092 System.Void ET.CharMain/<Wait>d__10::System.IDisposable.Dispose()
+extern void U3CWaitU3Ed__10_System_IDisposable_Dispose_m99C39A8BD5824A1882C2CCE7E98631A3551AE1DA (void);
+// 0x00000093 System.Boolean ET.CharMain/<Wait>d__10::MoveNext()
+extern void U3CWaitU3Ed__10_MoveNext_m7807EFFED5210E6BB4724CC1B5EC5453043AE794 (void);
+// 0x00000094 System.Object ET.CharMain/<Wait>d__10::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CWaitU3Ed__10_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m512A1572D48A682F35945E3763EABA09F7E4DA0A (void);
+// 0x00000095 System.Void ET.CharMain/<Wait>d__10::System.Collections.IEnumerator.Reset()
+extern void U3CWaitU3Ed__10_System_Collections_IEnumerator_Reset_m70C4FDDA0846E2395F5DC782F1481CFD4ADAC905 (void);
+// 0x00000096 System.Object ET.CharMain/<Wait>d__10::System.Collections.IEnumerator.get_Current()
+extern void U3CWaitU3Ed__10_System_Collections_IEnumerator_get_Current_m118BF95EB5021D4A2E5D504441FE5397BB3C8771 (void);
+// 0x00000097 System.Int32 ET.CharMgr::get_id()
 extern void CharMgr_get_id_mEAD6AFE28E6E795EBB07510F3B9F6A73C2BD2A56 (void);
-// 0x0000008C System.Void ET.CharMgr::Start()
+// 0x00000098 System.Void ET.CharMgr::Start()
 extern void CharMgr_Start_m7389E970208C833292EF18533DF71C66D48047CF (void);
-// 0x0000008D System.Void ET.CharMgr::Update()
+// 0x00000099 System.Void ET.CharMgr::Update()
 extern void CharMgr_Update_mBCF30EDD216771FAA45BD9FBE153B889236D6658 (void);
-// 0x0000008E System.Void ET.CharMgr::CreateCharNativeCall(System.String)
+// 0x0000009A System.Void ET.CharMgr::CreateCharNativeCall(System.String)
 extern void CharMgr_CreateCharNativeCall_m830BFCE9F3B2B2954027D9EC190FD5F6C934161B (void);
-// 0x0000008F UnityEngine.GameObject ET.CharMgr::CreateCharView(UnityEngine.Vector2,System.String,UnityEngine.Color)
+// 0x0000009B UnityEngine.GameObject ET.CharMgr::CreateCharView(UnityEngine.Vector2,System.String,UnityEngine.Color)
 extern void CharMgr_CreateCharView_m2BAD801F31891B9AAFCD893F7E8E3032BE7D13B2 (void);
-// 0x00000090 System.Void ET.CharMgr::RemoveCharView(System.Int32)
+// 0x0000009C System.Void ET.CharMgr::RemoveCharView(System.Int32)
 extern void CharMgr_RemoveCharView_m1E6340C5CC8FF5E84047889A14E28638BB846F30 (void);
-// 0x00000091 System.Void ET.CharMgr::.ctor()
+// 0x0000009D System.Void ET.CharMgr::.ctor()
 extern void CharMgr__ctor_mDC1B03238C086C32710D92B5E02216F82355BA15 (void);
-// 0x00000092 UnityEngine.GameObject ET.DanceFloorHelper::GetGoFromScene(System.String)
+// 0x0000009E UnityEngine.GameObject ET.DanceFloorHelper::GetGoFromScene(System.String)
 extern void DanceFloorHelper_GetGoFromScene_mD8DBF9C030F7C86452EF0BDA41E914AF1E522518 (void);
-// 0x00000093 System.Single ET.DanceFloorHelper::GetPivotY()
+// 0x0000009F System.Single ET.DanceFloorHelper::GetPivotY()
 extern void DanceFloorHelper_GetPivotY_mBB151D26C710A141FEA9BA4163053E611DE9B88D (void);
-// 0x00000094 UnityEngine.Vector2 ET.DanceFloorHelper::PosUnified2Scene(UnityEngine.Vector2)
+// 0x000000A0 UnityEngine.Vector2 ET.DanceFloorHelper::PosUnified2Scene(UnityEngine.Vector2)
 extern void DanceFloorHelper_PosUnified2Scene_m3ED15C4A10D97807B1AA0BF01112B21F2A07DBDA (void);
-// 0x00000095 UnityEngine.Vector2 ET.DanceFloorHelper::PosScene2Unified(UnityEngine.Vector2)
+// 0x000000A1 UnityEngine.Vector2 ET.DanceFloorHelper::PosScene2Unified(UnityEngine.Vector2)
 extern void DanceFloorHelper_PosScene2Unified_m073932C5A239BB581ED98EC7DFCABBE678F8ABDB (void);
-// 0x00000096 UnityEngine.Vector2 ET.DanceFloorHelper::GetRandomDanceFloorPos()
+// 0x000000A2 UnityEngine.Vector2 ET.DanceFloorHelper::GetRandomDanceFloorPos()
 extern void DanceFloorHelper_GetRandomDanceFloorPos_m66C95813078BECD01B130D15262EAA611D48DFC2 (void);
-// 0x00000097 System.Void ET.DanceFloorHelper::.ctor()
+// 0x000000A3 System.Void ET.DanceFloorHelper::.ctor()
 extern void DanceFloorHelper__ctor_mB2744ADDFDCBFC5DBD63C53C0F070735CF0D6E23 (void);
-// 0x00000098 System.Void ET.DanceFloorPivot::Start()
+// 0x000000A4 System.Void ET.DanceFloorPivot::Start()
 extern void DanceFloorPivot_Start_mFF3842BF88D5E7E0C7EA189A2CC808A666ECCEE2 (void);
-// 0x00000099 System.Void ET.DanceFloorPivot::Update()
+// 0x000000A5 System.Void ET.DanceFloorPivot::Update()
 extern void DanceFloorPivot_Update_m57135D0DBEC796380D2E1613D75DC5B789032AF0 (void);
-// 0x0000009A System.Void ET.DanceFloorPivot::.ctor()
+// 0x000000A6 System.Void ET.DanceFloorPivot::.ctor()
 extern void DanceFloorPivot__ctor_m680834EB8D85B064D0B702A680800582A27BEE36 (void);
-static Il2CppMethodPointer s_methodPointers[154] = 
+static Il2CppMethodPointer s_methodPointers[166] = 
 {
 	CamMouseOrbit_Awake_m39FD933494EA2E32F62E17B91F70562F2E6F1944,
 	CamMouseOrbit_Start_m6C92AE76FA9FCDDCF6281B6C0DDAA1C15B2D1DDE,
@@ -449,17 +473,29 @@ static Il2CppMethodPointer s_methodPointers[154] =
 	U3CChangeBothColorsU3Ed__32_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mD30043193FACB38F669924B16F34A3060A9FCBAA,
 	U3CChangeBothColorsU3Ed__32_System_Collections_IEnumerator_Reset_m4DA92D76C0DE1E2C3B9DB7BE1F88BF88F7942E9D,
 	U3CChangeBothColorsU3Ed__32_System_Collections_IEnumerator_get_Current_m26CE1681C82B7F2DEB866321DE559C16BD22C278,
+	ValakiUvScrollDemo_Start_m2612D97ED7549997DA026069457C0B3D6D229812,
+	ValakiUvScrollDemo_LateUpdate_m0F37ABA9A525AA00C91308370D5BAE879CA87EC0,
+	ValakiUvScrollDemo__ctor_m785F94094ED191D3FEB25B85B3D590E84FA4BB9A,
 	CameraStateBehaviour_Init_m6E0C76AB43940D5BBE0D5826463297AB7F29ECED,
 	CameraStateBehaviour_OnStateEnter_m260184BC9105837976499498F8C6CC71146A1096,
 	CameraStateBehaviour__ctor_mBE4651D5077D3106C404BB3E8640BB0E77819C90,
+	testCamera_testMet_mBA05FBCF4D3414F38650A9B65F25C1B96AEE6D23,
+	testCamera__ctor_m2322949A4390F3EA102B594EF543DD26557EEFF0,
 	CharMain_Start_m77719FF265660BFCBB70109D4A57AC439726B4FA,
 	CharMain_Update_m10D0C8C7CC01AE34A562DFB93F0088ED68ABBC0D,
 	CharMain_Move_mC7353A8371CA5D49501FF45AAA39695C984A34C5,
 	CharMain_MoveEnd_m560D0B02856AF95A7C4E6C7FFC8BC5014931F346,
+	CharMain_Wait_mFCEAEC475DA405A83D59BA38594B472EE4A91940,
 	CharMain_SetName_m08BA4741D6DC5732A3FC522400FFC0DA3EB8F926,
 	CharMain_SetNameColor_m9EB37F54CF91C6F0A1B92B596391D36E49CD5416,
 	CharMain_CharLeave_mE2461082FDDD979CCEA4EEC99CAC453CA4D56078,
 	CharMain__ctor_m645F40CA6D379330D0F883FCF32195130FD66676,
+	U3CWaitU3Ed__10__ctor_m79D8BF18D3FC879ADCC5D7DB84F9BE257AB31E40,
+	U3CWaitU3Ed__10_System_IDisposable_Dispose_m99C39A8BD5824A1882C2CCE7E98631A3551AE1DA,
+	U3CWaitU3Ed__10_MoveNext_m7807EFFED5210E6BB4724CC1B5EC5453043AE794,
+	U3CWaitU3Ed__10_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m512A1572D48A682F35945E3763EABA09F7E4DA0A,
+	U3CWaitU3Ed__10_System_Collections_IEnumerator_Reset_m70C4FDDA0846E2395F5DC782F1481CFD4ADAC905,
+	U3CWaitU3Ed__10_System_Collections_IEnumerator_get_Current_m118BF95EB5021D4A2E5D504441FE5397BB3C8771,
 	CharMgr_get_id_mEAD6AFE28E6E795EBB07510F3B9F6A73C2BD2A56,
 	CharMgr_Start_m7389E970208C833292EF18533DF71C66D48047CF,
 	CharMgr_Update_mBCF30EDD216771FAA45BD9FBE153B889236D6658,
@@ -477,7 +513,7 @@ static Il2CppMethodPointer s_methodPointers[154] =
 	DanceFloorPivot_Update_m57135D0DBEC796380D2E1613D75DC5B789032AF0,
 	DanceFloorPivot__ctor_m680834EB8D85B064D0B702A680800582A27BEE36,
 };
-static const int32_t s_InvokerIndices[154] = 
+static const int32_t s_InvokerIndices[166] = 
 {
 	5649,
 	5649,
@@ -606,17 +642,29 @@ static const int32_t s_InvokerIndices[154] =
 	5561,
 	5649,
 	5561,
+	5649,
+	5649,
+	5649,
 	2758,
 	1628,
 	5649,
 	5649,
 	5649,
+	5649,
+	5649,
 	4789,
 	5649,
+	7800,
 	4704,
 	4624,
 	5649,
 	5649,
+	4681,
+	5649,
+	5479,
+	5561,
+	5649,
+	5561,
 	5537,
 	5649,
 	5649,
@@ -639,7 +687,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	154,
+	166,
 	s_methodPointers,
 	0,
 	NULL,
