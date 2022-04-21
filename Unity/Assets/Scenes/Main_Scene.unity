@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 104089783}
   - component: {fileID: 104089782}
   - component: {fileID: 104089781}
+  - component: {fileID: 104089785}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -220,6 +221,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &104089785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104089780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce90c5f9d0a8154ab0219f6f7aa857b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testJson: '{    "Op":"UserMove",    "OpData":{       "Timestamp":"xxxxxxxx",      
+    "TargetPos":"Vector2(0.5233,0.8799)"    } }'
 --- !u!4 &105302922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5082542672927865667, guid: 100e9c3207bad924982541a5748ab5a9,
