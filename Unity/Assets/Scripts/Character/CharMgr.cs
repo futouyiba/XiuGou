@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -24,6 +25,16 @@ namespace ET
             }
         }
 
+        private static CharMgr _instance;
+        public static CharMgr instance
+        {
+            get
+            {
+                return _instance;
+            }
+            private set{}
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -32,6 +43,8 @@ namespace ET
             {
                 CreateCharView(DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.cyan);
             }
+
+            _instance = this;
         }
 
         // Update is called once per frame
@@ -84,5 +97,13 @@ namespace ET
                 charView.CharLeave();
             }
         }
+
+        public static GameObject GetRandomChar()
+        {
+            var rand = Random.Range(0, instance.charDict.Count);
+            return instance.charDict.ElementAt(rand).Value.gameObject;
+        }
+
+
     }
 }
