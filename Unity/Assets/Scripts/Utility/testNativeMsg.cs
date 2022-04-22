@@ -12,7 +12,7 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
-            UnityTypeBindings.Register();
+            LitJson.UnityTypeBindings.Register();
             var ext = NativeProxy.GetOp(testJson);
             // var ext3 = NativeProxy.GetOpdata(testJson);
             var ext4 = NativeProxy.GetOpdata<UserMove>(testJson);

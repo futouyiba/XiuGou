@@ -113,7 +113,7 @@ namespace ET
             var succeed = this.charDict.TryGetValue(uid, out CharMain result);
             if (!succeed)
             {
-                Log.Warning($"no user found for {uid}");
+                Debug.LogWarning($"no user found for {uid}");
                 return null;
             }
 

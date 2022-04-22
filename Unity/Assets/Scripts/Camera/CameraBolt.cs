@@ -95,7 +95,7 @@ namespace ET
             var go = Camera.main.gameObject;
             if (!go)
             {
-                Log.Error("camera main do not exist");
+                Debug.LogError("camera main do not exist");
                 return;
             }
             var sm = go.GetComponent<StateMachine>();

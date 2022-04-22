@@ -67,7 +67,7 @@ namespace ET.Utility
                     }
                     else
                     {
-                        Log.Error($"char {usermove.uid} not exist");    
+                        Debug.LogError($"char {usermove.uid} not exist");    
                     }
                     break;
                 
@@ -160,7 +160,7 @@ namespace ET.Utility
             var succeed = cmdDict.TryGetValue(code, out Type type);
             if (!succeed)
             {
-                Log.Error($"failed coverting code for {code}");
+                Debug.LogError($"failed coverting code for {code}");
                 return null;
             }
 
@@ -177,7 +177,7 @@ namespace ET.Utility
                 }
             }
 
-            Log.Error($"failed converting type for {type.ToString()}");
+            Debug.LogError($"failed converting type for {type.ToString()}");
             return null;
         }
 
