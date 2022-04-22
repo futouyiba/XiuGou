@@ -25,6 +25,12 @@ namespace ET.Utility
 
         public void SendProxyMsg(string msg)
         {
+            NativeProxy.SendNativeMsg(msg);
+        }
+
+        public void testSendProxyMsg()
+        {
+            NativeProxy.SendMyPos(new Vector2(.5f, .5f));
         }
     }
 }

@@ -83,7 +83,9 @@ namespace ET.Utility
         /// <param name="json"></param>
         public static void SendNativeMsg(string json)
         {
-            
+            AndroidJavaClass jc = new AndroidJavaClass("com.bjzy.showdog.voiceroom.unity.UnityCall");
+            var jo = jc.GetStatic<AndroidJavaObject>("unityCall");
+            jo.Call("test",json);
         }
         
         
