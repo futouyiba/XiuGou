@@ -39,10 +39,12 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
+            CursorLockMode lockMode = CursorLockMode.None;
+            Cursor.lockState = lockMode;
             charDict = new Dictionary<int, CharMain>();
             for (int i = 0; i < 10; i++)
             {
-                CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.cyan);
+                CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);
             }
 
             _instance = this;
@@ -53,13 +55,13 @@ namespace ET
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.cyan);
+                CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
             }
         }
 
         public void CreateCharNativeCall(string _params)
         {
-            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.cyan);
+            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.white);
             //todo send the random pos to native app
         }
         

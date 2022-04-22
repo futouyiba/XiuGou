@@ -86,6 +86,8 @@ namespace ET.Utility
             
         }
         
+        
+        
         public static void SendMyPos(Vector2 pos)
         {
             var ts = (int)new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
