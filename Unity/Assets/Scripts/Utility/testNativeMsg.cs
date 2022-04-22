@@ -14,7 +14,7 @@ namespace ET
         {
             UnityTypeBindings.Register();
             var ext = NativeProxy.GetOp(testJson);
-            var ext3 = NativeProxy.GetOpdata(testJson);
+            // var ext3 = NativeProxy.GetOpdata(testJson);
             var ext4 = NativeProxy.GetOpdata<UserMove>(testJson);
             Debug.Log("111");
 
@@ -31,7 +31,12 @@ namespace ET
             var ext5 = NativeProxy.GetOpdata<UserMove>(msg);
 
 
-            var msg3=NativeProxy.SendMyPos(new Vector2(.5f, .2f));
+            NativeProxy.SendMyPos(new Vector2(.5f, .2f));
+            NativeProxy.SendMeMove(new Vector2(.3f,.6f));
+            var t = NativeProxy.MsgCode2Type("UserMove");
+            var cmd = NativeProxy.MsgType2Code(typeof(UserMove));
+            
+            
             Debug.Log("222");
         }
 
@@ -63,7 +68,7 @@ namespace ET
             return msg;
         }
 
-        protected void testUserList()
+        protected void testUserListRecieved()
         {
             
         }

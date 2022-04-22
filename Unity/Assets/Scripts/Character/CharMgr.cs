@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -41,7 +42,7 @@ namespace ET
             charDict = new Dictionary<int, CharMain>();
             for (int i = 0; i < 10; i++)
             {
-                CreateCharView(DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.cyan);
+                CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.cyan);
             }
 
             _instance = this;
@@ -52,13 +53,13 @@ namespace ET
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                CreateCharView(DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.cyan);
+                CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.cyan);
             }
         }
 
         public void CreateCharNativeCall(string _params)
         {
-            CreateCharView(DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.cyan);
+            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.cyan);
             //todo send the random pos to native app
         }
         
@@ -70,7 +71,7 @@ namespace ET
         /// <param name="name">char name</param>
         /// <param name="color"> char name color</param>
         /// <returns></returns>
-        public GameObject CreateCharView(Vector2 position, string name, Color color)
+        public GameObject CreateCharView(int id, Vector2 position, string name, Color color)
         {
             var prefabIndex = Random.Range(0, charPrefabs.Count - 1);
             var goCreated = GameObject.Instantiate(this.charPrefabs[prefabIndex]);
@@ -102,6 +103,18 @@ namespace ET
         {
             var rand = Random.Range(0, instance.charDict.Count);
             return instance.charDict.ElementAt(rand).Value.gameObject;
+        }
+
+        public CharMain GetCharacter(int uid)
+        {
+            var succeed = this.charDict.TryGetValue(uid, out CharMain result);
+            if (!succeed)
+            {
+                Log.Warning($"no user found for {uid}");
+                return null;
+            }
+
+            return result;
         }
 
 
