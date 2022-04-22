@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Bolt;
 using UnityEngine;
 
 namespace ET
@@ -18,6 +20,7 @@ namespace ET
         protected Animator animator;
 
         [SerializeField] protected GameObject testGo;
+        [SerializeField] protected StateMachine sm;
         
         protected void FixedUpdate()
         {
@@ -74,6 +77,10 @@ namespace ET
         
         public void PlayAnimate(string stateName)
         {
+            if (this.animator.enabled == false)
+            {
+                animator.enabled = true;
+            }
             this.animator.Play($"Base Layer.{stateName}");
             // StartCoroutine(WaitForTime(time));
         }
@@ -82,5 +89,25 @@ namespace ET
         {
             yield return new WaitForSeconds(time);
         }
+
+        public static void TriggerEvent(string ev)
+        {
+            var go = Camera.main.gameObject;
+            if (!go)
+            {
+                Log.Error("camera main do not exist");
+                return;
+            }
+            var sm = go.GetComponent<StateMachine>();
+            sm.TriggerUnityEvent(ev);
+        }
+
+        public void TriggerFollow()
+        {
+            if (!IsFollowing) TriggerEvent("FollowRand");
+            else TriggerEvent("Unfollow");
+        }
+        
+        
     }
 }

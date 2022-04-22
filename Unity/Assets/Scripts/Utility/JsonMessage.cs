@@ -47,6 +47,7 @@ namespace ET.Utility
 
     public class UserMove : JsonCmd
     {
+        public int uid;
         public int ts;
         public Vector2 position;
     }
