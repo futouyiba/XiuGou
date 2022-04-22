@@ -63,6 +63,7 @@ namespace ET
         {
             CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.white);
             //todo send the random pos to native app
+            
         }
         
         

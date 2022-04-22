@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -72,23 +73,27 @@ namespace ET
                 }
             }
 
-            this.transform.DOMove(targetPos, duration).OnComplete(this.MoveEnd);
+            this.transform.DOMove(targetPos, duration).OnComplete(()=>StartCoroutine(MoveEnd()));
             // Debug.Log($"going to {target}");
         }
 
-        public void MoveEnd()
+        public IEnumerator MoveEnd()
         {
             this.IsMoving = false;
             this.moveTarget = Vector3.positiveInfinity;
             //
-            StartCoroutine(Wait(Random.Range(3, 8)));
+            var task = Task.Run(()=>Wait(Random.Range(3, 8)));
+            yield return new WaitUntil(()=>task.IsCompleted);
+            // StartCoroutine(Wait(Random.Range(3, 8)));
+            Move(DanceFloorHelper.GetRandomDanceFloorPos());
+            
         }
 
         protected static IEnumerator Wait(int time)
         {
-            // Debug.Log($"starting wait for {time} secs");
+            Debug.Log($"{Time.time} starting wait for {time} secs");
             yield return new WaitForSeconds(time);
-            // Debug.Log($"ended wait for {time} secs");
+            Debug.Log($"{Time.time} ended wait for {time} secs");
         }
         
         public void SetName(string Name)

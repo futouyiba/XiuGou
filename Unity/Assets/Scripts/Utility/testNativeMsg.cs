@@ -16,7 +16,7 @@ namespace ET
             var ext = NativeProxy.GetOp(testJson);
             // var ext3 = NativeProxy.GetOpdata(testJson);
             var ext4 = NativeProxy.GetOpdata<UserMove>(testJson);
-            Debug.Log("111");
+            // Debug.Log("111");
 
             UserMove obj = new UserMove();
             obj.ts = 1650539296;
@@ -37,7 +37,7 @@ namespace ET
             var cmd = NativeProxy.MsgType2Code(typeof(UserMove));
             
             
-            Debug.Log("222");
+            // Debug.Log("222");
         }
 
         protected UserMove testUserMoveIn(string json)
