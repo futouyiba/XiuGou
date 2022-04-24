@@ -70,8 +70,11 @@ namespace ET.Utility
                         Debug.LogError($"char {usermove.uid} not exist");    
                     }
                     break;
-                
-                
+                case "UserMsg":
+                    var usermsg = GetOpdata<UserMsg>(msg);
+                    throw new Exception("not implemented");
+
+
             }
             
 
