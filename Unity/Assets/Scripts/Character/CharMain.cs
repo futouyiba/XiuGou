@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DG.Tweening;
+using ET.Utility;
 using TMPro;
 using UnityEngine;
 
@@ -75,6 +76,7 @@ namespace ET
 
             this.transform.DOMove(targetPos, duration).OnComplete(()=>StartCoroutine(MoveEnd()));
             // Debug.Log($"going to {target}");
+            NativeProxy.SendMeMove(target);
         }
 
         public IEnumerator MoveEnd()
