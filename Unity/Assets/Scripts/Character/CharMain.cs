@@ -22,6 +22,9 @@ namespace ET
         [SerializeField] private TextBubble bubble;
         [SerializeField] private StateMachine fsm;
 
+        [SerializeField]
+        public float bubbleTime;
+
         protected float direction = 1;
         private float oriScaleX;
         // Start is called before the first frame update
@@ -135,6 +138,13 @@ namespace ET
         public void Speak(string content)
         {
             bubble.Speak(content);
+            fsm.TriggerUnityEvent("StartTalking");
+        }
+
+        public void SpeakEnd()
+        {
+            bubble.HideBubble();
+            fsm.TriggerUnityEvent("FinishedTalking");
         }
     }
 }

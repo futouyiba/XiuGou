@@ -42,7 +42,8 @@ namespace ET
             LayoutRebuilder.ForceRebuildLayoutImmediate(tmp.rectTransform);
             Vector2 autoSize = new Vector2(tmp.rectTransform.rect.width, tmp.rectTransform.rect.height);
             UpdateSpriteSize(autoSize);
-            StartCoroutine(DisappearAfter(5f));
+            // StartCoroutine(DisappearAfter(5f));
+            
         }
 
         public void UpdateSpriteSize(Vector2 autoSize)
@@ -57,7 +58,7 @@ namespace ET
             HideBubble();
         }
 
-        private void HideBubble()
+        public void HideBubble()
         {
             tmp.gameObject.SetActive(false);
             spriteRenderer.gameObject.SetActive(false);
