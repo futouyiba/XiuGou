@@ -20,12 +20,12 @@ namespace ET.Utility
 
         public void OnProxyMsg(string msg)
         {
-            NativeProxy.instance.OnReciveMsg(msg);
+            NativeProxy.instance.Native2UnityMsg(msg);
         }
 
         public void SendProxyMsg(string msg)
         {
-            NativeProxy.SendNativeMsg(msg);
+            NativeProxy.Unity2NativeMsg(msg);
         }
 
         public void testSendProxyMsg()

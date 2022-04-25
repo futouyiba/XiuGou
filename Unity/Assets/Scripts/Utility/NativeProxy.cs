@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ET.Utility
 {
 
-    public class NativeProxy
+    public class NativeProxy:MonoBehaviour
     {
         private static NativeProxy _instance;
         public static NativeProxy instance
@@ -20,58 +20,58 @@ namespace ET.Utility
         /// 接到消息的处理函数
         /// </summary>
         /// <param name="msg"></param>
-        public void OnReciveMsg(string msg)
+        public void Native2UnityMsg(string msg)
         {
             var cmd = GetOp(msg);
             var cmdType = MsgCode2Type(cmd);
             switch (cmd)
             {
                 case "UserEnter":
-                    var userenter = GetOpdata<UserEnter>(msg);
-                    CharMgr.instance.CreateCharView(userenter.uid, userenter.position, userenter.uname, Color.white);
+                    var userEnter = GetOpdata<UserEnter>(msg);
+                    CharMgr.instance.CreateCharView(userEnter.uid, userEnter.position, userEnter.uname, Color.white);
                     break;
                 case "MeEnter":
-                    var meenter = GetOpdata<MeEnter>(msg);
+                    var meEnter = GetOpdata<MeEnter>(msg);
                     var pos = DanceFloorHelper.GetRandomDanceFloorPos();
-                    CharMgr.instance.CreateCharView(meenter.uid, pos,meenter.uname, Color.white);
+                    CharMgr.instance.CreateCharView(meEnter.uid, pos,meEnter.uname, Color.white);
                     //todo:发个消息告知我在哪里
                     break;
                 case "UserExit":
-                    var userexit = GetOpdata<UserExit>(msg);
-                    CharMgr.instance.RemoveCharView(userexit.uid);
+                    var userExit = GetOpdata<UserExit>(msg);
+                    CharMgr.instance.RemoveCharView(userExit.uid);
                     break;
                 case "UserList":
-                    var userlist = GetOpdata<UserList>(msg);
-                    var uids = userlist.uids;
-                    var upos = userlist.positions;
-                    var unames = userlist.unames;
-                    for (int i = 0; i < uids.Count; i++)
+                    var userList = GetOpdata<UserList>(msg);
+                    var uIds = userList.uids;
+                    var uPos = userList.positions;
+                    var uNames = userList.unames;
+                    for (int i = 0; i < uIds.Count; i++)
                     {
-                        var res = CharMgr.instance.GetCharacter(uids[i]);
+                        var res = CharMgr.instance.GetCharacter(uIds[i]);
                         if (res == null)
                         {
-                            CharMgr.instance.CreateCharView(uids[i], upos[i], unames[i], Color.white);
+                            CharMgr.instance.CreateCharView(uIds[i], uPos[i], uNames[i], Color.white);
                         }
                         else
                         {
-                            res.Move(upos[i]);
+                            res.Move(uPos[i]);
                         }
                     }
                     break;
                 case "UserMove":
-                    var usermove = GetOpdata<UserMove>(msg);
-                    var chara = CharMgr.instance.GetCharacter(usermove.uid);
+                    var userMove = GetOpdata<UserMove>(msg);
+                    var chara = CharMgr.instance.GetCharacter(userMove.uid);
                     if (chara != null)
                     {
-                        chara.Move(usermove.position);
+                        chara.Move(userMove.position);
                     }
                     else
                     {
-                        Debug.LogError($"char {usermove.uid} not exist");    
+                        Debug.LogError($"char {userMove.uid} not exist");    
                     }
                     break;
                 case "UserMsg":
-                    var usermsg = GetOpdata<UserMsg>(msg);
+                    var userMsg = GetOpdata<UserMsg>(msg);
                     throw new Exception("not implemented");
 
 
@@ -84,11 +84,16 @@ namespace ET.Utility
         /// 发送json message去native
         /// </summary>
         /// <param name="json"></param>
-        public static void SendNativeMsg(string json)
+        public static void Unity2NativeMsg(string json)
         {
-            AndroidJavaClass jc = new AndroidJavaClass("com.bjzy.showdog.voiceroom.unity.UnityCall");
-            var jo = jc.GetStatic<AndroidJavaObject>("unityCall");
-            jo.Call("test",json);
+            // AndroidJavaClass jc = new AndroidJavaClass("com.bjzy.showdog.voiceroom.unity.UnityCall");
+            // var jo = jc.GetStatic<AndroidJavaObject>("unityCall");
+            // jo.Call("test",json);
+            
+            // for testing...
+            AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+            jo.Call("testMethod", json);
         }
         
         
@@ -102,7 +107,7 @@ namespace ET.Utility
                 position = pos
             };
             var msg = MakeOp(mypos);
-            SendNativeMsg(msg);
+            Unity2NativeMsg(msg);
         }
 
         public static void SendMeMove(Vector2 pos)
@@ -114,7 +119,7 @@ namespace ET.Utility
                 position = pos,
             };
             var msg = MakeOp(target);
-            SendNativeMsg(msg);
+            Unity2NativeMsg(msg);
         }
 
         // public static T Extract<T>(string json) where T : JsonMessage
