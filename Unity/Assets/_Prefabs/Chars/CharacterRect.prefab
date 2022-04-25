@@ -394,6 +394,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2105160402477235520}
   - component: {fileID: 4940939794993879480}
+  - component: {fileID: 8662092201012396212}
+  - component: {fileID: 1215715403548211505}
   m_Layer: 0
   m_Name: CharacterRect
   m_TagString: Untagged
@@ -433,6 +435,38 @@ MonoBehaviour:
   nameTmp: {fileID: 8619730731919076753}
   moveSpeed: 1
   bubble: {fileID: 7047920253531996696}
+  fsm: {fileID: 1215715403548211505}
+--- !u!114 &8662092201012396212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229857659710172204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1465209106, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"collection":{"$content":[{"name":"IsMoving","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!114 &1215715403548211505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229857659710172204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1999370065, guid: dcd2196c4e9166f499793f2007fcda35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: 2681ec6e8c0d34ce3b004b107fdb5d9a, type: 2}
 --- !u!1001 &6526879796045914749
 PrefabInstance:
   m_ObjectHideFlags: 0

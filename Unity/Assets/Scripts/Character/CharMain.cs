@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Bolt;
 using DG.Tweening;
 using ET.Utility;
 using TMPro;
@@ -11,7 +12,7 @@ namespace ET
     
     public class CharMain : MonoBehaviour
     {
-        protected bool IsMoving;
+        // protected bool IsMoving;
         protected Vector3 moveTarget = Vector3.positiveInfinity;
         
         [SerializeField]
@@ -19,6 +20,7 @@ namespace ET
 
         [SerializeField] protected float moveSpeed;
         [SerializeField] private TextBubble bubble;
+        [SerializeField] private StateMachine fsm;
 
         protected float direction = 1;
         private float oriScaleX;
@@ -26,7 +28,7 @@ namespace ET
         void Start()
         {
             oriScaleX = transform.GetChild(0).localScale.x;
-            Move(DanceFloorHelper.GetRandomDanceFloorPos());
+            // Move(DanceFloorHelper.GetRandomDanceFloorPos());
         }
 
         // Update is called once per frame
@@ -44,15 +46,21 @@ namespace ET
         /// <param name="target">归一化的位置</param>
         public void Move(Vector2 target)
         {
-            if (IsMoving)
+            var vars = Variables.Object(this.gameObject);
+            var isMoving=vars.Get("IsMoving");
+            if ((bool)isMoving)
             {
-                Debug.LogError("char moving, will not exec");
-                return;
+                //kill dotween and send event
+                DOTween.KillAll(this.gameObject);
+                fsm.TriggerUnityEvent("MoveInterrupt");
+                // Debug.LogError("char moving, will not exec");
+                // return;
             }
 
             var scenePos = DanceFloorHelper.PosUnified2Scene(target);
             var targetPos = new Vector3(scenePos.x, this.transform.position.y, scenePos.y);
-            this.IsMoving = true;
+            // this.IsMoving = true;
+            fsm.TriggerUnityEvent("StartMove");
             this.moveTarget = targetPos;
             var distance = Vector3.Distance(this.transform.position, this.moveTarget);
             var duration = distance / moveSpeed;
@@ -74,22 +82,28 @@ namespace ET
                     spriteChild.DOScaleX(direction * oriScaleX, 0.3f);
                 }
             }
-
-            this.transform.DOMove(targetPos, duration).OnComplete(()=>StartCoroutine(MoveEnd()));
+            
+            this.transform.DOMove(targetPos, duration).OnComplete(MoveEnd);
             // Debug.Log($"going to {target}");
             NativeProxy.SendMeMove(target);
         }
 
-        public IEnumerator MoveEnd()
+        public void MoveEnd()
         {
-            this.IsMoving = false;
+            fsm.TriggerUnityEvent("MoveEnded");
+            // this.IsMoving = false;
             this.moveTarget = Vector3.positiveInfinity;
             //
-            var task = Task.Run(()=>Wait(Random.Range(3, 8)));
-            yield return new WaitUntil(()=>task.IsCompleted);
+            // var task = Task.Run(()=>Wait(Random.Range(3, 8)));
+            // yield return new WaitUntil(()=>task.IsCompleted);
             // StartCoroutine(Wait(Random.Range(3, 8)));
-            Move(DanceFloorHelper.GetRandomDanceFloorPos());
+            // Move(DanceFloorHelper.GetRandomDanceFloorPos());
             
+        }
+
+        public void MoveRandom()
+        {
+            Move(DanceFloorHelper.GetRandomDanceFloorPos());
         }
 
         protected static IEnumerator Wait(int time)
