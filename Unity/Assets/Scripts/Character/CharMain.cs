@@ -18,6 +18,7 @@ namespace ET
         protected TextMeshPro nameTmp;
 
         [SerializeField] protected float moveSpeed;
+        [SerializeField] private TextBubble bubble;
 
         protected float direction = 1;
         private float oriScaleX;
@@ -111,6 +112,15 @@ namespace ET
         public void CharLeave()
         {
             GameObject.Destroy(this.gameObject);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        public void Speak(string content)
+        {
+            bubble.Speak(content);
         }
     }
 }

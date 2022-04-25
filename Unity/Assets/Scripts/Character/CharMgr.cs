@@ -120,6 +120,14 @@ namespace ET
             return result;
         }
 
+        public void EveryOneSpeak(string text)
+        {
+            foreach (var charkv in charDict)
+            {
+                charkv.Value.Speak(text);
+            }
+        }
+
 
     }
 }

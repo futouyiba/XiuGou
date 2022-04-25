@@ -86,6 +86,8 @@ namespace ET.Utility
         /// <param name="json"></param>
         public static void Unity2NativeMsg(string json)
         {
+            #if UNITY_ANDROID
+
             // AndroidJavaClass jc = new AndroidJavaClass("com.bjzy.showdog.voiceroom.unity.UnityCall");
             // var jo = jc.GetStatic<AndroidJavaObject>("unityCall");
             // jo.Call("test",json);
@@ -94,6 +96,10 @@ namespace ET.Utility
             AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
             AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
             jo.Call("testMethod", json);
+                AndroidJavaClass jc = new AndroidJavaClass("com.bjzy.showdog.voiceroom.unity.UnityCall");
+                var jo = jc.GetStatic<AndroidJavaObject>("unityCall");
+                jo.Call("test",json);
+            #endif
         }
         
         
