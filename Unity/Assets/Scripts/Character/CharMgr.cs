@@ -42,10 +42,10 @@ namespace ET
             CursorLockMode lockMode = CursorLockMode.None;
             Cursor.lockState = lockMode;
             charDict = new Dictionary<int, CharMain>();
-            for (int i = 0; i < 10; i++)
-            {
-                CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);
-            }
+            // for (int i = 0; i < 10; i++)
+            // {
+            //     CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);
+            // }
 
             _instance = this;
         }
