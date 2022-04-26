@@ -55,20 +55,28 @@ namespace ET
         void Update()
         {
             #if UNITY_EDITOR
-                if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                for (int i = 0; i < 100; i++)
                 {
-                    var msg =
-                        "{\"Op\":\"UserEnter\",\"OpData\":{\"uid\":2339817, \"ts\":1650539296, \"uname\":\"时光”\", \"ismale\":false, \"position\":{\"x\":0.513215,\"y\":0.2354564}}}";
-                    NativeProxy.instance.Native2UnityMsg(msg);
-
-                    // CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
+                    var char_id = this.id;
+                    CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}", Color.white);
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                var msg =
+                    "{\"Op\":\"UserEnter\",\"OpData\":{\"uid\":2339817, \"ts\":1650539296, \"uname\":\"时光”\", \"ismale\":false, \"position\":{\"x\":0.513215,\"y\":0.2354564}}}";
+                NativeProxy.instance.Native2UnityMsg(msg);
 
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    var msg = "{\"Op\":\"UserExit\",\"OpData\":{\"uid\":2339817, \"ts\":1650960605116}}";
-                    NativeProxy.instance.Native2UnityMsg(msg);
-                }
+                // CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                var msg = "{\"Op\":\"UserExit\",\"OpData\":{\"uid\":2339817, \"ts\":1650960605116}}";
+                NativeProxy.instance.Native2UnityMsg(msg);
+            }
             #endif
         }
 
