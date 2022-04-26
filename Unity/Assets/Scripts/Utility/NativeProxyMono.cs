@@ -18,12 +18,12 @@ namespace ET.Utility
         
         }
 
-        public void OnProxyMsg(string msg)
+        public void Native2UnityMsg(string msg)
         {
             NativeProxy.instance.Native2UnityMsg(msg);
         }
 
-        public void SendProxyMsg(string msg)
+        public void Unity2NativeMsg(string msg)
         {
             NativeProxy.Unity2NativeMsg(msg);
         }
