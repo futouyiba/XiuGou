@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using ET.Utility;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -53,10 +54,22 @@ namespace ET
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
-            }
+            #if UNITY_EDITOR
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    var msg =
+                        "{\"Op\":\"UserEnter\",\"OpData\":{\"uid\":2339817, \"ts\":1650539296, \"uname\":\"时光”\", \"ismale\":false, \"position\":{\"x\":0.513215,\"y\":0.2354564}}}";
+                    NativeProxy.instance.Native2UnityMsg(msg);
+
+                    // CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
+                }
+
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    var msg = "{\"Op\":\"UserExit\",\"OpData\":{\"uid\":2339817, \"ts\":1650960605116}}";
+                    NativeProxy.instance.Native2UnityMsg(msg);
+                }
+            #endif
         }
 
         public void CreateCharNativeCall(string _params)

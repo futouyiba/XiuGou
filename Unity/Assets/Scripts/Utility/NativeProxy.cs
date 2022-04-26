@@ -101,7 +101,7 @@ namespace ET.Utility
         
         public static void SendMyPos(Vector2 pos)
         {
-            var ts = (int)new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+            var ts = (int) new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds();
             var mypos = new MyPosition
             {
                 ts = ts,
@@ -113,7 +113,7 @@ namespace ET.Utility
 
         public static void SendMeMove(Vector2 pos)
         {
-            var ts= (int)new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+            var ts = (int) new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds();
             var target = new MeMove()
             {
                 ts = ts,
