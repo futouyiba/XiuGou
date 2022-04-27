@@ -61,7 +61,7 @@ namespace ET
                 for (int i = 0; i < 100; i++)
                 {
                     var char_id = this.id;
-                    CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}", Color.white);
+                    CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}",-1, Color.white);
                 }
             }
             if (Input.GetKeyDown(KeyCode.C))
@@ -83,7 +83,7 @@ namespace ET
 
         public void CreateCharNativeCall(string _params)
         {
-            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.white);
+            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}",-1, Color.white);
             //todo send the random pos to native app
             
         }
@@ -94,15 +94,21 @@ namespace ET
         /// </summary>
         /// <param name="position">unified pos</param>
         /// <param name="name">char name</param>
-        /// <param name="color"> char name color</param>
+        /// <param name="name_color"> char name color</param>
         /// <returns></returns>
-        public GameObject CreateCharView(int id, Vector2 position, string name, Color color)
+        public GameObject CreateCharView(int id, Vector2 position, string name,int appearance_id , Color name_color)
         {
-            var prefabIndex = Random.Range(0, charPrefabs.Count - 1);
-            var goCreated = GameObject.Instantiate(this.charPrefabs[prefabIndex]);
+            
+            if (appearance_id > charPrefabs.Count - 1)
+            {
+                Debug.LogWarning($"appearance");
+                appearance_id = Random.Range(0, charPrefabs.Count - 1);
+            }
+            var to_create = this.charPrefabs[appearance_id];
+            var goCreated = GameObject.Instantiate(to_create);
             var charView = goCreated.GetComponent<CharMain>();
             charView.SetName(name);
-            charView.SetNameColor(color);
+            charView.SetNameColor(name_color);
 
             var truePos = DanceFloorHelper.PosUnified2Scene(position);
             goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);

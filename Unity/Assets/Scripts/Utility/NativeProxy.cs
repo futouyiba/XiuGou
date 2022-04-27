@@ -28,13 +28,20 @@ namespace ET.Utility
             {
                 case "UserEnter":
                     var userEnter = GetOpdata<UserEnter>(msg);
-                    CharMgr.instance.CreateCharView(userEnter.uid, userEnter.position, userEnter.uname, Color.white);
+                    CharMgr.instance.CreateCharView(userEnter.uid, userEnter.position, userEnter.uname,userEnter.appearance, Color.white);
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
                     var pos = DanceFloorHelper.GetRandomDanceFloorPos();
-                    CharMgr.instance.CreateCharView(meEnter.uid, pos,meEnter.uname, Color.white);
+                    CharMgr.instance.CreateCharView(meEnter.uid, pos,meEnter.uname,meEnter.appearance, Color.white);
                     //todo:发个消息告知我在哪里
+                    var myPos = new MyPosition()
+                    {
+                        position = pos,
+                        ts= (int) new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds()
+                    };
+                    var msgMyPos = MakeOp(myPos);
+                    Unity2NativeMsg(msgMyPos);
                     break;
                 case "UserExit":
                     var userExit = GetOpdata<UserExit>(msg);
@@ -45,12 +52,13 @@ namespace ET.Utility
                     var uIds = userList.uids;
                     var uPos = userList.positions;
                     var uNames = userList.unames;
+                    var uAppears = userList.appearances;
                     for (int i = 0; i < uIds.Count; i++)
                     {
                         var res = CharMgr.instance.GetCharacter(uIds[i]);
                         if (res == null)
                         {
-                            CharMgr.instance.CreateCharView(uIds[i], uPos[i], uNames[i], Color.white);
+                            CharMgr.instance.CreateCharView(uIds[i], uPos[i], uNames[i],uAppears[i], Color.white);
                         }
                         else
                         {
