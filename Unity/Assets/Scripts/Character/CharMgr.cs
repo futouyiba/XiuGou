@@ -40,6 +40,7 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
+            _instance = this;
             CursorLockMode lockMode = CursorLockMode.None;
             Cursor.lockState = lockMode;
             charDict = new Dictionary<int, CharMain>();
@@ -48,7 +49,7 @@ namespace ET
             //     CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);
             // }
 
-            _instance = this;
+
         }
 
         // Update is called once per frame
@@ -123,10 +124,11 @@ namespace ET
             }
         }
 
-        public static GameObject GetRandomChar()
+        public static KeyValuePair<int,CharMain>? GetRandomChar()
         {
+            if (instance.charDict.Count <= 0) return null;
             var rand = Random.Range(0, instance.charDict.Count);
-            return instance.charDict.ElementAt(rand).Value.gameObject;
+            return instance.charDict.ElementAt(rand);
         }
 
         public CharMain GetCharacter(int uid)

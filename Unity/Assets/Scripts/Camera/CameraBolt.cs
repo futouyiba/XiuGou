@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.CompilerServices;
 using Bolt;
+using DG.Tweening;
+using UnityEditor;
 using UnityEngine;
 
 namespace ET
@@ -15,6 +18,8 @@ namespace ET
         private static readonly float lookAtCamRotX = 16f;
         private Quaternion initRot;
         private Vector3 initPos;
+
+        private int fakeid = -1;
 
         [SerializeField]
         protected Animator animator;
@@ -33,6 +38,17 @@ namespace ET
             }
         }
 
+        protected Vector3 GetFollowPos(Vector3 charPos)
+        {
+            return charPos + lookAtCamOffset;
+        }
+
+        protected Quaternion GetFollowRot(Quaternion originRot)
+        {
+            var eulers = originRot.eulerAngles + new Vector3(lookAtCamRotX, 0, 0);
+            return Quaternion.Euler(eulers);
+        }
+
         public void testMet(string info)
         {
             // go.SetActive(false);
@@ -49,8 +65,26 @@ namespace ET
 
         public void LookAtHelper()
         {
-            var cha = CharMgr.GetRandomChar();
-            LookAtClose(cha);
+            // var cha = CharMgr.GetRandomChar();
+            if (fakeid == -1)
+            {
+                var randChar = CharMgr.GetRandomChar();
+                if (randChar == null) return;
+                else
+                {
+                    this.fakeid = ((KeyValuePair<int, CharMain>) randChar).Key;
+                }
+            }
+            var cha=CharMgr.instance.GetCharacter(fakeid);
+            if (cha != null)
+            {
+                LookAtClose(cha.gameObject);
+            }
+            else
+            {
+                TriggerEvent("Unfollow");
+            }
+
         }
 
         public void LookAtClose(GameObject Go2Follow)
@@ -107,6 +141,52 @@ namespace ET
             if (!IsFollowing) TriggerEvent("FollowRand");
             else TriggerEvent("Unfollow");
         }
+
+        /// <summary>
+        /// 用动画把摄像机复位到原来的地方
+        /// </summary>
+        public void TweenReset()
+        {
+            TweenGoto(this.initPos, "TransIdle", this.initRot);
+            // var duration = .5f;
+            // Transform transform2 = this.transform;
+            // transform2.DOMove(this.initPos, duration).OnComplete(()=>sm.TriggerUnityEvent("TransFinish"));
+            // transform2.DORotateQuaternion(this.initRot, duration);
+        }
+
+        public void Tween2Idle()
+        {
+            TweenGoto(this.initPos, "Idle", this.initRot);
+        }
+        public void Tween2Follow()
+        {
+            var cha = CharMgr.GetRandomChar();
+            if (cha!=null)
+            {
+                this.fakeid = ((KeyValuePair<int,CharMain>)cha).Key;
+                var targetPos = GetFollowPos( ((KeyValuePair<int,CharMain>)cha).Value.transform.position);
+                var targetRot = GetFollowRot(this.initRot);
+                TweenGoto(targetPos, "Follow",targetRot);
+            }
+            else
+            {
+                sm.TriggerUnityEvent("Follow");
+            }
+
+        }
+
+        protected void TweenGoto(Vector3 targetPos,string nextEv, Quaternion? targetRot=null)
+        {
+            var duration = 1f;
+            Transform tf = this.transform;
+            tf.DOMove(targetPos, duration).OnComplete(() => sm.TriggerUnityEvent(nextEv));
+            if (targetRot != null)
+            {
+                tf.DORotateQuaternion((Quaternion)targetRot, duration);
+            }
+        }
+        
+        
         
         
     }
