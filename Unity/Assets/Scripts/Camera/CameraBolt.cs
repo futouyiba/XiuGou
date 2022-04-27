@@ -5,8 +5,10 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using Bolt;
 using DG.Tweening;
+using Ludiq;
 using UnityEditor;
 using UnityEngine;
+using Sequence = DG.Tweening.Sequence;
 
 namespace ET
 {
@@ -22,7 +24,17 @@ namespace ET
         private int fakeid = -1;
 
         [SerializeField]
-        protected Animator animator;
+        public Animator animator;
+
+        public void AnimatorOff()
+        {
+            animator.enabled = false;
+        }
+
+        public void AnimatorOn()
+        {
+            animator.enabled = true;
+        }
 
         [SerializeField] protected GameObject testGo;
         [SerializeField] protected StateMachine sm;
@@ -60,7 +72,9 @@ namespace ET
             var transform1 = this.transform;
             this.initPos = transform1.position;
             this.initRot = transform1.rotation;
+            
             Debug.Log($"camera bolt init finished! initpos is {initPos}m, initRot is {initRot.eulerAngles}");
+           
         }
 
         public void LookAtHelper()
@@ -90,7 +104,7 @@ namespace ET
         public void LookAtClose(GameObject Go2Follow)
         {
             Debug.Log($"look at go: {Go2Follow.name}");
-            animator.enabled = false;
+            // animator.enabled = false;
             GoFollowing = Go2Follow;
             IsFollowing = true;
         }
@@ -99,7 +113,7 @@ namespace ET
         {
             IsFollowing = false;
             GoFollowing = null;
-            animator.enabled = true;
+            // animator.enabled = true;
         }
 
         public void ResetCamera()
@@ -166,6 +180,7 @@ namespace ET
                 this.fakeid = ((KeyValuePair<int,CharMain>)cha).Key;
                 var targetPos = GetFollowPos( ((KeyValuePair<int,CharMain>)cha).Value.transform.position);
                 var targetRot = GetFollowRot(this.initRot);
+                Debug.LogWarning($"going from {((KeyValuePair<int,CharMain>)cha).Value.transform.position} to target {targetPos}");
                 TweenGoto(targetPos, "Follow",targetRot);
             }
             else
@@ -175,15 +190,25 @@ namespace ET
 
         }
 
-        protected void TweenGoto(Vector3 targetPos,string nextEv, Quaternion? targetRot=null)
+
+        private Sequence sequence;
+
+        private void TweenGoto(Vector3 targetPos,string nextEv, Quaternion? targetRot=null)
         {
+            // DOTween.KillAll(this);
+            sequence.Kill();
+            sequence = DOTween.Sequence();
             var duration = 1f;
             Transform tf = this.transform;
-            tf.DOMove(targetPos, duration).OnComplete(() => sm.TriggerUnityEvent(nextEv));
+            sequence.Append(tf.DOMove(targetPos, duration).OnComplete(() => sm.TriggerUnityEvent(nextEv)));
+            
             if (targetRot != null)
             {
-                tf.DORotateQuaternion((Quaternion)targetRot, duration);
+                sequence.Join(tf.DORotateQuaternion((Quaternion) targetRot, duration));
+
             }
+
+            sequence.Play();
         }
         
         
