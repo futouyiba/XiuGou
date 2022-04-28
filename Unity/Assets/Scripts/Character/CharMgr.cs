@@ -99,9 +99,9 @@ namespace ET
         public GameObject CreateCharView(int id, Vector2 position, string name,int appearance_id , Color name_color)
         {
             
-            if (appearance_id > charPrefabs.Count - 1)
+            if (appearance_id > charPrefabs.Count - 1 || appearance_id < 0)
             {
-                Debug.LogWarning($"appearance");
+                Debug.LogWarning($"appearance {appearance_id} does not exist, using random");
                 appearance_id = Random.Range(0, charPrefabs.Count - 1);
             }
             var to_create = this.charPrefabs[appearance_id];
@@ -109,7 +109,7 @@ namespace ET
             var charView = goCreated.GetComponent<CharMain>();
             charView.SetName(name);
             charView.SetNameColor(name_color);
-
+            charView.SetNameColor(name_color);
             var truePos = DanceFloorHelper.PosUnified2Scene(position);
             goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
             

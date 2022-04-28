@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Bolt;
 using TMPro;
 using UnityEngine;
@@ -38,13 +40,66 @@ namespace ET
         public void Speak(string text)
         {
             ShowBubble();
-            tmp.SetText(text);
+            var formatted = SpeakFormat(text, 12);
+            tmp.SetText(formatted);
             LayoutRebuilder.ForceRebuildLayoutImmediate(tmp.rectTransform);
             Vector2 autoSize = new Vector2(tmp.rectTransform.rect.width, tmp.rectTransform.rect.height);
             UpdateSpriteSize(autoSize);
             // StartCoroutine(DisappearAfter(5f));
             
         }
+
+        /// <summary>
+        /// 用来把raw text处理为适合在气泡中显示的样子
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string SpeakFormat(string text,int line_len)
+        {
+            StringBuilder builder = new StringBuilder();
+            StringReader reader = new StringReader(text);
+            string str = reader.GetByWidth(line_len);
+            int lines = 0;
+            while (str != null && lines<=4)
+            {
+                builder.AppendLine(str);
+                lines++;
+                str = reader.GetByWidth(line_len);
+            }
+
+            return builder.ToString();
+            // StringBuilder content = new StringBuilder();
+            // int buffer_size = 4;
+            //
+            // TextGenerator textGen = new TextGenerator();
+            // TextGenerationSettings genSetting = new TextGenerationSettings();
+            // genSetting.font= Font.CreateDynamicFontFromOSFont("微软雅黑", 1);
+            // //
+            //
+            // for (int i = 0; i < text.Length; i += buffer_size)
+            // {
+            //     var step_size = buffer_size;
+            //     if (text.Length < i + buffer_size)
+            //     {
+            //         step_size = text.Length - i;
+            //     }
+            //     var cut = text.Substring(i, step_size);
+            //     var textWidth = textGen.GetPreferredWidth(cut, genSetting);
+            //     content.AppendLine($"{cut}: {textWidth}");
+            // }
+            
+            
+            
+            // text.Substring(0, 5)
+            // var bytes = Encoding.UTF32.GetBytes(text);
+            // for (int i = 0; i < bytes.Length; i++)
+            // {
+            //     content.Append(bytes[i]);
+            // }
+            // return content.ToString();
+        }
+        
+        
 
         public void UpdateSpriteSize(Vector2 autoSize)
         {
