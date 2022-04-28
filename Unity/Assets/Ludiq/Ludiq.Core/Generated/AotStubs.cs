@@ -48,10 +48,14 @@ namespace Ludiq.Generated.Aot
 	// ET.CameraBolt.PlayAnimate
 	// ET.CameraBolt.ResetCamera
 	// ET.CameraBolt.StopLookAtClose
+	// ET.CameraBolt.Tween2Follow
+	// ET.CameraBolt.Tween2Idle
+	// ET.CharMain.bubbleTime
 	// ET.CharMain.MoveRandom
 	// ET.CharMain.op_Equality
 	// ET.CharMain.op_Implicit
 	// ET.CharMain.op_Inequality
+	// ET.CharMain.SpeakEnd
 	// ET.CharMgr.op_Equality
 	// ET.CharMgr.op_Implicit
 	// ET.CharMgr.op_Inequality
@@ -1163,6 +1167,40 @@ namespace Ludiq.Generated.Aot
 			optimized.Invoke(default(object[]));
 		}
 		
+		// ET.CameraBolt.Tween2Follow
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBolt_Tween2Follow()
+		{
+			global::ET.CameraBolt target = default(global::ET.CameraBolt);
+			target.Tween2Follow();
+			global::Ludiq.InstanceActionInvoker<ET.CameraBolt> optimized = new global::Ludiq.InstanceActionInvoker<ET.CameraBolt>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CameraBolt));
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CameraBolt.Tween2Idle
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBolt_Tween2Idle()
+		{
+			global::ET.CameraBolt target = default(global::ET.CameraBolt);
+			target.Tween2Idle();
+			global::Ludiq.InstanceActionInvoker<ET.CameraBolt> optimized = new global::Ludiq.InstanceActionInvoker<ET.CameraBolt>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CameraBolt));
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CharMain.bubbleTime
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_bubbleTime()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			float accessor = target.bubbleTime;
+			target.bubbleTime = default(float);
+			global::Ludiq.InstanceFieldAccessor<ET.CharMain, float> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, float>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CharMain));
+			optimized.SetValue(default(global::ET.CharMain), default(float));
+		}
+		
 		// ET.CharMain.MoveRandom
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void ET_CharMain_MoveRandom()
@@ -1206,6 +1244,17 @@ namespace Ludiq.Generated.Aot
 			bool @operator = (arg0 != arg1);
 			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
 			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CharMain.SpeakEnd
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_SpeakEnd()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			target.SpeakEnd();
+			global::Ludiq.InstanceActionInvoker<ET.CharMain> optimized = new global::Ludiq.InstanceActionInvoker<ET.CharMain>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CharMain));
 			optimized.Invoke(default(object[]));
 		}
 		

@@ -59,6 +59,7 @@ namespace ET.Utility
         public string uname;
         public bool ismale;
         public Vector2 position;
+        public int appearance;
     }
 
     public class MeEnter : JsonCmd
@@ -67,6 +68,7 @@ namespace ET.Utility
         public long ts;
         public string uname;
         public bool ismale;
+        public int appearance;
     }
 
     public class UserExit : JsonCmd
@@ -80,6 +82,7 @@ namespace ET.Utility
         public List<int> uids;
         public List<string> unames;
         public List<Vector2> positions;
+        public List<int> appearances;
     }
 
     public class MeMove : JsonCmd

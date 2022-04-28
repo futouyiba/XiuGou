@@ -40,6 +40,7 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
+            _instance = this;
             CursorLockMode lockMode = CursorLockMode.None;
             Cursor.lockState = lockMode;
             charDict = new Dictionary<int, CharMain>();
@@ -48,33 +49,41 @@ namespace ET
             //     CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);
             // }
 
-            _instance = this;
+
         }
 
         // Update is called once per frame
         void Update()
         {
             #if UNITY_EDITOR
-                if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                for (int i = 0; i < 100; i++)
                 {
-                    var msg =
-                        "{\"Op\":\"UserEnter\",\"OpData\":{\"uid\":2339817, \"ts\":1650539296, \"uname\":\"时光”\", \"ismale\":false, \"position\":{\"x\":0.513215,\"y\":0.2354564}}}";
-                    NativeProxy.instance.Native2UnityMsg(msg);
-
-                    // CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
+                    var char_id = this.id;
+                    CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}",-1, Color.white);
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                var msg =
+                    "{\"Op\":\"UserEnter\",\"OpData\":{\"uid\":2339817, \"ts\":1650539296, \"uname\":\"时光”\", \"ismale\":false, \"position\":{\"x\":0.513215,\"y\":0.2354564}}}";
+                NativeProxy.instance.Native2UnityMsg(msg);
 
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    var msg = "{\"Op\":\"UserExit\",\"OpData\":{\"uid\":2339817, \"ts\":1650960605116}}";
-                    NativeProxy.instance.Native2UnityMsg(msg);
-                }
+                // CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                var msg = "{\"Op\":\"UserExit\",\"OpData\":{\"uid\":2339817, \"ts\":1650960605116}}";
+                NativeProxy.instance.Native2UnityMsg(msg);
+            }
             #endif
         }
 
         public void CreateCharNativeCall(string _params)
         {
-            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}", Color.white);
+            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}",-1, Color.white);
             //todo send the random pos to native app
             
         }
@@ -85,15 +94,21 @@ namespace ET
         /// </summary>
         /// <param name="position">unified pos</param>
         /// <param name="name">char name</param>
-        /// <param name="color"> char name color</param>
+        /// <param name="name_color"> char name color</param>
         /// <returns></returns>
-        public GameObject CreateCharView(int id, Vector2 position, string name, Color color)
+        public GameObject CreateCharView(int id, Vector2 position, string name,int appearance_id , Color name_color)
         {
-            var prefabIndex = Random.Range(0, charPrefabs.Count - 1);
-            var goCreated = GameObject.Instantiate(this.charPrefabs[prefabIndex]);
+            
+            if (appearance_id > charPrefabs.Count - 1)
+            {
+                Debug.LogWarning($"appearance");
+                appearance_id = Random.Range(0, charPrefabs.Count - 1);
+            }
+            var to_create = this.charPrefabs[appearance_id];
+            var goCreated = GameObject.Instantiate(to_create);
             var charView = goCreated.GetComponent<CharMain>();
             charView.SetName(name);
-            charView.SetNameColor(color);
+            charView.SetNameColor(name_color);
 
             var truePos = DanceFloorHelper.PosUnified2Scene(position);
             goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
@@ -115,10 +130,11 @@ namespace ET
             }
         }
 
-        public static GameObject GetRandomChar()
+        public static KeyValuePair<int,CharMain>? GetRandomChar()
         {
+            if (instance.charDict.Count <= 0) return null;
             var rand = Random.Range(0, instance.charDict.Count);
-            return instance.charDict.ElementAt(rand).Value.gameObject;
+            return instance.charDict.ElementAt(rand);
         }
 
         public CharMain GetCharacter(int uid)
