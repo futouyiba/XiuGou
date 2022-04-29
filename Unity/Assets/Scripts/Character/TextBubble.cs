@@ -40,7 +40,7 @@ namespace ET
         public void Speak(string text)
         {
             ShowBubble();
-            var formatted = SpeakFormat(text, 12);
+            var formatted = SpeakFormat(text, 56);
             tmp.SetText(formatted);
             LayoutRebuilder.ForceRebuildLayoutImmediate(tmp.rectTransform);
             Vector2 autoSize = new Vector2(tmp.rectTransform.rect.width, tmp.rectTransform.rect.height);
@@ -60,7 +60,7 @@ namespace ET
             StringReader reader = new StringReader(text);
             string str = reader.GetByWidth(line_len);
             int lines = 0;
-            while (str != null && lines<=4)
+            while (str != null && lines<=1)
             {
                 builder.AppendLine(str);
                 lines++;
