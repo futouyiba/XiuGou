@@ -37,6 +37,8 @@ namespace ET
             private set{}
         }
 
+        protected int myId = -1;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -48,8 +50,7 @@ namespace ET
             // {
             //     CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);
             // }
-
-
+            
         }
 
         // Update is called once per frame
@@ -58,10 +59,22 @@ namespace ET
             #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.A))
             {
+                var random_me = -1;
                 for (int i = 0; i < 100; i++)
                 {
                     var char_id = this.id;
-                    CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}",-1, Color.white);
+                    if (char_id == 1)
+                    {
+                        random_me = Random.Range(1, 100);
+                        Debug.LogWarning($"my id is {random_me}");
+                    }
+
+                    var view = CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}", -1,
+                        Color.white);
+                    if (char_id == random_me)
+                    {
+                        RegisterMe(char_id);
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.C))
@@ -87,6 +100,43 @@ namespace ET
             //todo send the random pos to native app
             
         }
+
+        /// <summary>
+        /// 在创建后指出哪个是我
+        /// </summary>
+        /// <param name="id"></param>
+        public void RegisterMe(int id)
+        {
+            var charmain = GetCharacter(id);
+            if (charmain)
+            {
+                myId = id;
+                charmain.isMe = true;
+                charmain.SetNameColor(Color.yellow);
+            }
+            else
+            {
+                Debug.LogError($"charmain for me {id} not found!");
+            }
+            
+        }
+
+        public CharMain GetMe()
+        {
+            if (myId < 0)
+            {
+                Debug.LogError($"myid is {myId}");
+                return null;
+            }
+            var charmain = GetCharacter(myId);
+            if (!charmain)
+            {
+                Debug.LogError($"charmain for me:{myId} does not exist");
+                return null;
+            }
+
+            return charmain;
+        }
         
         
         /// <summary>
@@ -101,7 +151,7 @@ namespace ET
             
             if (appearance_id > charPrefabs.Count - 1 || appearance_id < 0)
             {
-                Debug.LogWarning($"appearance {appearance_id} does not exist, using random");
+                Debug.Log($"appearance {appearance_id} does not exist, using random");
                 appearance_id = Random.Range(0, charPrefabs.Count - 1);
             }
             var to_create = this.charPrefabs[appearance_id];

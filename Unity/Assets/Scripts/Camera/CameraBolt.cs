@@ -101,6 +101,19 @@ namespace ET
 
         }
 
+        public void LookAtMe()
+        {
+            var cha = CharMgr.instance.GetMe();
+            if (cha)
+            {
+                LookAtClose(cha.gameObject);
+            }
+            else
+            {
+                TriggerEvent("Unfollow");
+            }
+        }
+
         public void LookAtClose(GameObject Go2Follow)
         {
             Debug.Log($"look at go: {Go2Follow.name}");
@@ -150,7 +163,7 @@ namespace ET
             sm.TriggerUnityEvent(ev);
         }
 
-        public void TriggerFollow()
+        public void FollowSwitch()
         {
             if (!IsFollowing) TriggerEvent("FollowRand");
             else TriggerEvent("Unfollow");
@@ -174,17 +187,18 @@ namespace ET
         }
         public void Tween2Follow()
         {
-            var cha = CharMgr.GetRandomChar();
+            var cha = CharMgr.instance.GetMe();
             if (cha!=null)
             {
-                this.fakeid = ((KeyValuePair<int,CharMain>)cha).Key;
-                var targetPos = GetFollowPos( ((KeyValuePair<int,CharMain>)cha).Value.transform.position);
+                // this.fakeid = ((KeyValuePair<int,CharMain>)cha).Key;
+                var targetPos = GetFollowPos(cha.transform.position);
                 var targetRot = GetFollowRot(this.initRot);
-                Debug.LogWarning($"going from {((KeyValuePair<int,CharMain>)cha).Value.transform.position} to target {targetPos}");
+                Debug.LogWarning($"going from {cha.transform.position} to target {targetPos}");
                 TweenGoto(targetPos, "Follow",targetRot);
             }
             else
             {
+                //如果过渡动画没成功，状态机还是应该走到Follow那里，而不是卡在过渡状态
                 sm.TriggerUnityEvent("Follow");
             }
 

@@ -34,7 +34,8 @@ namespace ET.Utility
                     var meEnter = GetOpdata<MeEnter>(msg);
                     var pos = DanceFloorHelper.GetRandomDanceFloorPos();
                     CharMgr.instance.CreateCharView(meEnter.uid, pos,meEnter.uname,meEnter.appearance, Color.white);
-                    //todo:发个消息告知我在哪里
+                    CharMgr.instance.RegisterMe(meEnter.uid);
+                    
                     var myPos = new MyPosition()
                     {
                         position = pos,

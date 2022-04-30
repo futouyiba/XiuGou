@@ -60,7 +60,7 @@ namespace ET
             StringReader reader = new StringReader(text);
             string str = reader.GetByWidth(line_len);
             int lines = 0;
-            while (str != null && lines<=1)
+            while (str != null && lines<=0)
             {
                 builder.AppendLine(str);
                 lines++;

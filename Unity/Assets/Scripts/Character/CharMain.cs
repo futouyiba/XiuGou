@@ -25,6 +25,8 @@ namespace ET
         [SerializeField]
         public float bubbleTime;
 
+        public bool isMe = false;
+
         protected float direction = 1;
         private float oriScaleX;
         // Start is called before the first frame update
@@ -64,6 +66,7 @@ namespace ET
             var targetPos = new Vector3(scenePos.x, this.transform.position.y, scenePos.y);
             // this.IsMoving = true;
             fsm.TriggerUnityEvent("StartMove");
+            // CameraBolt.TriggerEvent("FollowRand");
             this.moveTarget = targetPos;
             var distance = Vector3.Distance(this.transform.position, this.moveTarget);
             var duration = distance / moveSpeed;
@@ -94,6 +97,7 @@ namespace ET
         public void MoveEnd()
         {
             fsm.TriggerUnityEvent("MoveEnded");
+            if(isMe) CameraBolt.TriggerEvent("MeMoveEnded");
             // this.IsMoving = false;
             this.moveTarget = Vector3.positiveInfinity;
             //
@@ -145,6 +149,13 @@ namespace ET
         {
             bubble.HideBubble();
             fsm.TriggerUnityEvent("FinishedTalking");
+        }
+
+        public void FollowMe()
+        {
+            if(!isMe) return;
+            var cameraBolt = Camera.main.GetComponent<CameraBolt>();
+            CameraBolt.TriggerEvent("FollowRand");
         }
     }
 }
