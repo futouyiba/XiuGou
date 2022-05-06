@@ -5,7 +5,9 @@ using Bolt;
 using DG.Tweening;
 using ET.Utility;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ET
 {
@@ -24,8 +26,14 @@ namespace ET
 
         [SerializeField]
         public float bubbleTime;
-
+        
         public bool isMe = false;
+        public bool isMoving = false;
+        public bool isTalking = false;
+        public float talkTime = 0f;
+        public float mvIdleTime = 0f;
+
+        public float mvStayTime = 0f;
 
         protected float direction = 1;
         private float oriScaleX;

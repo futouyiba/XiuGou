@@ -57,11 +57,16 @@ namespace Ludiq.Generated.Aot
 	// ET.CharMain.bubbleTime
 	// ET.CharMain.FollowMe
 	// ET.CharMain.isMe
+	// ET.CharMain.isMoving
+	// ET.CharMain.isTalking
 	// ET.CharMain.MoveRandom
+	// ET.CharMain.mvIdleTime
+	// ET.CharMain.mvStayTime
 	// ET.CharMain.op_Equality
 	// ET.CharMain.op_Implicit
 	// ET.CharMain.op_Inequality
 	// ET.CharMain.SpeakEnd
+	// ET.CharMain.talkTime
 	// ET.CharMgr.op_Equality
 	// ET.CharMgr.op_Implicit
 	// ET.CharMgr.op_Inequality
@@ -1277,6 +1282,30 @@ namespace Ludiq.Generated.Aot
 			optimized.SetValue(default(global::ET.CharMain), default(bool));
 		}
 		
+		// ET.CharMain.isMoving
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_isMoving()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			bool accessor = target.isMoving;
+			target.isMoving = default(bool);
+			global::Ludiq.InstanceFieldAccessor<ET.CharMain, bool> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, bool>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CharMain));
+			optimized.SetValue(default(global::ET.CharMain), default(bool));
+		}
+		
+		// ET.CharMain.isTalking
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_isTalking()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			bool accessor = target.isTalking;
+			target.isTalking = default(bool);
+			global::Ludiq.InstanceFieldAccessor<ET.CharMain, bool> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, bool>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CharMain));
+			optimized.SetValue(default(global::ET.CharMain), default(bool));
+		}
+		
 		// ET.CharMain.MoveRandom
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void ET_CharMain_MoveRandom()
@@ -1286,6 +1315,30 @@ namespace Ludiq.Generated.Aot
 			global::Ludiq.InstanceActionInvoker<ET.CharMain> optimized = new global::Ludiq.InstanceActionInvoker<ET.CharMain>(default(global::System.Reflection.MethodInfo));
 			optimized.Invoke(default(global::ET.CharMain));
 			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CharMain.mvIdleTime
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_mvIdleTime()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			float accessor = target.mvIdleTime;
+			target.mvIdleTime = default(float);
+			global::Ludiq.InstanceFieldAccessor<ET.CharMain, float> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, float>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CharMain));
+			optimized.SetValue(default(global::ET.CharMain), default(float));
+		}
+		
+		// ET.CharMain.mvStayTime
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_mvStayTime()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			float accessor = target.mvStayTime;
+			target.mvStayTime = default(float);
+			global::Ludiq.InstanceFieldAccessor<ET.CharMain, float> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, float>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CharMain));
+			optimized.SetValue(default(global::ET.CharMain), default(float));
 		}
 		
 		// ET.CharMain.op_Equality
@@ -1332,6 +1385,18 @@ namespace Ludiq.Generated.Aot
 			global::Ludiq.InstanceActionInvoker<ET.CharMain> optimized = new global::Ludiq.InstanceActionInvoker<ET.CharMain>(default(global::System.Reflection.MethodInfo));
 			optimized.Invoke(default(global::ET.CharMain));
 			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CharMain.talkTime
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_talkTime()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			float accessor = target.talkTime;
+			target.talkTime = default(float);
+			global::Ludiq.InstanceFieldAccessor<ET.CharMain, float> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, float>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CharMain));
+			optimized.SetValue(default(global::ET.CharMain), default(float));
 		}
 		
 		// ET.CharMgr.op_Equality
