@@ -59,23 +59,7 @@ namespace ET
             #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.A))
             {
-                var random_me = -1;
-                for (int i = 0; i < 100; i++)
-                {
-                    var char_id = this.id;
-                    if (char_id == 1)
-                    {
-                        random_me = Random.Range(1, 100);
-                        Debug.LogWarning($"my id is {random_me}");
-                    }
-
-                    var view = CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}", -1,
-                        Color.white);
-                    if (char_id == random_me)
-                    {
-                        RegisterMe(char_id);
-                    }
-                }
+                Create100TestGuys();
             }
             if (Input.GetKeyDown(KeyCode.C))
             {
@@ -94,6 +78,27 @@ namespace ET
             #endif
         }
 
+        public void Create100TestGuys()
+        {
+            var random_me = -1;
+            for (int i = 0; i < 100; i++)
+            {
+                var char_id = this.id;
+                if (char_id == 1)
+                {
+                    random_me = Random.Range(1, 100);
+                    Debug.LogWarning($"my id is {random_me}");
+                }
+
+                var view = CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}", -1,
+                    Color.white);
+                if (char_id == random_me)
+                {
+                    RegisterMe(char_id);
+                }
+            }
+        }
+        
         public void CreateCharNativeCall(string _params)
         {
             CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}",-1, Color.white);
