@@ -165,5 +165,11 @@ namespace ET
             var cameraBolt = Camera.main.GetComponent<CameraBolt>();
             CameraBolt.TriggerEvent("FollowRand");
         }
+
+        public bool TalkTimeCheck()
+        {
+            talkTime += Time.deltaTime;
+            return talkTime >= this.bubbleTime;
+        }
     }
 }
