@@ -50,20 +50,17 @@ namespace ET.Utility
                     break;
                 case "UserList":
                     var userList = GetOpdata<UserList>(msg);
-                    var uIds = userList.uids;
-                    var uPos = userList.positions;
-                    var uNames = userList.unames;
-                    var uAppears = userList.appearances;
-                    for (int i = 0; i < uIds.Count; i++)
+                    var userInfos = userList.uInfos;
+                    foreach (var userInfo in userInfos)
                     {
-                        var res = CharMgr.instance.GetCharacter(uIds[i]);
+                        var res = CharMgr.instance.GetCharacter(userInfo.userId);
                         if (res == null)
                         {
-                            CharMgr.instance.CreateCharView(uIds[i], uPos[i], uNames[i],uAppears[i], Color.white);
+                            CharMgr.instance.CreateCharView(userInfo.userId, userInfo.position, userInfo.nickName,userInfo.appearance, Color.white);
                         }
                         else
                         {
-                            res.Move(uPos[i]);
+                            res.Move(userInfo.position);
                         }
                     }
                     break;

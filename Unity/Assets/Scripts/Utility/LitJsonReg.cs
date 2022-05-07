@@ -28,5 +28,21 @@ namespace ET.Utility
                     
             }
         }
+
+        private static void RegisterUserList()
+        {
+            void Exporter(UserList obj, JsonWriter writer)
+            {
+                writer.WriteObjectStart();
+                writer.WriteArrayStart();
+                foreach (var uInfo in obj.uInfos)
+                {
+                    writer.Write(JsonMapper.ToJson(uInfo));
+                }
+                writer.WriteArrayEnd();
+                writer.WritePropertyName("");
+                
+            }
+        }
     }
 }
