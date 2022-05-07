@@ -68,6 +68,7 @@ namespace Ludiq.Generated.Aot
 	// ET.CharMain.op_Inequality
 	// ET.CharMain.SpeakEnd
 	// ET.CharMain.talkTime
+	// ET.CharMain.TalkTimeCheck
 	// ET.CharMgr.op_Equality
 	// ET.CharMgr.op_Implicit
 	// ET.CharMgr.op_Inequality
@@ -1409,6 +1410,17 @@ namespace Ludiq.Generated.Aot
 			global::Ludiq.InstanceFieldAccessor<ET.CharMain, float> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, float>(default(global::System.Reflection.FieldInfo));
 			optimized.GetValue(default(global::ET.CharMain));
 			optimized.SetValue(default(global::ET.CharMain), default(float));
+		}
+		
+		// ET.CharMain.TalkTimeCheck
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_TalkTimeCheck()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			target.TalkTimeCheck();
+			global::Ludiq.InstanceFunctionInvoker<ET.CharMain, bool> optimized = new global::Ludiq.InstanceFunctionInvoker<ET.CharMain, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CharMain));
+			optimized.Invoke(default(object[]));
 		}
 		
 		// ET.CharMgr.op_Equality
