@@ -171,5 +171,11 @@ namespace ET
             talkTime += Time.deltaTime;
             return talkTime >= this.bubbleTime;
         }
+
+        public bool MoveIdleTimeCheck()
+        {
+            mvIdleTime += Time.deltaTime;
+            return mvIdleTime >= this.mvStayTime;
+        }
     }
 }

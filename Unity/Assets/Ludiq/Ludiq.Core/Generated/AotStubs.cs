@@ -59,6 +59,7 @@ namespace Ludiq.Generated.Aot
 	// ET.CharMain.isMe
 	// ET.CharMain.isMoving
 	// ET.CharMain.isTalking
+	// ET.CharMain.MoveIdleTimeCheck
 	// ET.CharMain.MoveRandom
 	// ET.CharMain.mvIdleTime
 	// ET.CharMain.mvStayTime
@@ -1304,6 +1305,17 @@ namespace Ludiq.Generated.Aot
 			global::Ludiq.InstanceFieldAccessor<ET.CharMain, bool> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CharMain, bool>(default(global::System.Reflection.FieldInfo));
 			optimized.GetValue(default(global::ET.CharMain));
 			optimized.SetValue(default(global::ET.CharMain), default(bool));
+		}
+		
+		// ET.CharMain.MoveIdleTimeCheck
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CharMain_MoveIdleTimeCheck()
+		{
+			global::ET.CharMain target = default(global::ET.CharMain);
+			target.MoveIdleTimeCheck();
+			global::Ludiq.InstanceFunctionInvoker<ET.CharMain, bool> optimized = new global::Ludiq.InstanceFunctionInvoker<ET.CharMain, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CharMain));
+			optimized.Invoke(default(object[]));
 		}
 		
 		// ET.CharMain.MoveRandom
