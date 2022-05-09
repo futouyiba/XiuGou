@@ -112,12 +112,12 @@ namespace ET
         /// <param name="id"></param>
         public void RegisterMe(int id)
         {
-            var charmain = GetCharacter(id);
-            if (charmain)
+            var charMain = GetCharacter(id);
+            if (charMain)
             {
                 myId = id;
-                charmain.isMe = true;
-                charmain.SetNameColor(Color.yellow);
+                charMain.isMe = true;
+                charMain.SetNameColor(Color.yellow);
             }
             else
             {
