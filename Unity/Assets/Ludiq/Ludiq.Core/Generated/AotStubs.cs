@@ -75,6 +75,9 @@ namespace Ludiq.Generated.Aot
 	// ET.DanceFloorPivot.op_Equality
 	// ET.DanceFloorPivot.op_Implicit
 	// ET.DanceFloorPivot.op_Inequality
+	// ET.debugUITrigger.op_Equality
+	// ET.debugUITrigger.op_Implicit
+	// ET.debugUITrigger.op_Inequality
 	// ET.testNativeMsg.op_Equality
 	// ET.testNativeMsg.op_Implicit
 	// ET.testNativeMsg.op_Inequality
@@ -1484,6 +1487,41 @@ namespace Ludiq.Generated.Aot
 		// ET.DanceFloorPivot.op_Inequality
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void ET_DanceFloorPivot_op_Inequality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 != arg1);
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.debugUITrigger.op_Equality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_debugUITrigger_op_Equality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 == arg1);
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.debugUITrigger.op_Implicit
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_debugUITrigger_op_Implicit()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			bool conversion = ((bool)(arg0));
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.debugUITrigger.op_Inequality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_debugUITrigger_op_Inequality()
 		{
 			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
 			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
