@@ -71,7 +71,7 @@ namespace ET
             }
 
             var scenePos = DanceFloorHelper.PosUnified2Scene(target);
-            var targetPos = new Vector3(scenePos.x, this.transform.position.y, scenePos.y);
+            var targetPos = new Vector3(scenePos.x, transform.position.y, scenePos.y);
             // this.IsMoving = true;
             fsm.TriggerUnityEvent("StartMove");
             // CameraBolt.TriggerEvent("FollowRand");
@@ -99,7 +99,7 @@ namespace ET
             
             this.transform.DOMove(targetPos, duration).OnComplete(MoveEnd);
             // Debug.Log($"going to {target}");
-            NativeProxy.SendMeMove(target);
+            if(isMe) NativeProxy.SendMeMove(target);
         }
 
         public void MoveEnd()
@@ -177,5 +177,28 @@ namespace ET
             mvIdleTime += Time.deltaTime;
             return mvIdleTime >= this.mvStayTime;
         }
+        
+        // public int BoltUnityEvAfterTime(int afterTime, string evStr)
+        // {
+        //     return TimeMgr.instance.AddTimer(afterTime, () => fsm.TriggerUnityEvent(evStr));
+        // }
+        //
+        // public void BoltCancelTimer(int timerId)
+        // {
+        //     TimeMgr.instance.RemoveTimer(timerId);
+        // }
+
+        public void Teleport(Vector2 position)
+        {
+            this.transform.position = DanceFloorHelper.PosUnified2Scene(position);
+        }
+
+        [SerializeField] protected GameObject sprite;
+        public void SetVisible(bool isVisable)
+        {
+            this.sprite.SetActive(isVisable);
+        }
+
+        public bool IsVisible => sprite.activeSelf;
     }
 }
