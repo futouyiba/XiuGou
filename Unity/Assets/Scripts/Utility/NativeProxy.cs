@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using LitJson;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 namespace ET.Utility
 {
