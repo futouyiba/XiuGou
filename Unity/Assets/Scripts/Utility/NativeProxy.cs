@@ -66,7 +66,12 @@ namespace ET.Utility
                     var chara = CharMgr.instance.GetCharacter(userMove.userId);
                     if (chara != null)
                     {
-                        chara.Move(userMove.position);
+                        if (!chara.IsVisible)
+                        {
+                            chara.Teleport(userMove.position);
+                            chara.SetVisible(true);
+                        }
+                        else chara.Move(userMove.position);
                     }
                     else
                     {

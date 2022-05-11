@@ -179,8 +179,18 @@ namespace ET
             charView.SetName(name);
             charView.SetNameColor(name_color);
             charView.SetNameColor(name_color);
-            var truePos = DanceFloorHelper.PosUnified2Scene(position);
-            goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
+            if (position.x < -100f && position.y < -100f)
+            {//未初始化
+                charView.SetVisible(false);
+                var truePos = DanceFloorHelper.PosUnified2Scene(new Vector2(-1f, -1f));
+                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
+            }
+            else
+            {
+                var truePos = DanceFloorHelper.PosUnified2Scene(position);
+                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
+            }
+
             
             charDict.Add(id, charView);
             
