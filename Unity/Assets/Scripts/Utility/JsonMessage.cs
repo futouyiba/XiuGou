@@ -102,33 +102,33 @@ namespace ET.Utility
 
     public class UserMove : JsonCmd
     {
-        public int uid;
+        public int userId;
         public long ts;
         public Vector2 position;
     }
 
     public class UserEnter : JsonCmd
     {
-        public int uid;
+        public int userId;
         public long ts;
-        public string uname;
-        public bool ismale;
+        public string nickName;
+        public bool sex;
         public Vector2 position;
         public int appearance;
     }
 
     public class MeEnter : JsonCmd
     {
-        public int uid;
+        public int userId;
         public long ts;
-        public string uname;
-        public bool ismale;
+        public string nickName;
+        public bool sex;
         public int appearance;
     }
 
     public class UserExit : JsonCmd
     {
-        public int uid;
+        public int userId;
         public long ts;
     }
 
@@ -156,7 +156,7 @@ namespace ET.Utility
 
     public class UserMsg : JsonCmd
     {
-        public int uid;
+        public int userId;
         public long ts;
         public string text;
     }
