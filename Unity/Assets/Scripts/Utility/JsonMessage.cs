@@ -135,12 +135,14 @@ namespace ET.Utility
     public class UserList : JsonCmd
     {
         public List<UserInfo> userInfos;
-        // public List<int> uids;
-        // public List<string> unames;
-        // public List<Vector2> positions;
-        // public List<int> appearances;
+
     }
 
+    // public List<int> uids;
+    // public List<string> unames;
+    // public List<Vector2> positions;
+    // public List<int> appearances;
+    
     public class MeMove : JsonCmd
     {
         public long ts;
