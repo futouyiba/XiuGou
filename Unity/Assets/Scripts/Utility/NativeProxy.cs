@@ -9,6 +9,15 @@ namespace ET.Utility
 
     public class NativeProxy
     {
+
+#if UNITY_IPHONE && !UNITY_EDITOR
+
+[DllImport("__Internal")]
+private static extern void Unity2NativeMsgIOS(string opJson);
+
+#endif
+
+
         private static NativeProxy _instance;
         public static NativeProxy instance
         {
@@ -101,6 +110,10 @@ namespace ET.Utility
             var jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
             jo.Call("Native2UnityMsg", json);
             #endif
+
+            #if UNITY_IOS && !UNITY_EDITOR
+			Unity2NativeMsgIOS(json);
+			#endif
         }
         
         
