@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using ET.Utility;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace ET
 {
@@ -39,6 +41,7 @@ namespace ET
 
         protected int myId = -1;
 
+        public Vector2 myposStored = Vector2.zero;
         // Start is called before the first frame update
         void Start()
         {
@@ -50,6 +53,17 @@ namespace ET
             // {
             //     CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);
             // }
+            
+            //场景一开始就先发一个Mypos，然后还得存起来
+            myposStored = DanceFloorHelper.GetRandomDanceFloorPos();
+            var myPos = new MyPosition()
+            {
+                position = myposStored,
+                ts= (int) new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds()
+            };
+            var msgMyPos = NativeProxy.MakeOp(myPos);
+            NativeProxy.Unity2NativeMsg(msgMyPos);
+            
             
         }
 

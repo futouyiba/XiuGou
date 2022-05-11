@@ -37,21 +37,18 @@ private static extern void Unity2NativeMsgIOS(string opJson);
             {
                 case "UserEnter":
                     var userEnter = GetOpdata<UserEnter>(msg);
-                    CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,userEnter.appearance, Color.white);
+                    CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,
+                        userEnter.appearance, Color.white);
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
-                    var pos = DanceFloorHelper.GetRandomDanceFloorPos();
-                    CharMgr.instance.CreateCharView(meEnter.userId, pos,meEnter.nickName,meEnter.appearance, Color.white);
+                    var pos = CharMgr.instance.myposStored;
+                    CharMgr.instance.CreateCharView(meEnter.userId, pos, meEnter.nickName, meEnter.appearance,
+                        Color.white);
                     CharMgr.instance.RegisterMe(meEnter.userId);
-                    
-                    var myPos = new MyPosition()
-                    {
-                        position = pos,
-                        ts= (int) new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds()
-                    };
-                    var msgMyPos = MakeOp(myPos);
-                    Unity2NativeMsg(msgMyPos);
+                    //2022.5.11顺序改了，一进场景CharMgr就发MyPos，然后等MeEnter
+                    //MeEnter时才创建我自己
+
                     break;
                 case "UserExit":
                     var userExit = GetOpdata<UserExit>(msg);
