@@ -28,13 +28,13 @@ namespace ET.Utility
             {
                 case "UserEnter":
                     var userEnter = GetOpdata<UserEnter>(msg);
-                    CharMgr.instance.CreateCharView(userEnter.uid, userEnter.position, userEnter.uname,userEnter.appearance, Color.white);
+                    CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,userEnter.appearance, Color.white);
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
                     var pos = DanceFloorHelper.GetRandomDanceFloorPos();
-                    CharMgr.instance.CreateCharView(meEnter.uid, pos,meEnter.uname,meEnter.appearance, Color.white);
-                    CharMgr.instance.RegisterMe(meEnter.uid);
+                    CharMgr.instance.CreateCharView(meEnter.userId, pos,meEnter.nickName,meEnter.appearance, Color.white);
+                    CharMgr.instance.RegisterMe(meEnter.userId);
                     
                     var myPos = new MyPosition()
                     {
@@ -46,11 +46,11 @@ namespace ET.Utility
                     break;
                 case "UserExit":
                     var userExit = GetOpdata<UserExit>(msg);
-                    CharMgr.instance.RemoveCharView(userExit.uid);
+                    CharMgr.instance.RemoveCharView(userExit.userId);
                     break;
                 case "UserList":
                     var userList = GetOpdata<UserList>(msg);
-                    var userInfos = userList.uInfos;
+                    var userInfos = userList.userInfos;
                     foreach (var userInfo in userInfos)
                     {
                         var res = CharMgr.instance.GetCharacter(userInfo.userId);
@@ -66,14 +66,14 @@ namespace ET.Utility
                     break;
                 case "UserMove":
                     var userMove = GetOpdata<UserMove>(msg);
-                    var chara = CharMgr.instance.GetCharacter(userMove.uid);
+                    var chara = CharMgr.instance.GetCharacter(userMove.userId);
                     if (chara != null)
                     {
                         chara.Move(userMove.position);
                     }
                     else
                     {
-                        Debug.LogError($"char {userMove.uid} not exist");    
+                        Debug.LogError($"char {userMove.userId} not exist");    
                     }
                     break;
                 case "UserMsg":

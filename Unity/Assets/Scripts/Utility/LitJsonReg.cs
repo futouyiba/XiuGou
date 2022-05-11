@@ -35,7 +35,7 @@ namespace ET.Utility
             {
                 writer.WriteObjectStart();
                 writer.WriteArrayStart();
-                foreach (var uInfo in obj.uInfos)
+                foreach (var uInfo in obj.userInfos)
                 {
                     writer.Write(JsonMapper.ToJson(uInfo));
                 }
