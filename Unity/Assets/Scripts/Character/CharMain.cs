@@ -178,15 +178,15 @@ namespace ET
             return mvIdleTime >= this.mvStayTime;
         }
         
-        // public int BoltUnityEvAfterTime(int afterTime, string evStr)
-        // {
-        //     return TimeMgr.instance.AddTimer(afterTime, () => fsm.TriggerUnityEvent(evStr));
-        // }
-        //
-        // public void BoltCancelTimer(int timerId)
-        // {
-        //     TimeMgr.instance.RemoveTimer(timerId);
-        // }
+        public int BoltUnityEvAfterTime(int afterTime, string evStr)
+        {
+            return TimeMgr.instance.AddTimer(afterTime, () => fsm.TriggerUnityEvent(evStr));
+        }
+        
+        public void BoltCancelTimer(int timerId)
+        {
+            TimeMgr.instance.RemoveTimer(timerId);
+        }
 
         public void Teleport(Vector2 position)
         {
