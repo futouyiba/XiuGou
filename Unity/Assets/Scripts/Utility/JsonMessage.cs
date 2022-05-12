@@ -112,7 +112,7 @@ namespace ET.Utility
         public int userId;
         public long ts;
         public string nickName;
-        public bool sex;
+        public int sex;
         public Vector2 position;
         public int appearance;
     }
@@ -122,7 +122,7 @@ namespace ET.Utility
         public int userId;
         public long ts;
         public string nickName;
-        public bool sex;
+        public int sex;
         public int appearance;
     }
 

@@ -20,11 +20,13 @@ namespace ET.Utility
 
         public void Native2UnityMsg(string msg)
         {
+            Debug.Log($"native proxy mono receives msg from native:{msg}");
             NativeProxy.instance.Native2UnityMsg(msg);
         }
 
         public void Unity2NativeMsg(string msg)
         {
+            Debug.Log($"native proxy mono sends msg to native :{msg}");
             NativeProxy.Unity2NativeMsg(msg);
         }
 
