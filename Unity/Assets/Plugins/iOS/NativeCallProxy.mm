@@ -14,6 +14,11 @@ id<NativeCallsProtocol> api = NULL;
 
 
 extern "C" {
-    void Unity2NativeMsgIOS(const char* opJson) { //xiugou do stuff here? }
+    void Unity2NativeMsgIOS(const char* opJson);//xiugou do stuff here? }
 }
 
+void Unity2NativeMsgIOS(const char * value){
+    
+    return [api Unity2NativeMsgIOS:[NSString stringWithUTF8String:value]];
+    
+}

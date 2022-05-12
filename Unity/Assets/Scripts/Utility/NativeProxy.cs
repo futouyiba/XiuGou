@@ -32,6 +32,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
         /// <param name="msg"></param>
         public void Native2UnityMsg(string msg)
         {
+            Debug.Log($"native2unity:{msg}");
             var cmd = GetOp(msg);
             var cmdType = MsgCode2Type(cmd);
             switch (cmd)
@@ -104,6 +105,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
         /// <param name="json"></param>
         public static void Unity2NativeMsg(string json)
         {
+            Debug.Log($"unity2native:{json}");
             #if UNITY_ANDROID && !UNITY_EDITOR
 
             // AndroidJavaClass jc = new AndroidJavaClass("com.bjzy.showdog.voiceroom.unity.UnityCall");
