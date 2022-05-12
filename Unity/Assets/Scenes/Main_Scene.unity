@@ -132,6 +132,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 265151959761999573, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: rot_speed_x
+      value: 6030
+      objectReference: {fileID: 0}
     - target: {fileID: 888847197142018267, guid: 2183948b119c8944595691b210c81a47,
         type: 3}
       propertyPath: m_IsActive
@@ -146,6 +151,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677936987920278746, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: maxUntilFlicker
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677936987920278746, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: minUntilFlicker
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2677936987920278747, guid: 2183948b119c8944595691b210c81a47,
         type: 3}
@@ -176,6 +191,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894484328089989242, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: rot_speed_y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018047720710338104, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: rot_speed_x
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5268573662584214296, guid: 2183948b119c8944595691b210c81a47,
         type: 3}
@@ -301,6 +326,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113768305238019834, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: rot_speed_x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259775160192891785, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: rot_speed_x
+      value: 6030
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299451086507164564, guid: 2183948b119c8944595691b210c81a47,
+        type: 3}
+      propertyPath: rot_speed_y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2183948b119c8944595691b210c81a47, type: 3}
