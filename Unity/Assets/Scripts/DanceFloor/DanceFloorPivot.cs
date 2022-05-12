@@ -42,7 +42,7 @@ namespace ET
             }
             #endif
             
-            #if PLATFORM_ANDROID
+            #if PLATFORM_ANDROID || PLATFORM_IOS
             if (Input.touchCount > 0)
             {
                 for (int i = 0; i < Input.touchCount; i++)
@@ -54,6 +54,7 @@ namespace ET
                         Ray ray = Camera.main.ScreenPointToRay(touch_i.position);
                         if (floor.Raycast(ray, out hit, Single.MaxValue))
                         {
+                            Debug.Log($"click position is {hit.point}");
                             var worldPosition = hit.point;
                             // Debug.LogWarning(worldPosition);
                             // testCube.transform.position = worldPosition;
