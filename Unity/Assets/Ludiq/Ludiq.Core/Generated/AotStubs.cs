@@ -54,6 +54,13 @@ namespace Ludiq.Generated.Aot
 	// ET.CameraBolt.StopLookAtClose
 	// ET.CameraBolt.Tween2Follow
 	// ET.CameraBolt.Tween2Idle
+	// ET.CameraBoltSF..ctor
+	// ET.CameraBoltSF.EnterFollow
+	// ET.CameraBoltSF.EnterIdle
+	// ET.CameraBoltSF.Init
+	// ET.CameraBoltSF.op_Equality
+	// ET.CameraBoltSF.op_Implicit
+	// ET.CameraBoltSF.op_Inequality
 	// ET.CharMain.BoltCancelTimer
 	// ET.CharMain.BoltUnityEvAfterTime
 	// ET.CharMain.bubbleTime
@@ -81,6 +88,9 @@ namespace Ludiq.Generated.Aot
 	// ET.debugUITrigger.op_Equality
 	// ET.debugUITrigger.op_Implicit
 	// ET.debugUITrigger.op_Inequality
+	// ET.InvisibleCameraStandFollowTarget.op_Equality
+	// ET.InvisibleCameraStandFollowTarget.op_Implicit
+	// ET.InvisibleCameraStandFollowTarget.op_Inequality
 	// ET.testNativeMsg.op_Equality
 	// ET.testNativeMsg.op_Implicit
 	// ET.testNativeMsg.op_Inequality
@@ -173,9 +183,12 @@ namespace Ludiq.Generated.Aot
 	// UnityEngine.Animations.ScaleConstraint.op_Equality
 	// UnityEngine.Animations.ScaleConstraint.op_Implicit
 	// UnityEngine.Animations.ScaleConstraint.op_Inequality
+	// UnityEngine.Animator..ctor
+	// UnityEngine.Animator.enabled
 	// UnityEngine.Animator.op_Equality
 	// UnityEngine.Animator.op_Implicit
 	// UnityEngine.Animator.op_Inequality
+	// UnityEngine.Animator.Play
 	// UnityEngine.AnimatorOverrideController.op_Equality
 	// UnityEngine.AnimatorOverrideController.op_Implicit
 	// UnityEngine.AnimatorOverrideController.op_Inequality
@@ -332,6 +345,7 @@ namespace Ludiq.Generated.Aot
 	// UnityEngine.CustomRenderTexture.op_Equality
 	// UnityEngine.CustomRenderTexture.op_Implicit
 	// UnityEngine.CustomRenderTexture.op_Inequality
+	// UnityEngine.Debug.Log
 	// UnityEngine.DistanceJoint2D.op_Equality
 	// UnityEngine.DistanceJoint2D.op_Implicit
 	// UnityEngine.DistanceJoint2D.op_Inequality
@@ -1259,6 +1273,81 @@ namespace Ludiq.Generated.Aot
 			optimized.Invoke(default(object[]));
 		}
 		
+		// ET.CameraBoltSF..ctor
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_ctor()
+		{
+			new ET.CameraBoltSF();
+		}
+		
+		// ET.CameraBoltSF.EnterFollow
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_EnterFollow()
+		{
+			global::ET.CameraBoltSF target = default(global::ET.CameraBoltSF);
+			target.EnterFollow();
+			global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF> optimized = new global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CameraBoltSF));
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CameraBoltSF.EnterIdle
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_EnterIdle()
+		{
+			global::ET.CameraBoltSF target = default(global::ET.CameraBoltSF);
+			target.EnterIdle();
+			global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF> optimized = new global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CameraBoltSF));
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CameraBoltSF.Init
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_Init()
+		{
+			global::ET.CameraBoltSF target = default(global::ET.CameraBoltSF);
+			target.Init();
+			global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF> optimized = new global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CameraBoltSF));
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CameraBoltSF.op_Equality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_op_Equality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 == arg1);
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CameraBoltSF.op_Implicit
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_op_Implicit()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			bool conversion = ((bool)(arg0));
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CameraBoltSF.op_Inequality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_op_Inequality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 != arg1);
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
 		// ET.CharMain.BoltCancelTimer
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void ET_CharMain_BoltCancelTimer()
@@ -1565,6 +1654,41 @@ namespace Ludiq.Generated.Aot
 		// ET.debugUITrigger.op_Inequality
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void ET_debugUITrigger_op_Inequality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 != arg1);
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.InvisibleCameraStandFollowTarget.op_Equality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_InvisibleCameraStandFollowTarget_op_Equality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 == arg1);
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.InvisibleCameraStandFollowTarget.op_Implicit
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_InvisibleCameraStandFollowTarget_op_Implicit()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			bool conversion = ((bool)(arg0));
+			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.InvisibleCameraStandFollowTarget.op_Inequality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_InvisibleCameraStandFollowTarget_op_Inequality()
 		{
 			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
 			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
@@ -2650,6 +2774,25 @@ namespace Ludiq.Generated.Aot
 			optimized.Invoke(default(object[]));
 		}
 		
+		// UnityEngine.Animator..ctor
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void UnityEngine_Animator_ctor()
+		{
+			new UnityEngine.Animator();
+		}
+		
+		// UnityEngine.Animator.enabled
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void UnityEngine_Animator_enabled()
+		{
+			global::UnityEngine.Behaviour target = default(global::UnityEngine.Behaviour);
+			bool accessor = target.enabled;
+			target.enabled = default(bool);
+			global::Ludiq.InstancePropertyAccessor<UnityEngine.Behaviour, bool> optimized = new global::Ludiq.InstancePropertyAccessor<UnityEngine.Behaviour, bool>(default(global::System.Reflection.PropertyInfo));
+			optimized.GetValue(default(global::UnityEngine.Behaviour));
+			optimized.SetValue(default(global::UnityEngine.Behaviour), default(bool));
+		}
+		
 		// UnityEngine.Animator.op_Equality
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void UnityEngine_Animator_op_Equality()
@@ -2682,6 +2825,20 @@ namespace Ludiq.Generated.Aot
 			bool @operator = (arg0 != arg1);
 			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
 			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// UnityEngine.Animator.Play
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void UnityEngine_Animator_Play()
+		{
+			global::UnityEngine.Animator target = default(global::UnityEngine.Animator);
+			string arg0 = default(string);
+			int arg1 = default(int);
+			float arg2 = default(float);
+			target.Play(arg0, arg1, arg2);
+			global::Ludiq.InstanceActionInvoker<UnityEngine.Animator, string, int, float> optimized = new global::Ludiq.InstanceActionInvoker<UnityEngine.Animator, string, int, float>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::UnityEngine.Animator), arg0, arg1, arg2);
 			optimized.Invoke(default(object[]));
 		}
 		
@@ -4504,6 +4661,17 @@ namespace Ludiq.Generated.Aot
 			bool @operator = (arg0 != arg1);
 			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
 			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// UnityEngine.Debug.Log
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void UnityEngine_Debug_Log()
+		{
+			object arg0 = default(object);
+			global::UnityEngine.Debug.Log(arg0);
+			global::Ludiq.StaticActionInvoker<object> optimized = new global::Ludiq.StaticActionInvoker<object>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0);
 			optimized.Invoke(default(object[]));
 		}
 		
