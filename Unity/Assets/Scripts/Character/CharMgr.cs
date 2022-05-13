@@ -80,7 +80,7 @@ namespace ET
                 var msg =
                     "{\"Op\":\"UserEnter\",\"OpData\":{\"userId\":840167, \"ts\":1652352802993, \"nickName\":\"哈哈\", \"sex\":1}}";
                 NativeProxy.instance.Native2UnityMsg(msg);
-
+                RegisterMe(840167);
                 // CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
             }
 
