@@ -37,6 +37,8 @@ namespace ET
                     var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);
                     var me = CharMgr.instance.GetMe();
                     if(me) me.Move(danceFloorPos);
+
+                    ShowPointer(worldPosition);
                     // Debug.LogWarning(danceFloorPos);
                 }
             }
@@ -64,12 +66,33 @@ namespace ET
                             //移动我
                             var me = CharMgr.instance.GetMe();
                             if(me) me.Move(danceFloorPos);
+                            
+                            ShowPointer(worldPosition);
+
                         }
                     }
                 }
             }
             #endif
             
+        }
+
+        private int curTimerID = -1;
+        void ShowPointer(Vector3 position)
+        {
+            if (testCube.activeSelf && curTimerID != -1)
+            {
+                TimeMgr.instance.RemoveTimer(curTimerID);
+            }
+            testCube.SetActive(true);
+            testCube.transform.position = position;
+            this.curTimerID = TimeMgr.instance.AddTimer(1000, HidePointer);
+        }
+
+        void HidePointer()
+        {
+            testCube.SetActive(false);
+            curTimerID = -1;
         }
     }
 }
