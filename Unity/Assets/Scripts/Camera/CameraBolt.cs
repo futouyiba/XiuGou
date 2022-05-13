@@ -206,6 +206,7 @@ namespace ET
 
 
         private Sequence sequence;
+        private Vector3 swayStartPos;
 
         private void TweenGoto(Vector3 targetPos,string nextEv, Quaternion? targetRot=null)
         {
@@ -224,9 +225,21 @@ namespace ET
 
             sequence.Play();
         }
+
+        private void Start()
+        {
+            SetSwayStartPos();
+        }
+
+        public void SetSwayStartPos()
+        {
+            Debug.Log(" set sway start pos");
+            this.swayStartPos = this.transform.position;
+        }
         
-        
-        
-        
+        public void SwayAnimEnd()
+        {
+            Debug.Log("sway anim end");
+        }
     }
 }
