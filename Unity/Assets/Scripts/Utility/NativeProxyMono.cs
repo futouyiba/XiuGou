@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using LitJson;
 using UnityEngine;
 
 namespace ET.Utility
@@ -16,6 +18,11 @@ namespace ET.Utility
         void Update()
         {
         
+        }
+
+        private void Awake()
+        {
+            UnityTypeBindings.Register();
         }
 
         public void Native2UnityMsg(string msg)
