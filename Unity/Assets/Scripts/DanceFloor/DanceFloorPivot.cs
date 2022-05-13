@@ -13,7 +13,7 @@ namespace ET
 
         [SerializeField] protected MeshCollider floor;
 
-        [SerializeField] private GameObject testCube;
+        [SerializeField] private GameObject indicator;
         // Start is called before the first frame update
         void Start()
         {
@@ -80,18 +80,18 @@ namespace ET
         private int curTimerID = -1;
         void ShowPointer(Vector3 position)
         {
-            if (testCube.activeSelf && curTimerID != -1)
+            if (indicator.activeSelf && curTimerID != -1)
             {
                 TimeMgr.instance.RemoveTimer(curTimerID);
             }
-            testCube.SetActive(true);
-            testCube.transform.position = position;
+            indicator.SetActive(true);
+            indicator.transform.position = position;
             this.curTimerID = TimeMgr.instance.AddTimer(1000, HidePointer);
         }
 
         void HidePointer()
         {
-            testCube.SetActive(false);
+            indicator.SetActive(false);
             curTimerID = -1;
         }
     }
