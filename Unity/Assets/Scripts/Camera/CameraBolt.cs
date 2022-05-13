@@ -20,6 +20,7 @@ namespace ET
         private static readonly float lookAtCamRotX = 16f;
         private Quaternion initRot;
         private Vector3 initPos;
+        public static CameraBoltSF cameraBoltSF;
 
         private int fakeid = -1;
 
@@ -53,6 +54,7 @@ namespace ET
         protected Vector3 GetFollowPos(Vector3 charPos)
         {
             return charPos + lookAtCamOffset;
+            
         }
 
         protected Quaternion GetFollowRot(Quaternion originRot)
@@ -153,14 +155,16 @@ namespace ET
 
         public static void TriggerEvent(string ev)
         {
-            var go = Camera.main.gameObject;
-            if (!go)
-            {
-                Debug.LogError("camera main do not exist");
-                return;
-            }
-            var sm = go.GetComponent<StateMachine>();
-            sm.TriggerUnityEvent(ev);
+            cameraBoltSF.TriggerEvent(ev);
+            
+            // var go = Camera.main.gameObject;
+            // if (!go)
+            // {
+            //     Debug.LogError("camera main do not exist");
+            //     return;
+            // }
+            // var sm = go.GetComponent<StateMachine>();
+            // sm.TriggerUnityEvent(ev);
         }
 
         public void FollowSwitch()
@@ -228,6 +232,7 @@ namespace ET
 
         private void Start()
         {
+            // Time.timeScale = 0.2f;
             SetSwayStartPos();
         }
 
