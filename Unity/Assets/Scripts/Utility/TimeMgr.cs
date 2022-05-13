@@ -135,14 +135,21 @@ namespace ET
             this.enabled = false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="afterTime">time in milisec</param>
+        /// <param name="dlg"></param>
+        /// <returns></returns>
         public int AddTimer(int afterTime, Action dlg)
         {
             var curTs = Dt2Ts(DateTime.Now);
             var tillTime = curTs + afterTime;
             var createTimer = new Timer(tillTime, dlg);
             var timerID = get_id;
-            timers.Add(get_id,createTimer);
+            timers.Add(timerID,createTimer);
             UpdateMinTime(tillTime);
+            Debug.Log($"timer {timerID} added!");
             return timerID;
         }
 

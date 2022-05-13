@@ -42,6 +42,13 @@ namespace ET
         protected int myId = -1;
 
         public Vector2 myposStored = Vector2.zero;
+
+
+        void Awake()
+        {
+            Random.InitState((int)Time.time);
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -80,8 +87,13 @@ namespace ET
                 var msg =
                     "{\"Op\":\"UserEnter\",\"OpData\":{\"userId\":840167, \"ts\":1652352802993, \"nickName\":\"哈哈\", \"sex\":1}}";
                 NativeProxy.instance.Native2UnityMsg(msg);
-                RegisterMe(840167);
+                // RegisterMe(840167);
                 // CreateCharView(this.id,DanceFloorHelper.GetRandomDanceFloorPos(), "hahaha", Color.white);
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                EveryOneSpeak("嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿");
             }
 
             if (Input.GetKeyDown(KeyCode.V))
@@ -156,7 +168,7 @@ namespace ET
         {
             if (myId < 0)
             {
-                Debug.LogError($"myid is {myId}");
+                Debug.LogWarning($"my id is {myId}");
                 return null;
             }
             var charmain = GetCharacter(myId);
