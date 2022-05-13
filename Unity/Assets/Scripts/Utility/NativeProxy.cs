@@ -91,7 +91,10 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     break;
                 case "UserMsg":
                     var userMsg = GetOpdata<UserMsg>(msg);
-                    throw new Exception("not implemented");
+                    var uid = userMsg.userId;
+                    var charMain = CharMgr.instance.GetCharacter(uid);
+                    charMain.Speak(userMsg.text);
+                    break;
 
 
             }
