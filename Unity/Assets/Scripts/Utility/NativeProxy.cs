@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using LitJson;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using Random = UnityEngine.Random;
 
 namespace ET.Utility
 {
@@ -39,12 +40,14 @@ private static extern void Unity2NativeMsgIOS(string opJson);
             {
                 case "UserEnter":
                     var userEnter = GetOpdata<UserEnter>(msg);
+                    Random.InitState((int)userEnter.userId);
                     CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,
                         userEnter.appearance, Color.white);
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
                     var pos = CharMgr.instance.myposStored;
+                    Random.InitState((int)meEnter.userId);
                     CharMgr.instance.CreateCharView(meEnter.userId, pos, meEnter.nickName, meEnter.appearance,
                         Color.white);
                     CharMgr.instance.RegisterMe(meEnter.userId);
@@ -59,11 +62,13 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                 case "UserList":
                     var userList = GetOpdata<UserList>(msg);
                     var userInfos = userList.userInfos;
+                    // Random.InitState(userList.);
                     foreach (var userInfo in userInfos)
                     {
                         var res = CharMgr.instance.GetCharacter(userInfo.userId);
                         if (res == null)
                         {
+                            Random.InitState(userInfo.userId);
                             CharMgr.instance.CreateCharView(userInfo.userId, userInfo.position, userInfo.nickName,userInfo.appearance, Color.white);
                         }
                         else
