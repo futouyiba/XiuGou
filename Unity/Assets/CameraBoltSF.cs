@@ -13,11 +13,12 @@ namespace ET
         [SerializeField] private StateMachine fsm;
         // Start is called before the first frame update
         protected GameObject GoFollowing;
-        protected bool IsFollowing;
+        public bool IsFollowing = false;
         private static readonly Vector3 lookAtCamOffset = new Vector3(0f, 3.1f, 4.36f);
         private static readonly float lookAtCamRotX = 16f;
         private Quaternion initRot;
         private Vector3 initPos;
+        private Vector3 farWatchPos;
         private int fakeid = -1;
         [SerializeField]
         public Animator animator;
@@ -31,6 +32,8 @@ namespace ET
         [SerializeField] private float enterIdleLerpDuration;
         [SerializeField] private float enterFollowLerpDuration;
         private TweenerCore<float,float,FloatOptions> lerpValueTween;
+        [SerializeField] private float enterFarWatchLerpDuration;
+        public bool IsFarWatching = false;
 
         public void Init()
         {
@@ -47,6 +50,29 @@ namespace ET
         // Update is called once per frame
         void Update()
         {
+            // CheckKeyForFsmMsg();
+
+            if (IsFollowing)
+            {
+                //following logic
+                var position = cameraTransform.position;
+                position = Vector3.Lerp(position,
+                    myCharTransform.position + lookAtCamOffset, lerpValue);
+                cameraTransform.position = position;
+                Debug.Log($"cameraTransform pos is {cameraTransform.position}, myCharTransform position is {myCharTransform.position}, lookAtCamOffset is {lookAtCamOffset}, lerpValue is {lerpValue}, cameraTransform.position is {position}");
+            }
+
+            if (IsFarWatching)
+            {
+                cameraTransform.position = Vector3.Lerp(cameraTransform.position,
+                    farWatchPos, lerpValue);
+            }
+
+
+        }
+
+        private void CheckKeyForFsmMsg()
+        {
             if (Input.GetKey(KeyCode.V))
             {
                 Debug.Log("keypad1 is pressed");
@@ -57,7 +83,7 @@ namespace ET
             {
                 fsm.TriggerUnityEvent("Lerp2Idle");
             }
-                
+
             if (Input.GetKey(KeyCode.Keypad2))
             {
                 fsm.TriggerUnityEvent("Lerp2Follow");
@@ -67,27 +93,27 @@ namespace ET
             {
                 fsm.TriggerUnityEvent("Follow2Lerp");
             }
-            
-            if (!IsFollowing)
+        }
+
+
+        private void ResetTweens()
+        {
+            if (lerpValueTween is { active: true })
             {
-                return;     
+                Debug.Log("now lerp tween is active, kill it...");
+                lerpValueTween.Kill();
             }
-            
-            //following logic
-            cameraTransform.position = Vector3.Lerp(cameraTransform.position, myCharTransform.position + lookAtCamOffset, lerpValue);
+
+            DOTween.Kill(cameraTransform);
         }
         
         public void EnterFollow()
         {
-            if (lerpValueTween is { active: true })
-            {
-                Debug.Log("now tween is active...");
-                lerpValueTween.Kill();
-            }
-            DOTween.Kill(cameraTransform);
+            ResetTweens();
             IsFollowing = true;
             if (myCharMain ==null)
             {
+                Debug.LogWarning("myCharMain is null, init it");
                 myCharMain = CharMgr.instance.GetMe();
                 myCharTransform = myCharMain.transform;
             }
@@ -98,21 +124,29 @@ namespace ET
             this.lerpValueTween = DOTween.To(() => lerpValue, x => lerpValue = x, 1f, enterFollowLerpDuration);
             cameraTransform.DORotate(followEuler, enterFollowLerpDuration);
         }
-        
+
+
         public void EnterIdle()
         {
-            if (lerpValueTween is { active: true })
-            {
-                Debug.Log("now tween is active...");
-                lerpValueTween.Kill();
-            }
-            DOTween.Kill(cameraTransform);
+            ResetTweens();
             IsFollowing = false;
             // enterIdleLerpDuration = 1.5f;
             lerpValue = 0f;
             this.lerpValueTween = DOTween.To(() => lerpValue, x => lerpValue = x, 1f, enterIdleLerpDuration);
             cameraTransform.DORotate(initRot.eulerAngles, enterIdleLerpDuration);
             cameraTransform.DOMove(initPos, enterIdleLerpDuration);
+        }
+        
+        public void EnterFarWatch()
+        {
+            ResetTweens();
+            IsFarWatching = true;
+            lerpValue = 0f;
+            this.farWatchPos = initPos;
+            this.farWatchPos.x = GoFollowing.transform.position.x;
+            this.lerpValueTween = DOTween.To(() => lerpValue, x => lerpValue = x, 1f, enterFarWatchLerpDuration);
+            cameraTransform.DORotate(initRot.eulerAngles, enterFarWatchLerpDuration);
+            
         }
         
         public void SwayAnimEnd()
@@ -130,21 +164,5 @@ namespace ET
             fsm.TriggerUnityEvent(ev);
         }
 
-        public void EnterSwayToFollow()
-        {
-            animator.StopPlayback();
-            var duration = 1.0f;
-            transform.DORotate(followRotQueternion.eulerAngles, duration);
-            if (myCharMain ==null)
-            {
-               myCharMain = CharMgr.instance.GetMe();
-               myCharTransform = myCharMain.transform;
-            }
-            transform.DOMove(myCharTransform.position + lookAtCamOffset, duration).OnComplete(() =>
-            {
-                fsm.TriggerUnityEvent("Sway2FollowTweenFinish");
-            });
-
-        }
     }
 }

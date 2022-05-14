@@ -156,6 +156,8 @@ namespace ET
                 myId = id;
                 charMain.isMe = true;
                 charMain.SetNameColor(Color.yellow);
+                CameraBolt.TriggerEvent("Idle2Follow");
+                CameraBolt.TriggerEvent("Follow2Idle");
             }
             else
             {

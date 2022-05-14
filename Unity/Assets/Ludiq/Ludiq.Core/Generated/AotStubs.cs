@@ -55,9 +55,12 @@ namespace Ludiq.Generated.Aot
 	// ET.CameraBolt.Tween2Follow
 	// ET.CameraBolt.Tween2Idle
 	// ET.CameraBoltSF..ctor
+	// ET.CameraBoltSF.EnterFarWatch
 	// ET.CameraBoltSF.EnterFollow
 	// ET.CameraBoltSF.EnterIdle
 	// ET.CameraBoltSF.Init
+	// ET.CameraBoltSF.IsFarWatching
+	// ET.CameraBoltSF.IsFollowing
 	// ET.CameraBoltSF.op_Equality
 	// ET.CameraBoltSF.op_Implicit
 	// ET.CameraBoltSF.op_Inequality
@@ -345,7 +348,6 @@ namespace Ludiq.Generated.Aot
 	// UnityEngine.CustomRenderTexture.op_Equality
 	// UnityEngine.CustomRenderTexture.op_Implicit
 	// UnityEngine.CustomRenderTexture.op_Inequality
-	// UnityEngine.Debug.Log
 	// UnityEngine.DistanceJoint2D.op_Equality
 	// UnityEngine.DistanceJoint2D.op_Implicit
 	// UnityEngine.DistanceJoint2D.op_Inequality
@@ -1280,6 +1282,17 @@ namespace Ludiq.Generated.Aot
 			new ET.CameraBoltSF();
 		}
 		
+		// ET.CameraBoltSF.EnterFarWatch
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_EnterFarWatch()
+		{
+			global::ET.CameraBoltSF target = default(global::ET.CameraBoltSF);
+			target.EnterFarWatch();
+			global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF> optimized = new global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(default(global::ET.CameraBoltSF));
+			optimized.Invoke(default(object[]));
+		}
+		
 		// ET.CameraBoltSF.EnterFollow
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void ET_CameraBoltSF_EnterFollow()
@@ -1311,6 +1324,30 @@ namespace Ludiq.Generated.Aot
 			global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF> optimized = new global::Ludiq.InstanceActionInvoker<ET.CameraBoltSF>(default(global::System.Reflection.MethodInfo));
 			optimized.Invoke(default(global::ET.CameraBoltSF));
 			optimized.Invoke(default(object[]));
+		}
+		
+		// ET.CameraBoltSF.IsFarWatching
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_IsFarWatching()
+		{
+			global::ET.CameraBoltSF target = default(global::ET.CameraBoltSF);
+			bool accessor = target.IsFarWatching;
+			target.IsFarWatching = default(bool);
+			global::Ludiq.InstanceFieldAccessor<ET.CameraBoltSF, bool> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CameraBoltSF, bool>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CameraBoltSF));
+			optimized.SetValue(default(global::ET.CameraBoltSF), default(bool));
+		}
+		
+		// ET.CameraBoltSF.IsFollowing
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void ET_CameraBoltSF_IsFollowing()
+		{
+			global::ET.CameraBoltSF target = default(global::ET.CameraBoltSF);
+			bool accessor = target.IsFollowing;
+			target.IsFollowing = default(bool);
+			global::Ludiq.InstanceFieldAccessor<ET.CameraBoltSF, bool> optimized = new global::Ludiq.InstanceFieldAccessor<ET.CameraBoltSF, bool>(default(global::System.Reflection.FieldInfo));
+			optimized.GetValue(default(global::ET.CameraBoltSF));
+			optimized.SetValue(default(global::ET.CameraBoltSF), default(bool));
 		}
 		
 		// ET.CameraBoltSF.op_Equality
@@ -4661,17 +4698,6 @@ namespace Ludiq.Generated.Aot
 			bool @operator = (arg0 != arg1);
 			global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Ludiq.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
 			optimized.Invoke(null, arg0, arg1);
-			optimized.Invoke(default(object[]));
-		}
-		
-		// UnityEngine.Debug.Log
-		[global::UnityEngine.Scripting.PreserveAttribute()]
-		public static void UnityEngine_Debug_Log()
-		{
-			object arg0 = default(object);
-			global::UnityEngine.Debug.Log(arg0);
-			global::Ludiq.StaticActionInvoker<object> optimized = new global::Ludiq.StaticActionInvoker<object>(default(global::System.Reflection.MethodInfo));
-			optimized.Invoke(null, arg0);
 			optimized.Invoke(default(object[]));
 		}
 		

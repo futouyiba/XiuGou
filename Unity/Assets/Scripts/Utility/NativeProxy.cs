@@ -86,6 +86,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                         {
                             chara.Teleport(userMove.position);
                             chara.SetVisible(true);
+                            CameraBolt.TriggerEvent("Idle2Follow");
                         }
                         else chara.Move(userMove.position);
                     }

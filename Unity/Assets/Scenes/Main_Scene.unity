@@ -1111,9 +1111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fsm: {fileID: 498973021}
+  IsFollowing: 0
   animator: {fileID: 498973010}
   enterIdleLerpDuration: 1.5
   enterFollowLerpDuration: 1.5
+  enterFarWatchLerpDuration: 1.5
+  IsFarWatching: 0
 --- !u!1001 &772080616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1693,7 +1696,7 @@ PrefabInstance:
     - target: {fileID: 2825906910513667747, guid: fb86034831a424e0b9c13f2245c0777d,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2981173950319784424, guid: fb86034831a424e0b9c13f2245c0777d,
         type: 3}
