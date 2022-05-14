@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Bolt;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 namespace ET
@@ -28,6 +30,7 @@ namespace ET
         private Vector3 followEuler;
         [SerializeField] private float enterIdleLerpDuration;
         [SerializeField] private float enterFollowLerpDuration;
+        private TweenerCore<float,float,FloatOptions> lerpValueTween;
 
         public void Init()
         {
@@ -76,6 +79,11 @@ namespace ET
         
         public void EnterFollow()
         {
+            if (lerpValueTween is { active: true })
+            {
+                Debug.Log("now tween is active...");
+                lerpValueTween.Kill();
+            }
             DOTween.Kill(cameraTransform);
             IsFollowing = true;
             if (myCharMain ==null)
@@ -87,17 +95,22 @@ namespace ET
             GoFollowing = myCharMain.gameObject;// for now
             // enterFollowLerpDuration = 1.5f;
             lerpValue = 0.0f;
-            DOTween.To(() => lerpValue, x => lerpValue = x, 1f, enterFollowLerpDuration);
+            this.lerpValueTween = DOTween.To(() => lerpValue, x => lerpValue = x, 1f, enterFollowLerpDuration);
             cameraTransform.DORotate(followEuler, enterFollowLerpDuration);
         }
         
         public void EnterIdle()
         {
+            if (lerpValueTween is { active: true })
+            {
+                Debug.Log("now tween is active...");
+                lerpValueTween.Kill();
+            }
             DOTween.Kill(cameraTransform);
             IsFollowing = false;
             // enterIdleLerpDuration = 1.5f;
             lerpValue = 0f;
-            DOTween.To(() => lerpValue, x => lerpValue = x, 1f, enterIdleLerpDuration);
+            this.lerpValueTween = DOTween.To(() => lerpValue, x => lerpValue = x, 1f, enterIdleLerpDuration);
             cameraTransform.DORotate(initRot.eulerAngles, enterIdleLerpDuration);
             cameraTransform.DOMove(initPos, enterIdleLerpDuration);
         }
