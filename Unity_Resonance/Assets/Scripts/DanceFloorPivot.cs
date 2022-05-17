@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.InputSystem;
+using TouchPhase = UnityEngine.TouchPhase;
 
-    public class DanceFloorPivot : MonoBehaviour
+public class DanceFloorPivot : MonoBehaviour
     {
         [SerializeField] public Transform small;
 
@@ -26,10 +22,15 @@ using UnityEngine;
         void Update()
         {
             #if UNITY_EDITOR
-            if(Input.GetMouseButtonDown(0))
+            var ms = Mouse.current;
+            // if(Input.GetMouseButtonDown(0))
+            if (ms.leftButton.wasPressedThisFrame)
             {
                 RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                // var oldmsPos = Input.mousePosition;
+                var newmsPos = ms.position.ReadValue();
+                Ray ray = Camera.main.ScreenPointToRay(ms.position.ReadValue());
                 Debug.DrawRay(ray.origin,ray.direction*100f,Color.black,2f);
                 if (Physics.Raycast(ray, out hit, Single.MaxValue))
                 {
@@ -48,14 +49,14 @@ using UnityEngine;
                         Debug.LogWarning(danceFloorPos);
                     }
                 }
-                if (floor.Raycast(ray, out hit, Single.MaxValue))
-                {
+                // if (floor.Raycast(ray, out hit, Single.MaxValue))
+                // {
                     // var worldPosition = hit.point;
                     // Vector2 scenePos = new Vector2(worldPosition.x, worldPosition.z);
                     // var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);
                     //
                     // Debug.LogWarning(danceFloorPos);
-                }
+                // }
             }
             #endif
             
