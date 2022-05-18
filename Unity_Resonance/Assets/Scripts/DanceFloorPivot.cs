@@ -60,36 +60,36 @@ public class DanceFloorPivot : MonoBehaviour
             }
             #endif
             
-            #if PLATFORM_ANDROID || PLATFORM_IOS
-            if (Input.touchCount > 0)
-            {
-                for (int i = 0; i < Input.touchCount; i++)
-                {
-                    var touch_i = Input.GetTouch(i);
-                    if (touch_i.phase == TouchPhase.Began)
-                    {
-                        RaycastHit hit;
-                        Ray ray = Camera.main.ScreenPointToRay(touch_i.position);
-                        if (floor.Raycast(ray, out hit, Single.MaxValue))
-                        {
-                            Debug.Log($"click position is {hit.point}");
-                            var worldPosition = hit.point;
-                            // Debug.LogWarning(worldPosition);
-                            // testCube.transform.position = worldPosition;
-                            Vector2 scenePos = new Vector2(worldPosition.x, worldPosition.z);
-                            var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);
-                            // Debug.LogWarning(danceFloorPos);
-                            //移动我
-                            // var me = CharMgr.instance.GetMe();
-                            // if(me) me.Move(danceFloorPos);
-                            
-                            // ShowPointer(worldPosition);
-
-                        }
-                    }
-                }
-            }
-            #endif
+            // #if PLATFORM_ANDROID || PLATFORM_IOS
+            // if (Input.touchCount > 0)
+            // {
+            //     for (int i = 0; i < Input.touchCount; i++)
+            //     {
+            //         var touch_i = Input.GetTouch(i);
+            //         if (touch_i.phase == TouchPhase.Began)
+            //         {
+            //             RaycastHit hit;
+            //             Ray ray = Camera.main.ScreenPointToRay(touch_i.position);
+            //             if (floor.Raycast(ray, out hit, Single.MaxValue))
+            //             {
+            //                 Debug.Log($"click position is {hit.point}");
+            //                 var worldPosition = hit.point;
+            //                 // Debug.LogWarning(worldPosition);
+            //                 // testCube.transform.position = worldPosition;
+            //                 Vector2 scenePos = new Vector2(worldPosition.x, worldPosition.z);
+            //                 var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);
+            //                 // Debug.LogWarning(danceFloorPos);
+            //                 //移动我
+            //                 // var me = CharMgr.instance.GetMe();
+            //                 // if(me) me.Move(danceFloorPos);
+            //                 
+            //                 // ShowPointer(worldPosition);
+            //
+            //             }
+            //         }
+            //     }
+            // }
+            // #endif
             
         }
 
