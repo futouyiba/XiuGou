@@ -42,11 +42,11 @@ public class DanceFloorPivot : MonoBehaviour
                     
                         Vector2 scenePos = new Vector2(worldPosition.x, worldPosition.z);
                         var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);       
-                        // var me = CharMgr.instance.GetMe();
-                        // if(me) me.Move(danceFloorPos);
+                        var me = CharManager.instance.GetMe();
+                        if(me) me.MoveStart(worldPosition);
 
                         // ShowPointer(worldPosition);
-                        Debug.LogWarning(danceFloorPos);
+                        
                     }
                 }
                 // if (floor.Raycast(ray, out hit, Single.MaxValue))

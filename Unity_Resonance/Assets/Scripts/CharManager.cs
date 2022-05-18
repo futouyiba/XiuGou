@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class CharManager : MonoBehaviour
@@ -50,11 +51,22 @@ public class CharManager : MonoBehaviour
     private void Start()
     {
         charDict = new Dictionary<int, CharacterMain>();
+        _curMouse = Mouse.current;
+        _curKeyboard= Keyboard.current;
     }
 
+    private Mouse _curMouse;
+    private Keyboard _curKeyboard;
     private void Update()
     {
-        
+        if (_curKeyboard != null)
+        {
+            if (_curKeyboard.cKey.wasPressedThisFrame)
+            {
+                CreateCharView(1, Vector2.zero, "汪汪三号", 0, Color.white);
+                RegisterMe(1);
+            }
+        }
     }
     
     
@@ -118,19 +130,6 @@ public class CharManager : MonoBehaviour
             var charView = goCreated.GetComponent<CharacterMain>();
             charView.SetName(name);
             charView.SetNameColor(name_color);
-            charView.SetNameColor(name_color);
-            if (position.x < -100f && position.y < -100f)
-            {//未初始化
-                charView.SetVisible(false);
-                var truePos = DanceFloorHelper.PosUnified2Scene(new Vector2(-1f, -1f));
-                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
-            }
-            else
-            {
-                var truePos = DanceFloorHelper.PosUnified2Scene(position);
-                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
-            }
-
             
             charDict.Add(id, charView);
             
