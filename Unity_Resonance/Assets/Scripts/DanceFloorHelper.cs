@@ -53,11 +53,17 @@ public class DanceFloorHelper
         // Debug.Log($"randomed pos is {randomX},{randomY}");
         return new Vector2(randomX, randomY);
     }
-
+    
     public static Vector3 GetRandomDanceFloorPos3()
     {
         Vector2 posUnified2 = new Vector2(Random.Range(0f, 1f), Random.Range(0f, 1f));
         return PosUnified2Scene(posUnified2);
     }
-        
+
+    public static Vector3 CollidePos2MovePos(Vector3 collidePos)
+    {
+        collidePos.y = GetPivotY();
+        return collidePos;
+    }
+    
 }

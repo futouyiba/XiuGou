@@ -1,12 +1,15 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using Unity.VisualScripting;
+using Sequence = DG.Tweening.Sequence;
 
 public class CharacterMain : MonoBehaviour
 {
     // protected bool IsMoving;
     protected Vector3 moveTarget = Vector3.positiveInfinity;
+    protected Sequence moveSeq;
         
     [SerializeField]
     protected TextMeshPro nameTmp;
@@ -15,6 +18,8 @@ public class CharacterMain : MonoBehaviour
     // [SerializeField] private TextBubble bubble;
     [SerializeField] private StateMachine fsm;
     // Start is called before the first frame update
+
+    private int id = -1;
 
     public bool isMe = false;
     void Start()
@@ -26,6 +31,48 @@ public class CharacterMain : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Init(int id)
+    {
+        this.id = id;
+    }
+
+    public void MoveStart(Vector3 target)
+    {
+        moveTarget = target;
+        fsm.TriggerUnityEvent("MoveStart");
+    }
+
+    public void Move()
+    {
+        if (moveTarget == Vector3.negativeInfinity)
+        {
+            Debug.LogError($"moving without target vector!");
+            return;
+        }
+        float dist = (this.transform.position - moveTarget).magnitude;
+        moveSeq = DOTween.Sequence();
+        moveSeq.Append(this.transform.DOMove(moveTarget, dist / moveSpeed).OnComplete(MoveEnd));
+    }
+
+    public void MoveEnd()
+    {
+        moveSeq = null;
+        moveTarget=Vector3.negativeInfinity;
+        fsm.TriggerUnityEvent("MoveEnd");
+    }
+
+    public void MoveCancel()
+    {
+        if (moveSeq == null)
+        {
+            Debug.LogError($"move sequence does not exist");
+            return;
+        }
+        moveSeq.Kill();
+        moveSeq = null;
+        // moveTarget=Vector3.negativeInfinity;
     }
     
     public void SetName(string Name)
