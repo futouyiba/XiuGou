@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 8867618350989456890}
   - component: {fileID: 3279719658035803721}
   - component: {fileID: 5866701553204149621}
+  - component: {fileID: 149180547462200510}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -321,6 +322,8 @@ MonoBehaviour:
   nameTmp: {fileID: 2172171617374752070}
   moveSpeed: 1.5
   fsm: {fileID: 5866701553204149621}
+  renderer: {fileID: 149180547241506535}
+  teamId: -1
   isMe: 0
   sprite: {fileID: 149180547241506533}
 --- !u!114 &3279719658035803721
@@ -354,3 +357,19 @@ MonoBehaviour:
     _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
     _objectReferences:
     - {fileID: 11400000, guid: ac66e5d666552f643a05ddb38472a569, type: 2}
+--- !u!54 &149180547462200510
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315724804088113802}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

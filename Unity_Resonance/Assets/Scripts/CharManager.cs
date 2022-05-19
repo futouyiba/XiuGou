@@ -10,6 +10,9 @@ public class CharManager : MonoBehaviour
     [SerializeField]
     protected List<GameObject> charPrefabs;
 
+    
+    
+
     protected Dictionary<int, CharacterMain> charDict;
 
     protected int myId = -1;
@@ -63,7 +66,8 @@ public class CharManager : MonoBehaviour
         {
             if (_curKeyboard.cKey.wasPressedThisFrame)
             {
-                CreateCharView(1, Vector2.zero, "汪汪三号", 0, Color.white);
+                var view=CreateCharView(1, new Vector2(.5f,.5f), "汪汪三号", 0, Color.white);
+                view.GetComponent<CharacterMain>().SetTeam(0);
                 RegisterMe(1);
             }
         }
@@ -130,7 +134,7 @@ public class CharManager : MonoBehaviour
             var charView = goCreated.GetComponent<CharacterMain>();
             charView.SetName(name);
             charView.SetNameColor(name_color);
-            
+            charView.transform.position = DanceFloorHelper.PosUnified2Scene(position);
             charDict.Add(id, charView);
             
             return goCreated;
@@ -168,6 +172,8 @@ public class CharManager : MonoBehaviour
                 charkv.Value.Speak(text);
             }
         }
+
+
         
  
 
