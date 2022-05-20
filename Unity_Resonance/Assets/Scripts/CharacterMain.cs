@@ -1,4 +1,5 @@
 using System;
+using ColorGame;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -18,9 +19,17 @@ public class CharacterMain : MonoBehaviour
     // [SerializeField] private TextBubble bubble;
     [SerializeField] private StateMachine fsm;
     // Start is called before the first frame update
+    [SerializeField] private MeshRenderer renderer;
 
-    private int id = -1;
+    private int _id;
+    public int ID
+    {
+        get { return _id; }
+        private set{}
+    }
 
+    public int teamId = -1;
+    
     public bool isMe = false;
     void Start()
     {
@@ -35,7 +44,7 @@ public class CharacterMain : MonoBehaviour
 
     public void Init(int id)
     {
-        this.id = id;
+        this._id = id;
     }
 
     public void MoveStart(Vector3 target)
@@ -108,5 +117,17 @@ public class CharacterMain : MonoBehaviour
     public void Speak(string text)
     {
         throw new Exception("not implemented");
+    }
+    
+    private void ChangeMaterial(Material material)
+    {
+        renderer.material = material;
+    }
+
+    public void SetTeam(int teamId)
+    {
+        this.teamId = teamId;
+        ChangeMaterial(ColorGameMain.Instance.GetTeamMaterial(teamId));
+            
     }
 }

@@ -26,28 +26,32 @@ public class DanceFloorPivot : MonoBehaviour
             // if(Input.GetMouseButtonDown(0))
             if (ms.leftButton.wasPressedThisFrame)
             {
-                RaycastHit hit;
+                // RaycastHit hit;
                 // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 // var oldmsPos = Input.mousePosition;
                 var newmsPos = ms.position.ReadValue();
                 Ray ray = Camera.main.ScreenPointToRay(ms.position.ReadValue());
                 Debug.DrawRay(ray.origin,ray.direction*100f,Color.black,2f);
-                if (Physics.Raycast(ray, out hit, Single.MaxValue))
+                var hits = Physics.RaycastAll(ray, Single.MaxValue);
+                if (hits.Length>0)
                 {
-                    if (hit.collider == floor)
+                    foreach (var hit in hits)
                     {
-                        var worldPosition = hit.point;
-                        // Debug.LogWarning(worldPosition);
-                        // testCube.transform.position = worldPosition;
+                        if (hit.collider == floor)
+                        {
+                            var worldPosition = hit.point;
+                            // Debug.LogWarning(worldPosition);
+                            // testCube.transform.position = worldPosition;
                     
-                        Vector2 scenePos = new Vector2(worldPosition.x, worldPosition.z);
-                        var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);       
-                        var me = CharManager.instance.GetMe();
-                        if(me) me.MoveStart(worldPosition);
+                            Vector2 scenePos = new Vector2(worldPosition.x, worldPosition.z);
+                            var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);       
+                            var me = CharManager.instance.GetMe();
+                            if(me) me.MoveStart(worldPosition);
 
-                        // ShowPointer(worldPosition);
-                        
+                            // ShowPointer(worldPosition);
+                        }
                     }
+                   
                 }
                 // if (floor.Raycast(ray, out hit, Single.MaxValue))
                 // {
