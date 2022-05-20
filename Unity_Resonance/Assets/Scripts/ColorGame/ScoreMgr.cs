@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ColorGame
 {
@@ -44,9 +45,10 @@ namespace ColorGame
 
 
         private Action _dlgTick;
+        private Action _dlgClear;
         public void AddTickDlg(Action dlg)
         {
-            _dlgTick += dlg;
+            if(dlg!=null) _dlgTick += dlg;
         }
 
         public void RemoveTickDlg(Action dlg)
@@ -59,5 +61,22 @@ namespace ColorGame
             _dlgTick?.Invoke();
         }
 
+
+        public IEnumerable<KeyValuePair<int, float>> ScoreList()
+        {
+            var sorted = from entry in teamDict orderby entry.Value descending select entry;
+            return sorted;
+        }
+
+        public void ClearScore()
+        {
+            teamDict.Clear();
+            _dlgClear?.Invoke();
+        }
+
+        public void AddClearDlg(Action dlg)
+        {
+            if(dlg!=null) _dlgClear += dlg;
+        }
     }
 }

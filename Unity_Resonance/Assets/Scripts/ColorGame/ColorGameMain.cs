@@ -10,15 +10,15 @@ namespace ColorGame
     public class ColorGameMain : MonoBehaviour
     {
 
-        [SerializeField] private List<AudioClip> AudioClips;
-        [SerializeField] protected List<Material> teamMaterials;
-        [SerializeField] private float interval;
-        [SerializeField] private float _bmp;
 
-        [SerializeField] protected GameObject floor_prefab;
-        [SerializeField] protected Grid grid;
+        [SerializeField] private List<Material> teamMaterials;
+
+        [SerializeField] private GameObject floor_prefab;
+        [SerializeField] private Grid grid;
+        [SerializeField] private ColorMetaData metaData;
 
         private Dictionary<int, Material> materialDict;
+        private ColorMetaData.AudioData _curAudio;
 
         private static ColorGameMain _instance;
         public static ColorGameMain Instance
@@ -30,18 +30,6 @@ namespace ColorGame
             private set{}
         }
 
-        private float bpm
-        {
-            set
-            {
-                _bmp = value;
-                interval = 60 / value;
-            }
-            get
-            {
-                return _bmp;
-            }
-        }
 
         private int _curBeat;
         [SerializeField] private AudioSource AudioSource;
@@ -62,8 +50,9 @@ namespace ColorGame
         // Start is called before the first frame update
         void Start()
         {
-            AudioSource.clip = AudioClips.First();
-            bpm = 115;
+            var audioData = this.metaData.GetRandom();
+            _curAudio = audioData;
+            AudioSource.clip = audioData.clip;
             _curBeat = 0;
             AudioSource.Play();
             songStartTime = Time.time;
@@ -86,7 +75,7 @@ namespace ColorGame
 
         private void FixedUpdate()
         {
-            var beat_calc = (Time.time - songStartTime) / interval;
+            var beat_calc = (Time.time - songStartTime) / _curAudio.interval;
             if ((int) beat_calc > _curBeat)
             {
                 _curBeat += 1;
@@ -101,8 +90,8 @@ namespace ColorGame
             Camera camera= Camera.main;
             float initfocal = camera.focalLength;
             float focalchange = 3f;
-            DOTween.To(() => camera.focalLength, x => camera.focalLength = x, initfocal+focalchange, interval * .2f).OnComplete(() =>
-                DOTween.To(() => camera.focalLength, x => camera.focalLength = x, initfocal, interval * .4f));
+            DOTween.To(() => camera.focalLength, x => camera.focalLength = x, initfocal+focalchange, _curAudio.interval * .2f).OnComplete(() =>
+                DOTween.To(() => camera.focalLength, x => camera.focalLength = x, initfocal, _curAudio.interval * .4f));
 
         }
 
@@ -114,6 +103,8 @@ namespace ColorGame
 
         public void CreateFloor()
         {
+            var floorParent = new GameObject("floor_parent");
+            
             Vector3Int startVec = new Vector3Int(-20, 0, -20);
             Vector3Int endVec = new Vector3Int(20, 0, 20);
             for (int i = startVec.x; i < endVec.x; i++)
@@ -122,8 +113,16 @@ namespace ColorGame
                 {
                     Vector3Int currentPos = new Vector3Int(i, 0, j);
                     Vector3 worldPos = grid.CellToWorld(currentPos);
-                    var cellCreated = Instantiate(floor_prefab);
+                    var cellCreated = Instantiate(floor_prefab, floorParent.transform);
+                    cellCreated.name = $"({i})_({j})";
                     cellCreated.transform.position = worldPos;
+                    if ((i + j) % 2 == 0)
+                    {
+                        var cell = cellCreated.GetComponent<DanceFloorCell>();
+                        cell.ToggleDark();
+                    }
+                    
+                    
                 }
 
             }

@@ -13,7 +13,9 @@ namespace ColorGame
         private List<CharacterMain> toReg;
         private int leadTeamId;
         [SerializeField] protected MeshRenderer meshRenderer;
-
+        [SerializeField] private bool isDark;
+        [SerializeField] private Color darkColor;
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -115,7 +117,7 @@ namespace ColorGame
         {
             if (scoreDict.Count > 0)
             {
-                //计分
+                //有好几个人踩在这里，计分
                 var total = 0;
                 Dictionary<int, float> weightDict = new Dictionary<int, float>();
                 var head_team_id = -1;
@@ -145,6 +147,11 @@ namespace ColorGame
                 }
                 
             }
+            else
+            {
+                //不需要更新，把这一分给之前最后离开的人
+                if(leadTeamId!=-1) ScoreMgr.Instance.AddScore(leadTeamId, 1f);
+            }
 
             //看看有没有人要加入
             while(this.toReg.Count > 0)
@@ -155,6 +162,22 @@ namespace ColorGame
                 
             }
 
+            ToggleDark();
+
+        }
+
+        public void ToggleDark()
+        {
+            if (isDark)
+            {
+                meshRenderer.material.SetColor("_Color", Color.white);
+                isDark = false;
+            }
+            else
+            {
+                meshRenderer.material.SetColor("_Color", darkColor);
+                isDark = true;
+            }
         }
     }
 }
