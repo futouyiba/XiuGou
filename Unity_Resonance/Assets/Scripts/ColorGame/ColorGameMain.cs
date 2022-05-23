@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ColorGame
 {
@@ -17,23 +18,50 @@ namespace ColorGame
         [SerializeField] private Grid grid;
         [SerializeField] private ColorMetaData metaData;
 
-        private Dictionary<int, Material> materialDict;
+        // private Dictionary<int, Material> materialDict;
         private ColorMetaData.AudioData _curAudio;
+
+        private ColorMatch _curMatch;
+        private Dictionary<int, ColorMatch> matchDict;
+        
+        private Mouse _curMouse;
+        private Keyboard _curKeyboard;
 
         private static ColorGameMain _instance;
         public static ColorGameMain Instance
         {
+            get=>_instance;
+            private set{}
+        }
+        
+        private int _curMatchId = 0;
+
+        protected int MatchId
+        {
+            get => _curMatchId++;
+            private set{}
+        }
+
+        private int _curMaterialId = 0;
+
+        protected int MaterialId
+        {
             get
             {
-                return _instance;
+                if (_curMaterialId > teamMaterials.Count - 1)
+                {
+                    _curMaterialId -= (teamMaterials.Count - 1);
+                    return _curMaterialId;
+                }
+                return _curMaterialId++;
             }
             private set{}
         }
 
 
-        private int _curBeat;
+        // private int _curBeat;
         [SerializeField] private AudioSource AudioSource;
-        [SerializeField] private float songStartTime;
+        // [SerializeField] private float songStartTime;
 
         private void Awake()
         {
@@ -47,41 +75,84 @@ namespace ColorGame
             }
         }
 
+        
         // Start is called before the first frame update
         void Start()
         {
+            CreateFloor();
+            //grab random song and create match
             var audioData = this.metaData.GetRandom();
+            _curMatch = CreateMatch(audioData);
             _curAudio = audioData;
             AudioSource.clip = audioData.clip;
-            _curBeat = 0;
+            // _curBeat = 0;
             AudioSource.Play();
-            songStartTime = Time.time;
-            materialDict = new Dictionary<int, Material>();
-            var i = 0;
-            foreach (var material in teamMaterials)
-            {
-                materialDict.Add(i,material);
-                i++;
-            }
+            _curMatch.startTime = Time.time;
+            
+            //create team and join
+            //inputs
+            _curMouse = Mouse.current;
+            _curKeyboard= Keyboard.current;
 
-            CreateFloor();
+            // materialDict = new Dictionary<int, Material>();
+            // var i = 0;
+            // foreach (var material in teamMaterials)
+            // {
+            //     materialDict.Add(i,material);
+            //     i++;
+            // }
+
+
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            if (_curKeyboard != null)
+            {
+                var charMgr = CharManager.instance;
+                if (_curKeyboard.cKey.wasPressedThisFrame)
+                {
+                    var view=charMgr.CreateCharView(1, new Vector2(.5f,.5f), $"WangWangMe", 0, Color.white);
+                    charMgr.RegisterMe(1);
+                }
+
+                if (_curKeyboard.dKey.wasPressedThisFrame)
+                {//create team for me and join
+                    var material = teamMaterials[MaterialId];
+                    var teamId = _curMatch.AddTeam(material);
+                    var me=charMgr.GetMe();
+                    me.SetTeam(teamId);
+                }
+            }
         }
 
         private void FixedUpdate()
         {
-            var beat_calc = (Time.time - songStartTime) / _curAudio.interval;
-            if ((int) beat_calc > _curBeat)
+            if (_curMatch != null)
             {
-                _curBeat += 1;
-                ScoreMgr.Instance.Tick();
-                BeatCamera();
+                if (!AudioSource.isPlaying)
+                {
+                    EndCurrentMatch();
+                    //create a new match
+                    var audioData = this.metaData.GetRandom();
+                    _curMatch = CreateMatch(audioData);
+                    _curAudio = audioData;
+                    AudioSource.clip = audioData.clip;
+                    // _curBeat = 0;
+                    AudioSource.Play();
+                    _curMatch.startTime = Time.time;
+                    return;
+                }
+                var beat_calc = (Time.time - _curMatch.startTime) / _curMatch.audioData.interval;
+                if ((int) beat_calc > _curMatch.beatPassed)
+                {
+                    _curMatch.beatPassed += 1;
+                    ScoreMgr.Instance.Tick();
+                    BeatCamera();
+                }
             }
+
         }
 
 
@@ -92,12 +163,19 @@ namespace ColorGame
             float focalchange = 3f;
             DOTween.To(() => camera.focalLength, x => camera.focalLength = x, initfocal+focalchange, _curAudio.interval * .2f).OnComplete(() =>
                 DOTween.To(() => camera.focalLength, x => camera.focalLength = x, initfocal, _curAudio.interval * .4f));
-
         }
 
         public Material GetTeamMaterial(int id)
         {
-            return materialDict[id];
+            // return materialDict[id];
+            var teams = _curMatch.teams;
+            if (!teams.TryGetValue(id, out var team))
+            {
+                Debug.LogError($"team {id} does not exist");
+                return null;
+            }
+
+            return team.material;
         }
 
 
@@ -129,6 +207,23 @@ namespace ColorGame
             
         }
 
+
+        protected ColorMatch CreateMatch(ColorMetaData.AudioData audioData)
+        {
+            var matchId = MatchId;
+            ColorMatch match = new ColorMatch(matchId, audioData);
+
+
+            return match;
+
+        }
+
+        protected void EndCurrentMatch()
+        {
+            throw new Exception("not implemented");
+        }
+        
+        //============
     }
 }
 

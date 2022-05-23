@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Security;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class ColorMetaData : MonoBehaviour
@@ -27,12 +29,18 @@ public class ColorMetaData : MonoBehaviour
     private bool _isAudioReady = false;
 
     private Dictionary<string, AudioData> _audioDict;
+
+    private void Awake()
+    {
+        _audioDict = new Dictionary<string, AudioData>();
+        CompileMeta();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
 
-        _audioDict = new Dictionary<string, AudioData>();
-        CompileMeta();
+
     }
 
     // Update is called once per frame

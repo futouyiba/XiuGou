@@ -54,23 +54,14 @@ public class CharManager : MonoBehaviour
     private void Start()
     {
         charDict = new Dictionary<int, CharacterMain>();
-        _curMouse = Mouse.current;
-        _curKeyboard= Keyboard.current;
+
     }
 
-    private Mouse _curMouse;
-    private Keyboard _curKeyboard;
+
     private void Update()
     {
-        if (_curKeyboard != null)
-        {
-            if (_curKeyboard.cKey.wasPressedThisFrame)
-            {
-                var view=CreateCharView(1, new Vector2(.5f,.5f), "汪汪三号", 0, Color.white);
-                view.GetComponent<CharacterMain>().SetTeam(0);
-                RegisterMe(1);
-            }
-        }
+
+        
     }
     
     
