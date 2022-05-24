@@ -22,11 +22,8 @@ public class CharacterMain : MonoBehaviour
     [SerializeField] private MeshRenderer renderer;
 
     private int _id;
-    public int ID
-    {
-        get { return _id; }
-        private set{}
-    }
+    public int Id => _id;
+    
 
     public int teamId = -1;
     
@@ -42,9 +39,12 @@ public class CharacterMain : MonoBehaviour
         
     }
 
-    public void Init(int id)
+    public void Init(int id, string name, Color name_color, Vector3 position)
     {
         this._id = id;
+        SetName(name);
+        SetNameColor(name_color);
+        this.transform.position = position;
     }
 
     public void MoveStart(Vector3 target)

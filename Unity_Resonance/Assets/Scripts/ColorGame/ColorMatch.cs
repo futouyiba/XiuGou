@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ColorGame
@@ -48,7 +49,7 @@ namespace ColorGame
 
         protected int TeamId
         {
-            get => ++_curTeamId;
+            get => _curTeamId++;
             private set{}
         }
         
@@ -83,6 +84,14 @@ namespace ColorGame
             }
 
             return teamGot.AddPlayer(playerId);
+        }
+
+        public int AddPlayer2RandomTeam(int playerId)
+        {
+            var randomTeam = Random.Range(0, teams.Count);
+            var team = teams.ElementAt(randomTeam).Value;
+            team.AddPlayer(playerId);
+            return randomTeam;
         }
 
         public bool UpdateScore(int teamId, float score)

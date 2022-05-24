@@ -34,6 +34,7 @@ namespace ColorGame
 
         public void AddScore(int teamId, float score)
         {
+            if (teamId == -1) return;
             if (!teamDict.ContainsKey(teamId))
             {
                 teamDict.Add(teamId, score);

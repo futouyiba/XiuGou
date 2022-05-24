@@ -59,7 +59,7 @@ namespace ColorGame
             }
             else 
             {
-                UnregUser(charComp.teamId, charComp.ID);
+                UnregUser(charComp.teamId, charComp.Id);
             }
 
             // Debug.LogWarning($"{other.gameObject.name} exited the floor");
@@ -158,7 +158,7 @@ namespace ColorGame
             {
                 var user = toReg.First();
                 toReg.Remove(user);
-                RegUser(user.teamId, user.ID);
+                RegUser(user.teamId, user.Id);
                 
             }
 

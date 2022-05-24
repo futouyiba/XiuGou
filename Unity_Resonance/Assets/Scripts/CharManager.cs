@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ColorGame;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -10,8 +11,9 @@ public class CharManager : MonoBehaviour
     [SerializeField]
     protected List<GameObject> charPrefabs;
 
-    
-    
+    [SerializeField] protected GameObject npcPrefab;
+
+
 
     protected Dictionary<int, CharacterMain> charDict;
 
@@ -77,6 +79,8 @@ public class CharManager : MonoBehaviour
                 myId = id;
                 charMain.isMe = true;
                 charMain.SetNameColor(Color.yellow);
+                var camera = Camera.main.GetComponent<ColorGameCamera>();
+                camera.FollowMe(charMain.gameObject);
                 // CameraBolt.TriggerEvent("Idle2Follow");
                 // CameraBolt.TriggerEvent("Follow2Idle");
             }
@@ -123,9 +127,28 @@ public class CharManager : MonoBehaviour
             var to_create = this.charPrefabs[appearance_id];
             var goCreated = GameObject.Instantiate(to_create);
             var charView = goCreated.GetComponent<CharacterMain>();
-            charView.SetName(name);
-            charView.SetNameColor(name_color);
-            charView.transform.position = DanceFloorHelper.PosUnified2Scene(position);
+            charView.Init(id, name, name_color, DanceFloorHelper.PosUnified2Scene(position));
+            // charView.SetName(name);
+            // charView.SetNameColor(name_color);
+            // charView.Id = id;
+            // charView.transform.position = DanceFloorHelper.PosUnified2Scene(position);
+            charDict.Add(id, charView);
+            
+            return goCreated;
+
+        }
+        
+        
+        public GameObject CreateNpcView(int id, Vector2 position, string name, Color name_color)
+        {
+            var to_create = this.npcPrefab;
+            var goCreated = GameObject.Instantiate(to_create);
+            var charView = goCreated.GetComponent<CharacterMain>();
+            charView.Init(id, name, name_color, DanceFloorHelper.PosUnified2Scene(position));
+            // charView.SetName(name);
+            // charView.SetNameColor(name_color);
+            // charView.Id = id;
+            // charView.transform.position = DanceFloorHelper.PosUnified2Scene(position);
             charDict.Add(id, charView);
             
             return goCreated;

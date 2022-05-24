@@ -34,6 +34,7 @@ public class ScorePanel : MonoBehaviour
             if (!scoreItemDict.ContainsKey(keyValuePairs.ElementAt(i).Key))
             {
                 CreateScoreItem(keyValuePairs.ElementAt(i).Key);
+                
                 UpdateScoreItem(keyValuePairs.ElementAt(i).Key, keyValuePairs.ElementAt(i).Value, i);
                 continue;
             }
@@ -58,7 +59,7 @@ public class ScorePanel : MonoBehaviour
             return;
         }
         var tmp = item.GetComponent<TextMeshProUGUI>();
-        var text = $"Team{teamId}: {score}";
+        var text = $"Team{teamId}: {score:N2}";
         tmp.SetText(text);
         tmp.transform.SetSiblingIndex(siblingId);
     }

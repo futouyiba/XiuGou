@@ -58,6 +58,16 @@ namespace ColorGame
             private set{}
         }
 
+        private int _curNpcId = 9000;
+
+        protected int NpcId
+        {
+            get
+            {
+                return _curNpcId++;
+            }
+        }
+
 
         // private int _curBeat;
         [SerializeField] private AudioSource AudioSource;
@@ -123,6 +133,19 @@ namespace ColorGame
                     var teamId = _curMatch.AddTeam(material);
                     var me=charMgr.GetMe();
                     me.SetTeam(teamId);
+                }
+
+                if (_curKeyboard.tKey.wasPressedThisFrame)
+                {
+                    var material = teamMaterials[MaterialId];
+                    var teamId = _curMatch.AddTeam(material);
+                }
+
+                if (_curKeyboard.nKey.wasPressedThisFrame)
+                {//create npc and join random team
+                    var npc = CreateNpc();
+                    var randomTeamId = _curMatch.AddPlayer2RandomTeam(npc.main.Id);
+                    npc.team = randomTeamId;
                 }
             }
         }
@@ -215,14 +238,24 @@ namespace ColorGame
 
 
             return match;
-
         }
 
         protected void EndCurrentMatch()
         {
             throw new Exception("not implemented");
         }
-        
+
+        protected BotPlayer CreateNpc()
+        {
+            var id = NpcId;
+            var viewName = $"Npc{id}";
+            var view = CharManager.instance.CreateNpcView(id, new Vector2(.5f, .5f), viewName, Color.white);
+            view.name = viewName;
+            var bot = view.transform.GetComponent<BotPlayer>();
+            bot.TriggerEv("Ready");
+
+            return bot;
+        }
         //============
     }
 }
