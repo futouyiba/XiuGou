@@ -24,6 +24,7 @@ namespace ET
         [SerializeField] protected float moveSpeed;
         [SerializeField] private TextBubble bubble;
         [SerializeField] private StateMachine fsm;
+        public int userId;
 
         [SerializeField]
         public float bubbleTime;
@@ -212,9 +213,9 @@ namespace ET
         }
 
         [SerializeField] protected GameObject sprite;
-        public void SetVisible(bool isVisable)
+        public void SetVisible(bool isVisible)
         {
-            this.sprite.SetActive(isVisable);
+            this.sprite.SetActive(isVisible);
         }
 
         public bool IsVisible
@@ -223,6 +224,22 @@ namespace ET
             {
                 return sprite.activeSelf;
             }
+        }
+
+        public void ChangeAppearance(int appearanceId)
+        {
+            var userId = this.userId;
+            var pos = this.transform.position;
+            var name = this.name;
+            var isMe = this.isMe;
+            CharMgr.instance.CreateCharView(userId, pos, name, appearanceId, Color.white);
+            if (isMe)
+            {
+                CharMgr.instance.RegisterMe(userId);
+            }
+            
+            CharMgr.instance.RemoveCharView(userId);
+            
         }
     }
 }

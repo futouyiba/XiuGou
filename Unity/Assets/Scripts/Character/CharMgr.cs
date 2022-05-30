@@ -13,8 +13,7 @@ namespace ET
 {
     public class CharMgr : MonoBehaviour
     {
-        [SerializeField]
-        protected List<GameObject> charPrefabs;
+        [SerializeField] public List<GameObject> charPrefabs;
 
         protected Dictionary<int, CharMain> charDict;
 
@@ -163,7 +162,6 @@ namespace ET
             {
                 Debug.LogError($"charmain for me {id} not found!");
             }
-            
         }
 
         public CharMain GetMe()
@@ -193,7 +191,6 @@ namespace ET
         /// <returns></returns>
         public GameObject CreateCharView(int id, Vector2 position, string name,int appearance_id , Color name_color)
         {
-            
             if (appearance_id > charPrefabs.Count - 1 || appearance_id < 0)
             {
                 Debug.Log($"appearance {appearance_id} does not exist, using random");
@@ -202,6 +199,7 @@ namespace ET
             var to_create = this.charPrefabs[appearance_id];
             var goCreated = GameObject.Instantiate(to_create);
             var charView = goCreated.GetComponent<CharMain>();
+            charView.userId = id;
             charView.SetName(name);
             charView.SetNameColor(name_color);
             charView.SetNameColor(name_color);
