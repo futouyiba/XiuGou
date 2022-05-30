@@ -36,5 +36,22 @@ namespace ET.Utility
                 }
             };
         }
+
+        public void ChangeAppearance(int appearanceId)
+        {
+            LCObject appearance = new LCObject("Appearance");
+            appearance.Set("appearanceId", appearanceId);
+            appearance.SaveAsync().ContinueWith(t =>
+            {
+                if (t.IsFaulted)
+                {
+                    Debug.LogError(t.Exception);
+                }
+                else
+                {
+                    Debug.Log("Save Success");
+                }
+            });
+        }
     }
 }
