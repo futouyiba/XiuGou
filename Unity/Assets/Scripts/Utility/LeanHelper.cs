@@ -1,6 +1,8 @@
 // 导入基础模块
 
 using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using LeanCloud;
 // 导入存储模块
 using LeanCloud.Storage;
@@ -14,6 +16,10 @@ namespace ET.Utility
 {
     public class LeanHelper:MonoBehaviour
     {
+        private const string APPEARANCE_ID = "appearanceId";
+        private const string SHOW_GO_ID = "showGoId";
+        private const string ROOM_ID = "roomID";
+
         private void Awake()
         {
             LCApplication.Initialize("t4lS8BvwwSb4glBCIPGP6LBF-gzGzoHsz", "qRMfUu2otuPBUb1bCMoukfjm", "https://please-replace-with-your-customized.domain.com");
@@ -37,11 +43,15 @@ namespace ET.Utility
             };
         }
 
-        public void ChangeAppearance(int appearanceId)
+        public void LeanChangeAppearance(int showGoId, int appearanceId)
         {
-            LCObject appearance = new LCObject("Appearance");
-            appearance.Set("appearanceId", appearanceId);
-            appearance.SaveAsync().ContinueWith(t =>
+            LCObject appearance = new LCObject("Appearance")
+            {
+                [SHOW_GO_ID] = showGoId,
+                [APPEARANCE_ID] = appearanceId
+            };
+            
+            appearance.Save().ContinueWith(t =>
             {
                 if (t.IsFaulted)
                 {
@@ -52,6 +62,31 @@ namespace ET.Utility
                     Debug.Log("Save Success");
                 }
             });
+        }
+
+        public async Task LeanInitAppearances()
+        {
+            LCQuery<LCObject> appearancesQuery = new LCQuery<LCObject>("appearance");
+            appearancesQuery.WhereEqualTo(ROOM_ID, this.roomId);
+            ReadOnlyCollection<LCObject> appearances = await appearancesQuery.Find();
+            foreach (LCObject lcObject in appearances)
+            {
+                var sgId = (int)(lcObject[SHOW_GO_ID]);
+                CharMain charMain = CharMgr.instance.GetCharacter(sgId);
+                if (charMain != null)
+                {
+                    charMain.ChangeAppearance((int)(lcObject[APPEARANCE_ID]));
+                }
+            }
+            await appearancesQuery.Subscribe();
+            
+        }
+
+        public int roomId { get; set; }
+
+        public void LeanUserLeaveRoom(int showGoId)
+        {
+            
         }
     }
 }
