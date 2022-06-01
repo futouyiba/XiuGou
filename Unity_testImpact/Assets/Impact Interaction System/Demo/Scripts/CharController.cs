@@ -40,6 +40,7 @@ public class CharController : MonoBehaviour
     private void Awake()
     {
         previousPosition = transform.position;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Start is called before the first frame update
@@ -65,6 +66,8 @@ public class CharController : MonoBehaviour
             if(pickedUpObject==null) TryPickup();
             else dropObject(throwForce);
         }
+        
+
     }
 
     private void FixedUpdate()

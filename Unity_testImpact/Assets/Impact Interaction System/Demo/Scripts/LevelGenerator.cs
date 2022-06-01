@@ -11,7 +11,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] protected Transform small;
     [SerializeField] protected Transform big;
     [SerializeField] protected List<Color> teamColors;
-
+    [SerializeField] protected GameObject bombPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,10 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            CreateBomb();
+        }
     }
 
     protected void CreatePickups()
@@ -43,6 +46,15 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    public void CreateBomb()
+    {
+        var node = grid.CellToWorld(new Vector3Int(0, 1, 0));
+        var created = Instantiate(bombPrefab);
+        created.transform.position = node;
+        var bomb = created.GetComponent<Bomb>();
+        bomb.Init(3.5f);
+    }
+    
     protected List<Vector3> GenerateNodes()
     {
         List<Vector3> result = new List<Vector3>();

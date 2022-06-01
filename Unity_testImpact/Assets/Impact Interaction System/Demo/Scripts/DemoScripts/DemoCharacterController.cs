@@ -73,7 +73,7 @@ namespace Impact.Demo
 
         private void Awake()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.lockState = CursorLockMode.Locked;
         }
 
         #region Updates
