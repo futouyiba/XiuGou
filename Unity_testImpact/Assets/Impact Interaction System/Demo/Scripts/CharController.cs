@@ -34,7 +34,8 @@ public class CharController : MonoBehaviour
     private float pickupDistance;
 
     [SerializeField] private Camera camera;
-    [SerializeField] private Rigidbody cameraRigidbody;
+
+    [SerializeField] private OrbitMgr orbitMgr;
     private void Awake()
     {
         previousPosition = transform.position;
@@ -81,11 +82,14 @@ public class CharController : MonoBehaviour
         Vector3 currentPosition = transform.position;
         var deltaPos = currentPosition - previousPosition;
         camera.transform.position += new Vector3(deltaPos.x, 0, deltaPos.z);
+        orbitMgr.UpdateFollowPos(deltaPos);
         float distanceTravelledThisFrame = Vector3.Distance(previousPosition, currentPosition);
 
         distanceTravelled += distanceTravelledThisFrame;
         previousPosition = currentPosition;
     }
+
+
 
     #region Movement
 

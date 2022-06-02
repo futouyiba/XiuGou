@@ -81,9 +81,10 @@ public class Basement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.CompareTag("Pickups"))
         {
-            // Debug.Log($"{collision.transform.name}");
+
             var pickup = collision.gameObject.GetComponent<Pickups>();
             if (pickup.teamId == this.TeamId)
             {
@@ -127,6 +128,14 @@ public class Basement : MonoBehaviour
                 
 
             }
+        }
+
+        if (collision.gameObject.CompareTag("Fragile"))
+        {
+            // Debug.Log($"{collision.transform.name}");
+            var other = collision.gameObject;
+            var orbit = other.transform.parent.GetComponent<OrbitObj>();
+            orbit.testSimCollided();
         }
 
     }
