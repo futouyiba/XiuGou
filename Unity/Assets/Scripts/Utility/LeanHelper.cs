@@ -16,6 +16,8 @@ namespace ET.Utility
 {
     public class LeanHelper:MonoBehaviour
     {
+        private LCQuery<LCObject> _appearancesQuery;
+        private LCLiveQuery _liveQuery;
         private const string APPEARANCE_ID = "appearanceId";
         private const string SHOW_GO_ID = "showGoId";
         private const string ROOM_ID = "roomID";
@@ -66,19 +68,28 @@ namespace ET.Utility
 
         public async Task LeanInitAppearances()
         {
+            if (_appearancesQuery != null)
+            {
+                _appearancesQuery = new LCQuery<LCObject>("appearance");
+            }
             LCQuery<LCObject> appearancesQuery = new LCQuery<LCObject>("appearance");
-            appearancesQuery.WhereEqualTo(ROOM_ID, this.roomId);
-            ReadOnlyCollection<LCObject> appearances = await appearancesQuery.Find();
+            _appearancesQuery = appearancesQuery;
+            _appearancesQuery.WhereEqualTo(ROOM_ID, this.roomId);
+            ReadOnlyCollection<LCObject> appearances = await _appearancesQuery.Find();
             foreach (LCObject lcObject in appearances)
             {
                 var sgId = (int)(lcObject[SHOW_GO_ID]);
                 CharMain charMain = CharMgr.instance.GetCharacter(sgId);
                 if (charMain != null)
                 {
-                    charMain.ChangeAppearance((int)(lcObject[APPEARANCE_ID]));
+                    CharMgr.instance.ChangeAppearance(sgId, (int)(lcObject[APPEARANCE_ID]));
+                }
+                else
+                {
+                    Debug.LogError("charMain is null");// when init, should get appearance before creation of char prefab.
                 }
             }
-            await appearancesQuery.Subscribe();
+            _liveQuery = await _appearancesQuery.Subscribe();
             
         }
 
