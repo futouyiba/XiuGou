@@ -232,6 +232,29 @@ namespace ET
                 charView.CharLeave();
             }
         }
+        
+        public void ChangeAppearance(int userId, int appearanceId)
+        {
+            // var userId = this.userId;
+            var charView = GetCharacter(userId);
+            if (charView == null)
+            {
+                Debug.LogError($"charview for {userId} not found");
+                return;
+            }
+            var pos = charView.transform.position;
+            var name = charView.name;
+            var isMe = charView.isMe;
+            CharMgr.instance.RemoveCharView(userId);
+
+            CharMgr.instance.CreateCharView(userId, pos, name, appearanceId, Color.white);
+            if (isMe)
+            {
+                CharMgr.instance.RegisterMe(userId);
+            }
+            
+            
+        }
 
         public static KeyValuePair<int,CharMain>? GetRandomChar()
         {

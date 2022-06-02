@@ -213,9 +213,9 @@ namespace ET
         }
 
         [SerializeField] protected GameObject sprite;
-        public void SetVisible(bool isVisible)
+        public void SetVisible(bool isVisable)
         {
-            this.sprite.SetActive(isVisible);
+            this.sprite.SetActive(isVisable);
         }
 
         public bool IsVisible
@@ -226,20 +226,19 @@ namespace ET
             }
         }
 
-        public void ChangeAppearance(int appearanceId)
-        {
-            var userId = this.userId;
-            var pos = this.transform.position;
-            var name = this.name;
-            var isMe = this.isMe;
-            CharMgr.instance.CreateCharView(userId, pos, name, appearanceId, Color.white);
-            if (isMe)
-            {
-                CharMgr.instance.RegisterMe(userId);
-            }
-            
-            CharMgr.instance.RemoveCharView(userId);
-            
-        }
+        // move to charMgr since char must be added after removing.
+        // public void ChangeAppearance(int appearanceId)
+        // {
+        //     var userId = this.userId;
+        //     var pos = this.transform.position;
+        //     var name = this.name;
+        //     var isMe = this.isMe;
+        //     CharMgr.instance.CreateCharView(userId, pos, name, appearanceId, Color.white);
+        //     if (isMe)
+        //     {
+        //         CharMgr.instance.RegisterMe(userId);
+        //     }
+        //     CharMgr.instance.RemoveCharView(userId);
+        // }
     }
 }
