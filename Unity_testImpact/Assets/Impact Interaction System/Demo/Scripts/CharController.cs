@@ -35,8 +35,6 @@ public class CharController : MonoBehaviour
 
     [SerializeField] private Camera camera;
     [SerializeField] private Rigidbody cameraRigidbody;
-
-
     private void Awake()
     {
         previousPosition = transform.position;
