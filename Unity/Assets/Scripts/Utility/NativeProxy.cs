@@ -101,6 +101,20 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     var charMain = CharMgr.instance.GetCharacter(uid);
                     charMain.Speak(userMsg.text);
                     break;
+                
+                case "Break":
+                    var breakmsg = GetOpdata<Break>(msg);
+                    var isbreak = breakmsg.isStartBreak;
+                    if (isbreak)
+                    {
+                        CharMgr.instance.EveryOneDanceStop();
+                    }
+                    else
+                    {
+                        CharMgr.instance.EveryOneDanceStart();
+                    }
+                    LightMgr.Instance.SwitchMainLight(!isbreak);
+                    break;
 
 
             }
@@ -196,7 +210,8 @@ private static extern void Unity2NativeMsgIOS(string opJson);
             {"UserMsg",typeof(UserMsg)},
             {"MeMove",typeof(MeMove)},
             {"MeTap",typeof(MeTap)},
-            {"MyPos",typeof(MyPosition)}
+            {"MyPos",typeof(MyPosition)},
+            {"Break",typeof(Break)},
         };
         
         public static Type MsgCode2Type(string code)

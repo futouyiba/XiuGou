@@ -39,11 +39,13 @@ namespace ET
         public float mvStayTime = 0f;
 
         protected float direction = 1;
-        private float oriScaleX;
+        // private float oriScaleX;
         // Start is called before the first frame update
         void Start()
         {
-            oriScaleX = transform.GetChild(0).localScale.x;
+            // oriScaleX = transform.GetChild(0).localScale.x;
+            initSprScale = sprite.transform.localScale;
+            fsm.TriggerUnityEvent("DanceStart");
             // Move(DanceFloorHelper.GetRandomDanceFloorPos());
         }
 
@@ -53,6 +55,16 @@ namespace ET
             // if (!this.IsMoving)
             // {
             //     Move(DanceFloorHelper.GetRandomDanceFloorPos());
+            // }
+            // if (Input.GetKeyDown(KeyCode.Keypad1))
+            // {
+            //     fsm.TriggerUnityEvent("DanceStart");
+            //
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.Keypad2))
+            // {
+            //     fsm.TriggerUnityEvent("DanceStop");
             // }
         }
 
@@ -91,7 +103,7 @@ namespace ET
                 if (direction<0)
                 {
                     direction = 1f;
-                    spriteChild.DOScaleX(direction*oriScaleX, 0.3f);
+                    spriteChild.DOScaleX(direction * initSprScale.x, 0.3f);
                 }
             }
             else
@@ -99,7 +111,7 @@ namespace ET
                 if (direction > 0)
                 {
                     direction = -1f;
-                    spriteChild.DOScaleX(direction * oriScaleX, 0.3f);
+                    spriteChild.DOScaleX(direction * initSprScale.x, 0.3f);
                 }
             }
 
@@ -240,9 +252,69 @@ namespace ET
         //         CharMgr.instance.RegisterMe(userId);
         //     }
         //     CharMgr.instance.RemoveCharView(userId);
+
         // }
+
+        public void DanceStart()
+        {
+            fsm.TriggerUnityEvent("DanceStart");
+        }
+
+        public void DanceStop()
+        {
+            fsm.TriggerUnityEvent("DanceStop");
+        }
         
         
+        public void ftDanceStart()
+        {
+            var animator = sprite.GetComponent<Animator>();
+            animator.enabled = true;
+        }
+
+        public void ftDanceStop()
+        {
+            
+            var animator = sprite.GetComponent<Animator>();
+            animator.StopPlayback();
+            animator.enabled = false;
+            _curBreathSeq = DOTween.Sequence();
+            sprBreath();
+
+        }
+
+        protected bool isBreathWidth;
+        private Vector3 initSprScale;
+        private Sequence _curBreathSeq;
+        [SerializeField] private float breathScale = 1.1f;
+        [SerializeField] private float breathInterval = .5f;
+        protected void sprBreath()
+        {
+            if (!_curBreathSeq.active || _curBreathSeq.IsPlaying())
+            {
+                _curBreathSeq.Kill();
+                _curBreathSeq = DOTween.Sequence();
+            }
+            if (isBreathWidth)
+            {
+                _curBreathSeq.Append(sprite.transform.DOScale(
+                    new Vector3(initSprScale.x * breathScale, initSprScale.y / breathScale, initSprScale.z),
+                    breathInterval/2f).OnComplete(()=>
+                    sprite.transform.DOScale(initSprScale, breathInterval / 2).OnComplete(sprBreath)));
+                _curBreathSeq.Play();
+            }
+            else
+            {
+                _curBreathSeq.Append(sprite.transform.DOScale(
+                    new Vector3(initSprScale.x / breathScale, initSprScale.y * breathScale, initSprScale.z),
+                    breathInterval/2f).OnComplete(()=>
+                    sprite.transform.DOScale(initSprScale, breathInterval / 2).OnComplete(sprBreath)));
+                _curBreathSeq.Play();
+            }
+
+            isBreathWidth = !isBreathWidth;
+
+        }
         
     }
 }
