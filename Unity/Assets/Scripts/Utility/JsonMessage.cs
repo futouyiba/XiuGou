@@ -167,7 +167,12 @@ namespace ET.Utility
     {
         
     }
-    
+
+    public class Break : JsonCmd
+    {
+        public bool isStartBreak;
+        
+    }
     
     
 
