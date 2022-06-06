@@ -241,5 +241,8 @@ namespace ET
         //     }
         //     CharMgr.instance.RemoveCharView(userId);
         // }
+        
+        
+        
     }
 }
