@@ -268,6 +268,7 @@ namespace ET
         
         public void ftDanceStart()
         {
+            if (_curBreathSeq is {active: true}) _curBreathSeq.Kill();
             var animator = sprite.GetComponent<Animator>();
             animator.enabled = true;
         }

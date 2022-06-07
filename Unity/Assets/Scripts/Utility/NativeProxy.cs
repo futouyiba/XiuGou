@@ -102,19 +102,19 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     charMain.Speak(userMsg.text);
                     break;
                 
-                case "Break":
-                    var breakmsg = GetOpdata<Break>(msg);
-                    var isbreak = breakmsg.isStartBreak;
-                    if (isbreak)
-                    {
-                        CharMgr.instance.EveryOneDanceStop();
-                    }
-                    else
-                    {
-                        CharMgr.instance.EveryOneDanceStart();
-                    }
-                    LightMgr.Instance.SwitchMainLight(!isbreak);
-                    break;
+                // case "Break":
+                //     var breakmsg = GetOpdata<Break>(msg);
+                //     var isbreak = breakmsg.isStartBreak;
+                //     if (isbreak)
+                //     {
+                //         CharMgr.instance.EveryOneDanceStop();
+                //     }
+                //     else
+                //     {
+                //         CharMgr.instance.EveryOneDanceStart();
+                //     }
+                //     LightMgr.Instance.SwitchMainLight(!isbreak);
+                //     break;
 
 
             }
@@ -211,7 +211,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
             {"MeMove",typeof(MeMove)},
             {"MeTap",typeof(MeTap)},
             {"MyPos",typeof(MyPosition)},
-            {"Break",typeof(Break)},
+            // {"Break",typeof(Break)},
         };
         
         public static Type MsgCode2Type(string code)
