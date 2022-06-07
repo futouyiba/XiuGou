@@ -30,6 +30,8 @@ namespace ET
 
         [SerializeField]
         public float bubbleTime;
+
+        [SerializeField] private float debugForce;
         
         public bool isMe = false;
         public bool isMoving = false;
@@ -63,10 +65,15 @@ namespace ET
             //
             // }
             //
-            // if (Input.GetKeyDown(KeyCode.Keypad2))
-            // {
-            //     fsm.TriggerUnityEvent("DanceStop");
-            // }
+            if (Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                // Debug.LogWarning($"knocking me {userId}");
+                var randomX=Random.Range(-1f, 1f);
+                var randomZ=Random.Range(-1f, 1f);
+                var randomVec = new Vector3(randomX, 1f, randomZ).normalized;
+                
+                AddForce(randomVec*debugForce);
+            }
         }
 
         private Sequence cur_seq;
