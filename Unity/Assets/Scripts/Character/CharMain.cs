@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -255,7 +256,9 @@ namespace ET
 
         // }
 
-        public void DanceStart()
+        #region DanceControl
+
+         public void DanceStart()
         {
             fsm.TriggerUnityEvent("DanceStart");
         }
@@ -316,6 +319,25 @@ namespace ET
             isBreathWidth = !isBreathWidth;
 
         }
+
+        #endregion
+
+
+        #region physics
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.LogWarning($"me {userId} collided with {collision.gameObject.name}");
+        }
+
+        public void AddForce(Vector3 force)
+        {
+            var rb = this.GetComponent<Rigidbody>();
+            rb.AddForce(force);
+        }
+
+        #endregion
+        
         
     }
 }
