@@ -13,8 +13,7 @@ namespace ET
 {
     public class CharMgr : MonoBehaviour
     {
-        [SerializeField]
-        protected List<GameObject> charPrefabs;
+        [SerializeField] public List<GameObject> charPrefabs;
 
         protected Dictionary<int, CharMain> charDict;
 
@@ -108,9 +107,16 @@ namespace ET
                 NativeProxy.instance.Native2UnityMsg(msg);
             }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Keypad1))
             {
-                var msg= "{\"Op\":\"UserList\",\"OpData\":{\"userInfos\":[{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351558146,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"black\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.55245835,0.38888156\",\"privateChatBanTime\":0,\"sex\":2,\"surfing\":530510,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840174,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":696268800000,\"carId\":0,\"chatBubbleId\":0,\"city\":\"北京\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"user/ed03f571b0ae48f590aa6bb4fe4daad4.jpg\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351792150,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"哈哈\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.547373175621033,0.463172942399979\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530501,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840167,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351922902,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"黑色小老虎\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"1,1\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530503,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840169,\"userState\":1,\"userType\":2,\"voiceTime\":0}]}}";
+                // var msg= "{\"Op\":\"UserList\",\"OpData\":{\"userInfos\":[{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351558146,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"black\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.55245835,0.38888156\",\"privateChatBanTime\":0,\"sex\":2,\"surfing\":530510,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840174,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":696268800000,\"carId\":0,\"chatBubbleId\":0,\"city\":\"北京\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"user/ed03f571b0ae48f590aa6bb4fe4daad4.jpg\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351792150,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"哈哈\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.547373175621033,0.463172942399979\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530501,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840167,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351922902,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"黑色小老虎\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"1,1\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530503,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840169,\"userState\":1,\"userType\":2,\"voiceTime\":0}]}}";
+                var msg = "{\"Op\":\"Break\",\"OpData\":{\"isStartBreak\":true}}";
+                NativeProxy.instance.Native2UnityMsg(msg);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                // var msg= "{\"Op\":\"UserList\",\"OpData\":{\"userInfos\":[{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351558146,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"black\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.55245835,0.38888156\",\"privateChatBanTime\":0,\"sex\":2,\"surfing\":530510,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840174,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":696268800000,\"carId\":0,\"chatBubbleId\":0,\"city\":\"北京\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"user/ed03f571b0ae48f590aa6bb4fe4daad4.jpg\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351792150,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"哈哈\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.547373175621033,0.463172942399979\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530501,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840167,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351922902,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"黑色小老虎\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"1,1\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530503,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840169,\"userState\":1,\"userType\":2,\"voiceTime\":0}]}}";
+                var msg = "{\"Op\":\"Break\",\"OpData\":{\"isStartBreak\":false}}";
                 NativeProxy.instance.Native2UnityMsg(msg);
             }
             #endif
@@ -163,7 +169,6 @@ namespace ET
             {
                 Debug.LogError($"charmain for me {id} not found!");
             }
-            
         }
 
         public CharMain GetMe()
@@ -193,8 +198,7 @@ namespace ET
         /// <returns></returns>
         public GameObject CreateCharView(int id, Vector2 position, string name,int appearance_id , Color name_color)
         {
-            
-            // if (appearance_id > charPrefabs.Count - 1 || appearance_id < 0)
+            if (appearance_id > charPrefabs.Count - 1 || appearance_id < 0)
             {
                 Debug.Log($"appearance {appearance_id} does not exist, using random");
                 appearance_id = Random.Range(0, charPrefabs.Count - 1);
@@ -202,6 +206,7 @@ namespace ET
             var to_create = this.charPrefabs[appearance_id];
             var goCreated = GameObject.Instantiate(to_create);
             var charView = goCreated.GetComponent<CharMain>();
+            charView.userId = id;
             charView.SetName(name);
             charView.SetNameColor(name_color);
             charView.SetNameColor(name_color);
@@ -234,6 +239,29 @@ namespace ET
                 charView.CharLeave();
             }
         }
+        
+        public void ChangeAppearance(int userId, int appearanceId)
+        {
+            // var userId = this.userId;
+            var charView = GetCharacter(userId);
+            if (charView == null)
+            {
+                Debug.LogError($"charview for {userId} not found");
+                return;
+            }
+            var pos = charView.transform.position;
+            var name = charView.name;
+            var isMe = charView.isMe;
+            CharMgr.instance.RemoveCharView(userId);
+
+            CharMgr.instance.CreateCharView(userId, pos, name, appearanceId, Color.white);
+            if (isMe)
+            {
+                CharMgr.instance.RegisterMe(userId);
+            }
+            
+            
+        }
 
         public static KeyValuePair<int,CharMain>? GetRandomChar()
         {
@@ -259,6 +287,22 @@ namespace ET
             foreach (var charkv in charDict)
             {
                 charkv.Value.Speak(text);
+            }
+        }
+
+        public void EveryOneDanceStart()
+        {
+            foreach (var charkv in charDict)
+            {
+                charkv.Value.DanceStart();
+            }
+        }
+
+        public void EveryOneDanceStop()
+        {
+            foreach (var charkv in charDict)
+            {
+                charkv.Value.DanceStop();
             }
         }
 
