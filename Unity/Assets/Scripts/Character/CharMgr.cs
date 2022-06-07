@@ -198,7 +198,7 @@ namespace ET
         /// <returns></returns>
         public GameObject CreateCharView(int id, Vector2 position, string name,int appearance_id , Color name_color)
         {
-            if (appearance_id > charPrefabs.Count - 1 || appearance_id < 0)
+            //if (appearance_id > charPrefabs.Count - 1 || appearance_id < 0)
             {
                 Debug.Log($"appearance {appearance_id} does not exist, using random");
                 appearance_id = Random.Range(0, charPrefabs.Count - 1);
