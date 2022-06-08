@@ -1,13 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 
 namespace ET
 {
     public class LightMgr : MonoBehaviour
     {
-        [SerializeField] private GameObject MainLights;
+        [SerializeField] private Light MainLight;
+        [SerializeField] private float initIntensity;
+        [SerializeField] private float intensityOff;
+        private TweenerCore<float, float, FloatOptions> _switchLightTween;
 
         private static LightMgr _instance;
         public static LightMgr Instance
@@ -29,7 +35,7 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
-        
+            initIntensity = MainLight.intensity;
         }
 
         // Update is called once per frame
@@ -40,7 +46,21 @@ namespace ET
 
         public void SwitchMainLight(bool isOn)
         {
-            MainLights.SetActive(isOn);
+            // MainLights.SetActive(isOn);
+            if (_switchLightTween is {active: true})
+            {
+                _switchLightTween.Kill();
+            }
+            if (isOn)
+            {
+                _switchLightTween = DOTween.To(() => MainLight.intensity, x => MainLight.intensity = x, initIntensity,
+                    1f);
+            }
+            else
+            {
+                _switchLightTween = DOTween.To(() => MainLight.intensity, x => MainLight.intensity = x, intensityOff,
+                    1f);
+            }
         }
     }
 }
