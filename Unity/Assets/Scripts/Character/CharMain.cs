@@ -8,6 +8,7 @@ using DG.Tweening;
 using ET.Utility;
 using TMPro;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Sequence = DG.Tweening.Sequence;
@@ -42,12 +43,15 @@ namespace ET
         public float mvStayTime = 0f;
 
         protected float direction = 1;
+
+        private Quaternion initRot;
         // private float oriScaleX;
         // Start is called before the first frame update
         void Start()
         {
             // oriScaleX = transform.GetChild(0).localScale.x;
             initSprScale = sprite.transform.localScale;
+            initRot = transform.rotation;
             fsm.TriggerUnityEvent("DanceStart");
             // Move(DanceFloorHelper.GetRandomDanceFloorPos());
         }
@@ -76,7 +80,7 @@ namespace ET
             }
         }
 
-        private Sequence cur_seq;
+        private Sequence cur_move_seq;
         /// <summary>
         /// 
         /// </summary>
@@ -123,9 +127,9 @@ namespace ET
                 }
             }
 
-            cur_seq = DOTween.Sequence();
-            cur_seq.Append(this.transform.DOMove(targetPos, duration).OnComplete(MoveEnd));
-            cur_seq.Play();
+            cur_move_seq = DOTween.Sequence();
+            cur_move_seq.Append(this.transform.DOMove(targetPos, duration).OnComplete(MoveEnd));
+            cur_move_seq.Play();
             // Debug.Log($"going to {target}");
             if(isMe) NativeProxy.SendMeMove(target);
         }
@@ -136,7 +140,7 @@ namespace ET
             if(isMe) CameraBolt.TriggerEvent("Follow2Idle");
             // this.IsMoving = false;
             this.moveTarget = Vector3.positiveInfinity;
-            cur_seq = null;
+            cur_move_seq = null;
             //
             // var task = Task.Run(()=>Wait(Random.Range(3, 8)));
             // yield return new WaitUntil(()=>task.IsCompleted);
@@ -147,13 +151,13 @@ namespace ET
 
         public void KillCurSeq()
         {
-            if (cur_seq==null)
+            if (cur_move_seq==null)
             {
                 Debug.LogError("current seq does not exist!");
                 return;
             }
-            cur_seq.Kill();
-            cur_seq = null;
+            cur_move_seq.Kill();
+            cur_move_seq = null;
         }
 
         public void MoveRandom()
@@ -334,13 +338,48 @@ namespace ET
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.LogWarning($"me {userId} collided with {collision.gameObject.name}");
+            // Debug.LogWarning($"me {userId} collided with {collision.gameObject.name}");
         }
 
         public void AddForce(Vector3 force)
         {
             var rb = this.GetComponent<Rigidbody>();
             rb.AddForce(force);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Ground"))
+            {
+                fsm.TriggerUnityEvent("Fell");        
+            }
+        }
+
+        /// <summary>
+        /// 从跌倒状态爬起来,由fsm触发
+        /// </summary>
+        public void ftGetUp()
+        {
+            var rigidbody = this.GetComponent<Rigidbody>();
+            //disable rigidbody
+            rigidbody.isKinematic = true;
+            // rigidbody.useGravity = false;
+            // rigidbody.detectCollisions = false;
+            void Oncomplete()
+            {
+                // rigidbody.detectCollisions = true;
+                // rigidbody.useGravity = true;
+                rigidbody.isKinematic = false;
+                fsm.TriggerUnityEvent("Getup");
+            }
+            //getup tween
+            cur_move_seq = DOTween.Sequence();
+            var targetPos = transform.position;
+            targetPos.y = DanceFloorHelper.GetPivotY();
+            cur_move_seq.Append(transform.DOJump(targetPos, 2f, 1, 0.8f).OnComplete(Oncomplete));
+            cur_move_seq.Join(transform.DORotateQuaternion(initRot, .5f));
+            cur_move_seq.Play();
+
         }
 
         #endregion

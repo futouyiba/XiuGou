@@ -407,9 +407,10 @@ GameObject:
   - component: {fileID: 1215715403548211505}
   - component: {fileID: 5866460362413679440}
   - component: {fileID: 2192231175539230086}
+  - component: {fileID: 6193719615483670067}
   m_Layer: 0
   m_Name: CharacterRect
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,8 +522,21 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6193719615483670067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229857659710172204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20059621, y: 0.09419656, z: 0.111947395}
+  m_Center: {x: -0.00053682923, y: 0.42477208, z: 0.0056440644}
 --- !u!1001 &6526879796045914749
 PrefabInstance:
   m_ObjectHideFlags: 0
