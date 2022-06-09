@@ -60,7 +60,7 @@ namespace ET
                 position = Vector3.Lerp(position,
                     myCharTransform.position + lookAtCamOffset, lerpValue);
                 cameraTransform.position = position;
-                Debug.Log($"cameraTransform pos is {cameraTransform.position}, myCharTransform position is {myCharTransform.position}, lookAtCamOffset is {lookAtCamOffset}, lerpValue is {lerpValue}, cameraTransform.position is {position}");
+                // Debug.Log($"cameraTransform pos is {cameraTransform.position}, myCharTransform position is {myCharTransform.position}, lookAtCamOffset is {lookAtCamOffset}, lerpValue is {lerpValue}, cameraTransform.position is {position}");
             }
 
             if (IsFarWatching)

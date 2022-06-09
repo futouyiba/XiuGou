@@ -73,7 +73,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                         }
                         else
                         {
-                            res.Move(userInfo.position);
+                            res.MoveStart(userInfo.position);
                         }
                     }
                     break;
@@ -88,7 +88,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                             chara.SetVisible(true);
                             CameraBolt.TriggerEvent("Idle2Follow");
                         }
-                        else chara.Move(userMove.position);
+                        else chara.MoveStart(userMove.position);
                     }
                     else
                     {

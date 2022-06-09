@@ -81,11 +81,12 @@ namespace ET
         }
 
         private Sequence cur_move_seq;
+        // private Vector2 move_target;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="target">归一化的位置</param>
-        public void Move(Vector2 target)
+        public void MoveStart(Vector2 target)
         {
             // var vars = Variables.Object(this.gameObject);
             // var isMoving=vars.Get("IsMoving");
@@ -99,18 +100,23 @@ namespace ET
             // }
             
             //20200513:不管在哪个状态都触发StartMove，在不同地方进行不同响应
-            fsm.TriggerUnityEvent("StartMove");
+            
             var scenePos = DanceFloorHelper.PosUnified2Scene(target);
             var targetPos = new Vector3(scenePos.x, transform.position.y, scenePos.y);
-            // this.IsMoving = true;
+            moveTarget = targetPos;
+            fsm.TriggerUnityEvent("StartMove");
+            
+        }
 
-            // CameraBolt.TriggerEvent("FollowRand");
-            this.moveTarget = targetPos;
+        public void ftMove()
+        {
+            var target = moveTarget;
+
             var distance = Vector3.Distance(this.transform.position, this.moveTarget);
             var duration = distance / moveSpeed;
             //转身
             var spriteChild = this.transform.GetChild(0);
-            if (scenePos.x>= this.transform.position.x)
+            if (target.x>= this.transform.position.x)
             {
                 if (direction<0)
                 {
@@ -128,7 +134,7 @@ namespace ET
             }
 
             cur_move_seq = DOTween.Sequence();
-            cur_move_seq.Append(this.transform.DOMove(targetPos, duration).OnComplete(MoveEnd));
+            cur_move_seq.Append(this.transform.DOMove(target, duration).OnComplete(MoveEnd));
             cur_move_seq.Play();
             // Debug.Log($"going to {target}");
             if(isMe) NativeProxy.SendMeMove(target);
@@ -162,7 +168,7 @@ namespace ET
 
         public void MoveRandom()
         {
-            Move(DanceFloorHelper.GetRandomDanceFloorPos());
+            MoveStart(DanceFloorHelper.GetRandomDanceFloorPos());
         }
 
         protected static IEnumerator Wait(int time)
@@ -360,26 +366,53 @@ namespace ET
         /// </summary>
         public void ftGetUp()
         {
-            var rigidbody = this.GetComponent<Rigidbody>();
-            //disable rigidbody
-            rigidbody.isKinematic = true;
-            // rigidbody.useGravity = false;
-            // rigidbody.detectCollisions = false;
-            void Oncomplete()
+            void GetUpTween()
             {
-                // rigidbody.detectCollisions = true;
-                // rigidbody.useGravity = true;
-                rigidbody.isKinematic = false;
-                fsm.TriggerUnityEvent("Getup");
+                var rigidbody = this.GetComponent<Rigidbody>();
+                //disable rigidbody
+                rigidbody.isKinematic = true;
+                // rigidbody.useGravity = false;
+                // rigidbody.detectCollisions = false;
+                void Oncomplete()
+                {
+                    // rigidbody.detectCollisions = true;
+                    // rigidbody.useGravity = true;
+                    rigidbody.isKinematic = false;
+                    fsm.TriggerUnityEvent("Getup");
+                }
+                //getup tween
+                cur_move_seq = DOTween.Sequence();
+                var targetPos = transform.position;
+                targetPos.y = DanceFloorHelper.GetPivotY();
+                cur_move_seq.Append(transform.DOJump(targetPos, 1f, 1, 0.8f).OnComplete(Oncomplete));
+                cur_move_seq.Join(transform.DORotateQuaternion(initRot, .5f));
+                cur_move_seq.Play();
             }
-            //getup tween
-            cur_move_seq = DOTween.Sequence();
-            var targetPos = transform.position;
-            targetPos.y = DanceFloorHelper.GetPivotY();
-            cur_move_seq.Append(transform.DOJump(targetPos, 2f, 1, 0.8f).OnComplete(Oncomplete));
-            cur_move_seq.Join(transform.DORotateQuaternion(initRot, .5f));
-            cur_move_seq.Play();
 
+            TimeMgr.instance.AddTimer(1000, GetUpTween);
+
+        }
+
+        public void MoveLock()
+        {
+            fsm.TriggerUnityEvent("MoveLock");
+        }
+
+        public void MoveUnlock()
+        {
+            fsm.TriggerUnityEvent("MoveUnlock");
+        }
+        
+        public void ftMoveLock()
+        {
+            var rb = this.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
+        }
+
+        public void ftMoveUnlock()
+        {
+            var rb = this.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
         }
 
         #endregion
