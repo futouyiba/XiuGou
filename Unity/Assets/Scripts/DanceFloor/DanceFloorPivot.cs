@@ -39,8 +39,11 @@ namespace ET
                     var me = CharMgr.instance.GetMe();
                     if(me) me.MoveStart(danceFloorPos);
 
-                    ShowPointer(worldPosition);
-                    // Debug.LogWarning(danceFloorPos);
+                    
+                    // var scenePos = DanceFloorHelper.PosUnified2Scene(target);
+                    var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
+                    ShowPointer(targetPos);
+                    // Debug.LogWarning(targetPos);
                 }
             }
             #endif

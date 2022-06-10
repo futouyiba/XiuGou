@@ -33,6 +33,8 @@ namespace ET
         public float bubbleTime;
 
         [SerializeField] private float debugForce;
+
+        [SerializeField] private float moveTargetTolerance;
         
         public bool isMe = false;
         public bool isMoving = false;
@@ -52,6 +54,7 @@ namespace ET
             // oriScaleX = transform.GetChild(0).localScale.x;
             initSprScale = sprite.transform.localScale;
             initRot = transform.rotation;
+            // SetPivotOffset();
             fsm.TriggerUnityEvent("DanceStart");
             // Move(DanceFloorHelper.GetRandomDanceFloorPos());
         }
@@ -80,6 +83,30 @@ namespace ET
             }
         }
 
+        [SerializeField] private Vector3 debugMovingDir;
+        private void FixedUpdate()
+        {
+            if (isMoving)
+            {
+                if (Vector3.Distance(moveTarget, transform.position) <= moveTargetTolerance)
+                {
+                    fsm.TriggerUnityEvent("MoveEnded");
+                    moveTarget = Vector3.negativeInfinity;
+                    return;
+                }
+
+                if (moveTarget.x < -1000f)
+                {
+                    Debug.LogError($"moving but target is not valid");
+                    return;
+                }
+                var rb = this.GetComponent<Rigidbody>();
+                var moveDir = (moveTarget - this.transform.position).normalized;
+                debugMovingDir = moveDir;
+                rb.velocity = moveDir * moveSpeed;
+            }
+        }
+
         private Sequence cur_move_seq;
         // private Vector2 move_target;
         /// <summary>
@@ -105,39 +132,40 @@ namespace ET
             var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
             moveTarget = targetPos;
             fsm.TriggerUnityEvent("StartMove");
+            Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
             
         }
 
         public void ftMove()
         {
-            var target = moveTarget;
-
-            var distance = Vector3.Distance(this.transform.position, this.moveTarget);
-            var duration = distance / moveSpeed;
-            //转身
-            var spriteChild = this.transform.GetChild(0);
-            if (target.x>= this.transform.position.x)
-            {
-                if (direction<0)
-                {
-                    direction = 1f;
-                    spriteChild.DOScaleX(direction * initSprScale.x, 0.3f);
-                }
-            }
-            else
-            {
-                if (direction > 0)
-                {
-                    direction = -1f;
-                    spriteChild.DOScaleX(direction * initSprScale.x, 0.3f);
-                }
-            }
-
-            cur_move_seq = DOTween.Sequence();
-            cur_move_seq.Append(this.transform.DOMove(target, duration).OnComplete(MoveEnd));
-            cur_move_seq.Play();
-            // Debug.Log($"going to {target}");
-            if(isMe) NativeProxy.SendMeMove(target);
+            // var target = moveTarget;
+            //
+            // var distance = Vector3.Distance(this.transform.position, this.moveTarget);
+            // var duration = distance / moveSpeed;
+            // //转身
+            // var spriteChild = this.transform.GetChild(0);
+            // if (target.x>= this.transform.position.x)
+            // {
+            //     if (direction<0)
+            //     {
+            //         direction = 1f;
+            //         spriteChild.DOScaleX(direction * initSprScale.x, 0.3f);
+            //     }
+            // }
+            // else
+            // {
+            //     if (direction > 0)
+            //     {
+            //         direction = -1f;
+            //         spriteChild.DOScaleX(direction * initSprScale.x, 0.3f);
+            //     }
+            // }
+            //
+            // cur_move_seq = DOTween.Sequence();
+            // cur_move_seq.Append(this.transform.DOMove(target, duration).OnComplete(MoveEnd));
+            // cur_move_seq.Play();
+            // // Debug.Log($"going to {target}");
+            // if(isMe) NativeProxy.SendMeMove(target);
         }
 
         public void MoveEnd()
@@ -347,7 +375,7 @@ namespace ET
             // Debug.LogWarning($"me {userId} collided with {collision.gameObject.name}");
             if (collision.gameObject.CompareTag("Impacter"))
             {
-                var impacter = collision.transform.parent.parent.GetComponent<Volcano>();
+                var impacter = collision.transform.parent.parent.GetComponent<Iimpacter>();
                 impacter.Impact(gameObject);
             }
             
@@ -420,6 +448,25 @@ namespace ET
         {
             var rb = this.GetComponent<Rigidbody>();
             rb.isKinematic = false;
+        }
+
+        public void SetPivotOffset()
+        {
+            RectTransform spriteTransform= sprite.transform as RectTransform;
+            var offsetY = spriteTransform.rect.height / 2;
+            foreach (Transform child in transform)
+            {
+                child.localPosition += new Vector3(0, offsetY, 0);
+            }
+            //move colliders
+            var colliders = GetComponents<BoxCollider>();
+            foreach (var collider in colliders)
+            {
+                var originCenter = collider.center;
+                originCenter.y += offsetY;
+                collider.center = originCenter;
+            }
+
         }
 
         #endregion

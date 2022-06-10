@@ -46,7 +46,7 @@ namespace ET
                 }
             }
 
-            if (result.y < -100)
+            if (result.y < -1000f)
             {
                 Debug.LogWarning($"not hitting any ground");
                 return Vector3.negativeInfinity;
