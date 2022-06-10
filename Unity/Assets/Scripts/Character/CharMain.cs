@@ -90,8 +90,9 @@ namespace ET
             {
                 if (Vector3.Distance(moveTarget, transform.position) <= moveTargetTolerance)
                 {
-                    fsm.TriggerUnityEvent("MoveEnded");
-                    moveTarget = Vector3.negativeInfinity;
+                    // fsm.TriggerUnityEvent("MoveEnded");
+                    // moveTarget = Vector3.negativeInfinity;
+                    MoveEnd();
                     return;
                 }
 
