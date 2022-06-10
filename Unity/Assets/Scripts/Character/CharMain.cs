@@ -345,6 +345,11 @@ namespace ET
         private void OnCollisionEnter(Collision collision)
         {
             // Debug.LogWarning($"me {userId} collided with {collision.gameObject.name}");
+            if (collision.gameObject.CompareTag("Ground"))
+            {
+                
+            }
+            
         }
 
         public void AddForce(Vector3 force)
@@ -383,8 +388,9 @@ namespace ET
                 //getup tween
                 cur_move_seq = DOTween.Sequence();
                 var targetPos = transform.position;
-                targetPos.y = DanceFloorHelper.GetPivotY();
-                cur_move_seq.Append(transform.DOJump(targetPos, 1f, 1, 0.8f).OnComplete(Oncomplete));
+                targetPos = DanceFloorHelper.BuildWorldPosition(new Vector2(targetPos.x, targetPos.z));
+                // targetPos.y = DanceFloorHelper.GetPivotY();
+                cur_move_seq.Append(transform.DOJump(targetPos, 2f, 1, 0.8f).OnComplete(Oncomplete));
                 cur_move_seq.Join(transform.DORotateQuaternion(initRot, .5f));
                 cur_move_seq.Play();
             }
