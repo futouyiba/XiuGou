@@ -36,7 +36,7 @@ namespace ET
                     Vector2 scenePos = new Vector2(worldPosition.x, worldPosition.z);
                     var danceFloorPos = DanceFloorHelper.PosScene2Unified(scenePos);
                     var me = CharMgr.instance.GetMe();
-                    if(me) me.Move(danceFloorPos);
+                    if(me) me.MoveStart(danceFloorPos);
 
                     ShowPointer(worldPosition);
                     // Debug.LogWarning(danceFloorPos);
@@ -65,7 +65,7 @@ namespace ET
                             // Debug.LogWarning(danceFloorPos);
                             //移动我
                             var me = CharMgr.instance.GetMe();
-                            if(me) me.Move(danceFloorPos);
+                            if(me) me.MoveStart(danceFloorPos);
                             
                             ShowPointer(worldPosition);
 
