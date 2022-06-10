@@ -24,10 +24,13 @@ namespace ET
         private bool IsRising = true;
 
         private CharMain mounting;
+
+        private Vector3 initPos;
         // Start is called before the first frame update
         void Start()
         {
             animation.Stop();
+            initPos = this.transform.position;
         }
 
         // Update is called once per frame
@@ -36,6 +39,11 @@ namespace ET
             if (Input.GetKeyDown(KeyCode.Keypad7))
             {
                 RiseUp();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad8))
+            {
+                Leave();
             }
         }
 
@@ -60,7 +68,14 @@ namespace ET
 
         public void Leave()
         {
-            
+            IsRising = true;
+            animation.Play("shake");
+            avatar.tag = "Impacter";
+            void LeaveComplete()
+            {
+                IsRising = false;
+            }
+            transform.DOMove(initPos, 3.333f).OnComplete(LeaveComplete);
         }
 
         public void OnCollisionEnter(Collision collision)
