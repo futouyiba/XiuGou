@@ -384,9 +384,10 @@ namespace ET
                 cur_move_seq = DOTween.Sequence();
                 var targetPos = transform.position;
                 targetPos.y = DanceFloorHelper.GetPivotY();
-                cur_move_seq.Append(transform.DOJump(targetPos, 1f, 1, 0.8f).OnComplete(Oncomplete));
-                cur_move_seq.Join(transform.DORotateQuaternion(initRot, .5f));
-                cur_move_seq.Play();
+                rigidbody.DORotate(new Vector3(0,0,0),0.5f);
+                //cur_move_seq.Append(transform.DOJump(targetPos, 1f, 1, 0.8f).OnComplete(Oncomplete));
+                //cur_move_seq.Join(transform.DORotateQuaternion(initRot, .5f));
+                //cur_move_seq.Play();
             }
 
             TimeMgr.instance.AddTimer(1000, GetUpTween);
