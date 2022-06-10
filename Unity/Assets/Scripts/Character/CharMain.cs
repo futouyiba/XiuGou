@@ -345,9 +345,10 @@ namespace ET
         private void OnCollisionEnter(Collision collision)
         {
             // Debug.LogWarning($"me {userId} collided with {collision.gameObject.name}");
-            if (collision.gameObject.CompareTag("Ground"))
+            if (collision.gameObject.CompareTag("Impacter"))
             {
-                
+                var impacter = collision.transform.parent.parent.GetComponent<Volcano>();
+                impacter.Impact(gameObject);
             }
             
         }
