@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 5866460362413679440}
   - component: {fileID: 2192231175539230086}
   - component: {fileID: 6193719615483670067}
+  - component: {fileID: 145299129661619563}
   m_Layer: 0
   m_Name: CharacterRect
   m_TagString: Character
@@ -545,6 +546,7 @@ MonoBehaviour:
   talkTime: 0
   mvIdleTime: 0
   mvStayTime: 0
+  debugMovingDir: {x: 0, y: 0, z: 0}
   sprite: {fileID: 33564094710934385}
   breathScale: 1.1
   breathInterval: 0.5
@@ -591,7 +593,7 @@ BoxCollider:
   m_GameObject: {fileID: 6229857659710172204}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.44623846, y: 0.75143623, z: 0.04700789}
   m_Center: {x: -0.012585469, y: 0.41374803, z: -0.00013842806}
@@ -624,6 +626,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20059621, y: 0.09419656, z: 0.111947395}
   m_Center: {x: -0.00053682923, y: 0.42477208, z: 0.0056440644}
+--- !u!136 &145299129661619563
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229857659710172204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.85332596
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.38435036, z: 0}
 --- !u!1 &6535495203292994288
 GameObject:
   m_ObjectHideFlags: 0
