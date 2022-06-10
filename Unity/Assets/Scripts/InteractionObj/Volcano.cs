@@ -20,13 +20,14 @@ namespace ET
         [SerializeField] private GameObject riseToPivot;
         [SerializeField] private GameObject mountPivot;
         [SerializeField] private GameObject avatar;
+        [SerializeField] private Animation animation;
         private bool IsRising = true;
 
         private CharMain mounting;
         // Start is called before the first frame update
         void Start()
         {
-            
+            animation.Stop();
         }
 
         // Update is called once per frame
@@ -41,14 +42,20 @@ namespace ET
         public void RiseUp()
         {
             IsRising = true;
-
+            animation.Play("shake");
             void RiseComplete()
             {
                 IsRising = false;
                 CharUnmount();
                 avatar.tag = "Ground";
+                animation.Play("idle01");
+                for (int i = 0; i < 10; i++)
+                {
+                    animation.PlayQueued("idle01");
+                }
+
             }
-            transform.DOMove(riseToPivot.transform.position, 3f).OnComplete(RiseComplete);
+            transform.DOMove(riseToPivot.transform.position, 3.333f).OnComplete(RiseComplete);
         }
 
         public void Leave()
@@ -121,6 +128,12 @@ namespace ET
         {
             Gizmos.DrawSphere(mountPivot.transform.position,.35f);
             Gizmos.DrawCube(riseToPivot.transform.position, new Vector3(0.5f, 0.5f, 0.5f));
+        }
+
+
+        protected void PlayAnimation()
+        {
+            
         }
     }
 }
