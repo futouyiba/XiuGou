@@ -49,6 +49,7 @@ namespace ET
             tmp.SetText(formatted);
             LayoutRebuilder.ForceRebuildLayoutImmediate(tmp.rectTransform);
             Vector2 autoSize = new Vector2(tmp.rectTransform.rect.width, tmp.rectTransform.rect.height);
+            
             UpdateSpriteSize(autoSize);
             // StartCoroutine(DisappearAfter(5f));
             
@@ -103,12 +104,11 @@ namespace ET
             // }
             // return content.ToString();
         }
-        
-        
 
         public void UpdateSpriteSize(Vector2 autoSize)
         {
             Vector2 bubbleSize = autoSize * 3f + new Vector2(marginX *2f, marginY);
+            bubbleSize.y = spriteRenderer.size.y;
             spriteRenderer.size = bubbleSize;
         }
 

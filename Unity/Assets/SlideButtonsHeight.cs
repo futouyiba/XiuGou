@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace ET
 {
@@ -14,8 +16,9 @@ namespace ET
         public Transform buttonsParent;
         
         // Start is called before the first frame update
-        public void AdjustButtonsHeight(float value)
+        public void AdjustButtonsHeight()
         {
+            var value = this.GetComponent<Slider>().value;
             buttonsParent.position = Vector3.Lerp(bottom.position, top.position, value);
         }
     }
