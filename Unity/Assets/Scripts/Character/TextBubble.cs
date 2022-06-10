@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 namespace ET
 {
+    [ExecuteInEditMode]
     public class TextBubble : MonoBehaviour
     {
         [SerializeField] protected TextMeshPro tmp;
@@ -26,6 +27,12 @@ namespace ET
         // Update is called once per frame
         void Update()
         {
+            if (Application.isEditor)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(tmp.rectTransform);
+                Vector2 autoSize = new Vector2(tmp.rectTransform.rect.width, tmp.rectTransform.rect.height);
+                UpdateSpriteSize(autoSize);
+            }
         
         }
 
