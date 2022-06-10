@@ -20,6 +20,7 @@ namespace ET
         private int inspectCount;
         // private int OpenCount;
         private int CloseCount;
+        public AudioSource AudioSource;
 
         private static AudioMgr _instance;
         public static AudioMgr Instance
@@ -96,6 +97,18 @@ namespace ET
                 return 0;
             }
             return spectrumData[channel];
+        }
+        
+        public void Mute()
+        {
+            Debug.Log("mute button sent to script!");
+            this.AudioSource.volume = 0f;
+        }
+        
+        public void ResetVolume()
+        {
+            Debug.Log("music on button sent to script!");
+            this.AudioSource.volume = 1f;
         }
 
     
