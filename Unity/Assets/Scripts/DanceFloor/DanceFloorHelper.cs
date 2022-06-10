@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -27,6 +28,30 @@ namespace ET
         {
             var pivot = GetGoFromScene("pivot").GetComponent<DanceFloorPivot>();
             return pivot.transform.position.y;
+        }
+
+        public static Vector3 BuildWorldPosition(Vector2 scenePos)
+        {
+            Vector3 result=new Vector3(scenePos.x,Single.NegativeInfinity, scenePos.y);
+            var pivot = GetGoFromScene("pivot").GetComponent<DanceFloorPivot>();
+            Vector3 rayOrigin = new Vector3(scenePos.x, pivot.high.position.y, scenePos.y);
+            var hits = Physics.RaycastAll(rayOrigin, Vector3.down, Single.MaxValue);
+            foreach (var hit in hits)
+            {
+                if(!hit.transform.CompareTag("Ground")) continue;
+                else
+                {
+                    result.y = hit.point.y;
+                    break;
+                }
+            }
+
+            if (result.y < -100)
+            {
+                Debug.LogWarning($"not hitting any ground");
+                return Vector3.negativeInfinity;
+            }
+            return result;
         }
 
         public static Vector2 PosUnified2Scene(Vector2 unifiedPos)

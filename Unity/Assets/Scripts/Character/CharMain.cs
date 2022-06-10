@@ -102,7 +102,7 @@ namespace ET
             //20200513:不管在哪个状态都触发StartMove，在不同地方进行不同响应
             
             var scenePos = DanceFloorHelper.PosUnified2Scene(target);
-            var targetPos = new Vector3(scenePos.x, transform.position.y, scenePos.y);
+            var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
             moveTarget = targetPos;
             fsm.TriggerUnityEvent("StartMove");
             

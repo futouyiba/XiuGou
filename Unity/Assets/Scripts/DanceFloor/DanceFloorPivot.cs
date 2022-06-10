@@ -10,6 +10,7 @@ namespace ET
         [SerializeField] public Transform small;
 
         [SerializeField] public Transform big;
+        [SerializeField] public Transform high;
 
         [SerializeField] protected MeshCollider floor;
 
