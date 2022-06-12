@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ET
 {
@@ -21,11 +23,21 @@ namespace ET
         [SerializeField] private GameObject mountPivot;
         [SerializeField] private GameObject avatar;
         [SerializeField] private Animation animation;
+        [SerializeField] private Transform pickupOrigin;
         private bool IsRising = true;
 
         private CharMain mounting;
 
         private Vector3 initPos;
+
+        [Header("Pickup Config")] 
+        [SerializeField] private List<GameObject> pickupPrefabs;
+
+        [SerializeField] private List<int> pickupWeights;
+
+        [SerializeField] private int generateAmount;
+
+        [SerializeField] private Vector2 launchVel;
         // Start is called before the first frame update
         void Start()
         {
@@ -61,6 +73,7 @@ namespace ET
                 {
                     animation.PlayQueued("idle01");
                 }
+                GeneratePickups();
 
             }
             transform.DOMove(riseToPivot.transform.position, 3.333f).OnComplete(RiseComplete);
@@ -81,7 +94,7 @@ namespace ET
         public void OnCollisionEnter(Collision collision)
         {
             //volvano collision enter does not recieving any message
-            Debug.LogWarning($"{collision.gameObject.name} collided volcano");
+            // Debug.LogWarning($"{collision.gameObject.name} collided volcano");
             // if (IsRising)
             // {
             //     if (collision.gameObject.CompareTag("Character"))
@@ -120,8 +133,9 @@ namespace ET
             var charMain = CharMgr.instance.GetCharacter(userId);
             charMain.MoveLock();
             mounting = charMain;
-            charMain.transform.position = mountPivot.transform.position;
-            charMain.transform.parent = transform;
+            var transform1 = charMain.transform;
+            transform1.position = mountPivot.transform.position;
+            transform1.parent = transform;
 
         }
 
@@ -136,7 +150,42 @@ namespace ET
 
         public void GeneratePickups()
         {
-            
+            for (int i = 0; i < generateAmount; i++)
+            {
+                var pickupPrefab = GetPickupByWeight();
+                var pickupInst = Instantiate(pickupPrefab, transform);
+                pickupInst.transform.position = pickupOrigin.position;
+                var rotUp = Random.Range(0, 360f);
+                var launchDir = (Quaternion.AngleAxis(rotUp, Vector3.up) * Vector3.forward + Vector3.up).normalized;
+                var vel = Random.Range(launchVel.x, launchVel.y);
+                pickupInst.GetComponent<Rigidbody>().velocity = launchDir * vel;
+
+            }
+        }
+
+        public GameObject GetPickupByWeight()
+        {
+            if (pickupPrefabs.Count != pickupWeights.Count)
+            {
+                Debug.LogError($"prefabs are {pickupPrefabs.Count}, but weights are {pickupWeights.Count}");
+                return null;
+            }
+
+            int cycCount = pickupPrefabs.Count;
+            var weightTotal = pickupWeights.Sum();
+            int randomChosen = Random.Range(0, weightTotal);
+            int curWeight = 0;
+            GameObject result = null;
+            for (int i = 0; i < cycCount; i++)
+            {
+                curWeight += pickupWeights[i];
+                if (curWeight > randomChosen)
+                {
+                    result = pickupPrefabs[i];
+                    break;
+                }
+            }
+            return result;
         }
 
         private void OnDrawGizmosSelected()
@@ -150,5 +199,7 @@ namespace ET
         {
             
         }
+
+
     }
 }
