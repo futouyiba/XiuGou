@@ -52,8 +52,7 @@ namespace ET
         void Start()
         {
             _instance = this;
-            CursorLockMode lockMode = CursorLockMode.None;
-            Cursor.lockState = lockMode;
+            Cursor.lockState = CursorLockMode.None;
             charDict = new Dictionary<int, CharMain>();
             // for (int i = 0; i < 10; i++)
             // {

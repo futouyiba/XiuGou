@@ -19,7 +19,7 @@ namespace ET
     public class CharMain : MonoBehaviour
     {
         // protected bool IsMoving;
-        protected Vector3 moveTarget = Vector3.positiveInfinity;
+        protected Vector3 moveTarget = Vector3.negativeInfinity;
         
         [SerializeField]
         protected TextMeshPro nameTmp;
@@ -83,7 +83,7 @@ namespace ET
             }
         }
 
-        [SerializeField] private Vector3 debugMovingDir;
+        // [SerializeField] private Vector3 debugMovingDir;
         private void FixedUpdate()
         {
             if (isMoving)
@@ -103,7 +103,7 @@ namespace ET
                 }
                 var rb = this.GetComponent<Rigidbody>();
                 var moveDir = (moveTarget - this.transform.position).normalized;
-                debugMovingDir = moveDir;
+                // debugMovingDir = moveDir;
                 rb.velocity = moveDir * moveSpeed;
             }
         }
@@ -131,6 +131,7 @@ namespace ET
             
             var scenePos = DanceFloorHelper.PosUnified2Scene(target);
             var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
+            if (targetPos.x < -1000f) return;
             moveTarget = targetPos;
             fsm.TriggerUnityEvent("StartMove");
             // Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
@@ -174,7 +175,7 @@ namespace ET
             fsm.TriggerUnityEvent("MoveEnded");
             if(isMe) CameraBolt.TriggerEvent("Follow2Idle");
             // this.IsMoving = false;
-            this.moveTarget = Vector3.positiveInfinity;
+            this.moveTarget = Vector3.negativeInfinity;
             cur_move_seq = null;
             //
             // var task = Task.Run(()=>Wait(Random.Range(3, 8)));
