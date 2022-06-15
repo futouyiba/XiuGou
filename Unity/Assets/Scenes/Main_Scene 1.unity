@@ -174,6 +174,11 @@ PrefabInstance:
       objectReference: {fileID: 20182102}
     - target: {fileID: 2207591075321667014, guid: 16882efee4280c2448cb33e98a518f15,
         type: 3}
+      propertyPath: _roomUpgradeMgr
+      value: 
+      objectReference: {fileID: 3674770188089328317}
+    - target: {fileID: 2207591075321667014, guid: 16882efee4280c2448cb33e98a518f15,
+        type: 3}
       propertyPath: CurrentPopulation
       value: 
       objectReference: {fileID: 20182101}
@@ -3321,6 +3326,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+--- !u!114 &3674770188089328317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7293989146496170243, guid: cbacc8d2d22bd234cb0e651759f587cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 3674770188089328313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3674770188089328314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eabe1ada16d4794b97149fbb0f37962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4532589326388188064
 PrefabInstance:
   m_ObjectHideFlags: 0

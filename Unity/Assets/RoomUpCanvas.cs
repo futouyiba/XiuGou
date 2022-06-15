@@ -40,15 +40,15 @@ namespace ET
             CharMgr.instance.dlgCharAmountUpdate += i =>
             {
                 populationText.text = i.ToString();
-                _currentPopulationAnimator.SetTrigger(0);
+                _currentPopulationAnimator.SetTrigger("go");
                 
             };
 
             _roomUpgradeMgr.levelUp += i =>
             {
-                _currentLevelAnimator.SetTrigger(0);
+                _currentLevelAnimator.SetTrigger("go");
                 levelText.text = i.ToString();
-                _goingOnAnimator.SetTrigger(0);
+                _goingOnAnimator.SetTrigger("go");
             };
             
             
