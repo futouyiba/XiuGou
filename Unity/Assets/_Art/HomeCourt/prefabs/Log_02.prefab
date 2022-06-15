@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3938905158096030441}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &3938905157334261594
 Light:
@@ -103,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3938905158096030441}
   - component: {fileID: 3938905158096030440}
+  - component: {fileID: 8476764879849200251}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -121,8 +122,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3938905157334261595}
   - {fileID: 8957088526488562657}
+  - {fileID: 3938905157334261595}
   m_Father: {fileID: 3938905159104157467}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -177,6 +178,21 @@ MonoBehaviour:
   - {fileID: 1494930267318811780}
   - {fileID: 9080619425326491265}
   timeChangeColor: 0
+--- !u!114 &8476764879849200251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938905158096030442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9351c6e2055149d19fba53f8b5b8768f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialConfig: []
+  lightConfig: []
+  colorConfig: []
 --- !u!1 &3938905159104157468
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 5396497428998410549, guid: 99a76a799c01e47439bb1b61f628722e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5396497428998410549, guid: 99a76a799c01e47439bb1b61f628722e,
         type: 3}
