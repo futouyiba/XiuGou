@@ -1452,17 +1452,16 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 3674770188089328314}
     - {fileID: 1656323834}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: INTDict
+    - Name: UnityActionsDict
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Int32,
-        mscorlib]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.Events.UnityAction,
+        UnityEngine.CoreModule]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
@@ -1472,108 +1471,34 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: ActionDict
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Action,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 1
-    - Name: 
-      Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 10
     - Name: $v
-      Entry: 7
-      Data: 3|System.Action, mscorlib
-    - Name: target
-      Entry: 10
-      Data: 0
-    - Name: declaringType
-      Entry: 7
-      Data: 4|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: UnityEngine.Transform, UnityEngine.CoreModule
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: methodName
-      Entry: 1
-      Data: SetAsFirstSibling
-    - Name: delegateType
-      Entry: 7
-      Data: 5|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: System.Action, mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: signature
-      Entry: 7
-      Data: 6|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: UnityActionsDict
-      Entry: 7
-      Data: 7|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.Events.UnityAction,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 9
-      Data: 1
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Action
       Entry: 6
       Data: 
-    - Name: UnityAction
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 7
-      Data: 8|UnityEngine.Events.UnityAction, UnityEngine.CoreModule
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 50
+    - Name: $v
+      Entry: 7
+      Data: 2|UnityEngine.Events.UnityAction, UnityEngine.CoreModule
     - Name: target
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: declaringType
       Entry: 7
-      Data: 9|System.RuntimeType, mscorlib
+      Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: UnityEngine.GameObject, UnityEngine.CoreModule
@@ -1585,7 +1510,7 @@ MonoBehaviour:
       Data: StopAnimation
     - Name: delegateType
       Entry: 7
-      Data: 10|System.RuntimeType, mscorlib
+      Data: 4|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: UnityEngine.Events.UnityAction, UnityEngine.CoreModule
@@ -1594,7 +1519,7 @@ MonoBehaviour:
       Data: 
     - Name: signature
       Entry: 7
-      Data: 11|System.Type[], mscorlib
+      Data: 5|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 0
@@ -1607,10 +1532,15 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: UnityActionInt
-      Entry: 6
+    - Name: 
+      Entry: 8
       Data: 
-  intVar: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &1702630276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6378968394345177781, guid: d36e195241205459caabe7137df4744d,
@@ -1844,12 +1774,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
---- !u!4 &3674770188089328314 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3674770188671908930, guid: cbacc8d2d22bd234cb0e651759f587cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 3674770188089328313}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4532589326388188064
 PrefabInstance:
   m_ObjectHideFlags: 0
