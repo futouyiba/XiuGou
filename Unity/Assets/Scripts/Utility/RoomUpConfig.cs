@@ -17,8 +17,18 @@ namespace ET.Utility
         // public Dictionary<int, int> INTDict = new Dictionary<int, int>();
         // [OdinSerialize]
         // public Dictionary<int, Action> ActionDict = new Dictionary<int, Action>();
+        // [OdinSerialize]
+        // public Dictionary<int, UnityAction> UnityActionsDict = new Dictionary<int, UnityAction>();
+        //
+        // public KeyValuePair<int, Action> KeyValuePairActionNoParam = new KeyValuePair<int, Action>();
+        //
+        // public KeyValuePair<int, int> KeyValuePairIntInt = new KeyValuePair<int, int>();
+        //
+        // public KeyValuePair<int, Action<int>> KeyValuePairActionWithInt = new KeyValuePair<int, Action<int>>();
+
         [OdinSerialize]
-        public Dictionary<int, UnityAction> UnityActionsDict = new Dictionary<int, UnityAction>();
+        public List<LevelInfo> LevelInfos = new List<LevelInfo>();
+        
         // [OdinSerialize]
         // public Action Action;
         // [OdinSerialize]
@@ -28,8 +38,32 @@ namespace ET.Utility
         // [OdinSerialize]
         // public int intVar;
 
-        
+            
+        public void TestUnityFunctionWithInt(int param)
+        {
+            Debug.Log("testUnityFunctionWithInt:"+param );
+        }
     }
+
+    // [InlineProperty]
+    public struct LevelInfo
+    {
+        public int TheLvl;
+        public int GuysNeeded;
+        public RoomUpEvent Effects;
+
+        public LevelInfo()
+        {
+            TheLvl = 0;
+            GuysNeeded = 0;
+            Effects = new RoomUpEvent();
+        }
+    }
+    
+    [System.Serializable]
+    public class RoomUpEvent : UnityEvent<int>
+    {}
+
     
     // public class SerializationDictionary<TKey, TValue> : ISerializationCallbackReceiver
     // {

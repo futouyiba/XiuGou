@@ -549,6 +549,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11490438, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -1518,90 +1522,19 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1656323834}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: UnityActionsDict
+    - Name: LevelInfos
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.Events.UnityAction,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10
-    - Name: $v
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 50
-    - Name: $v
-      Entry: 7
-      Data: 2|UnityEngine.Events.UnityAction, UnityEngine.CoreModule
-    - Name: target
-      Entry: 10
-      Data: 0
-    - Name: declaringType
-      Entry: 7
-      Data: 3|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: UnityEngine.GameObject, UnityEngine.CoreModule
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: methodName
-      Entry: 1
-      Data: StopAnimation
-    - Name: delegateType
-      Entry: 7
-      Data: 4|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: UnityEngine.Events.UnityAction, UnityEngine.CoreModule
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: signature
-      Entry: 7
-      Data: 5|System.Type[], mscorlib
+      Data: 0|System.Collections.Generic.List`1[[ET.Utility.LevelInfo, Assembly-CSharp]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
