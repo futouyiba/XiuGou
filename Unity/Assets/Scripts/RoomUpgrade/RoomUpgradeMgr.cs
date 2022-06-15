@@ -39,7 +39,7 @@ namespace ET
             if (toExec.Count > 0)
             {
                 currentLevel++;
-                levelUp.Invoke(currentLevel);
+                levelUp?.Invoke(currentLevel);
                 foreach (var exec in toExec)
                 {
                     exec.Effects?.Invoke();
