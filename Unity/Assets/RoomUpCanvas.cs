@@ -21,6 +21,8 @@ namespace ET
         private Text levelText;
         private Text initFloorText;
 
+        [SerializeField] private RoomUpgradeMgr _roomUpgradeMgr;
+
         private const string need = "要进化舞池您还需要:{0}人";
         
         // Start is called before the first frame update
@@ -41,6 +43,15 @@ namespace ET
                 _currentPopulationAnimator.SetTrigger(0);
                 
             };
+
+            _roomUpgradeMgr.levelUp += i =>
+            {
+                _currentLevelAnimator.SetTrigger(0);
+                levelText.text = i.ToString();
+                _goingOnAnimator.SetTrigger(0);
+            };
+            
+            
         }
 
         // Update is called once per frame

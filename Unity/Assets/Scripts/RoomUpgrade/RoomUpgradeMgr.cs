@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ET.Utility;
@@ -9,6 +10,8 @@ namespace ET
     {
         [SerializeField] private RoomUpConfig config;
         private int currentAmount;
+        public int currentLevel=1;
+        public Action<int> levelUp;
         private void Start()
         {
             CharMgr.instance.AddCharAmountUpdateDlg(CharAmountChanged);
@@ -35,6 +38,8 @@ namespace ET
 
             if (toExec.Count > 0)
             {
+                currentLevel++;
+                levelUp.Invoke(currentLevel);
                 foreach (var exec in toExec)
                 {
                     exec.Effects?.Invoke();
