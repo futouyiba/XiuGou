@@ -21,14 +21,14 @@ namespace ET
             //先不管往回走的
             if(endAmount<startAmout) return;
             currentAmount = amount;
-            var dict = config.UnityActionsDict;
-            List<int> toExec = new List<int>();
+            var info = config.LevelInfos;
+            List<LevelInfo> toExec = new List<LevelInfo>();
             
-            foreach (var item in dict)
+            foreach (var item in info)
             {
-                if (item.Key >= startAmout && item.Key < endAmount)
+                if (item.GuysNeeded >= startAmout && item.GuysNeeded < endAmount)
                 {
-                    toExec.Add(item.Key);
+                    toExec.Add(item);
                 }
             }
 
@@ -36,11 +36,12 @@ namespace ET
             {
                 foreach (var exec in toExec)
                 {
-                    var actions = dict[exec];
-                    foreach (var action in actions)
-                    {
-                        action.Invoke();
-                    }
+                    exec.Effects.Invoke();
+                    // var actions = dict[exec];
+                    // foreach (var action in actions)
+                    // {
+                    //     action.Invoke();
+                    // }
                 }
             }
 

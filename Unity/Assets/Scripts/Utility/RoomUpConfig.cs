@@ -52,16 +52,10 @@ namespace ET.Utility
         public int GuysNeeded;
         public RoomUpEvent Effects;
 
-        public LevelInfo()
-        {
-            TheLvl = 0;
-            GuysNeeded = 0;
-            Effects = new RoomUpEvent();
-        }
     }
     
     [System.Serializable]
-    public class RoomUpEvent : UnityEvent<int>
+    public class RoomUpEvent : UnityEvent
     {}
 
     
