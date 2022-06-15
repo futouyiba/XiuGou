@@ -68,10 +68,10 @@ namespace ET
                 IsRising = false;
                 CharUnmount();
                 avatar.tag = "Ground";
-                animation.Play("idle01");
+                animation.Play("light");
                 for (int i = 0; i < 10; i++)
                 {
-                    animation.PlayQueued("idle01");
+                    animation.PlayQueued("light");
                 }
                 GeneratePickups();
 
