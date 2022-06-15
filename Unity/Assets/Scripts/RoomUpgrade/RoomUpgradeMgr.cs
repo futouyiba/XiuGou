@@ -10,7 +10,7 @@ namespace ET
     {
         [SerializeField] private RoomUpConfig config;
         private int currentAmount;
-        public int currentLevel=1;
+        public int currentLevel=0;
         public Action<int> levelUp;
         private void Start()
         {
