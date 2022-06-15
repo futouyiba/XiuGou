@@ -8,7 +8,7 @@ namespace RoomUpgrade
 
         private GameObject lightObj;
         private RotateGameObject rotateScript;
-        private void Start()
+        private void Awake()
         {
             lightObj = transform.GetChild(0).gameObject;
             rotateScript = GetComponent<RotateGameObject>();

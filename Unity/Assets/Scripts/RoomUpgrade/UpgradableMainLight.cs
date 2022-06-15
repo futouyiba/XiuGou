@@ -6,7 +6,7 @@ namespace RoomUpgrade
     {
         private GameObject lightObj;
         private LightController controller;
-        private void Start()
+        private void Awake()
         {
             lightObj = transform.GetChild(0).gameObject;
             controller = GetComponent<LightController>();

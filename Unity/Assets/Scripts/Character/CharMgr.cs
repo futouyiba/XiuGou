@@ -48,14 +48,16 @@ namespace ET
         void Awake()
         {
             Random.InitState((int)Time.time);
+            _instance = this;
+            charDict = new Dictionary<int, CharMain>();
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            _instance = this;
+
             Cursor.lockState = CursorLockMode.None;
-            charDict = new Dictionary<int, CharMain>();
+            
             // for (int i = 0; i < 10; i++)
             // {
             //     CreateCharView(this.id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {i}", Color.white);

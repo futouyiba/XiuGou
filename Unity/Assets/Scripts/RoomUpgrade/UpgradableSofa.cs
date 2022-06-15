@@ -7,7 +7,7 @@ namespace RoomUpgrade
     {
         private MeshRenderer renderer;
 
-        private void Start()
+        private void Awake()
         {
             renderer = this.GetComponent<MeshRenderer>();
         }

@@ -5,7 +5,7 @@ namespace RoomUpgrade
     public class UpgradableDogLight:UpgradableObject
     {
         private GameObject lightObj;
-        private void Start()
+        private void Awake()
         {
             lightObj = transform.GetChild(0).gameObject;
         }

@@ -12,6 +12,7 @@ namespace ET
         private void Start()
         {
             CharMgr.instance.AddCharAmountUpdateDlg(CharAmountChanged);
+            CharMgr.instance.CreateTestGuysByNum(1);
         }
 
         protected void CharAmountChanged(int amount)
@@ -26,7 +27,7 @@ namespace ET
             
             foreach (var item in info)
             {
-                if (item.GuysNeeded >= startAmout && item.GuysNeeded < endAmount)
+                if (item.GuysNeeded >= startAmout && item.GuysNeeded <= endAmount)
                 {
                     toExec.Add(item);
                 }
@@ -36,7 +37,7 @@ namespace ET
             {
                 foreach (var exec in toExec)
                 {
-                    exec.Effects.Invoke();
+                    exec.Effects?.Invoke();
                     // var actions = dict[exec];
                     // foreach (var action in actions)
                     // {
