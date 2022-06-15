@@ -33,6 +33,12 @@ namespace RoomUpgrade
         //     }
         // }
 
+        public void Init()
+        {
+            LightOff();
+            ControllerOff();
+        }
+
         public void LightOn()
         {
             lightObj.SetActive(true);
