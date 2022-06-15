@@ -6,11 +6,11 @@ namespace RoomUpgrade
 {
     public class UpgradableFloor : UpgradableObject
     {
-        
+        private MeshRenderer renderer;
         // Start is called before the first frame update
         void Start()
         {
-            
+            renderer = this.GetComponent<MeshRenderer>();    
         }
 
         // Update is called once per frame
@@ -34,6 +34,22 @@ namespace RoomUpgrade
                     renderer.material = materialConfig[1];
                     break;
             }
+        }
+
+
+        public void Material0()
+        {
+            renderer.material = materialConfig[0];
+        }
+        
+        public void Material1()
+        {
+            renderer.material = materialConfig[1];
+        }
+
+        public void Material2()
+        {
+            renderer.material = materialConfig[2];
         }
     }
 }

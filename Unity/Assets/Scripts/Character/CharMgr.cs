@@ -17,6 +17,8 @@ namespace ET
 
         protected Dictionary<int, CharMain> charDict;
 
+        private Action<int> dlgCharAmountUpdate;
+        
         private int _id = 0;
         protected int id
         {
@@ -155,6 +157,8 @@ namespace ET
                     Color.white);
             }
 
+
+            dlgCharAmountUpdate?.Invoke(numStart + num);
             Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
         }
         
@@ -177,6 +181,7 @@ namespace ET
                     RegisterMe(char_id);
                 }
             }
+            dlgCharAmountUpdate?.Invoke(charDict.Count);
         }
         
         public void CreateCharNativeCall(string _params)
@@ -360,6 +365,28 @@ namespace ET
             var buildPos = new Vector3(newPos.x, DanceFloorHelper.GetPivotY() + 1f, newPos.y);
             charGot.transform.position = buildPos;
 
+        }
+
+        public void AddCharAmountUpdateDlg(Action<int> dlg)
+        {
+            if (dlg == null)
+            {
+                Debug.LogError($"dlg is null");
+                return;
+            }
+
+            dlgCharAmountUpdate += dlg;
+        }
+        
+        public void RemoveCharAmountUpdateDlg(Action<int> dlg)
+        {
+            if (dlg == null)
+            {
+                Debug.LogError($"dlg is null");
+                return;
+            }
+
+            dlgCharAmountUpdate -= dlg;
         }
     }
 }

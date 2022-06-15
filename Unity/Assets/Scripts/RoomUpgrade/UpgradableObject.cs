@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace RoomUpgrade
@@ -7,13 +8,13 @@ namespace RoomUpgrade
     public class UpgradableObject: MonoBehaviour
     {
         // protected int level;
-        [SerializeField] protected List<Material> materialConfig;
-        [SerializeField] protected List<Light> lightConfig;
-        [SerializeField] protected List<Color> colorConfig;
+        [OdinSerialize] public List<Material> materialConfig;
+        [OdinSerialize] public List<Light> lightConfig;
+        [OdinSerialize] public List<Color> colorConfig;
 
         private void Start()
         {
-            LevelTo(1);
+            // LevelTo(1);
         }
 
         public virtual void LevelTo(int level)

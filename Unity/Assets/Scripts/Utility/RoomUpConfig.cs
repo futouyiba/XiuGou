@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -18,7 +19,7 @@ namespace ET.Utility
         // [OdinSerialize]
         // public Dictionary<int, Action> ActionDict = new Dictionary<int, Action>();
         [OdinSerialize]
-        public Dictionary<int, UnityAction> UnityActionsDict = new Dictionary<int, UnityAction>();
+        public Dictionary<int, List<UnityAction>> UnityActionsDict = new Dictionary<int, List<UnityAction>>();
         // [OdinSerialize]
         // public Action Action;
         // [OdinSerialize]
@@ -28,7 +29,22 @@ namespace ET.Utility
         // [OdinSerialize]
         // public int intVar;
 
-        
+        private void Start()
+        {
+            CharMgr.instance.AddCharAmountUpdateDlg(CharAmountChanged);
+        }
+
+        protected void CharAmountChanged(int amount)
+        {
+            for (int i = 0; i < UnityActionsDict.Count; i++)
+            {
+                if (i == UnityActionsDict.Count - 1)
+                {
+                    
+                }
+            }
+
+        }
     }
     
     // public class SerializationDictionary<TKey, TValue> : ISerializationCallbackReceiver
