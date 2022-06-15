@@ -17,7 +17,7 @@ namespace ET
 
         protected Dictionary<int, CharMain> charDict;
 
-        private Action<int> dlgCharAmountUpdate;
+        public Action<int> dlgCharAmountUpdate;
         
         private int _id = 0;
         protected int id
@@ -161,7 +161,7 @@ namespace ET
 
 
             dlgCharAmountUpdate?.Invoke(numStart + num);
-            Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
+            // Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
         }
         
         public void Create100TestGuys()
