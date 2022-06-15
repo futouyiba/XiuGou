@@ -108,19 +108,56 @@ namespace ET
 
             if (Input.GetKeyDown(KeyCode.Keypad1))
             {
-                // var msg= "{\"Op\":\"UserList\",\"OpData\":{\"userInfos\":[{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351558146,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"black\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.55245835,0.38888156\",\"privateChatBanTime\":0,\"sex\":2,\"surfing\":530510,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840174,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":696268800000,\"carId\":0,\"chatBubbleId\":0,\"city\":\"北京\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"user/ed03f571b0ae48f590aa6bb4fe4daad4.jpg\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351792150,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"哈哈\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.547373175621033,0.463172942399979\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530501,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840167,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351922902,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"黑色小老虎\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"1,1\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530503,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840169,\"userState\":1,\"userType\":2,\"voiceTime\":0}]}}";
-                // var msg = "{\"Op\":\"Break\",\"OpData\":{\"isStartBreak\":true}}";
-                // NativeProxy.instance.Native2UnityMsg(msg);
+                CreateTestGuysByNum(10);
+
+                
             }
             if (Input.GetKeyDown(KeyCode.Keypad2))
             {
-                // var msg= "{\"Op\":\"UserList\",\"OpData\":{\"userInfos\":[{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351558146,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"black\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.55245835,0.38888156\",\"privateChatBanTime\":0,\"sex\":2,\"surfing\":530510,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840174,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":696268800000,\"carId\":0,\"chatBubbleId\":0,\"city\":\"北京\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"user/ed03f571b0ae48f590aa6bb4fe4daad4.jpg\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351792150,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"哈哈\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"0.547373175621033,0.463172942399979\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530501,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840167,\"userState\":1,\"userType\":2,\"voiceTime\":0},{\"birthday\":0,\"carId\":0,\"chatBubbleId\":0,\"city\":\"\",\"contractList\":[],\"creditLevel\":0,\"deleteUserId\":0,\"duration\":0,\"friendState\":0,\"gifType\":0,\"headPic\":\"\",\"headgearId\":0,\"inRoom\":false,\"intro\":\"\",\"isInviteMic\":false,\"lastActiveTime\":1652351922902,\"levelList\":[],\"messageBanTime\":0,\"micId\":0,\"newUser\":true,\"nickName\":\"黑色小老虎\",\"nickPendantId\":0,\"online\":true,\"onlineHidden\":false,\"position\":\"1,1\",\"privateChatBanTime\":0,\"sex\":1,\"surfing\":530503,\"userBanTime\":0,\"userDesc\":\"\",\"userId\":840169,\"userState\":1,\"userType\":2,\"voiceTime\":0}]}}";
-                // var msg = "{\"Op\":\"Break\",\"OpData\":{\"isStartBreak\":false}}";
-                // NativeProxy.instance.Native2UnityMsg(msg);
+                CreateTestGuysByNum(100);
             }
+            if (Input.GetKeyDown(KeyCode.Keypad3))  
+            {
+                CreateTestGuysByNum(1000);
+            }
+            if (Input.GetKeyDown(KeyCode.KeypadPlus))  
+            {
+                CreateTestGuysByNum(1);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.KeypadPeriod))  
+            {
+                CreateTestGuysByNum(10);
+            }
+
+
+
+            if (Input.GetKeyDown(KeyCode.Keypad6))  
+            {
+                CreateTestGuysByNum(6);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad9))  
+            {
+                CreateTestGuysByNum(9);
+            }
+
+            
             #endif
         }
 
+        public void CreateTestGuysByNum(int num)
+        {
+            var numStart = CharMgr.instance.charDict.Count;
+            for (int i = 0; i < num; i++)
+            {
+                var index = numStart + i;
+                var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {index}", -1,
+                    Color.white);
+            }
+
+            Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
+        }
+        
         public void Create100TestGuys()
         {
             var random_me = -1;
