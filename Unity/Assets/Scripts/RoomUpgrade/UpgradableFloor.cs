@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace RoomUpgrade
@@ -7,6 +8,10 @@ namespace RoomUpgrade
     public class UpgradableFloor : UpgradableObject
     {
         private MeshRenderer renderer;
+
+        [OdinSerialize] public List<GameObject> floorPrefabs;
+
+        private GameObject currentFloor;
         // Start is called before the first frame update
         void Awake()
         {
@@ -51,5 +56,21 @@ namespace RoomUpgrade
         {
             renderer.material = materialConfig[2];
         }
+
+        public void ChangePrefab(int prefabId)
+        {
+            if (prefabId < 0 || prefabId >= floorPrefabs.Count)
+            {
+                Debug.LogError($"prefab Id={prefabId} is not valid, max is {floorPrefabs.Count}");
+                return;
+            }
+            if (currentFloor)
+            {
+                Destroy(currentFloor);
+            }
+
+            currentFloor = Instantiate(floorPrefabs[prefabId], this.transform);
+        }
+        
     }
 }

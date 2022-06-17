@@ -2,20 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using ET.Utility;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ET
 {
     public class RoomUpgradeMgr : MonoBehaviour
     {
-        [SerializeField] private RoomUpConfig config;
+        [SerializeField] private RoomUpgradeConfig2 config;
         private int currentAmount;
-        public int currentLevel=0;
+        [ReadOnly] public int currentLevel=0;
         public Action<int> levelUp;
         private void Start()
         {
             CharMgr.instance.AddCharAmountUpdateDlg(CharAmountChanged);
-            CharMgr.instance.CreateTestGuysByNum(1);
+            // CharMgr.instance.CreateTestGuysByNum(1);
         }
 
         protected void CharAmountChanged(int amount)
@@ -25,14 +26,14 @@ namespace ET
             //先不管往回走的
             if(endAmount<startAmout) return;
             currentAmount = amount;
-            var info = config.LevelInfos;
-            List<LevelInfo> toExec = new List<LevelInfo>();
+            var info = config.actions;
+            List<ActionParam> toExec = new List<ActionParam>();
             
             foreach (var item in info)
             {
-                if (item.GuysNeeded >= startAmout && item.GuysNeeded <= endAmount)
+                if (item.Key >= startAmout && item.Key <= endAmount)
                 {
-                    toExec.Add(item);
+                    toExec.AddRange(item.Value);
                 }
             }
 
@@ -42,7 +43,7 @@ namespace ET
                 levelUp?.Invoke(currentLevel);
                 foreach (var exec in toExec)
                 {
-                    exec.Effects?.Invoke();
+                    exec.Invoke();
                     // var actions = dict[exec];
                     // foreach (var action in actions)
                     // {

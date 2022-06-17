@@ -8,8 +8,9 @@ namespace RoomUpgrade
         private LightController controller;
         private void Awake()
         {
-            lightObj = transform.GetChild(0).gameObject;
-            controller = GetComponent<LightController>();
+            lightObj = transform.GetChild(0).GetChild(0).gameObject;
+            controller = transform.GetChild(0).GetComponent<LightController>();
+            Init();
         }
         // public override void LevelTo(int level)
         // {
@@ -57,6 +58,39 @@ namespace RoomUpgrade
         public void ControllerOff()
         {
             controller.enabled = false;
+        }
+
+        public void LightSwitch(int isOn)
+        {
+            if (isOn == 0)
+            {
+                lightObj.SetActive(false);
+            }
+            else if (isOn == 1)
+            {
+                lightObj.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError($"param {isOn} is not valid");
+            }
+        }
+
+        public void ControllerSwitch(int isOn)
+        {
+
+            if (isOn == 0)
+            {
+                controller.enabled = false;
+            }
+            else if (isOn == 1)
+            {
+                controller.enabled = true;
+            }
+            else
+            {
+                Debug.LogError($"param {isOn} is not valid");
+            }
         }
     }
 }
