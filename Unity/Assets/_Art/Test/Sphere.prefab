@@ -419,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2411430457563196887
 Transform:
   m_ObjectHideFlags: 0
@@ -444,7 +444,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.093724616, g: 0.0501513, b: 0.21698111, a: 0}
+  m_BackGroundColor: {r: 0.029021287, g: 0.01588643, b: 0.066037714, a: 0}
   m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8268012652021453174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8db4dbf27cc012a4aa79d6569020c301, type: 3}
   m_Name: 
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8268012652021453174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
   m_Name: 
@@ -703,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 600976934549200475, guid: fb86034831a424e0b9c13f2245c0777d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 600976934549200556, guid: fb86034831a424e0b9c13f2245c0777d,
         type: 3}
@@ -753,12 +753,12 @@ PrefabInstance:
     - target: {fileID: 600976934549200557, guid: fb86034831a424e0b9c13f2245c0777d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0913
+      value: 0.147
       objectReference: {fileID: 0}
     - target: {fileID: 600976934549200557, guid: fb86034831a424e0b9c13f2245c0777d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2634
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 600976934549200557, guid: fb86034831a424e0b9c13f2245c0777d,
         type: 3}
@@ -865,7 +865,7 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 3832368515254322082}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8301708849101715661
+--- !u!114 &304139740741239670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -874,16 +874,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4429386485315280377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db4dbf27cc012a4aa79d6569020c301, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 6941190409380181198}
-  IsFollowing: 0
-  animator: {fileID: 1304053229379460353}
-  enterIdleLerpDuration: 1.5
-  enterFollowLerpDuration: 1.5
-  enterFarWatchLerpDuration: 1.5
-  IsFarWatching: 0
+  sharedProfile: {fileID: 11400000, guid: 6a0742ac59ad4434389da42c85f6bebb, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &6941190409380181198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,7 +889,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4429386485315280377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
   m_Name: 
@@ -960,7 +958,7 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &304139740741239670
+--- !u!114 &8301708849101715661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -969,11 +967,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4429386485315280377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Script: {fileID: 11500000, guid: 8db4dbf27cc012a4aa79d6569020c301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 6a0742ac59ad4434389da42c85f6bebb, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
+  fsm: {fileID: 6941190409380181198}
+  IsFollowing: 0
+  animator: {fileID: 1304053229379460353}
+  enterIdleLerpDuration: 1.5
+  enterFollowLerpDuration: 1.5
+  enterFarWatchLerpDuration: 1.5
+  IsFarWatching: 0
