@@ -12,6 +12,7 @@ namespace RoomUpgrade
         {
             lightObj = transform.GetChild(0).gameObject;
             rotateScript = GetComponent<RotateGameObject>();
+            Init();
         }
         
         // public override void LevelTo(int level)
@@ -60,6 +61,38 @@ namespace RoomUpgrade
         public void LightOff()
         {
             lightObj.SetActive(false);
+        }
+        
+        public void LightSwitch(int isOn)
+        {
+            if (isOn == 0)
+            {
+                lightObj.SetActive(false);
+            }
+            else if (isOn == 1)
+            {
+                lightObj.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError($"param {isOn} is not valid");
+            }
+        }
+
+        public void RotateSwitch(int isOn)
+        {
+            if (isOn == 0)
+            {
+                rotateScript.IsRotate = false;
+            }
+            else if (isOn == 1)
+            {
+                rotateScript.IsRotate = true;
+            }
+            else
+            {
+                Debug.LogError($"param {isOn} is not valid");
+            }
         }
     }
 }
