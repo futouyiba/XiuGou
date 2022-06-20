@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ET;
 using Sirenix.Serialization;
 using UnityEngine;
 
@@ -70,6 +71,37 @@ namespace RoomUpgrade
             }
 
             currentFloor = Instantiate(floorPrefabs[prefabId], this.transform);
+        }
+
+
+        [SerializeField] protected List<GameObject> lightObjs;
+        [SerializeField] protected DanceFloorPivot pivot; 
+        /// <summary>
+        /// 20220620 随着舞台升级改变灯光
+        /// 改变的有：
+        /// 1、舞台范围
+        /// 2、灯光，指示大概范围
+        /// </summary>
+        /// <param name="id">变为第几个形态</param>
+        public void ChangeRegion(int id)
+        {
+            if (id < 0 || id > 2)
+            {
+                Debug.LogError($"{id} is not valid");
+                return;
+            }
+            pivot.UpdateBorder(id);
+            foreach (var obj in lightObjs)
+            {
+                if (obj.activeSelf)
+                {
+                    obj.SetActive(false);
+                    break;
+                }
+            }
+
+            lightObjs[id].SetActive(true);
+
         }
         
     }
