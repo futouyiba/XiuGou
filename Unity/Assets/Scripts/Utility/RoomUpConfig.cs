@@ -62,7 +62,7 @@ namespace ET.Utility
             {
                 // if (o.GetType().HasElementType())
                 {
-                    o.SendMessage("Init");
+                    o.SendMessage("Awake");
                 }
             });
         }
