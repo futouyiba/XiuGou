@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4944703669036928794}
   - component: {fileID: 8300352214745694399}
   - component: {fileID: 6112564562066388085}
+  - component: {fileID: 3808967463732832140}
   m_Layer: 0
   m_Name: SeatLarge_01
   m_TagString: Untagged
@@ -81,3 +82,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3808967463732832140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752448459516155296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdffcf233dd465cb721ce85c7dc8ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialConfig:
+  - {fileID: 2100000, guid: 123378a18c29a124794b6d8755f33295, type: 2}
+  - {fileID: 2100000, guid: b6f26e90d5f22704d94426f8bf9dd345, type: 2}
+  - {fileID: 2100000, guid: adfe5bad1c468d149a3080b173505a0b, type: 2}
+  lightConfig: []
+  colorConfig: []
