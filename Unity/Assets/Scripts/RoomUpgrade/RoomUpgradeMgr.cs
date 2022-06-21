@@ -17,6 +17,7 @@ namespace ET
         private void Start()
         {
             CharMgr.instance.AddCharAmountUpdateDlg(CharAmountChanged);
+            CharAmountChanged(0);
             // CharMgr.instance.CreateTestGuysByNum(1);
         }
 
@@ -47,6 +48,7 @@ namespace ET
                 {
                     
                     exec.Invoke();
+                    
                     // var actions = dict[exec];
                     // foreach (var action in actions)
                     // {
