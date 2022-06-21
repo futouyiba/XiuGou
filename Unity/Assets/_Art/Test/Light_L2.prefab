@@ -102,6 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1384962444670253387}
+  - component: {fileID: 1464748845}
   m_Layer: 0
   m_Name: Light_L2
   m_TagString: Untagged
@@ -125,6 +126,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!95 &1464748845
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4373215074626037642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0336eabb2ef7f841b34cdeb93b78fc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5455131898723377466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,9 +229,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a13283f0c62482f4aade77777890adbc, type: 3}
+--- !u!1 &6244429284595833514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2097603025910545296, guid: a13283f0c62482f4aade77777890adbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5455131898723377466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1620785528330332017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6758401481385576011, guid: a13283f0c62482f4aade77777890adbc,
     type: 3}
   m_PrefabInstance: {fileID: 5455131898723377466}
   m_PrefabAsset: {fileID: 0}
+--- !u!111 &1423580474
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244429284595833514}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 68ce7004e85977a428611e9e0decd40f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 68ce7004e85977a428611e9e0decd40f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
