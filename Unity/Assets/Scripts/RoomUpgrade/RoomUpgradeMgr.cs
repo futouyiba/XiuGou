@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using ET.Utility;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ET
 {
     public class RoomUpgradeMgr : MonoBehaviour
     {
-        [SerializeField] private RoomUpgradeConfig2 config;
+        [SerializeField] private RoomUpConfig config;
         private int currentAmount;
         [ReadOnly] public int currentLevel=0;
         public Action<int> levelUp;
@@ -26,14 +27,14 @@ namespace ET
             //先不管往回走的
             if(endAmount<startAmout) return;
             currentAmount = amount;
-            var info = config.actions;
-            List<ActionParam> toExec = new List<ActionParam>();
+            var info = config.LevelInfos;
+            List<UnityEvent> toExec = new List<UnityEvent>();
             
             foreach (var item in info)
             {
-                if (item.Key >= startAmout && item.Key <= endAmount)
+                if (item.TheLvl >= startAmout && item.GuysNeeded <= endAmount)
                 {
-                    toExec.AddRange(item.Value);
+                    toExec.Add(item.Effects);
                 }
             }
 
@@ -41,8 +42,10 @@ namespace ET
             {
                 currentLevel++;
                 levelUp?.Invoke(currentLevel);
+                
                 foreach (var exec in toExec)
                 {
+                    
                     exec.Invoke();
                     // var actions = dict[exec];
                     // foreach (var action in actions)
