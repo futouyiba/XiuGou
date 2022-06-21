@@ -50,7 +50,7 @@ namespace ET.Utility
     {
         public int TheLvl;
         public int GuysNeeded;
-        public RoomUpEvent Effects;
+        public UnityEvent Effects;
 
     }
     
