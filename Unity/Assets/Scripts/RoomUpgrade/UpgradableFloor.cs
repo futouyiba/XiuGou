@@ -75,12 +75,14 @@ namespace RoomUpgrade
 
 
         [SerializeField] protected List<GameObject> lightObjs;
-        [SerializeField] protected DanceFloorPivot pivot; 
+        [SerializeField] protected DanceFloorPivot pivot;
+        [SerializeField] protected List<GameObject> accessories;
         /// <summary>
         /// 20220620 随着舞台升级改变灯光
         /// 改变的有：
         /// 1、舞台范围
         /// 2、灯光，指示大概范围
+        /// 3、有些附加小物件要打开
         /// </summary>
         /// <param name="id">变为第几个形态</param>
         public void ChangeRegion(int id)
@@ -102,6 +104,17 @@ namespace RoomUpgrade
 
             lightObjs[id].SetActive(true);
 
+            //打开场景里的附加物件
+            if (id == 1)
+            {
+                accessories[0].SetActive(true);
+                accessories[1].SetActive(false);
+            }
+            else if (id == 2)
+            {
+                accessories[0].SetActive(false);
+                accessories[1].SetActive(true);
+            }
         }
         
     }

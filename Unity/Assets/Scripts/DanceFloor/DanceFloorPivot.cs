@@ -226,6 +226,15 @@ namespace ET
 
             cur_Radius = cylinderBorder.ScaleTo(id);
         }
-        
+
+
+        private void OnDrawGizmos()
+        {
+            if (Input.GetKey(KeyCode.Y))
+            {
+                var target = DanceFloorHelper.PosUnifiedPolar2Scene(new Vector2(0, 0));
+                Gizmos.DrawSphere(target, .5f);
+            }
+        }
     }
 }

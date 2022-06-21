@@ -801,6 +801,7 @@ MonoBehaviour:
   floorPrefabs: []
   lightObjs: []
   pivot: {fileID: 0}
+  accessories: []
 --- !u!64 &405400586
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2252,6 +2253,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UsePipelineSettings: 1
+--- !u!1 &1682622768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 328221824587422955, guid: 7212bbc852f814a49b5eec88834f2c72,
+    type: 3}
+  m_PrefabInstance: {fileID: 328221824236488724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1702630276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6378968394345177781, guid: d36e195241205459caabe7137df4744d,
@@ -2298,6 +2305,9 @@ MonoBehaviour:
   - {fileID: 1464748843}
   - {fileID: 971678732}
   pivot: {fileID: 628816336}
+  accessories:
+  - {fileID: 1682622768}
+  - {fileID: 1981724981}
 --- !u!1 &1870071805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6378968394339105124, guid: d36e195241205459caabe7137df4744d,
@@ -2356,6 +2366,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UsePipelineSettings: 1
+--- !u!1 &1981724981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4655615229570466830, guid: 299ba046ba7ca3e4fb809c15aa37c568,
+    type: 3}
+  m_PrefabInstance: {fileID: 496587244531346980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1996007851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6378968394476706407, guid: d36e195241205459caabe7137df4744d,
@@ -2879,7 +2895,6 @@ MonoBehaviour:
     - {fileID: 2127302680410230437}
     - {fileID: 1772685540}
     - {fileID: 123530601}
-    - {fileID: 6378968395555543530}
     - {fileID: 1870071806}
     - {fileID: 5815734576800442351}
     - {fileID: 4865551072511203881}
@@ -3203,7 +3218,7 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 25|ET.ActionParam, Assembly-CSharp
@@ -3214,23 +3229,17 @@ MonoBehaviour:
       Entry: 10
       Data: 4
     - Name: declaringType
-      Entry: 7
-      Data: 27|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: RoomUpgrade.UpgradableMainLight, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 9
+      Data: 11
     - Name: methodName
       Entry: 1
-      Data: ControllerSwitch
+      Data: Switch
     - Name: delegateType
       Entry: 9
       Data: 6
     - Name: signature
       Entry: 7
-      Data: 28|System.Type[], mscorlib
+      Data: 27|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -3254,10 +3263,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 29|ET.ActionParam, Assembly-CSharp
+      Data: 28|ET.ActionParam, Assembly-CSharp
     - Name: dlg
       Entry: 7
-      Data: 30|System.Action`1[[System.Int32, mscorlib]], mscorlib
+      Data: 29|System.Action`1[[System.Int32, mscorlib]], mscorlib
     - Name: target
       Entry: 10
       Data: 5
@@ -3272,49 +3281,7 @@ MonoBehaviour:
       Data: 6
     - Name: signature
       Entry: 7
-      Data: 31|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 9
-      Data: 8
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: param
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 32|ET.ActionParam, Assembly-CSharp
-    - Name: dlg
-      Entry: 7
-      Data: 33|System.Action`1[[System.Int32, mscorlib]], mscorlib
-    - Name: target
-      Entry: 10
-      Data: 6
-    - Name: declaringType
-      Entry: 9
-      Data: 11
-    - Name: methodName
-      Entry: 1
-      Data: Switch
-    - Name: delegateType
-      Entry: 9
-      Data: 6
-    - Name: signature
-      Entry: 7
-      Data: 34|System.Type[], mscorlib
+      Data: 30|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -3353,17 +3320,17 @@ MonoBehaviour:
       Data: 20
     - Name: $v
       Entry: 7
-      Data: 35|System.Collections.Generic.List`1[[ET.ActionParam, Assembly-CSharp]],
+      Data: 31|System.Collections.Generic.List`1[[ET.ActionParam, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 4
     - Name: 
       Entry: 7
-      Data: 36|ET.ActionParam, Assembly-CSharp
+      Data: 32|ET.ActionParam, Assembly-CSharp
     - Name: dlg
       Entry: 7
-      Data: 37|System.Action`1[[System.Int32, mscorlib]], mscorlib
+      Data: 33|System.Action`1[[System.Int32, mscorlib]], mscorlib
     - Name: target
       Entry: 10
       Data: 2
@@ -3378,7 +3345,7 @@ MonoBehaviour:
       Data: 6
     - Name: signature
       Entry: 7
-      Data: 38|System.Type[], mscorlib
+      Data: 34|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -3402,10 +3369,52 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 39|ET.ActionParam, Assembly-CSharp
+      Data: 35|ET.ActionParam, Assembly-CSharp
     - Name: dlg
       Entry: 7
-      Data: 40|System.Action`1[[System.Int32, mscorlib]], mscorlib
+      Data: 36|System.Action`1[[System.Int32, mscorlib]], mscorlib
+    - Name: target
+      Entry: 10
+      Data: 6
+    - Name: declaringType
+      Entry: 9
+      Data: 11
+    - Name: methodName
+      Entry: 1
+      Data: Switch
+    - Name: delegateType
+      Entry: 9
+      Data: 6
+    - Name: signature
+      Entry: 7
+      Data: 37|System.Type[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 9
+      Data: 8
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: param
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 38|ET.ActionParam, Assembly-CSharp
+    - Name: dlg
+      Entry: 7
+      Data: 39|System.Action`1[[System.Int32, mscorlib]], mscorlib
     - Name: target
       Entry: 10
       Data: 7
@@ -3420,7 +3429,7 @@ MonoBehaviour:
       Data: 6
     - Name: signature
       Entry: 7
-      Data: 41|System.Type[], mscorlib
+      Data: 40|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -3444,10 +3453,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 42|ET.ActionParam, Assembly-CSharp
+      Data: 41|ET.ActionParam, Assembly-CSharp
     - Name: dlg
       Entry: 7
-      Data: 43|System.Action`1[[System.Int32, mscorlib]], mscorlib
+      Data: 42|System.Action`1[[System.Int32, mscorlib]], mscorlib
     - Name: target
       Entry: 10
       Data: 8
@@ -3462,7 +3471,7 @@ MonoBehaviour:
       Data: 6
     - Name: signature
       Entry: 7
-      Data: 44|System.Type[], mscorlib
+      Data: 43|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -3484,6 +3493,28 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 35
+    - Name: $v
+      Entry: 7
+      Data: 44|System.Collections.Generic.List`1[[ET.ActionParam, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
     - Name: 
       Entry: 7
       Data: 45|ET.ActionParam, Assembly-CSharp
@@ -3527,33 +3558,11 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 35
-    - Name: $v
-      Entry: 7
-      Data: 48|System.Collections.Generic.List`1[[ET.ActionParam, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 49|ET.ActionParam, Assembly-CSharp
+      Data: 48|ET.ActionParam, Assembly-CSharp
     - Name: dlg
       Entry: 7
-      Data: 50|System.Action`1[[System.Int32, mscorlib]], mscorlib
+      Data: 49|System.Action`1[[System.Int32, mscorlib]], mscorlib
     - Name: target
       Entry: 10
       Data: 10
@@ -3568,7 +3577,7 @@ MonoBehaviour:
       Data: 6
     - Name: signature
       Entry: 7
-      Data: 51|System.Type[], mscorlib
+      Data: 50|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -3592,10 +3601,10 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 52|ET.ActionParam, Assembly-CSharp
+      Data: 51|ET.ActionParam, Assembly-CSharp
     - Name: dlg
       Entry: 7
-      Data: 53|System.Action`1[[System.Int32, mscorlib]], mscorlib
+      Data: 52|System.Action`1[[System.Int32, mscorlib]], mscorlib
     - Name: target
       Entry: 10
       Data: 11
@@ -3610,49 +3619,7 @@ MonoBehaviour:
       Data: 6
     - Name: signature
       Entry: 7
-      Data: 54|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 9
-      Data: 8
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: param
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 55|ET.ActionParam, Assembly-CSharp
-    - Name: dlg
-      Entry: 7
-      Data: 56|System.Action`1[[System.Int32, mscorlib]], mscorlib
-    - Name: target
-      Entry: 10
-      Data: 12
-    - Name: declaringType
-      Entry: 9
-      Data: 11
-    - Name: methodName
-      Entry: 1
-      Data: Switch
-    - Name: delegateType
-      Entry: 9
-      Data: 6
-    - Name: signature
-      Entry: 7
-      Data: 57|System.Type[], mscorlib
+      Data: 53|System.Type[], mscorlib
     - Name: 
       Entry: 12
       Data: 1
@@ -3790,7 +3757,7 @@ PrefabInstance:
     - target: {fileID: 209105264194622287, guid: 2bc2e8fc6e397c142982785d7f1456ff,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 841570803634144457, guid: 2bc2e8fc6e397c142982785d7f1456ff,
         type: 3}
@@ -3882,7 +3849,7 @@ PrefabInstance:
     - target: {fileID: 5815734576301262408, guid: f2c6e844da848644db9146512f3a09db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5815734576301262409, guid: f2c6e844da848644db9146512f3a09db,
         type: 3}
@@ -4087,7 +4054,7 @@ PrefabInstance:
     - target: {fileID: 892210155924635942, guid: d36e195241205459caabe7137df4744d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 892210155924635943, guid: d36e195241205459caabe7137df4744d,
         type: 3}
@@ -4199,6 +4166,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6378968394262042791, guid: d36e195241205459caabe7137df4744d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6378968394267076389, guid: d36e195241205459caabe7137df4744d,
         type: 3}
       propertyPath: m_IsActive
@@ -4272,7 +4244,7 @@ PrefabInstance:
     - target: {fileID: 6378968394875530326, guid: d36e195241205459caabe7137df4744d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6378968394925126464, guid: d36e195241205459caabe7137df4744d,
         type: 3}
@@ -4354,18 +4326,6 @@ PrefabInstance:
     - {fileID: 1174503319, guid: d36e195241205459caabe7137df4744d, type: 3}
     - {fileID: 1934174047, guid: d36e195241205459caabe7137df4744d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d36e195241205459caabe7137df4744d, type: 3}
---- !u!114 &6378968395555543530 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7217867972331863348, guid: d36e195241205459caabe7137df4744d,
-    type: 3}
-  m_PrefabInstance: {fileID: 6378968395555543529}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c115468532e4a9781f749a9641cf32f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6589886232641266485
 PrefabInstance:
   m_ObjectHideFlags: 0

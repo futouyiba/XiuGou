@@ -56,6 +56,7 @@ namespace ET
 
         public static Vector2 PosUnified2Scene(Vector2 unifiedPos)
         {
+            Debug.LogWarning($"uni pos is {unifiedPos}");
             var pivot = GetGoFromScene("pivot").GetComponent<DanceFloorPivot>();
             var pos0 = pivot.small.position;
             var pos1 = pivot.big.position;
@@ -65,13 +66,14 @@ namespace ET
             return targetPos;
         }
 
-        public static Vector2 PosUnifiedPolar2Scene(Vector2 unifiedPos)
+        public static Vector3 PosUnifiedPolar2Scene(Vector2 unifiedPos)
         {
             var pivot = GetGoFromScene("pivot").GetComponent<DanceFloorPivot>();
-            float randomR = Random.Range(0f, 1f) * pivot.cur_Radius;
-            float randomA = Random.Range(0f, 1f) * 360;
-            var randomDir = Quaternion.Euler(new Vector3(0, randomA, 0)) * Vector3.right;
-            return pivot.center.position + randomDir;
+            float randomR = unifiedPos.x * pivot.cur_Radius;
+            float randomA = unifiedPos.y * 360f;
+            var randomDir = Quaternion.AngleAxis(randomA, Vector3.up) * Vector3.right;
+            var offsetVec = randomDir * randomR;
+            return pivot.center.position + offsetVec;
         }
 
         public static Vector2 PosScene2Unified(Vector2 scenePos)
