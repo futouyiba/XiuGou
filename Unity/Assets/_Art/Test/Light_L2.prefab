@@ -103,7 +103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1384962444670253387}
   - component: {fileID: 1464748845}
-  - component: {fileID: 8454880308148934666}
   m_Layer: 0
   m_Name: Light_L2
   m_TagString: Untagged
@@ -136,7 +135,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4373215074626037642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b0336eabb2ef7f841b34cdeb93b78fc7, type: 2}
   m_CullingMode: 0
@@ -147,21 +146,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8454880308148934666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4373215074626037642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c115468532e4a9781f749a9641cf32f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialConfig: []
-  lightConfig: []
-  colorConfig: []
 --- !u!1001 &4335002701077391134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -169,6 +153,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1384962444670253387}
     m_Modifications:
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 15.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 76.73768
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543744581507745196, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: spotAngle
+      value: 76.73768
+      objectReference: {fileID: 0}
     - target: {fileID: 7101724646728626113, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
       propertyPath: m_RootOrder

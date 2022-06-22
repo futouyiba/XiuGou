@@ -103,14 +103,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6664011444845441450}
   - component: {fileID: 971678734}
-  - component: {fileID: 971678735}
   m_Layer: 0
   m_Name: Light_L3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6664011444845441450
 Transform:
   m_ObjectHideFlags: 0
@@ -147,21 +146,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &971678735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8355291027103428459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c115468532e4a9781f749a9641cf32f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialConfig: []
-  lightConfig: []
-  colorConfig: []
 --- !u!1001 &357955443692857819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,6 +265,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6664011444845441450}
     m_Modifications:
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 17.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 110.87388
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543744581507745196, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: spotAngle
+      value: 110.87388
+      objectReference: {fileID: 0}
     - target: {fileID: 9117995966941592401, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
       propertyPath: m_Color.b
@@ -425,9 +434,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6180030007150311537}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &3119377750948676384 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 9117995966941592401, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+--- !u!1 &2099218143637485617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5251772535722459200, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
     type: 3}
   m_PrefabInstance: {fileID: 6180030007150311537}
   m_PrefabAsset: {fileID: 0}
@@ -438,7 +447,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3084560878095920812}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7892930229d3e4f8f07b1e47aef975, type: 3}
   m_Name: 
@@ -447,7 +456,7 @@ MonoBehaviour:
   minChangeCookie: 0
   maxChangeCookie: 0
   objs:
-  - {fileID: 0}
+  - {fileID: 2099218143637485617}
   cookieLight: []
   minUntilFlicker: 1
   maxUntilFlicker: 2
@@ -456,7 +465,7 @@ MonoBehaviour:
   minFlickering: 3
   maxFlickering: 3
   colorLights:
-  - {fileID: 3119377750948676384}
+  - {fileID: 0}
   colors:
   - {r: 0.17092119, g: 0.7264151, b: 0, a: 0}
   - {r: 0.74924153, g: 0.7830189, b: 0, a: 0}
