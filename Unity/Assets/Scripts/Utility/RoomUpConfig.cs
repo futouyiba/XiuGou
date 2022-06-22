@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using RoomUpgrade;
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
 using Sirenix.Serialization;
 using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace ET.Utility
 {
