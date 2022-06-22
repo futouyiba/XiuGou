@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using RoomUpgrade;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Serialization;
+using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace ET.Utility
 {
-    
     public class RoomUpConfig : SerializedMonoBehaviour
     {
+        private int levelForDebug = 0;
         // [BoxGroup("SerializeTest")]
         // [OdinSerialize]
         // public Dictionary<int, int> INTDict = new Dictionary<int, int>();
@@ -39,11 +41,34 @@ namespace ET.Utility
         // public int intVar;
 
             
-        public void TestUnityFunctionWithInt(int param)
+        // public void TestUnityFunctionWithInt(int param)
+        // {
+        //     Debug.Log("testUnityFunctionWithInt:"+param );
+        // }
+        [Button("Upgrade")]
+        void Upgrade()
         {
-            Debug.Log("testUnityFunctionWithInt:"+param );
+            levelForDebug++;
+            for (int i = 0; i < levelForDebug; i++)
+            {
+                LevelInfos[i].Effects.Invoke();
+            }
+        }
+        
+        [Button("init")]
+        void Init()
+        {
+            GameObject.FindObjectsOfType<UpgradableObject>().ForEach(o =>
+            {
+                // if (o.GetType().HasElementType())
+                {
+                    // o.SendMessage("Awake");
+                }
+            });
         }
     }
+    
+
 
     // [InlineProperty]
     public struct LevelInfo
@@ -53,12 +78,7 @@ namespace ET.Utility
         public UnityEvent Effects;
 
     }
-    
-    [System.Serializable]
-    public class RoomUpEvent : UnityEvent
-    {}
 
-    
     public class SerializationDictionary<TKey, TValue> : ISerializationCallbackReceiver
     {
         [SerializeField]

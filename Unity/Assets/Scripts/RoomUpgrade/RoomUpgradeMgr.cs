@@ -33,15 +33,16 @@ namespace ET
             
             foreach (var item in info)
             {
-                if (item.TheLvl >= startAmout && item.GuysNeeded <= endAmount)
+                if (item.GuysNeeded > startAmout && item.GuysNeeded <= endAmount)
                 {
                     toExec.Add(item.Effects);
+                    currentLevel = item.TheLvl;
                 }
             }
 
             if (toExec.Count > 0)
             {
-                currentLevel++;
+                // currentLevel++;
                 levelUp?.Invoke(currentLevel);
                 
                 foreach (var exec in toExec)

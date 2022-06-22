@@ -17,6 +17,16 @@ namespace RoomUpgrade
             // LevelTo(1);
         }
 
+        private void Awake()
+        {
+            
+        }
+
+        public void Init()
+        {
+            this.Awake();
+        }
+        
         public virtual void LevelTo(int level)
         {
             throw new Exception("implement this function in child");

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 namespace RoomUpgrade
 {
@@ -10,6 +11,11 @@ namespace RoomUpgrade
         {
             lightObj = transform.GetChild(0).GetChild(0).gameObject;
             controller = transform.GetChild(0).GetComponent<LightController>();
+
+        }
+
+        private void Start()
+        {
             Init();
         }
         // public override void LevelTo(int level)
