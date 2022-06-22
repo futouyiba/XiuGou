@@ -4270,7 +4270,22 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: c6c9641e8f83b33439d3b8b3f5611954, type: 2}
     - {fileID: 11400000, guid: 3c1bf4f846c1eb241948b7d4d474bd65, type: 2}
+    - {fileID: 11400000, guid: 760f816820944df4280c9ecc557061f5, type: 2}
     m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1772685540}
+          m_TargetAssemblyTypeName: RoomUpgrade.UpgradableFloor, Assembly-CSharp
+          m_MethodName: ChangeRegion
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1772685540}
@@ -4642,7 +4657,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122418320}
-  m_LocalRotation: {x: 0.0038729932, y: 0.98671967, z: -0.1606343, w: 0.023790432}
+  m_LocalRotation: {x: 0.0038729934, y: 0.98671967, z: -0.1606343, w: 0.023790432}
   m_LocalPosition: {x: -0.2, y: 2.59, z: 3.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6349,27 +6364,27 @@ PrefabInstance:
     - target: {fileID: 1346987432732586479, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: field of view
-      value: 28.292484
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1346987432732586479, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_FocalLength
-      value: 14.700001
+      value: 11.750758
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.026
+      value: -0.027664358
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6832445
+      value: 0.14645489
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5438887
+      value: 0.5022556
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
@@ -6384,12 +6399,12 @@ PrefabInstance:
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.93643135
+      value: 0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.35085088
+      value: -0.17364816
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
@@ -7030,7 +7045,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SceneBindings.Array.data[3].value
       value: 
-      objectReference: {fileID: 919008965}
+      objectReference: {fileID: 1772685541}
     - target: {fileID: 7580586174871445480, guid: 97846dad9ec221a47b79e3f2f7b90666,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[4].value
