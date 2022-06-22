@@ -35,7 +35,7 @@ namespace ET
         [SerializeField] private float debugForce;
 
         [SerializeField] private float moveTargetTolerance;
-        
+        // [SerializeField] private Animator animator;
         public bool isMe = false;
         public bool isMoving = false;
         public bool isTalking = false;
@@ -48,6 +48,13 @@ namespace ET
 
         private Quaternion initRot;
         // private float oriScaleX;
+        
+        public float AnimSpeed
+        {
+            get => sprite.GetComponent<Animator>().speed;
+            set => sprite.GetComponent<Animator>().speed = value;
+        }
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -474,5 +481,7 @@ namespace ET
         #endregion
         
         
+        
+
     }
 }

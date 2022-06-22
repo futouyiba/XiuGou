@@ -269,7 +269,9 @@ namespace ET
                 var truePos = DanceFloorHelper.PosUnified2Scene(position);
                 goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
             }
-
+            
+            //20220622 set char animate speed
+            charView.AnimSpeed = curAnimateSpeed;
             
             charDict.Add(id, charView);
             
@@ -390,5 +392,25 @@ namespace ET
 
             dlgCharAmountUpdate -= dlg;
         }
+
+
+
+        #region character animate speed
+        
+        public float curAnimateSpeed = 1f;
+
+        public void UpdateExistingAnimateSpeed()
+        {
+            foreach (var kv in charDict)
+            {
+                kv.Value.AnimSpeed = curAnimateSpeed;
+            }
+        }
+        
+        
+
+
+        #endregion
+
     }
 }
