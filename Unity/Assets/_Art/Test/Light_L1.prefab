@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2111266895063780285
 Transform:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
       propertyPath: m_Intensity
-      value: 15.28
+      value: 18.5
       objectReference: {fileID: 0}
     - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
@@ -264,6 +264,21 @@ PrefabInstance:
     - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
       propertyPath: m_InnerSpotAngle
+      value: 27.859697
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543744581507745196, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: spotAngle
       value: 27.859697
       objectReference: {fileID: 0}
     - target: {fileID: 9117995966941592401, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
