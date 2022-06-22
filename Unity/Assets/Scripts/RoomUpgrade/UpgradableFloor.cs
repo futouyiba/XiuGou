@@ -25,22 +25,22 @@ namespace RoomUpgrade
         
         }
 
-        public override void LevelTo(int level)
-        {
-            MeshRenderer renderer = this.GetComponent<MeshRenderer>();
-            switch (level)
-            {
-                case 1:
-                    renderer.material = null;
-                    break;
-                case 3:
-                    renderer.material = materialConfig[0];
-                    break;
-                case 9:
-                    renderer.material = materialConfig[1];
-                    break;
-            }
-        }
+        // public override void LevelTo(int level)
+        // {
+        //     MeshRenderer renderer = this.GetComponent<MeshRenderer>();
+        //     switch (level)
+        //     {
+        //         case 1:
+        //             renderer.material = null;
+        //             break;
+        //         case 3:
+        //             renderer.material = materialConfig[0];
+        //             break;
+        //         case 9:
+        //             renderer.material = materialConfig[1];
+        //             break;
+        //     }
+        // }
 
 
         public void Material0()
@@ -58,20 +58,20 @@ namespace RoomUpgrade
             renderer.material = materialConfig[2];
         }
 
-        public void ChangePrefab(int prefabId)
-        {
-            if (prefabId < 0 || prefabId >= floorPrefabs.Count)
-            {
-                Debug.LogError($"prefab Id={prefabId} is not valid, max is {floorPrefabs.Count}");
-                return;
-            }
-            if (currentFloor)
-            {
-                Destroy(currentFloor);
-            }
-
-            currentFloor = Instantiate(floorPrefabs[prefabId], this.transform);
-        }
+        // public void ChangePrefab(int prefabId)
+        // {
+        //     if (prefabId < 0 || prefabId >= floorPrefabs.Count)
+        //     {
+        //         Debug.LogError($"prefab Id={prefabId} is not valid, max is {floorPrefabs.Count}");
+        //         return;
+        //     }
+        //     if (currentFloor)
+        //     {
+        //         Destroy(currentFloor);
+        //     }
+        //
+        //     currentFloor = Instantiate(floorPrefabs[prefabId], this.transform);
+        // }
 
 
         [SerializeField] protected List<GameObject> lightObjs;

@@ -169,6 +169,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1384962444670253387}
     m_Modifications:
+    - target: {fileID: 7101724646728626113, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9117995966941592401, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
       propertyPath: m_Color.b
@@ -301,58 +306,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6328c703dc179fa42a4e1f64e5a9e75c, type: 3}
---- !u!1 &4838109237632053699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9155095985419687645, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
-    type: 3}
-  m_PrefabInstance: {fileID: 4335002701077391134}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4842027853972399983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9159005874386223217, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
     type: 3}
   m_PrefabInstance: {fileID: 4335002701077391134}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &4801018591911402575 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 9117995966941592401, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
-    type: 3}
-  m_PrefabInstance: {fileID: 4335002701077391134}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6402703259444026090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4838109237632053699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7892930229d3e4f8f07b1e47aef975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cookies: []
-  minChangeCookie: 0
-  maxChangeCookie: 0
-  objs:
-  - {fileID: 0}
-  cookieLight: []
-  minUntilFlicker: 1
-  maxUntilFlicker: 2
-  minFlickerFrequency: 3
-  maxFlickerFrequency: 3
-  minFlickering: 3
-  maxFlickering: 3
-  colorLights:
-  - {fileID: 4801018591911402575}
-  colors:
-  - {r: 0.17092119, g: 0.7264151, b: 0, a: 0}
-  - {r: 0.74924153, g: 0.7830189, b: 0, a: 0}
-  - {r: 0, g: 0.6992229, b: 0.7075472, a: 0}
-  - {r: 0.6707363, g: 0, b: 0.6981132, a: 0}
-  - {r: 0.016204298, g: 0, b: 0.6886792, a: 0}
-  GOMaterials: []
-  timeChangeColor: 1
 --- !u!1001 &5455131898723377466
 PrefabInstance:
   m_ObjectHideFlags: 0

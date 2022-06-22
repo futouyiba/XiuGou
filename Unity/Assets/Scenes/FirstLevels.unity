@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04273933, g: 0.040200353, b: 0.044176288, a: 1}
+  m_IndirectSpecularColor: {r: 0.044339806, g: 0.039306067, b: 0.047032475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1612,8 +1612,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415994953}
-  m_LocalRotation: {x: -0, y: -0.35356194, z: -0, w: 0.9354111}
-  m_LocalPosition: {x: 8.353295, y: 1.9783192, z: -10.9252405}
+  m_LocalRotation: {x: -0, y: -0.35356203, z: -0, w: 0.9354111}
+  m_LocalPosition: {x: 3.7562072, y: 1.9783192, z: -5.712824}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 310108640}
@@ -2550,12 +2550,12 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1539095044}
           m_TargetAssemblyTypeName: RoomUpgrade.UpgradableFloor, Assembly-CSharp
-          m_MethodName: ChangePrefab
+          m_MethodName: ChangeRegion
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 1
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -2569,7 +2569,7 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
+            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -3407,7 +3407,7 @@ PrefabInstance:
     - target: {fileID: 95735553562860466, guid: 227c31a95a02d71499eff62e6128a25a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95735553562860468, guid: 227c31a95a02d71499eff62e6128a25a,
         type: 3}
@@ -3464,6 +3464,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95735553562860469, guid: 227c31a95a02d71499eff62e6128a25a,
+        type: 3}
+      propertyPath: pivot
+      value: 
+      objectReference: {fileID: 628816336}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227c31a95a02d71499eff62e6128a25a, type: 3}
 --- !u!114 &1539095044 stripped
@@ -3900,19 +3905,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
-    - {fileID: 11400000, guid: c6c9641e8f83b33439d3b8b3f5611954, type: 2}
     - {fileID: 11400000, guid: 3c1bf4f846c1eb241948b7d4d474bd65, type: 2}
+    - {fileID: 11400000, guid: 760f816820944df4280c9ecc557061f5, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1772685540}
           m_TargetAssemblyTypeName: RoomUpgrade.UpgradableFloor, Assembly-CSharp
-          m_MethodName: LevelTo
+          m_MethodName: ChangeRegion
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
+            m_IntArgument: 1
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -3926,7 +3931,7 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
+            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -4625,6 +4630,21 @@ PrefabInstance:
     - target: {fileID: 2111266895063780285, guid: b7733fea7c7def24894d465c842cc430,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111266895510802549, guid: b7733fea7c7def24894d465c842cc430,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111266895989137606, guid: b7733fea7c7def24894d465c842cc430,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432741201939227409, guid: b7733fea7c7def24894d465c842cc430,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5460,6 +5480,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1464748845, guid: 32ed60bb249663d4fae5b93edb8036d7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1384962444670253387, guid: 32ed60bb249663d4fae5b93edb8036d7,
         type: 3}
       propertyPath: m_RootOrder
@@ -5525,7 +5549,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7542562598986258763, guid: 32ed60bb249663d4fae5b93edb8036d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415836507594581854, guid: 32ed60bb249663d4fae5b93edb8036d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454880308148934666, guid: 32ed60bb249663d4fae5b93edb8036d7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8454880308148934666, guid: 32ed60bb249663d4fae5b93edb8036d7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32ed60bb249663d4fae5b93edb8036d7, type: 3}
 --- !u!1001 &4865551072511203880
 PrefabInstance:
@@ -5730,6 +5770,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 971678735, guid: 0a06ff1713d860e48b8684a3bd9df928, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634957180698486389, guid: 0a06ff1713d860e48b8684a3bd9df928,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6664011444845441450, guid: 0a06ff1713d860e48b8684a3bd9df928,
         type: 3}
       propertyPath: m_RootOrder
@@ -5795,7 +5844,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 971678735, guid: 0a06ff1713d860e48b8684a3bd9df928, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a06ff1713d860e48b8684a3bd9df928, type: 3}
 --- !u!1001 &6378968395555543529
 PrefabInstance:
@@ -5925,27 +5975,27 @@ PrefabInstance:
     - target: {fileID: 1346987432732586479, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: field of view
-      value: 35
+      value: 28.292484
       objectReference: {fileID: 0}
     - target: {fileID: 1346987432732586479, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_FocalLength
-      value: 11.750758
+      value: 14.700001
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.027664358
+      value: -0.026
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14645489
+      value: 0.6832445
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5022556
+      value: 1.5438887
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
@@ -5960,12 +6010,12 @@ PrefabInstance:
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9848078
+      value: 0.93643135
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.17364816
+      value: -0.35085088
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
@@ -7470,7 +7520,7 @@ PrefabInstance:
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.25224477
+      value: 0.2522448
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336726890797, guid: 275f660561e4be043b556a3988933515,
         type: 3}
