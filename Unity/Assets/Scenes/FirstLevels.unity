@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.044339806, g: 0.039306067, b: 0.047032475, a: 1}
+  m_IndirectSpecularColor: {r: 0.04273933, g: 0.040200353, b: 0.044176288, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -246,6 +246,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 331
       objectReference: {fileID: 0}
+    - target: {fileID: 2546401063585955225, guid: 16882efee4280c2448cb33e98a518f15,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u70B9\u51FB\u6B64\u5904+1\u4E2A\u4EBA"
+      objectReference: {fileID: 0}
     - target: {fileID: 3562771031837401045, guid: 16882efee4280c2448cb33e98a518f15,
         type: 3}
       propertyPath: m_Text
@@ -399,6 +404,74 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 20182099}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &20182117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2546401063585932463, guid: 16882efee4280c2448cb33e98a518f15,
+    type: 3}
+  m_PrefabInstance: {fileID: 20182099}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20182103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &20182120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20182103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 20182117}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1516499271}
+        m_TargetAssemblyTypeName: ET.RoomUpCanvas, Assembly-CSharp
+        m_MethodName: Add1Guy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &24619293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +2061,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 1
+      Data: 0.4
     - Name: 
       Entry: 8
       Data: 
@@ -2000,7 +2073,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 1.2
+      Data: 0.6
     - Name: 
       Entry: 8
       Data: 
@@ -2012,7 +2085,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 1.4
+      Data: 0.8
     - Name: 
       Entry: 8
       Data: 
@@ -2024,7 +2097,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 1.6
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2036,7 +2109,7 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 4
-      Data: 1.8
+      Data: 1.5
     - Name: 
       Entry: 8
       Data: 
@@ -3369,6 +3442,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6414519177347460579, guid: 517f710e3fc7f704e97e64161f436509,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 204372f62c84b9746b4188534893bcfe, type: 2}
     - target: {fileID: 8468597644998289560, guid: 517f710e3fc7f704e97e64161f436509,
         type: 3}
       propertyPath: simulationSpeed
@@ -3710,6 +3788,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1516499271 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2207591075321667014, guid: 16882efee4280c2448cb33e98a518f15,
+    type: 3}
+  m_PrefabInstance: {fileID: 20182099}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f101f718c16014ab4099969b5e4f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1527214145
@@ -4209,7 +4299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 654423401}
-  m_PathPosition: 3.47061
+  m_PathPosition: 3.725984
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -4588,7 +4678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1686891299}
-  m_PathPosition: 5.879199
+  m_PathPosition: 7.289182
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -4657,7 +4747,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122418320}
-  m_LocalRotation: {x: 0.0038729934, y: 0.98671967, z: -0.1606343, w: 0.023790432}
+  m_LocalRotation: {x: 0.0038729932, y: 0.98671967, z: -0.1606343, w: 0.023790432}
   m_LocalPosition: {x: -0.2, y: 2.59, z: 3.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6897,7 +6987,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ExposedReferences.m_References.Array.data[4].second
       value: 
-      objectReference: {fileID: 833030979}
+      objectReference: {fileID: 333435911}
     - target: {fileID: 7580586174129727081, guid: 97846dad9ec221a47b79e3f2f7b90666,
         type: 3}
       propertyPath: m_ExposedReferences.m_References.Array.data[5].second
@@ -7864,22 +7954,22 @@ PrefabInstance:
     - target: {fileID: 1810661336484362823, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.898335
+      value: 0.6537818
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336484362823, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.35558107
+      value: 0.25232735
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336484362823, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.23987733
+      value: -0.6655249
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336484362823, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.09494881
+      value: 0.25685963
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709720, guid: 275f660561e4be043b556a3988933515,
         type: 3}
@@ -7894,22 +7984,22 @@ PrefabInstance:
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6677769
+      value: -0.0040231566
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.25885546
+      value: -0.0013760898
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.65072304
+      value: 0.9461737
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2522448
+      value: -0.3236314
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336726890797, guid: 275f660561e4be043b556a3988933515,
         type: 3}
@@ -8049,22 +8139,22 @@ PrefabInstance:
     - target: {fileID: 2936098039522366569, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 10.02
       objectReference: {fileID: 0}
     - target: {fileID: 2936098039522366569, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.07
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 2936098039974673865, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.8
+      value: 5.97
       objectReference: {fileID: 0}
     - target: {fileID: 2936098039974673865, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.89
+      value: 8.65
       objectReference: {fileID: 0}
     - target: {fileID: 2936098039974673865, guid: 275f660561e4be043b556a3988933515,
         type: 3}
@@ -8089,7 +8179,7 @@ PrefabInstance:
     - target: {fileID: 7051197895672246431, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 28.292484
+      value: 22.425251
       objectReference: {fileID: 0}
     - target: {fileID: 7051197896589931272, guid: 275f660561e4be043b556a3988933515,
         type: 3}
@@ -8279,7 +8369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 8491945665995896780}
-  m_PathPosition: 1.348077
+  m_PathPosition: 0.9830995
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0

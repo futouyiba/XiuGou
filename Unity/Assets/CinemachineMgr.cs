@@ -24,6 +24,8 @@ namespace ET
             {
                 camLvlRoot.SetActive(false);
             }
+
+            Time.timeScale = 1.5f;
         }
 
         public void PlayAssetByLevel(int lvl)

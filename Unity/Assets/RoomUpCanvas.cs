@@ -54,10 +54,9 @@ namespace ET
             
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Add1Guy()
         {
-        
+            CharMgr.instance.CreateTestGuysByNum(1);
         }
         
     }
