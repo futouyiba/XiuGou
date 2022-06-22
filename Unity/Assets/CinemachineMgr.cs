@@ -17,7 +17,7 @@ namespace ET
         private PlayableDirector _playableDirector;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             _playableDirector = this.GetComponent<PlayableDirector>();
             foreach (var camLvlRoot in VCamLvlRoots)

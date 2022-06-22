@@ -33,7 +33,7 @@ namespace ET
             
             foreach (var item in info)
             {
-                if (item.GuysNeeded >= startAmout && item.GuysNeeded <= endAmount)
+                if (item.GuysNeeded > startAmout && item.GuysNeeded <= endAmount)
                 {
                     toExec.Add(item.Effects);
                     currentLevel = item.TheLvl;
