@@ -11,7 +11,7 @@ namespace ET
     public class RoomUpgradeMgr : MonoBehaviour
     {
         [SerializeField] private RoomUpConfig config;
-        private int currentAmount;
+        private int currentAmount = -1;
         [ReadOnly] public int currentLevel=0;
         public Action<int> levelUp;
         private void Start()
