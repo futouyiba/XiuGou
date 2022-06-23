@@ -43,5 +43,25 @@ namespace ET
             VCamLvlRoots[lvl].SetActive(true);
             PlayableDirectors[lvl].Play();
         }
+
+        public void PlayDirectorByLevelBySpeed(int lvl, float speed)
+        {
+            Debug.Log($"play asset : level {lvl}");
+            PlayableDirectors.ForEach(director =>
+            {
+                director.Stop();
+            });
+            
+            foreach (var camLvlRoot in VCamLvlRoots)
+            {
+                camLvlRoot.SetActive(false);
+            }
+
+            VCamLvlRoots[lvl].SetActive(true);
+            var director = PlayableDirectors[lvl];
+            director.RebuildGraph();
+            director.playableGraph.GetRootPlayable(0).SetSpeed(speed);
+            director.Play();
+        }
     }
 }
