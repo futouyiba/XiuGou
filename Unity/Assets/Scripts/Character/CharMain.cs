@@ -24,7 +24,7 @@ namespace ET
         [SerializeField]
         protected TextMeshPro nameTmp;
 
-        [SerializeField] protected float moveSpeed;
+        [SerializeField] public float moveSpeed;
         [SerializeField] private TextBubble bubble;
         [SerializeField] private StateMachine fsm;
         public int userId;

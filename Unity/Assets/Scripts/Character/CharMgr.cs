@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using ET.Utility;
+using Sirenix.Utilities;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,7 +16,7 @@ namespace ET
     {
         [SerializeField] public List<GameObject> charPrefabs;
 
-        protected Dictionary<int, CharMain> charDict;
+        public Dictionary<int, CharMain> charDict;
 
         public Action<int> dlgCharAmountUpdate;
         
@@ -392,7 +393,6 @@ namespace ET
 
             dlgCharAmountUpdate -= dlg;
         }
-
 
 
         #region character animate speed
