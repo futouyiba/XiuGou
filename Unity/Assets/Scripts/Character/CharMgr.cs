@@ -404,9 +404,11 @@ namespace ET
             foreach (var kv in charDict)
             {
                 kv.Value.AnimSpeed = curAnimateSpeed;
+                kv.Value.PlayLvUpParticle();
             }
         }
-        
+
+
         
 
 

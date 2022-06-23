@@ -35,6 +35,8 @@ namespace ET
         [SerializeField] private float debugForce;
 
         [SerializeField] private float moveTargetTolerance;
+
+        [SerializeField] private ParticleSystem levelupParticle;
         // [SerializeField] private Animator animator;
         public bool isMe = false;
         public bool isMoving = false;
@@ -480,6 +482,11 @@ namespace ET
 
         #endregion
         
+        
+        public void PlayLvUpParticle()
+        {
+            levelupParticle.Play();
+        } 
         
         
 
