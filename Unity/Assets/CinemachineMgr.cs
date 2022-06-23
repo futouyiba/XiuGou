@@ -10,38 +10,69 @@ namespace ET
     {
         public List<GameObject> VCamLvlRoots;
 
+        /// <summary>
+        /// because it's already configs right now, we don't delete this list, to avoid serialization issues.
+        /// </summary>
         public List<PlayableAsset> PlayableAssets;
 
         public List<PlayableDirector> PlayableDirectors;
 
-        private PlayableDirector _playableDirector;
+        public List<float> PlayableSpeeds;
+
 
         // Start is called before the first frame update
         void Awake()
         {
-            _playableDirector = this.GetComponent<PlayableDirector>();
             foreach (var camLvlRoot in VCamLvlRoots)
             {
                 camLvlRoot.SetActive(false);
             }
 
-            Time.timeScale = 1.5f;
+            // Time.timeScale = 1.5f; // move to timeline play speed.
         }
 
         public void PlayAssetByLevel(int lvl)
+        {
+            var speed = PlayableSpeeds[lvl];
+            this.PlayDirectorByLevelBySpeed(lvl, speed);
+
+            // Debug.Log($"play asset : level {lvl}");
+            // PlayableDirectors.ForEach(director =>
+            // {
+            //     director.Stop();
+            // });
+            // foreach (var camLvlRoot in VCamLvlRoots)
+            // {
+            //     camLvlRoot.SetActive(false);
+            // }
+            //
+            // VCamLvlRoots[lvl].SetActive(true);
+            // PlayableDirectors[lvl].Play();
+        }
+
+        /// <summary>
+        /// it cannot be config within unity event for it has 2 parameters. 
+        /// </summary>
+        /// <param name="lvl"></param>
+        /// <param name="speed"></param>
+        protected void PlayDirectorByLevelBySpeed(int lvl, float speed)
         {
             Debug.Log($"play asset : level {lvl}");
             PlayableDirectors.ForEach(director =>
             {
                 director.Stop();
             });
+            
             foreach (var camLvlRoot in VCamLvlRoots)
             {
                 camLvlRoot.SetActive(false);
             }
 
             VCamLvlRoots[lvl].SetActive(true);
-            PlayableDirectors[lvl].Play();
+            var director = PlayableDirectors[lvl];
+            director.RebuildGraph();
+            director.playableGraph.GetRootPlayable(0).SetSpeed(speed);
+            director.Play();
         }
     }
 }
