@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4805134367480743525}
   - component: {fileID: 4805134367480743524}
   - component: {fileID: 6501257903179285786}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8962271083919290715}
   - component: {fileID: 6261877259498030892}
   - component: {fileID: 3491842465306030596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TMP SubMesh [tmp_MSJH_SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 96751042729196966}
   - component: {fileID: 8343370775620878452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 5817430029553928788}
   - component: {fileID: 8619730731919076753}
   - component: {fileID: 1017744936572334804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NameTMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 2192231175539230086}
   - component: {fileID: 6193719615483670067}
   - component: {fileID: 145299129661619563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CharacterRect
   m_TagString: Character
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameTmp: {fileID: 8619730731919076753}
-  moveSpeed: 3
+  moveSpeed: 1
   bubble: {fileID: 7047920253531996696}
   fsm: {fileID: 1215715403548211505}
   userId: 0
@@ -659,8 +659,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4277043842192519510, guid: 6536931fe101d443d8ccec8f209d977b,
         type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277043842192519510, guid: 6536931fe101d443d8ccec8f209d977b,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277043842816639764, guid: 6536931fe101d443d8ccec8f209d977b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4277043842816639764, guid: 6536931fe101d443d8ccec8f209d977b,
         type: 3}
@@ -741,6 +751,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TextBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277043843355107435, guid: 6536931fe101d443d8ccec8f209d977b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6536931fe101d443d8ccec8f209d977b, type: 3}
