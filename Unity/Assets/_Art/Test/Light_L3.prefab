@@ -109,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6664011444845441450
 Transform:
   m_ObjectHideFlags: 0
@@ -157,6 +157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LightBeam01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097603025910545296, guid: a13283f0c62482f4aade77777890adbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6758401481385576011, guid: a13283f0c62482f4aade77777890adbc,
         type: 3}
@@ -267,8 +272,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
+      propertyPath: m_Color.g
+      value: 0.7783019
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.91903543
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
       propertyPath: m_Intensity
-      value: 17.95
+      value: 8.8
       objectReference: {fileID: 0}
     - target: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}
@@ -284,6 +299,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BounceIntensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543744581507745196, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: color.g
+      value: 0.7783019
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543744581507745196, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+        type: 3}
+      propertyPath: color.r
+      value: 0.91903543
       objectReference: {fileID: 0}
     - target: {fileID: 6543744581507745196, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
         type: 3}

@@ -16,6 +16,30 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: c6c9641e8f83b33439d3b8b3f5611954, type: 2}
+--- !u!114 &-7713044099626189022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
+  m_Name: Signal Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects:
+    - {fileID: -4248523091339009089}
 --- !u!114 &-7544955826922294257
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +136,38 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: fd4847b9b99438445ad63417c87a4ebe
     defaultValue: {fileID: 0}
+--- !u!114 &-4386692821654095265
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 0.65
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: b4828a0da62654e4cb21f37069761581, type: 2}
+--- !u!114 &-4248523091339009089
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 17.683333333333334
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: c6c9641e8f83b33439d3b8b3f5611954, type: 2}
 --- !u!114 &-3925007530001217566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -476,7 +532,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: vc look dj
+    m_DisplayName: vc around dj
     m_Version: 1
   - m_Start: 2.5
     m_ClipIn: 0
@@ -614,7 +670,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: vc look dj
+    m_DisplayName: vcsofa1
     m_Version: 1
   - m_Start: 4.083333333333333
     m_ClipIn: 0
@@ -854,6 +910,7 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: -3925007530001217566}
   - {fileID: 1586461122127604224}
+  - {fileID: -7713044099626189022}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
