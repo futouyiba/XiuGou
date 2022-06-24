@@ -273,7 +273,7 @@ namespace ET
             
             //20220622 set char animate speed
             charView.AnimSpeed = curAnimateSpeed;
-            
+            charView.StopParticle();
             charDict.Add(id, charView);
             
             return goCreated;

@@ -486,8 +486,12 @@ namespace ET
         public void PlayLvUpParticle()
         {
             levelupParticle.Play();
-        } 
-        
+        }
+
+        public void StopParticle()
+        {
+            if(levelupParticle.isPlaying) levelupParticle.Stop();
+        }
         
 
     }
