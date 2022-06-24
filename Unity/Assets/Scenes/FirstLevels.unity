@@ -13894,6 +13894,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+--- !u!1 &3674770188089328314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5915762020937086305, guid: cbacc8d2d22bd234cb0e651759f587cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 3674770188089328313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3674770188089328315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3674770188089328314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe725a838550bc8459dcd65d296e1625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights:
+  - {fileID: 6270766441749413958}
+  - {fileID: 4432207998247237254}
+  colors:
+  - {r: 0.89411765, g: 0.12690188, b: 0, a: 1}
+  - {r: 0, g: 0.98039216, b: 0.05134274, a: 1}
+  step_duration: 1
 --- !u!114 &3674770188089328317 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7293989146496170243, guid: cbacc8d2d22bd234cb0e651759f587cc,
@@ -14000,6 +14025,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8454880308148934666, guid: 32ed60bb249663d4fae5b93edb8036d7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32ed60bb249663d4fae5b93edb8036d7, type: 3}
+--- !u!108 &4432207998247237254 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3147821480304511517, guid: 32ed60bb249663d4fae5b93edb8036d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4432207998247237253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4865551072511203880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14280,11 +14311,17 @@ PrefabInstance:
     - target: {fileID: 8355291027103428459, guid: 0a06ff1713d860e48b8684a3bd9df928,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 971678735, guid: 0a06ff1713d860e48b8684a3bd9df928, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a06ff1713d860e48b8684a3bd9df928, type: 3}
+--- !u!108 &6270766441749413958 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4775411563899409778, guid: 0a06ff1713d860e48b8684a3bd9df928,
+    type: 3}
+  m_PrefabInstance: {fileID: 6270766441749413957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6378968395555543529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14426,7 +14463,7 @@ PrefabInstance:
     - target: {fileID: 1346987432732586479, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_FocalLength
-      value: 17.84
+      value: 11.750758
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
@@ -14446,7 +14483,7 @@ PrefabInstance:
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.10786316
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2411430457563196887, guid: f5672341a388aa841b11269a6716b282,
         type: 3}
@@ -15261,22 +15298,22 @@ PrefabInstance:
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9531896
+      value: 0.9531897
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.23101233
+      value: 0.23101234
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.189608
+      value: 0.18960795
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.045952857
+      value: -0.04595284
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336828078470, guid: 275f660561e4be043b556a3988933515,
         type: 3}
