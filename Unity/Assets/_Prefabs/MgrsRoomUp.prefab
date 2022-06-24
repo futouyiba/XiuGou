@@ -820,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5879904258236475476}
   - component: {fileID: 7293989146496170243}
-  - component: {fileID: 3674770188089328315}
+  - component: {fileID: 3294954373281586613}
   m_Layer: 0
   m_Name: RoomUpgrade
   m_TagString: Untagged
@@ -854,9 +854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eabe1ada16d4794b97149fbb0f37962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 3674770188089328315}
+  config: {fileID: 3294954373281586613}
   currentLevel: 0
---- !u!114 &3674770188089328315
+--- !u!114 &3294954373281586613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2162,12 +2162,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8ce742a0d9f4df4ba90f9da363feec5, type: 3}
+--- !u!1 &5915762020937086305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6277858380183076198, guid: b8ce742a0d9f4df4ba90f9da363feec5,
+    type: 3}
+  m_PrefabInstance: {fileID: 362096496708339719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1265765271683732497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1483524956758924310, guid: b8ce742a0d9f4df4ba90f9da363feec5,
     type: 3}
   m_PrefabInstance: {fileID: 362096496708339719}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3674770188089328315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915762020937086305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe725a838550bc8459dcd65d296e1625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights:
+  - {fileID: 0}
+  - {fileID: 0}
+  colors:
+  - {r: 0.89411765, g: 0.12690188, b: 0, a: 1}
+  - {r: 0, g: 0.98039216, b: 0.05134274, a: 1}
+  - {r: 0.8699622, g: 0, b: 1, a: 0}
+  - {r: 0.053014755, g: 0, b: 1, a: 0}
+  - {r: 1, g: 0, b: 0.46787453, a: 0}
+  - {r: 0, g: 0.9003701, b: 1, a: 0}
+  step_duration: 0.8
 --- !u!1001 &506811194070296383
 PrefabInstance:
   m_ObjectHideFlags: 0
