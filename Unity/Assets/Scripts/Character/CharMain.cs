@@ -117,6 +117,8 @@ namespace ET
             }
         }
 
+        #region movements
+
         private Sequence cur_move_seq;
         // private Vector2 move_target;
         /// <summary>
@@ -209,6 +211,21 @@ namespace ET
         {
             MoveStart(DanceFloorHelper.GetRandomDanceFloorPos());
         }
+
+
+        public void Sit()
+        {
+            fsm.TriggerUnityEvent("Sit");
+        }
+
+        public void UnSit()
+        {
+            fsm.TriggerUnityEvent("LeaveSeat");
+        }
+
+        #endregion 
+        
+        
 
         protected static IEnumerator Wait(int time)
         {
