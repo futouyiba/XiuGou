@@ -14,6 +14,28 @@ namespace ET
         private int currentAmount = -1;
         [ReadOnly] public int currentLevel=0;
         public Action<int> levelUp;
+
+        private static RoomUpgradeMgr _instance;
+
+        public static RoomUpgradeMgr instance
+        {
+            get => _instance;
+            private set{}
+        }
+
+        private void Awake()
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+
+
         private void Start()
         {
             CharMgr.instance.AddCharAmountUpdateDlg(CharAmountChanged);
@@ -58,6 +80,24 @@ namespace ET
                 }
             }
 
+        }
+
+        public int AmountTillNextLv()
+        {
+            if (currentAmount < 0)
+            {
+                Debug.LogError($"not initialized");
+                return -1;
+            }
+
+            foreach (var levelInfo in config.LevelInfos)
+            {
+                if (currentLevel + 1 == levelInfo.TheLvl)
+                {
+                    return levelInfo.GuysNeeded - currentAmount;
+                }
+            }
+            return 9999;
         }
     }
 }

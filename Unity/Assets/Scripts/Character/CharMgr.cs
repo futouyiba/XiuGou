@@ -18,7 +18,7 @@ namespace ET
 
         public Dictionary<int, CharMain> charDict;
 
-        public Action<int> dlgCharAmountUpdate;
+        private Action<int> dlgCharAmountUpdate;
         
         private int _id = 0;
         protected int id
