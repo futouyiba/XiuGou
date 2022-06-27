@@ -192,15 +192,34 @@ private static extern void Unity2NativeMsgIOS(string opJson);
         {
             // var data = JsonMapper.ToObject(json);
             // return data["Op"].ToString();
-            var data = JObject.Parse(json);
-            return data["Op"].ToString();
+            try
+            {
+                var data = JObject.Parse(json);
+                return data["Op"].ToString();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"json parse error:{e}");
+                return null;
+            }
+            
+            
         }
 
         public static T GetOpdata<T>(string json) where T:JsonCmd
-        {            
-            var data = JObject.Parse(json);
-            var opData = data["OpData"];
-            return opData.ToObject<T>();
+        {
+            try
+            {
+                var data = JObject.Parse(json);
+                var opData = data["OpData"];
+                return opData.ToObject<T>();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"json parse error:{e}");
+                return null;
+            }
+            
             // var data = JsonMapper.ToObject(json);
             // var opData = data["OpData"];
             // return JsonMapper.ToObject<T>(opData.ToJson());
