@@ -101,13 +101,13 @@ namespace ET
 
             if (Input.GetKeyDown(KeyCode.V))
             {
-                var msg= "{\"Op\":\"UserMove\",\"OpData\":{\"userId\":840167, \"ts\":1652352835457\", \"position\":{\"x\":0.77,\"y\":0.85}}}";
+                var msg= "{\"Op\":\"UserMove\",\"OpData\":{\"userId\":840167, \"ts\":\"1652352835457\", \"position\":{\"x\":0.77,\"y\":0.85}}}";
                 NativeProxy.instance.Native2UnityMsg(msg);
             }
 
             if (Input.GetKeyDown(KeyCode.D))
             {
-                var msg = "{\"Op\":\"UserExit\",\"OpData\":{\"uid\":2339817, \"ts\":1650960605116}}";
+                var msg = "{\"Op\":\"UserExit\",\"OpData\":{\"uid\":840167, \"ts\":1650960605116}}";
                 NativeProxy.instance.Native2UnityMsg(msg);
             }
 
