@@ -55,7 +55,7 @@ namespace ET
         }
 
 
-        private void TakeSeat(GameObject charObj, int seatId)
+        public void TakeSeat(GameObject charObj, int seatId)
         {
             if (!charObj.CompareTag("Character"))
             {
@@ -84,7 +84,7 @@ namespace ET
 
         }
 
-        private void LeaveSeat(int seatId)
+        public void LeaveSeat(int seatId)
         {
             if(!config.seats.TryGetValue(seatId, out var seatData))
             {
