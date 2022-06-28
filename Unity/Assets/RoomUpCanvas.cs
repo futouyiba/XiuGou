@@ -19,9 +19,9 @@ namespace ET
 
         private Text populationText;
         private Text levelText;
-        private Text initFloorText;
+        // private Text initFloorText;
 
-        [SerializeField] private RoomUpgradeMgr _roomUpgradeMgr;
+        // [SerializeField] private RoomUpgradeMgr _roomUpgradeMgr;
 
         private const string need = "要进化舞池您还需要:{0}人";
         
@@ -35,21 +35,16 @@ namespace ET
 
             populationText = CurrentPopulation.transform.GetChild(1).GetComponent<Text>();
             levelText = CurrentLevel.transform.GetChild(1).GetComponent<Text>();
-            initFloorText = Shuoming.transform.GetChild(1).GetComponent<Text>();
+            // initFloorText = Shuoming.transform.GetChild(1).GetComponent<Text>();
             
-            CharMgr.instance.dlgCharAmountUpdate += i =>
-            {
-                populationText.text = i.ToString();
-                _currentPopulationAnimator.SetTrigger("go");
-                
-            };
+            CharMgr.instance.AddCharAmountUpdateDlg(UpdateCharAmount);
 
-            _roomUpgradeMgr.levelUp += i =>
-            {
-                _currentLevelAnimator.SetTrigger("go");
-                levelText.text = i.ToString();
-                _goingOnAnimator.SetTrigger("go");
-            };
+            // _roomUpgradeMgr.levelUp += i =>
+            // {
+            //     _currentLevelAnimator.SetTrigger("go");
+            //     levelText.text = i.ToString();
+            //     _goingOnAnimator.SetTrigger("go");
+            // };
             
             
         }
@@ -58,6 +53,16 @@ namespace ET
         {
             CharMgr.instance.CreateTestGuysByNum(1);
         }
-        
+
+        protected void UpdateCharAmount(int amount)
+        {
+            populationText.text = amount.ToString();
+            UpdateTillNextAmount(amount);
+        }
+
+        protected void UpdateTillNextAmount(int currentAmount)
+        {
+            levelText.text = RoomUpgradeMgr.instance.AmountTillNextLv().ToString();
+        }
     }
 }

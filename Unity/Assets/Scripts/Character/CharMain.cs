@@ -117,6 +117,8 @@ namespace ET
             }
         }
 
+        #region movements
+
         private Sequence cur_move_seq;
         // private Vector2 move_target;
         /// <summary>
@@ -143,6 +145,7 @@ namespace ET
             // if (targetPos.x < -1000f) return;
             moveTarget = scenePos;
             fsm.TriggerUnityEvent("StartMove");
+            if (isMe) NativeProxy.SendMeMove(target);
             // Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
             
         }
@@ -209,6 +212,21 @@ namespace ET
         {
             MoveStart(DanceFloorHelper.GetRandomDanceFloorPos());
         }
+
+
+        public void Sit()
+        {
+            fsm.TriggerUnityEvent("Sit");
+        }
+
+        public void UnSit()
+        {
+            fsm.TriggerUnityEvent("LeaveSeat");
+        }
+
+        #endregion 
+        
+        
 
         protected static IEnumerator Wait(int time)
         {

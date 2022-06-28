@@ -1,10 +1,12 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
-using LitJson;
+// using LitJson;
 using UnityEngine;
 using System.Runtime.InteropServices;
 using Random = UnityEngine.Random;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ET.Utility
 {
@@ -188,15 +190,39 @@ private static extern void Unity2NativeMsgIOS(string opJson);
 
         public static string GetOp(string json)
         {
-            var data = JsonMapper.ToObject(json);
-            return data["Op"].ToString();
+            // var data = JsonMapper.ToObject(json);
+            // return data["Op"].ToString();
+            try
+            {
+                var data = JObject.Parse(json);
+                return data["Op"].ToString();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"json parse error:{e}");
+                return null;
+            }
+            
+            
         }
 
         public static T GetOpdata<T>(string json) where T:JsonCmd
         {
-            var data = JsonMapper.ToObject(json);
-            var opData = data["OpData"];
-            return JsonMapper.ToObject<T>(opData.ToJson());
+            try
+            {
+                var data = JObject.Parse(json);
+                var opData = data["OpData"];
+                return opData.ToObject<T>();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"json parse error:{e}");
+                return null;
+            }
+            
+            // var data = JsonMapper.ToObject(json);
+            // var opData = data["OpData"];
+            // return JsonMapper.ToObject<T>(opData.ToJson());
         }
 
 
@@ -253,7 +279,8 @@ private static extern void Unity2NativeMsgIOS(string opJson);
             {
                 Op = code
             };
-            var data = JsonMapper.ToJson(op);
+            // var data = JsonMapper.ToJson(op);
+            var data = JsonConvert.SerializeObject(op);
             //todo: get rid of "_t"'s
             return data;
         }
