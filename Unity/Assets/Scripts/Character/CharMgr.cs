@@ -114,38 +114,21 @@ namespace ET
             if (Input.GetKeyDown(KeyCode.Keypad1))
             {
                 CreateTestGuysByNum(10);
-
-                
             }
-            if (Input.GetKeyDown(KeyCode.Keypad2))
-            {
-                CreateTestGuysByNum(100);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad3))  
-            {
-                CreateTestGuysByNum(1000);
-            }
+            // if (Input.GetKeyDown(KeyCode.Keypad2))
+            // {
+            //     CreateTestGuysByNum(100);
+            // }
+            // if (Input.GetKeyDown(KeyCode.Keypad3))  
+            // {
+            //     CreateTestGuysByNum(1000);
+            // }
             if (Input.GetKeyDown(KeyCode.KeypadPlus))  
             {
                 CreateTestGuysByNum(1);
             }
             
-            if (Input.GetKeyDown(KeyCode.KeypadPeriod))  
-            {
-                CreateTestGuysByNum(10);
-            }
-
-
-
-            if (Input.GetKeyDown(KeyCode.Keypad6))  
-            {
-                CreateTestGuysByNum(6);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad9))  
-            {
-                CreateTestGuysByNum(9);
-            }
-
+           
             
             #endif
         }

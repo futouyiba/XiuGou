@@ -20,8 +20,8 @@ namespace VLB_Samples
             set
             {
                 m_UseMouseView = value;
-                Cursor.lockState = value ? CursorLockMode.Locked : CursorLockMode.None;
-                Cursor.visible = !value;
+                // Cursor.lockState = value ? CursorLockMode.Locked : CursorLockMode.None;
+                // Cursor.visible = !value;
             }
         }
 
