@@ -105,6 +105,10 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     var charMain = CharMgr.instance.GetCharacter(uid);
                     charMain.Speak(userMsg.text);
                     break;
+                case "UserSit":
+                    var userSit = GetOpdata<UserSit>(msg);
+                    SeatMgr.Instance.Sit(userSit.userId, userSit.sofaId, userSit.seatId);
+                    break;
                 
                 // case "Break":
                 //     var breakmsg = GetOpdata<Break>(msg);
