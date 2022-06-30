@@ -173,6 +173,28 @@ namespace ET.Utility
     //     public bool isStartBreak;
     //     
     // }
+
+    public class UserSit : JsonCmd
+    {
+        public int userId;
+        public int sofaId;
+        public int seatId;
+    }
+
+    public class Gift : JsonCmd
+    {
+        
+    }
+
+    public class RoomId : JsonCmd
+    {
+        public int roomId;
+    }
+
+    public class RoomLevel : JsonCmd
+    {
+        public int roomLv;
+    }
     
     
 

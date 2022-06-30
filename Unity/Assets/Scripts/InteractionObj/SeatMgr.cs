@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.Serialization;
@@ -9,6 +10,26 @@ namespace ET
     {
         protected Dictionary<int, CharSeatData> sitData;
         [OdinSerialize] public Dictionary<int, SeatController> sofas;
+
+
+        private static SeatMgr _instance;
+
+        public static SeatMgr Instance
+        {
+            get => _instance;
+            private set{}
+        }
+
+        private void Awake()
+        {
+            if (!_instance) _instance = this;
+            else
+            {
+                Debug.LogError($"instance of seatMgr already exists");
+                Destroy(this.gameObject);
+            }
+                
+        }
 
         // Start is called before the first frame update
         void Start()

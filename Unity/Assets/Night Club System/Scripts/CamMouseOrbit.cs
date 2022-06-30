@@ -21,7 +21,7 @@ public class CamMouseOrbit : MonoBehaviour
 
     private void Awake()
     {
-        ChangeCursor();
+        // ChangeCursor();
         dist = distance;
     }
 

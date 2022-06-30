@@ -90,6 +90,16 @@ namespace ET
                 
                 AddForce(randomVec*debugForce);
             }
+
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                fsm.TriggerUnityEvent("FloatStart");
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                fsm.TriggerUnityEvent("FloatEnd");
+            }
         }
 
         // [SerializeField] private Vector3 debugMovingDir;
@@ -510,7 +520,54 @@ namespace ET
         {
             if(levelupParticle.isPlaying) levelupParticle.Stop();
         }
-        
+
+
+        #region floating
+
+        [Header("Floating Config")] [SerializeField]
+        private Vector3 floatAngularVel;
+        public void LockRotation(bool isLock)
+        {
+            Rigidbody rb = this.GetComponent<Rigidbody>();
+            rb.constraints = isLock ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
+        }
+
+        public static Quaternion RandomFloatRotation()
+        {
+            return Random.rotation;
+        }
+
+        public void FloatStart()
+        {
+            fsm.TriggerUnityEvent("FloatStart");
+        }
+
+        public void ftFloat()
+        {
+            Rigidbody rb = this.GetComponent<Rigidbody>();
+            rb.useGravity = false;
+            LockRotation(false);
+            transform.rotation = RandomFloatRotation();
+            rb.angularDrag = 0;
+            rb.angularVelocity = floatAngularVel;
+            if (!(rb.velocity == Vector3.zero))
+            {
+                rb.velocity = Vector3.zero;
+            }
+
+        }
+
+        public void ftFloatEnd()
+        {
+            Rigidbody rb = this.GetComponent<Rigidbody>();
+            rb.angularDrag = 0.05f;
+            rb.angularVelocity=Vector3.zero;
+            transform.rotation = initRot;
+            LockRotation(true);
+            rb.useGravity = true;
+        }
+
+        #endregion
 
     }
 }
