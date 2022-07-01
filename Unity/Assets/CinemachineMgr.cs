@@ -31,10 +31,10 @@ namespace ET
             // Time.timeScale = 1.5f; // move to timeline play speed.
         }
 
-        public void PlayAssetByLevel(int lvl)
+        public void PlayAssetByLevel(int lvl, bool isSkip=false)
         {
             var speed = PlayableSpeeds[lvl];
-            this.PlayDirectorByLevelBySpeed(lvl, speed);
+            this.PlayDirectorByLevelBySpeed(lvl, speed, isSkip);
 
             // Debug.Log($"play asset : level {lvl}");
             // PlayableDirectors.ForEach(director =>
@@ -55,7 +55,8 @@ namespace ET
         /// </summary>
         /// <param name="lvl"></param>
         /// <param name="speed"></param>
-        protected void PlayDirectorByLevelBySpeed(int lvl, float speed)
+        /// <param name="isSkip"></param>
+        protected void PlayDirectorByLevelBySpeed(int lvl, float speed, bool isSkip)
         {
             Debug.Log($"play asset : level {lvl}");
             PlayableDirectors.ForEach(director =>
@@ -66,13 +67,17 @@ namespace ET
             foreach (var camLvlRoot in VCamLvlRoots)
             {
                 camLvlRoot.SetActive(false);
-            }
+            } 
 
             VCamLvlRoots[lvl].SetActive(true);
             var director = PlayableDirectors[lvl];
             director.RebuildGraph();
             director.playableGraph.GetRootPlayable(0).SetSpeed(speed);
             director.Play();
+            if (isSkip)
+            {
+                director.time = director.duration;
+            }
         }
     }
 }

@@ -49,7 +49,7 @@ namespace ET.Utility
             levelForDebug++;
             for (int i = 0; i < levelForDebug; i++)
             {
-                LevelInfos[i].Effects.Invoke();
+                LevelInfos[i].otherBehaviour.Invoke();
             }
         }
         
@@ -73,7 +73,9 @@ namespace ET.Utility
     {
         public int TheLvl;
         public int GuysNeeded;
-        public UnityEvent Effects;
+        public Action<bool> cameraBehaviour;
+        // public int cameraLvl;
+        public UnityEvent otherBehaviour;
 
     }
 
