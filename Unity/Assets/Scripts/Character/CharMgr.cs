@@ -258,6 +258,8 @@ namespace ET
             charView.AnimSpeed = curAnimateSpeed;
             charView.StopParticle();
             charDict.Add(id, charView);
+            //20220701 set char floating
+            if(isFloating) charView.FloatStart();
             
             return goCreated;
 
@@ -397,5 +399,50 @@ namespace ET
 
         #endregion
 
+
+        #region floating
+        private bool _isFloating;
+
+        public bool isFloating
+        {
+            get => _isFloating;
+            private set => _isFloating = value;
+        }
+        public void FloatStart()
+        {
+            if (_isFloating)
+            {
+                Debug.LogError("already floating");
+                return;
+            }
+
+            foreach (var kvpair in charDict)
+            {
+                kvpair.Value.FloatStart();
+            }
+
+            _isFloating = true;
+        }
+
+        public void FloatEnd()
+        {
+            if (!_isFloating)
+            {
+                Debug.LogError("not floating");
+                return;
+            }
+            foreach (var kvpair in charDict)
+            {
+                kvpair.Value.FloatEnd();
+            }
+
+
+            _isFloating = false;
+        }
+        
+
+        #endregion
+        
+        
     }
 }

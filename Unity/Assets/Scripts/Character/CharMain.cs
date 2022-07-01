@@ -526,6 +526,9 @@ namespace ET
 
         [Header("Floating Config")] [SerializeField]
         private Vector3 floatAngularVel;
+
+        [SerializeField]
+        private float floatHeightOffset;
         public void LockRotation(bool isLock)
         {
             Rigidbody rb = this.GetComponent<Rigidbody>();
@@ -546,6 +549,7 @@ namespace ET
         {
             Rigidbody rb = this.GetComponent<Rigidbody>();
             rb.useGravity = false;
+            transform.position += Vector3.up * floatHeightOffset;
             LockRotation(false);
             transform.rotation = RandomFloatRotation();
             rb.angularDrag = 0;
@@ -557,6 +561,11 @@ namespace ET
 
         }
 
+        public void FloatEnd()
+        {
+            fsm.TriggerUnityEvent("FloatEnd");
+        }
+        
         public void ftFloatEnd()
         {
             Rigidbody rb = this.GetComponent<Rigidbody>();
