@@ -34,7 +34,7 @@ namespace ET
 
         public void InitState()
         {
-            vcamObj.SetActive(true);
+            vcamObj.SetActive(false);
             var activation = transform.GetChild(2).gameObject;
             activation.SetActive(false);
             director.Stop();
