@@ -31,5 +31,14 @@ namespace ET
                 director.time = director.duration;
             }
         }
+
+        public void InitState()
+        {
+            vcamObj.SetActive(true);
+            var activation = transform.GetChild(2).gameObject;
+            activation.SetActive(false);
+            director.Stop();
+            director.time = 0f;
+        }
     }
 }
