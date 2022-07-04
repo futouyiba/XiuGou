@@ -43,6 +43,16 @@ namespace ET
             
             CharMgr.instance.curAnimateSpeed = speed;
             CharMgr.instance.UpdateExistingAnimateSpeed();
+            
+            //floating things
+            if (level == 0)
+            {
+                CharMgr.instance.FloatStart();
+            }
+            else if (level == 3)
+            {
+                CharMgr.instance.FloatEnd();
+            }
         }
     }
 }
