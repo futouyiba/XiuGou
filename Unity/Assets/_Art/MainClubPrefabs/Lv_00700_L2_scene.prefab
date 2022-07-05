@@ -1630,10 +1630,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5041416636513742175}
-  - component: {fileID: 2700723588040256881}
-  - component: {fileID: 2703084506076649331}
-  - component: {fileID: 1488847406722995925}
-  - component: {fileID: 4433965984690643039}
   m_Layer: 0
   m_Name: Laser (1)
   m_TagString: LightGroup2
@@ -1657,94 +1653,6 @@ Transform:
   m_Father: {fileID: 2586528265477392103}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2700723588040256881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390498944926869163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d57006c15b846ffa81edfb0aa41ffa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onOffObjs:
-  - {fileID: 8702724339883864734}
---- !u!114 &2703084506076649331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390498944926869163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Events:
-    m_Signals:
-    - {fileID: 11400000, guid: c6c9641e8f83b33439d3b8b3f5611954, type: 2}
-    m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2700723588040256881}
-          m_TargetAssemblyTypeName: ET.RoomUpgrade.UpgradableOnOffObj, Assembly-CSharp
-          m_MethodName: Switch
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1488847406722995925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390498944926869163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d57006c15b846ffa81edfb0aa41ffa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onOffObjs:
-  - {fileID: 8702724339883864734}
---- !u!114 &4433965984690643039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390498944926869163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Events:
-    m_Signals:
-    - {fileID: 11400000, guid: c6c9641e8f83b33439d3b8b3f5611954, type: 2}
-    m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1488847406722995925}
-          m_TargetAssemblyTypeName: ET.RoomUpgrade.UpgradableOnOffObj, Assembly-CSharp
-          m_MethodName: Switch
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &4531958897301617580
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,7 +3755,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7059675119027740965}
   - component: {fileID: 4147346591085082861}
-  - component: {fileID: 7770301831885826766}
   m_Layer: 0
   m_Name: Octo Blue (1)
   m_TagString: Untagged
@@ -3879,20 +3786,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8702724339883864734}
   m_Mesh: {fileID: 4300000, guid: ec54b77c63e5b5143be0a00b0bf48a49, type: 3}
---- !u!114 &7770301831885826766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702724339883864734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d57006c15b846ffa81edfb0aa41ffa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onOffObjs:
-  - {fileID: 3239288489590742043}
 --- !u!1001 &124420350111735766
 PrefabInstance:
   m_ObjectHideFlags: 0
