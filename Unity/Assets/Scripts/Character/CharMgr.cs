@@ -144,7 +144,7 @@ namespace ET
             }
 
 
-            dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
+            // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
             // Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
         }
         
@@ -167,7 +167,7 @@ namespace ET
                     RegisterMe(char_id);
                 }
             }
-            dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
+            // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
         }
         
         public void CreateCharNativeCall(string _params)
@@ -254,12 +254,16 @@ namespace ET
                 goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
             }
             
+            
+            
             //20220622 set char animate speed
             charView.AnimSpeed = curAnimateSpeed;
             charView.StopParticle();
-            charDict.Add(id, charView);
             //20220701 set char floating
             if(isFloating) charView.FloatStart();
+            
+            charDict.Add(id, charView);
+            dlgCharAmountUpdate?.Invoke(charDict.Count);
             
             return goCreated;
 
@@ -273,6 +277,7 @@ namespace ET
             {
                 charDict.Remove(id);
                 charView.CharLeave();
+                dlgCharAmountUpdate?.Invoke(charDict.Count);
             }
         }
         

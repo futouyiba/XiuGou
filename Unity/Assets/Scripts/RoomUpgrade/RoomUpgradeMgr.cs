@@ -21,7 +21,16 @@ namespace ET
         [ReadOnly] public int currentLevel = 0;
         // public Action<int> levelUp;
 
+        //reset 用的所有配置
         [NonSerialized, OdinSerialize] public List<RoomUpObjectCollection> CamUpBehaviours;
+
+        [NonSerialized, OdinSerialize] public CameraPointCollection CameraPointCollection;
+
+        [NonSerialized, OdinSerialize] public List<GameObject> OtherInactives;
+
+        [NonSerialized, OdinSerialize] public List<GameObject> OtherActives;
+
+        [NonSerialized, OdinSerialize] public UpgradableCharMgr UpCharMgr;
         // [NonSerialized,OdinSerialize] public
         private static RoomUpgradeMgr _instance;
 
@@ -129,9 +138,35 @@ namespace ET
             return 9999;
         }
 
-
-        public void Reset()
+        /// <summary>
+        /// 倒计时到了，熄灯！
+        /// </summary>
+        public void PowerFault()
         {
+            ResetAll();
+            //停一段时间，再打开
+            
+        }
+
+        protected void ResetAll()
+        {
+            foreach (var camUpBehaviour in CamUpBehaviours)
+            {
+                camUpBehaviour.ResetAll();
+            }
+            CameraPointCollection.ResetCollection();
+            foreach (var active in OtherActives)
+            {
+                active.SetActive(true);
+            }
+
+            foreach (var inactive in OtherInactives)
+            {
+                inactive.SetActive(false);
+            }
+            
+            UpCharMgr.LevelTo(0);
+            //charmgr update char amount and level to new level
             
         }
         

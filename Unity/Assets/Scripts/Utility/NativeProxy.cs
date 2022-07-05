@@ -47,6 +47,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     Random.InitState((int)userEnter.userId);
                     CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,
                         userEnter.appearance, Color.white);
+                    
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
@@ -62,7 +63,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                 case "UserExit":
                     var userExit = GetOpdata<UserExit>(msg);
                     CharMgr.instance.RemoveCharView(userExit.userId);
-                    break;
+                    break; 
                 case "UserList":
                     var userList = GetOpdata<UserList>(msg);
                     var userInfos = userList.userInfos;

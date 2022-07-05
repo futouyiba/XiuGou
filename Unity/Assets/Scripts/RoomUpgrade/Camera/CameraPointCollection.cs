@@ -24,7 +24,7 @@ namespace ET
             }
         }
 
-        private void ResetCollection()
+        public void ResetCollection()
         {
             foreach (var active in actives)
             {
