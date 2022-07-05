@@ -144,7 +144,7 @@ namespace ET
             }
 
 
-            dlgCharAmountUpdate?.Invoke(numStart + num);
+            dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
             // Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
         }
         
@@ -167,7 +167,7 @@ namespace ET
                     RegisterMe(char_id);
                 }
             }
-            dlgCharAmountUpdate?.Invoke(charDict.Count);
+            dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
         }
         
         public void CreateCharNativeCall(string _params)

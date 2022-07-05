@@ -112,13 +112,13 @@ namespace ET
 
             foreach (var levelInfo in config.LevelInfos)
             {
-                if (currentAmount == levelInfo.GuysNeeded)
-                {
-                    return 0;
-                }
+                // if (currentAmount == levelInfo.GuysNeeded)
+                // {
+                //     return 0;
+                // }
                 if (currentLevel + 1 == levelInfo.TheLvl)
                 {
-                    return levelInfo.GuysNeeded - currentAmount;
+                    return levelInfo.GuysNeeded - currentAmount - 1;
                 }
             }
             return 9999;
