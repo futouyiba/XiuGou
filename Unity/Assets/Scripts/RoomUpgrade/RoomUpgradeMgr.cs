@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using ET.RoomUpgrade;
 using ET.Utility;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
@@ -14,17 +15,20 @@ namespace ET
 {
     public class RoomUpgradeMgr : SerializedMonoBehaviour
     {
-        [NonSerialized,OdinSerialize] public RoomUpConfig config;
+        [NonSerialized, OdinSerialize] public RoomUpConfig config;
         private int currentAmount = -1;
-        [ReadOnly] public int currentLevel=0;
+
+        [ReadOnly] public int currentLevel = 0;
         // public Action<int> levelUp;
 
+        [NonSerialized, OdinSerialize] public List<RoomUpObjectCollection> CamUpBehaviours;
+        // [NonSerialized,OdinSerialize] public
         private static RoomUpgradeMgr _instance;
 
         public static RoomUpgradeMgr instance
         {
             get => _instance;
-            private set{}
+            private set { }
         }
 
         private void Awake()
@@ -57,12 +61,12 @@ namespace ET
             var startAmout = currentAmount;
             var endAmount = amount;
             //先不管往回走的
-            if(endAmount<startAmout) return;
+            if (endAmount < startAmout) return;
             currentAmount = amount;
             var info = config.LevelInfos;
             List<UnityEvent> toExec = new List<UnityEvent>();
             var camHandler = new CameraActionHandler();
-            
+
             foreach (var item in info)
             {
                 if (item.GuysNeeded > startAmout && item.GuysNeeded <= endAmount)
@@ -75,20 +79,20 @@ namespace ET
                     currentLevel = currentLevel < item.TheLvl ? item.TheLvl : currentLevel;
                 }
             }
-            
-            
-            
+
+
+
             //execute other actions
             if (toExec.Count > 0)
             {
                 // currentLevel++;
                 // levelUp?.Invoke(currentLevel);
-                
+
                 foreach (var exec in toExec)
                 {
-                    
+
                     exec.Invoke();
-                    
+
                     // var actions = dict[exec];
                     // foreach (var action in actions)
                     // {
@@ -96,7 +100,7 @@ namespace ET
                     // }
                 }
             }
-            
+
             //execute camera actions
             camHandler.Invoke();
 
@@ -121,15 +125,17 @@ namespace ET
                     return levelInfo.GuysNeeded - currentAmount - 1;
                 }
             }
+
             return 9999;
         }
 
 
-        public void SwitchCamAndPlay(CinemachineVirtualCamera targetCam, PlayableDirector targetDirector)
+        public void Reset()
         {
             
         }
-    }
+        
+}
 
 
     public class CameraActionHandler
