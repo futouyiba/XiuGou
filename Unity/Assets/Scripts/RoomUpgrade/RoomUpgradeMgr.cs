@@ -76,8 +76,7 @@ namespace ET
                 }
             }
             
-            //execute camera actions
-            camHandler.Invoke();
+            
             
             //execute other actions
             if (toExec.Count > 0)
@@ -97,6 +96,9 @@ namespace ET
                     // }
                 }
             }
+            
+            //execute camera actions
+            camHandler.Invoke();
 
         }
 
@@ -110,13 +112,13 @@ namespace ET
 
             foreach (var levelInfo in config.LevelInfos)
             {
-                if (currentAmount == levelInfo.GuysNeeded)
-                {
-                    return 0;
-                }
+                // if (currentAmount == levelInfo.GuysNeeded)
+                // {
+                //     return 0;
+                // }
                 if (currentLevel + 1 == levelInfo.TheLvl)
                 {
-                    return levelInfo.GuysNeeded - currentAmount;
+                    return levelInfo.GuysNeeded - currentAmount - 1;
                 }
             }
             return 9999;
