@@ -76,8 +76,7 @@ namespace ET
                 }
             }
             
-            //execute camera actions
-            camHandler.Invoke();
+            
             
             //execute other actions
             if (toExec.Count > 0)
@@ -97,6 +96,9 @@ namespace ET
                     // }
                 }
             }
+            
+            //execute camera actions
+            camHandler.Invoke();
 
         }
 

@@ -15,6 +15,7 @@ namespace ET
         {
             vcamObj = transform.GetChild(0).gameObject;
             director = transform.GetChild(1).GetComponent<PlayableDirector>();
+            // Debug.LogWarning(transform.GetChild(1).gameObject.name);
         }
 
         // Update is called once per frame
