@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class RotateGameObject : MonoBehaviour
 {
+    public bool IsRotate { get; set; }
+
     public enum RotateState
     {
         Free, Controllable
@@ -14,9 +17,13 @@ public class RotateGameObject : MonoBehaviour
 
     [SerializeField] private RotateState rotateState = RotateState.Free;
 
-    public bool IsRotate { get; set; }
+    private void Start()
+    {
+        // IsRotate = false;
+        // rotateState = RotateState.Controllable;
+    }
 
-	private void Update ()
+    private void Update ()
     {
         if (rotateState == RotateState.Controllable)
         {

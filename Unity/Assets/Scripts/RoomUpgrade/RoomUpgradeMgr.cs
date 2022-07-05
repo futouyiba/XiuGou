@@ -5,15 +5,16 @@ using System.Linq;
 using Cinemachine;
 using ET.Utility;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 
 namespace ET
 {
-    public class RoomUpgradeMgr : MonoBehaviour
+    public class RoomUpgradeMgr : SerializedMonoBehaviour
     {
-        [SerializeField] private RoomUpConfig config;
+        [NonSerialized,OdinSerialize] public RoomUpConfig config;
         private int currentAmount = -1;
         [ReadOnly] public int currentLevel=0;
         // public Action<int> levelUp;
@@ -109,6 +110,10 @@ namespace ET
 
             foreach (var levelInfo in config.LevelInfos)
             {
+                if (currentAmount == levelInfo.GuysNeeded)
+                {
+                    return 0;
+                }
                 if (currentLevel + 1 == levelInfo.TheLvl)
                 {
                     return levelInfo.GuysNeeded - currentAmount;
