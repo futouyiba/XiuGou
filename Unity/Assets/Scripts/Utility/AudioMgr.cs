@@ -73,7 +73,7 @@ namespace ET
             {
                 CloseCount = 0;
                 CharMgr.instance.EveryOneDanceStart();
-                LightMgr.Instance.SwitchMainLight(true);
+                // LightMgr.Instance?.SwitchMainLight(true);
             }
             else if (avg < CloseThreshold)
             {
@@ -83,7 +83,7 @@ namespace ET
                     //停止跳舞
                     CharMgr.instance.EveryOneDanceStop();
                     //关灯
-                    LightMgr.Instance.SwitchMainLight(false);
+                    // LightMgr.Instance.SwitchMainLight(false);
                 }
             }
         }

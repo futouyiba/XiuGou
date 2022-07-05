@@ -10,6 +10,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
+using UnityEngine.Rendering.Universal;
 
 namespace ET
 {
@@ -60,6 +61,20 @@ namespace ET
             // CharMgr.instance.CreateTestGuysByNum(1);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                PowerFaultStart();
+            }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                CharAmountChanged(100);
+            }
+            
+        }
+
         /// <summary>
         /// 2022.6.30改动委托，因为需要Play Timeline时，区分是否跳过表现
         /// 
@@ -67,6 +82,12 @@ namespace ET
         /// <param name="amount"></param>
         protected void CharAmountChanged(int amount)
         {
+
+            //如果在停电时进来人，也不应该刷新
+            if (IsSupressLight)
+            {
+                return;
+            }
             var startAmout = currentAmount;
             var endAmount = amount;
             //先不管往回走的
@@ -138,16 +159,30 @@ namespace ET
             return 9999;
         }
 
+
+        #region power fault
+
+        private bool IsSupressLight = false;
         /// <summary>
         /// 倒计时到了，熄灯！
         /// </summary>
-        public void PowerFault()
+        public void PowerFaultStart()
         {
+            Debug.LogWarning("power fault start");
             ResetAll();
             //停一段时间，再打开
+            IsSupressLight = true;
             
+            TimeMgr.instance.AddTimer(2000, PowerFaultEnd);
         }
 
+        public void PowerFaultEnd()
+        {
+            Debug.LogWarning($"power fault end, char amount is {CharMgr.instance.CurrentCharAmount}");
+            IsSupressLight = false;
+            CharAmountChanged(CharMgr.instance.CurrentCharAmount);
+        }
+         
         protected void ResetAll()
         {
             foreach (var camUpBehaviour in CamUpBehaviours)
@@ -159,16 +194,20 @@ namespace ET
             {
                 active.SetActive(true);
             }
-
+         
             foreach (var inactive in OtherInactives)
             {
                 inactive.SetActive(false);
             }
-            
+                     
             UpCharMgr.LevelTo(0);
             //charmgr update char amount and level to new level
-            
+            currentLevel = 0;
         }
+        
+
+        #endregion
+       
         
 }
 

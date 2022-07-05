@@ -45,6 +45,7 @@ namespace ET
 
         public Vector2 myposStored = Vector2.zero;
 
+        public int CurrentCharAmount => charDict.Count;
 
         void Awake()
         {

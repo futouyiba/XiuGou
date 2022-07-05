@@ -19,6 +19,45 @@ namespace ET
         
         }
 
+        public void SetAnimationSpeed(int level)
+        {
+            float speed = 1f;
+            if (!config.speedConfig.TryGetValue(level, out speed))
+            {
+                // Debug.LogError($"level {level} does not exist");
+                // return;
+                //20220701
+                //没找到，找比等级小的，最接近的一个。
+                //这个速度就是要找的速度
+                var fallbackLvl = 0;
+                foreach (var configItem in config.speedConfig)
+                {
+                    if (fallbackLvl < configItem.Key && configItem.Key < level)
+                    {
+                        fallbackLvl = configItem.Key;
+                    }
+                }
+
+                speed = config.speedConfig[fallbackLvl];
+            }
+            
+            CharMgr.instance.curAnimateSpeed = speed;
+            CharMgr.instance.UpdateExistingAnimateSpeed();
+
+        }
+
+        public void FloatStart()
+        {
+            CharMgr.instance.FloatStart();
+        }
+
+        public void FloatEnd()
+        {
+            CharMgr.instance.FloatEnd();
+        }
+        
+        
+
         public void LevelTo(int level)
         {
             float speed = -1f;
