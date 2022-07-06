@@ -32,6 +32,8 @@ namespace ET
         [NonSerialized, OdinSerialize] public List<GameObject> OtherActives;
 
         [NonSerialized, OdinSerialize] public UpgradableCharMgr UpCharMgr;
+
+        [NonSerialized, OdinSerialize] public DowngradeTimer DowngradeTimer;
         // [NonSerialized,OdinSerialize] public
         private static RoomUpgradeMgr _instance;
 
@@ -91,7 +93,13 @@ namespace ET
             var startAmout = currentAmount;
             var endAmount = amount;
             //先不管往回走的
-            if (endAmount < startAmout) return;
+            
+            //20220706 是时候管往回走要怎么样了
+            if (endAmount < startAmout)
+            {
+                config.LevelInfos
+                return;
+            }
             currentAmount = amount;
             var info = config.LevelInfos;
             List<UnityEvent> toExec = new List<UnityEvent>();
@@ -173,7 +181,7 @@ namespace ET
             //停一段时间，再打开
             IsSupressLight = true;
             
-            TimeMgr.instance.AddTimer(2000, PowerFaultEnd);
+            TimeMgr.instance.AddTimer(10000, PowerFaultEnd);
         }
 
         public void PowerFaultEnd()
