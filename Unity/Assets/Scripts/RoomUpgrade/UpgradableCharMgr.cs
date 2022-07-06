@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace ET
 {
@@ -21,6 +22,7 @@ namespace ET
 
         public void SetAnimationSpeed(int level)
         {
+
             float speed = 1f;
             if (!config.speedConfig.TryGetValue(level, out speed))
             {
@@ -40,7 +42,7 @@ namespace ET
 
                 speed = config.speedConfig[fallbackLvl];
             }
-            
+            Debug.LogWarning($"setting speed to {speed}");
             CharMgr.instance.curAnimateSpeed = speed;
             CharMgr.instance.UpdateExistingAnimateSpeed();
 
@@ -48,12 +50,15 @@ namespace ET
 
         public void FloatStart()
         {
+            Debug.LogWarning($"float starting");
             CharMgr.instance.FloatStart();
         }
 
         public void FloatEnd()
         {
+            Debug.LogWarning($"float ending");
             CharMgr.instance.FloatEnd();
+            
         }
         
         

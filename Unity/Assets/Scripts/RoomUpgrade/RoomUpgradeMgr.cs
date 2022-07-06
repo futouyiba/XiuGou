@@ -200,9 +200,12 @@ namespace ET
                 inactive.SetActive(false);
             }
                      
-            UpCharMgr.LevelTo(0);
+            // UpCharMgr.LevelTo(0);
+            UpCharMgr.FloatEnd();
+            UpCharMgr.SetAnimationSpeed(0);
             //charmgr update char amount and level to new level
             currentLevel = 0;
+            currentAmount = -1;
         }
         
 
