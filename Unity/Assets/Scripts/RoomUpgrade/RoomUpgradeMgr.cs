@@ -7,6 +7,7 @@ using ET.RoomUpgrade;
 using ET.Utility;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
@@ -32,6 +33,10 @@ namespace ET
         [NonSerialized, OdinSerialize] public List<GameObject> OtherActives;
 
         [NonSerialized, OdinSerialize] public UpgradableCharMgr UpCharMgr;
+
+        [NonSerialized, OdinSerialize] public DowngradeTimer DowngradeTimer;
+
+        [NonSerialized, OdinSerialize] public StateMachine fsm;
         // [NonSerialized,OdinSerialize] public
         private static RoomUpgradeMgr _instance;
 
@@ -91,14 +96,37 @@ namespace ET
             var startAmout = currentAmount;
             var endAmount = amount;
             //先不管往回走的
-            if (endAmount < startAmout) return;
-            currentAmount = amount;
             var info = config.LevelInfos;
+            //20220706 是时候管往回走要怎么样了
+            if (endAmount < startAmout)
+            {
+                foreach (var item in info)
+                {
+                    if (item.TheLvl == currentLevel)
+                    {
+                        if (endAmount < item.GuysNeeded)
+                        {
+                            fsm.TriggerUnityEvent("DowngradeStart");
+                        }
+                    }
+                }
+                return;
+            }
+            //人数增加
+            currentAmount = amount;
+
             List<UnityEvent> toExec = new List<UnityEvent>();
             var camHandler = new CameraActionHandler();
 
             foreach (var item in info)
             {
+                if (item.TheLvl == currentLevel)
+                {//如果人数满足了，发一下Downgrade Cancel
+                    if (endAmount >= item.GuysNeeded)
+                    {
+                        fsm.TriggerUnityEvent("DowngradeCancel");
+                    }
+                }
                 if (item.GuysNeeded > startAmout && item.GuysNeeded <= endAmount)
                 {
                     //2022.6.30 
@@ -160,7 +188,7 @@ namespace ET
         }
 
 
-        #region power fault
+        #region downgrading
 
         private bool IsSupressLight = false;
         /// <summary>
@@ -168,21 +196,29 @@ namespace ET
         /// </summary>
         public void PowerFaultStart()
         {
+            fsm.TriggerUnityEvent("PowerFault");
+        }
+
+        public void ftPowerFaultStart()
+        {
             Debug.LogWarning("power fault start");
             ResetAll();
             //停一段时间，再打开
             IsSupressLight = true;
-            
-            TimeMgr.instance.AddTimer(2000, PowerFaultEnd);
+            TimeMgr.instance.AddTimer(10000, PowerFaultEnd);
         }
 
         public void PowerFaultEnd()
+        {
+            fsm.TriggerUnityEvent("PowerFaultEnd");
+        }
+
+        public void ftPowerFaultEnd()
         {
             Debug.LogWarning($"power fault end, char amount is {CharMgr.instance.CurrentCharAmount}");
             IsSupressLight = false;
             CharAmountChanged(CharMgr.instance.CurrentCharAmount);
         }
-         
         protected void ResetAll()
         {
             foreach (var camUpBehaviour in CamUpBehaviours)
@@ -206,6 +242,19 @@ namespace ET
             //charmgr update char amount and level to new level
             currentLevel = 0;
             currentAmount = -1;
+        }
+
+        public void ftDownGradeStart()
+        {
+            DowngradeTimer.Show();
+            DowngradeTimer.StartTimer();
+        }
+
+        public void ftDownGradeEnd()
+        {
+            DowngradeTimer.StopTimer();
+            DowngradeTimer.ResetTimer();
+            DowngradeTimer.Hide();
         }
         
 

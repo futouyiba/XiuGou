@@ -128,7 +128,11 @@ namespace ET
             {
                 CreateTestGuysByNum(1);
             }
-            
+
+            if (Input.GetKeyDown(KeyCode.KeypadMinus))
+            {
+                testRemoveRandomGuy();
+            }
            
             
             #endif
@@ -136,10 +140,11 @@ namespace ET
 
         public void CreateTestGuysByNum(int num)
         {
-            var numStart = CharMgr.instance.charDict.Count;
+            //var numStart = CharMgr.instance.charDict.Count;
+            
             for (int i = 0; i < num; i++)
             {
-                var index = numStart + i;
+                var index = id;
                 var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {index}", -1,
                     Color.white);
             }
@@ -147,6 +152,13 @@ namespace ET
 
             // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
             // Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
+        }
+
+        public void testRemoveRandomGuy()
+        {
+            var random = Random.Range(0, charDict.Count);
+            var keyValue = charDict.ElementAt(random);
+            RemoveCharView(keyValue.Key);
         }
         
         public void Create100TestGuys()

@@ -945,6 +945,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 909ee8093b1270d4184fba3d6fa0549b, type: 3}
+--- !u!114 &5231169593697032520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11463148, guid: 909ee8093b1270d4184fba3d6fa0549b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5231169593703936164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5231169593704084032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 148196, guid: 909ee8093b1270d4184fba3d6fa0549b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5231169593703936164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1838943820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231169593704084032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24f12a6c08d80a4abd8b63e27df404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitTime: 300
+  text: {fileID: 5231169593697032520}
+  TimeUpDlg:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1838943820}
+        m_TargetAssemblyTypeName: ET.DowngradeTimer, Assembly-CSharp
+        m_MethodName: testTimeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TimerTime: 0
+  IsTimerOn: 0
 --- !u!224 &5231169593725909818 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22498206, guid: 909ee8093b1270d4184fba3d6fa0549b,
