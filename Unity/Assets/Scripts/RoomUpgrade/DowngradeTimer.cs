@@ -20,6 +20,7 @@ namespace ET
         void Start()
         {
             ResetTimer();
+            Hide();
         }
 
         public void testTimeUp()
