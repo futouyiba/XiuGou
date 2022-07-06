@@ -26,7 +26,7 @@ namespace ET.Utility
         //
         // public KeyValuePair<int, Action<int>> KeyValuePairActionWithInt = new KeyValuePair<int, Action<int>>();
 
-        [OdinSerialize]
+        [NonSerialized,OdinSerialize]
         public List<LevelInfo> LevelInfos = new List<LevelInfo>();
         
         // [OdinSerialize]
