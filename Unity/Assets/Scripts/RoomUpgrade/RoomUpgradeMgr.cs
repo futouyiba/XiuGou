@@ -7,6 +7,7 @@ using ET.RoomUpgrade;
 using ET.Utility;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
@@ -34,6 +35,8 @@ namespace ET
         [NonSerialized, OdinSerialize] public UpgradableCharMgr UpCharMgr;
 
         [NonSerialized, OdinSerialize] public DowngradeTimer DowngradeTimer;
+
+        [NonSerialized, OdinSerialize] public StateMachine fsm;
         // [NonSerialized,OdinSerialize] public
         private static RoomUpgradeMgr _instance;
 
