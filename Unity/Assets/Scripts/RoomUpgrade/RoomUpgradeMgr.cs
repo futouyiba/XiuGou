@@ -97,7 +97,7 @@ namespace ET
             //20220706 是时候管往回走要怎么样了
             if (endAmount < startAmout)
             {
-                config.LevelInfos
+                // config.LevelInfos.
                 return;
             }
             currentAmount = amount;
