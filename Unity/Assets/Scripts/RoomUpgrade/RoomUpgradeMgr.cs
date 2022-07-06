@@ -37,6 +37,8 @@ namespace ET
         [NonSerialized, OdinSerialize] public DowngradeTimer DowngradeTimer;
 
         [NonSerialized, OdinSerialize] public StateMachine fsm;
+
+        [NonSerialized, OdinSerialize] public ParticleSystemCollection LevelUpEffect;
         // [NonSerialized,OdinSerialize] public
         private static RoomUpgradeMgr _instance;
 
@@ -145,7 +147,7 @@ namespace ET
             {
                 // currentLevel++;
                 // levelUp?.Invoke(currentLevel);
-
+                
                 foreach (var exec in toExec)
                 {
 
@@ -157,10 +159,12 @@ namespace ET
                     //     action.Invoke();
                     // }
                 }
+                
             }
 
             //execute camera actions
             camHandler.Invoke();
+            LevelUpEffect.PlayAll();
 
         }
 
