@@ -1,15 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using Sirenix.OdinInspector.Editor.StateUpdaters;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace ET
 {
-    public class SeatMgr : MonoBehaviour
+    public class SeatMgr : SerializedMonoBehaviour
     {
         protected Dictionary<int, CharSeatData> sitData;
-        [OdinSerialize] public Dictionary<int, SeatController> sofas;
+        // [OdinSerialize] public Dictionary<int, SeatController> sofas;
+        private SortedList<int, SeatController> sofas;
 
 
         private static SeatMgr _instance;
@@ -102,8 +106,38 @@ namespace ET
             
             user.UnSit();
         }
+        
+        public void RegSofa(SeatController sofa)
+        {
+            if (sofas.TryGetValue(sofa.Priority, out var dupSofa))
+            {
+                Debug.LogError($"sofa with priority ={sofa.Priority} already exists");
+                return;
+            }
+
+            sofas.Add(sofa.Priority, sofa);
+        }
+
+        public void UnregSofa(SeatController sofa)
+        {
+            if (!sofas.TryGetValue(sofa.Priority, out var sofaGot))
+            {
+                Debug.LogError($"sofa with priority ={sofa.Priority} does not exist");
+                return;
+            }
+
+            if (sofaGot != sofa)
+            {
+                Debug.LogError($"sofa with priority does not match unregging sofa");
+                return;
+            }
+
+            sofas.Remove(sofa.Priority);
+        }
 
     }
+    
+
 
     public class CharSeatData
     {

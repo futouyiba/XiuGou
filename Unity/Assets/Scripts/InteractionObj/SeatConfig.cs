@@ -31,8 +31,8 @@ namespace ET
     }
 
     
-    [Serializable]
-    public class SeatData
+    // [Serializable]
+    public class SeatData: ScriptableObject
     {
         [OdinSerialize]
         public int seatId;
