@@ -149,6 +149,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6328c703dc179fa42a4e1f64e5a9e75c, type: 3}
+--- !u!108 &4413314355232322309 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1695124809630264579, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3078620521231261190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6175589883319159003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9155095985419687645, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3078620521231261190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1545993686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175589883319159003}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe725a838550bc8459dcd65d296e1625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights:
+  - {fileID: 4413314355232322309}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  colors:
+  - {r: 1, g: 0, b: 0.34974813, a: 0.94509804}
+  - {r: 0.6447251, g: 0.23921566, b: 0.9607843, a: 0.95686275}
+  - {r: 0.54628503, g: 1, b: 0, a: 0}
+  - {r: 1, g: 0, b: 0.832973, a: 0}
+  - {r: 0, g: 0.050011635, b: 1, a: 0}
+  step_duration: 1
 --- !u!1 &7597980233161988609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4884162358676079623, guid: 6328c703dc179fa42a4e1f64e5a9e75c,
@@ -185,7 +221,7 @@ PrefabInstance:
     - target: {fileID: 2762245592022655313, guid: 05321f1f9e3e66642863b27263d23e48,
         type: 3}
       propertyPath: m_Name
-      value: "\U0002677C\U0002677CLv_02600_L3_ KazuoSpot"
+      value: "\U0002677C\U0002677CLv_02600_L3_KazuoSpot"
       objectReference: {fileID: 0}
     - target: {fileID: 2762245592022655318, guid: 05321f1f9e3e66642863b27263d23e48,
         type: 3}
