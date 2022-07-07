@@ -68,8 +68,8 @@ namespace ET
             if (curSeq != null)
             {
                 curSeq.Kill();
-                curSeq = DOTween.Sequence();
             }
+            curSeq = DOTween.Sequence();
 
             curSeq.Append(transform.DOShakePosition(duration, intensity, 10, 0));
             curSeq.Play();
