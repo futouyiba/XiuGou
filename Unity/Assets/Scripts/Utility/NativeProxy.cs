@@ -4,11 +4,11 @@ using System.Collections.Generic;
 // using LitJson;
 using UnityEngine;
 using System.Runtime.InteropServices;
-using LC.Newtonsoft.Json;
-using LC.Newtonsoft.Json.Linq;
+// using LC.Newtonsoft.Json;
+// using LC.Newtonsoft.Json.Linq;
 using Random = UnityEngine.Random;
-// using Newtonsoft.Json;
-// using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ET.Utility
 {
