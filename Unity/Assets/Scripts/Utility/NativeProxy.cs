@@ -108,7 +108,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     break;
                 case "UserSit":
                     var userSit = GetOpdata<UserSit>(msg);
-                    SeatMgr.Instance.Sit(userSit.userId, userSit.sofaId, userSit.seatId);
+                    SeatMgr.Instance.Sit(userSit.userId, userSit.micId);
                     break;
                 
                 // case "Break":

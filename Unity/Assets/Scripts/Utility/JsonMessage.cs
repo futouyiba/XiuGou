@@ -177,8 +177,8 @@ namespace ET.Utility
     public class UserSit : JsonCmd
     {
         public int userId;
-        public int sofaId;
-        public int seatId;
+        public int micId;
+        // public int seatId;
     }
 
     public class Gift : JsonCmd
