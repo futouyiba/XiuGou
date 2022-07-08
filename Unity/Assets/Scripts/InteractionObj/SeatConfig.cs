@@ -32,7 +32,7 @@ namespace ET
 
     
     // [Serializable]
-    public class SeatData: ScriptableObject
+    public class SeatData
     {
         [OdinSerialize]
         public int seatId;
@@ -57,7 +57,7 @@ namespace ET
 
         public void SetText(string text)
         {
-            btnText.text = text;
+            if(btnText) btnText.text = text;
         }
 
         public bool IsTaken => sitCharObj != null;
