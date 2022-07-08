@@ -161,7 +161,11 @@ namespace ET
                 }
 
                 //如果没东西就不播了
-                LevelUpEffect.PlayAll();
+                if (endAmount != 0)
+                {
+                    LevelUpEffect.PlayAll();    
+                }
+                
             }
 
             //execute camera actions
