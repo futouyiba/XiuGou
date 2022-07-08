@@ -158,7 +158,7 @@ namespace ET
             //所有这个沙发上的instData都需要Refresh
             foreach (var sit in sitData)
             {
-                if (sit.Value.instData.seatId == sofa.Priority)
+                if (sit.Value.instData.sofaId == sofa.Priority)
                 {
                     sit.Value.IsInstNeedRefresh = true;
                 }
@@ -204,6 +204,11 @@ namespace ET
 
         }
 
+
+        public void RefreshSitInstDataDelayed(int afterTime)
+        {
+            TimeMgr.instance.AddTimer(afterTime, RefreshSitInstData);
+        }
         public void RefreshSitInstData()
         {
             foreach (var sit in sitData)
@@ -216,7 +221,22 @@ namespace ET
                         Debug.LogError($"error finding new seat for {sit.Value.micId}");
                         continue;
                     }
-                    sit.Value.UpdateInstData((SeatInstData)newInstData);
+                    sit.Value.UpdateInstData(newInstData);
+                    
+                    //找到对应sofa 然后takeseat
+                    if (!sofas.TryGetValue(newInstData.sofaId, out var sofa))
+                    {
+                        Debug.LogError($"sofa {newInstData.sofaId} cannot find");
+                        return;
+                    }
+
+                    var userObj = CharMgr.instance.GetCharacter(sit.Value.userId);
+                    if (!userObj)
+                    {
+                        Debug.LogError($"user obj for {sit.Value.userId} does not exist");
+                        return;
+                    }
+                    sofa.TakeSeat(userObj.gameObject, newInstData.seatId);
                 }
                     
             }

@@ -37,5 +37,12 @@ namespace ET
         {
             seatMgr.LeaveSeat(userId);
         }
+
+        [ButtonGroup("levelUp")]
+        [Button("Refresh")]
+        public void Refresh()
+        {
+            seatMgr.RefreshSitInstData();
+        }
     }
 }
