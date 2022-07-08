@@ -147,7 +147,7 @@ namespace ET
             for (int i = 0; i < num; i++)
             {
                 var index = id;
-                var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {index}", -1,
+                var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}号", -1,
                     Color.white);
             }
 
