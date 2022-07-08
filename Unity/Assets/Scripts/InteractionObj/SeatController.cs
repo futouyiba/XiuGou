@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace ET
 {
@@ -143,6 +144,18 @@ namespace ET
                 Gizmos.color= Color.yellow;
                 Gizmos.DrawSphere(leave.position, .1f);
             }
+        }
+
+        public bool IsSeatTaken(int seatId)
+        {
+            if (!config.seats.TryGetValue(seatId, out SeatData data))
+            {
+                Debug.LogError($"seatid {seatId} not valid");
+                return true;
+            }
+
+            if (data.sitCharObj) return true;
+            else return false;
         }
 
     }
