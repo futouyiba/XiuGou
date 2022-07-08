@@ -3398,27 +3398,23 @@ PrefabInstance:
       objectReference: {fileID: 1368287374, guid: 84619b83b99dd384dbadb959d07b9eeb,
         type: 3}
     - target: {fileID: 1368287374, guid: 84619b83b99dd384dbadb959d07b9eeb, type: 3}
-      propertyPath: serializationData.SerializationNodes.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368287374, guid: 84619b83b99dd384dbadb959d07b9eeb, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1368287374, guid: 84619b83b99dd384dbadb959d07b9eeb, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"levels","value":{"$id":0,"$type":"System.Collections.Generic.Dictionary`2[[System.Int32,
-        mscorlib],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib","comparer":{"$id":1,"$type":"System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib"},"$rlength":0,"$rcontent":[]}'
+      value: '"path":"initVcam","value":null'
       objectReference: {fileID: 0}
     - target: {fileID: 1368287374, guid: 84619b83b99dd384dbadb959d07b9eeb, type: 3}
-      propertyPath: serializationData.SerializationNodes.Array.data[0].Data
-      value: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.GameObject,
-        UnityEngine.CoreModule]], mscorlib
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"levels","add_keys":null,"remove_keys":{"$id":0,"$type":"System.Object[],
+        mscorlib","$rlength":5,"$rcontent":[{"$id":1,"$type":"System.Int32, mscorlib",0},{"$id":2,"$type":"System.Int32,
+        mscorlib",2},{"$id":3,"$type":"System.Int32, mscorlib",3},{"$id":4,"$type":"System.Int32,
+        mscorlib",7},{"$id":5,"$type":"System.Int32, mscorlib",24}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 1368287374, guid: 84619b83b99dd384dbadb959d07b9eeb, type: 3}
-      propertyPath: serializationData.SerializationNodes.Array.data[0].Entry
-      value: 7
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 950012164779803726, guid: 84619b83b99dd384dbadb959d07b9eeb,
         type: 3}
@@ -6146,8 +6142,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072377885}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.016966764, y: 8.66, z: 40.96}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: 2.95, y: 11.59, z: 21.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11485,37 +11481,25 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 418153679, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 418153679, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"speedConfig","add_keys":{"$id":0,"$type":"System.Object[],
-        mscorlib","$rlength":7,"$rcontent":[{"$id":1,"$type":"System.Int32, mscorlib",17},{"$id":2,"$type":"System.Int32,
-        mscorlib",27},{"$id":3,"$type":"System.Int32, mscorlib",27},{"$id":4,"$type":"System.Int32,
-        mscorlib",17},{"$id":5,"$type":"System.Int32, mscorlib",17},{"$id":6,"$type":"System.Int32,
-        mscorlib",27},{"$id":7,"$type":"System.Int32, mscorlib",4}]},"remove_keys":{"$id":8,"$type":"System.Object[],
-        mscorlib","$rlength":7,"$rcontent":[{"$id":9,"$type":"System.Int32, mscorlib",2},{"$id":10,"$type":"System.Int32,
-        mscorlib",2},{"$id":11,"$type":"System.Int32, mscorlib",3},{"$id":12,"$type":"System.Int32,
-        mscorlib",2},{"$id":13,"$type":"System.Int32, mscorlib",3},{"$id":14,"$type":"System.Int32,
-        mscorlib",5},{"$id":15,"$type":"System.Int32, mscorlib",1}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 418153679, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[1]
       value: '"path":"speedConfig.{0si}","value":{"$id":0,"$type":"System.Single,
         mscorlib",0.8}'
       objectReference: {fileID: 0}
     - target: {fileID: 418153679, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
       value: '"path":"speedConfig.{17si}","value":{"$id":0,"$type":"System.Single,
         mscorlib",1.4}'
       objectReference: {fileID: 0}
     - target: {fileID: 418153679, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
       value: '"path":"speedConfig.{27si}","value":{"$id":0,"$type":"System.Single,
         mscorlib",1.8}'
       objectReference: {fileID: 0}
     - target: {fileID: 418153679, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      propertyPath: serializationData.PrefabModifications.Array.data[3]
       value: '"path":"speedConfig.{4si}","value":{"$id":0,"$type":"System.Single,
         mscorlib",1}'
       objectReference: {fileID: 0}
@@ -11538,6 +11522,12 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 3294954373281586613, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+    - target: {fileID: 3674770187975186822, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+      propertyPath: blankPrefab
+      value: 
+      objectReference: {fileID: 6229857659710172204, guid: 716259dba642ee241916f7b03e92550f,
         type: 3}
     - target: {fileID: 3674770188089328315, guid: cbacc8d2d22bd234cb0e651759f587cc,
         type: 3}
