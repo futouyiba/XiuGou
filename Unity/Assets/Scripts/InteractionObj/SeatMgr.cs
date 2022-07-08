@@ -41,7 +41,7 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
-        
+            sofas = new SortedList<int, SeatController>();
         }
 
         // Update is called once per frame

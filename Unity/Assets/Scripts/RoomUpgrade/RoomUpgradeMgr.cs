@@ -159,12 +159,14 @@ namespace ET
                     //     action.Invoke();
                     // }
                 }
-                
+
+                //如果没东西就不播了
+                LevelUpEffect.PlayAll();
             }
 
             //execute camera actions
             camHandler.Invoke();
-            LevelUpEffect.PlayAll();
+            
 
         }
 
