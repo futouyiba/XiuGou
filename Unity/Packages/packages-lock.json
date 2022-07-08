@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.leancloud.realtime": {
+      "version": "https://github.com/leancloud/csharp-sdk-upm.git#realtime-0.10.13",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.leancloud.storage": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.10.13"
+      },
+      "hash": "2413b4ee500b8e878cea377361347d4f9864918b"
+    },
+    "com.leancloud.storage": {
+      "version": "https://github.com/leancloud/csharp-sdk-upm.git#storage-0.10.13",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5913319418b6846bf44e19ef35eaeeb6fdc5c7ac"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 0,
