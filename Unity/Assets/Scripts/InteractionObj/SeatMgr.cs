@@ -42,6 +42,7 @@ namespace ET
         void Start()
         {
             sofas = new SortedList<int, SeatController>();
+            sitData = new Dictionary<int, CharSeatData>();
         }
 
         // Update is called once per frame
