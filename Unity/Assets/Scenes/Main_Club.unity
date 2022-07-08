@@ -5695,6 +5695,56 @@ PlayableDirector:
     - c7004b0eb669e5d449b8e006de2ba884: {fileID: 1638642496}
     - 54d1126381e995444b3a96d03cf6dfab: {fileID: 883412190}
     - b196b1be124b51548b90e6191960a094: {fileID: 883412190}
+--- !u!1 &1917544129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1917544130}
+  - component: {fileID: 1917544131}
+  m_Layer: 0
+  m_Name: LeanMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1917544130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917544129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1619229144}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1917544131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917544129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f99a2340074521a38d0000f2189d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appId: t4lS8BvwwSb4glBCIPGP6LBF-gzGzoHsz
+  appKey: qRMfUu2otuPBUb1bCMoukfjm
+  restServer: https://t4ls8bvw.lc-cn-n1-shared.com
+  socketServer: cn-n1-cell1.leancloud.cn
+  roomId: -5555
+  _currentGenUid: -1000
 --- !u!1 &1991643646 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7852502533940646140, guid: 2402ccb3cbf92f74a92fd5525cd04758,
