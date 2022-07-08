@@ -76,7 +76,7 @@ namespace ET.Utility
                 }
                 else
                 {
-                    Debug.Log("user not exists");
+                    Debug.Log("user not exists, creating...");
                 }
             }
             catch (Exception e)
@@ -100,7 +100,15 @@ namespace ET.Utility
         public async Task TestUpdate()
         {
             var userId = UnityEngine.Random.Range(0, _currentGenUid);
-            User user = LCObject.CreateWithoutData(USER_ID, userId);
+            var query = new LCQuery<LCObject>(USER_CLASS_NAME);
+            query.WhereEqualTo(USER_ID, userId);
+            var u = await query.First();
+            if (u == null)
+            {
+                Debug.Log("user not exists");
+                return;
+            }
+            User user = LCObject.CreateWithoutData(USER_CLASS_NAME, u.ObjectId) as User;
             var appearanceId = UnityEngine.Random.Range(0, 100);
             user.AppearanceId = appearanceId;
             await user.Save();
@@ -177,7 +185,51 @@ namespace ET.Utility
                  }
              }
              _liveQuery = await _appearancesQuery.Subscribe();
-             
+             _liveQuery.OnEnter = (obj, updateKeys) =>
+             {
+                 var user = obj as User;
+                 if (user == null)
+                 {
+                     // usually it happens when a user first time enters a room, and the server doesn't have the user's data yet. 
+                     // since the user's unity receives "meEnter" first, and sends "setPos". before set pos the logic server has this user within the userList,
+                     // but user's data is not on lean cloud server yet. so the user's data is null.
+                     // When this happens. it is not a error, the user will create lcObject, and initialization would be done on liveQuery's "OnEnter".
+                    Debug.LogError("lc live query on enter, yet user is null");
+                    return;
+                 }
+                 var sgId = (int)(obj[APPEARANCE_ID]);
+                 var mod = sgId % CharMgr.instance.charPrefabs.Count;
+                 CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
+                 if (charMain != null)
+                 {
+                     CharMgr.instance.ChangeAppearance(sgId, (int)(obj[APPEARANCE_ID]));
+                 }
+                 else
+                 {
+                     Debug.LogError("charMain is null");// when init, should get appearance before creation of char prefab.
+                 }
+             };
+             // create should be called when a user enters a room but my user cannot be queryed from the server.
+             // _liveQuery.OnCreate = (obj, updateKeys) =>
+             // {
+             //     var user = obj as User;
+             //     if (user == null)
+             //     {
+             //        Debug.LogError("lc live query on create, yet user is null");
+             //        return;
+             //     }
+             //     var sgId = (int)(obj[APPEARANCE_ID]);
+             //     var mod = sgId % CharMgr.instance.charPrefabs.Count;
+             //     CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
+             //     if (charMain != null)
+             //     {
+             //         CharMgr.instance.ChangeAppearance(sgId, (int)(obj[APPEARANCE_ID]));
+             //     }
+             //     else
+             //     {
+             //         Debug.LogError("charMain is null");// when init, should get appearance before creation of char prefab.
+             //     }
+             // };
          }
 
 //         public int roomId { get; set; }
