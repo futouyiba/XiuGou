@@ -15,6 +15,7 @@ namespace ET
     public class CharMgr : MonoBehaviour
     {
         [SerializeField] public List<GameObject> charPrefabs;
+        [SerializeField] public GameObject blankPrefab;
 
         public Dictionary<int, CharMain> charDict;
 
@@ -66,6 +67,7 @@ namespace ET
             // }
             
             //场景一开始就先发一个Mypos，然后还得存起来
+            //refactor
             myposStored = DanceFloorHelper.GetRandomDanceFloorPos();
             var myPos = new MyPosition()
             {
@@ -314,6 +316,18 @@ namespace ET
                 CharMgr.instance.RegisterMe(userId);
             }
             
+            
+        }
+        
+        public void ShowBlankAprc(int userId)
+        {
+            var charView = GetCharacter(userId);
+            if (charView == null)
+            {
+                Debug.LogError($"charview for {userId} not found");
+                // todo create a blank aprc for userId
+                return;
+            }
             
         }
 
