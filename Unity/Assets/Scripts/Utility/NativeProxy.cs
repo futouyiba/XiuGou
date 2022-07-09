@@ -70,6 +70,9 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     // Random.InitState(userList.);
                     foreach (var userInfo in userInfos)
                     {
+                        var userId = userInfo.userId;
+                        
+                        
                         var res = CharMgr.instance.GetCharacter(userInfo.userId);
                         if (res == null)
                         {

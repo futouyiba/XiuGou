@@ -1,6 +1,7 @@
 // // 导入基础模块
 //
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using LeanCloud;
@@ -12,6 +13,9 @@ using LeanCloud.Realtime;
 using LeanCloud.LiveQuery;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
+
 //
 namespace ET.Utility
 {
@@ -32,9 +36,69 @@ namespace ET.Utility
         public string restServer = "https://t4ls8bvw.lc-cn-n1-shared.com";
         public string socketServer = "cn-n1-cell1.leancloud.cn";
         public int roomId = -5555; // -5555表示测试房间；后续可以改成用户自己的房间号
-        public int _currentGenUid = -1000;
+        [FormerlySerializedAs("_currentGenUid")] public int currentGenUid = -1000;
+        
+        Dictionary<int, string> userId2ObjectId = new Dictionary<int, string>();
+        Dictionary<string, int> objectId2UserId = new Dictionary<string, int>();
+        private Dictionary<int, int> userId2AprcId = new Dictionary<int, int>();
 
         // todo for performance we cache the object Ids of the users in the room. so we can use lcQuery.get instead of lcQuery.find.
+
+        public async void UpdateViewForUserId(int userId)
+        {
+            string objectId;
+            int aprcId;
+            if (!userId2ObjectId.ContainsKey(userId))
+            {
+                Debug.Log("object id not found for user id " + userId + " creating new object id");
+                LCQuery<LCObject> query = new LCQuery<LCObject>(USER_CLASS_NAME);
+                query.WhereEqualTo(USER_ID, userId);
+                var lcObject = await query.First();
+                objectId = lcObject.ObjectId;
+                userId2ObjectId.Add(userId, objectId);
+                objectId2UserId.Add(objectId, userId);
+                var user = lcObject as User;
+                aprcId = user.AppearanceId;
+            }
+            else
+            {
+                objectId = userId2ObjectId[userId];
+                var queried = await new LCQuery<LCObject>(USER_CLASS_NAME).Get(objectId) as User;
+                aprcId = queried.AppearanceId;
+            }
+
+            if (userId2AprcId.ContainsKey(userId))
+            {
+                userId2AprcId[userId] = aprcId;
+            }
+            else
+            {
+                userId2AprcId.Add(userId, aprcId);
+            }
+            if (aprcId < 0)
+            {
+                Debug.Log("user id " + userId + " has no appearance id");
+                return ;
+            }
+            
+               // todo instantiate should be within main thread.     
+
+            return ETTask.CompletedTask;
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (pauseStatus)
+            {
+                _liveQuery.Unsubscribe();
+            }
+            else
+            {
+                this.Awake();
+            }
+        }
+
+
 
         class User:LCObject
         {
@@ -57,7 +121,7 @@ namespace ET.Utility
 
             if (Input.GetKey(KeyCode.Keypad8))
             {
-                
+                TestUpdate().Start();
             }
         }
         
@@ -65,7 +129,7 @@ namespace ET.Utility
         public async Task TestAdd()
         {
             var query = new LCQuery<LCObject>(USER_CLASS_NAME);
-            query.WhereEqualTo(USER_ID, _currentGenUid);
+            query.WhereEqualTo(USER_ID, currentGenUid);
             try
             {
                 var users = await query.First(); //actually it should be only 1 user. 
@@ -87,19 +151,22 @@ namespace ET.Utility
             
             var user = new User()
             {
-                UserId = _currentGenUid,
+                UserId = currentGenUid,
                 RoomId = roomId,
-                AppearanceId = _currentGenUid
+                AppearanceId = currentGenUid
             };
 
-            _currentGenUid++;
-            await user.Save();
+            currentGenUid++;
+            var savedUser = await user.Save();
+            this.userId2ObjectId.TryAdd(currentGenUid, savedUser.ObjectId);
+            this.objectId2UserId.TryAdd(savedUser.ObjectId, currentGenUid);
+            Debug.Log($"user created, userId {currentGenUid}, objectId {savedUser.ObjectId}");
         }
         
         [Button("TestUpdate")]
         public async Task TestUpdate()
         {
-            var userId = UnityEngine.Random.Range(0, _currentGenUid);
+            var userId = UnityEngine.Random.Range(-1000, currentGenUid);
             var query = new LCQuery<LCObject>(USER_CLASS_NAME);
             query.WhereEqualTo(USER_ID, userId);
             var u = await query.First();
@@ -110,6 +177,7 @@ namespace ET.Utility
             }
             User user = LCObject.CreateWithoutData(USER_CLASS_NAME, u.ObjectId) as User;
             var appearanceId = UnityEngine.Random.Range(0, 100);
+            System.Diagnostics.Debug.Assert(user != null, nameof(user) + " != null");
             user.AppearanceId = appearanceId;
             await user.Save();
         }
@@ -137,6 +205,37 @@ namespace ET.Utility
                  }
              };
              LCObject.RegisterSubclass("User", ()=> new User());
+             Init();
+         }
+
+         private async void Init()
+         {
+             var query = new LCQuery<User>(USER_CLASS_NAME);
+             _liveQuery = await query.Subscribe();
+             _liveQuery.OnCreate = obj =>
+             {
+                 var user = obj as User;
+                 if (user == null)
+                 {
+                     // usually it happens when a user first time enters a room, and the server doesn't have the user's data yet. 
+                     // since the user's unity receives "meEnter" first, and sends "setPos". before set pos the logic server has this user within the userList,
+                     // but user's data is not on lean cloud server yet. so the user's data is null.
+                     // When this happens. it is not a error, the user will create lcObject, and initialization would be done on liveQuery's "OnEnter".
+                     Debug.LogError("lc live query on enter, yet user is null");
+                     return;
+                 }
+                 var aprcId = (int)(obj[APPEARANCE_ID]);
+                 var mod = aprcId % CharMgr.instance.charPrefabs.Count;
+                 CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
+                 if (charMain != null)
+                 {
+                     CharMgr.instance.ChangeAppearance(aprcId, mod);
+                 }
+                 else
+                 {
+                     Debug.LogError("charMain is null");// when init, should get appearance before creation of char prefab.
+                 }
+             };
          }
 
          public void LeanChangeAppearance(int showGoId, int appearanceId)
@@ -184,30 +283,10 @@ namespace ET.Utility
                      Debug.LogError("charMain is null");// when init, should get appearance before creation of char prefab.
                  }
              }
-             _liveQuery = await _appearancesQuery.Subscribe();
+             // _liveQuery = await _appearancesQuery.Subscribe();
              _liveQuery.OnEnter = (obj, updateKeys) =>
              {
-                 var user = obj as User;
-                 if (user == null)
-                 {
-                     // usually it happens when a user first time enters a room, and the server doesn't have the user's data yet. 
-                     // since the user's unity receives "meEnter" first, and sends "setPos". before set pos the logic server has this user within the userList,
-                     // but user's data is not on lean cloud server yet. so the user's data is null.
-                     // When this happens. it is not a error, the user will create lcObject, and initialization would be done on liveQuery's "OnEnter".
-                    Debug.LogError("lc live query on enter, yet user is null");
-                    return;
-                 }
-                 var sgId = (int)(obj[APPEARANCE_ID]);
-                 var mod = sgId % CharMgr.instance.charPrefabs.Count;
-                 CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
-                 if (charMain != null)
-                 {
-                     CharMgr.instance.ChangeAppearance(sgId, (int)(obj[APPEARANCE_ID]));
-                 }
-                 else
-                 {
-                     Debug.LogError("charMain is null");// when init, should get appearance before creation of char prefab.
-                 }
+
              };
              // create should be called when a user enters a room but my user cannot be queryed from the server.
              // _liveQuery.OnCreate = (obj, updateKeys) =>
