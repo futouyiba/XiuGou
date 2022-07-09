@@ -104,6 +104,25 @@ namespace ET
 
         }
 
+        [Button("NextCam")]
+        public void SwitchNextCamera()
+        {
+            var camRootObj = curVcam.transform.parent.gameObject;
+            var sibId = curVcam.transform.GetSiblingIndex();
+            var nextSibId = sibId + 1;
+            var camcount = camRootObj.transform.childCount;
+            if (nextSibId >= camcount)
+            {
+                nextSibId = 0;
+            }
+                         
+            var chosenCam = camRootObj.transform.GetChild(nextSibId);
+            
+            curVcam.SetActive(false);
+            chosenCam.gameObject.SetActive(true);
+            curVcam = chosenCam.gameObject;
+        }
+
         [Button("BaseCam")]
         public void SwitchBaseCamera()
         {
@@ -119,6 +138,15 @@ namespace ET
         public void testLv4()
         {
             SwitchLevel(testToLevel);
+        }
+
+
+        /// <summary>
+        /// 用于带有vcam的obj播放完动画通知本类
+        /// </summary>
+        public void CameraAnimateEnd()
+        {
+            SwitchNextCamera();
         }
     }
 }
