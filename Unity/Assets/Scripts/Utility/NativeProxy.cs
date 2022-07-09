@@ -77,13 +77,16 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                         if (res == null)
                         {
                             Random.InitState(userInfo.userId);
-                            CharMgr.instance.CreateCharView(userInfo.userId, userInfo.position, userInfo.nickName,userInfo.appearance, Color.white);
+                            // CharMgr.instance.CreateCharView(userInfo.userId, userInfo.position, userInfo.nickName,userInfo.appearance, Color.white);
+                            CharMgr.instance.CreateBlankView(userId, userInfo.position, userInfo.nickName);
+                            
                         }
                         else
                         {
                             res.MoveStart(userInfo.position);
                         }
                     }
+                    LeanHelper.instance.LeanGetAprcIds();
                     break;
                 case "UserMove":
                     var userMove = GetOpdata<UserMove>(msg);

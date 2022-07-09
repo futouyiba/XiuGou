@@ -316,7 +316,7 @@ namespace ET
             this.transform.position = DanceFloorHelper.PosUnified2Scene(position);
         }
 
-        [SerializeField] protected GameObject sprite;
+        [SerializeField] public GameObject sprite;
         public void SetVisible(bool isVisable)
         {
             this.sprite.SetActive(isVisable);

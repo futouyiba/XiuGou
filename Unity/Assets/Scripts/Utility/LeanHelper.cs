@@ -23,7 +23,7 @@ namespace ET.Utility
     {
         private LCQuery<LCObject> _appearancesQuery;
         private LCLiveQuery _liveQuery;
-        private const string USER_CLASS_NAME = "User";
+        private const string USER_CLASS_NAME = "XiugouUser";
         private const string USER_ID = "UserId";
         /// <summary>
         /// the string used for indexing the mongo storage.
@@ -41,6 +41,7 @@ namespace ET.Utility
         Dictionary<int, string> userId2ObjectId = new Dictionary<int, string>();
         Dictionary<string, int> objectId2UserId = new Dictionary<string, int>();
         private Dictionary<int, int> userId2AprcId = new Dictionary<int, int>();
+        public static LeanHelper instance;
 
         // todo for performance we cache the object Ids of the users in the room. so we can use lcQuery.get instead of lcQuery.find.
 
@@ -106,7 +107,7 @@ namespace ET.Utility
             public int AppearanceId { get => (int)this[APPEARANCE_ID]; set=>this[APPEARANCE_ID]=value; }
             public int RoomId { get=>(int)this[ROOM_ID]; set=>this[ROOM_ID] = value; }
 
-            public User() : base("User")
+            public User() : base(USER_CLASS_NAME)
             {
             }
         }
@@ -185,6 +186,7 @@ namespace ET.Utility
         //
          private void Awake()
          {
+             instance = this;
              LCApplication.Initialize(appId, appKey, restServer);
              LCLogger.LogDelegate = (LCLogLevel level, string info) =>
              {
@@ -204,13 +206,14 @@ namespace ET.Utility
                          break;
                  }
              };
-             LCObject.RegisterSubclass("User", ()=> new User());
+             LCObject.RegisterSubclass(USER_CLASS_NAME, ()=> new User());
              Init();
          }
 
          private async void Init()
          {
              var query = new LCQuery<User>(USER_CLASS_NAME);
+             query.WhereExists("objectId");
              _liveQuery = await query.Subscribe();
              _liveQuery.OnCreate = obj =>
              {
@@ -229,7 +232,11 @@ namespace ET.Utility
                  CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
                  if (charMain != null)
                  {
-                     CharMgr.instance.ChangeAppearance(aprcId, mod);
+                     // CharMgr.instance.ChangeAppearance(aprcId, mod);
+                     CharMgr.instance.onAprcChangedQueue.Enqueue((a, b) =>
+                     {
+                         CharMgr.instance.ChangeAprcFast(user.UserId, mod);
+                     });
                  }
                  else
                  {
@@ -259,6 +266,32 @@ namespace ET.Utility
              });
          }
 
+         public void LeanGetAprcIds()
+         {
+                var query = new LCQuery<LCObject>(USER_CLASS_NAME);
+                query.WhereContainedIn(USER_ID, CharMgr.instance.charDict.Keys);
+                query.Find().ContinueWith(t =>
+                {
+                    if (t.IsFaulted)
+                    {
+                        Debug.LogError(t.Exception);
+                    }
+                    else
+                    {
+                        var users = t.Result;
+                        foreach (var user in users)
+                        {
+                            var aprcId = (int)(user[APPEARANCE_ID]);
+                            Debug.Log($"userId {user[USER_ID]} appearanceId {aprcId}");
+                            CharMgr.instance.onAprcChangedQueue.Enqueue(((userId, aId) =>
+                            {
+                               CharMgr.instance.ChangeAprcFast(userId, aId); 
+                            }));
+                        }
+                    }
+                });
+         }
+         
          public async Task LeanInitAppearances()
          {
              // if (_appearancesQuery != null)

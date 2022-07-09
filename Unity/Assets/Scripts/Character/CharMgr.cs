@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using ET.Utility;
+using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEditor;
 using UnityEngine;
@@ -14,6 +15,9 @@ namespace ET
 {
     public class CharMgr : MonoBehaviour
     {
+        public Action<int, int> OnAprcChanged;
+        public Queue<Action<int,int>> onAprcChangedQueue = new Queue<Action<int, int>>();
+
         [SerializeField] public List<GameObject> charPrefabs;
         [SerializeField] public GameObject blankPrefab;
 
@@ -21,7 +25,8 @@ namespace ET
 
         private Action<int> dlgCharAmountUpdate;
         
-        private int _id = 0;
+        public int idStartPoint = -1000;
+        private int _id = -1000;
         protected int id
         {
             get
@@ -83,6 +88,12 @@ namespace ET
         // Update is called once per frame
         void Update()
         {
+            if (onAprcChangedQueue.Count > 0)
+            {
+                var action = onAprcChangedQueue.Dequeue();
+                action?.Invoke(myId, CurrentCharAmount);
+            }
+            
             #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -171,7 +182,7 @@ namespace ET
                 var char_id = this.id;
                 if (char_id == 1)
                 {
-                    random_me = Random.Range(1, 100);
+                    random_me = Random.Range(idStartPoint, idStartPoint+50 );
                     Debug.LogWarning($"my id is {random_me}");
                 }
 
@@ -185,12 +196,12 @@ namespace ET
             // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
         }
         
-        public void CreateCharNativeCall(string _params)
-        {
-            CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}",-1, Color.white);
-            //todo send the random pos to native app
-            
-        }
+        // public void CreateCharNativeCall(string _params)
+        // {
+        //     CreateCharView(id, DanceFloorHelper.GetRandomDanceFloorPos(), $"I am {_params}",-1, Color.white);
+        //     //todo send the random pos to native app
+        //     
+        // }
 
         /// <summary>
         /// 在创建后指出哪个是我
@@ -269,8 +280,6 @@ namespace ET
                 goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
             }
             
-            
-            
             //20220622 set char animate speed
             charView.AnimSpeed = curAnimateSpeed;
             charView.StopParticle();
@@ -284,7 +293,75 @@ namespace ET
 
         }
 
+        public GameObject CreateBlankView(int id, Vector2 position, string name)
+        {
+            if (charDict.TryGetValue(id, out CharMain charMainStored))
+            {
+                Debug.LogError($"user character :{id} already exists, skipping");
+                return charMainStored.gameObject;
+            }
 
+            var toCreate = this.blankPrefab;
+            var goCreated = GameObject.Instantiate(toCreate);
+            var charMain = goCreated.GetComponent<CharMain>();
+            charMain.userId = id;
+            charMain.SetName(name);
+            charMain.SetNameColor(Color.white);
+            if (position.x < -100f && position.y < -100f)
+            {
+                //未初始化
+                charMain.SetVisible(false);
+                var truePos = DanceFloorHelper.PosUnified2Scene(new Vector2(-1f, -1f));
+                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
+            }
+            else
+            {
+                var truePos = DanceFloorHelper.PosUnified2Scene(position);
+                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
+            }
+
+            //20220622 set char animate speed
+            charMain.AnimSpeed = curAnimateSpeed;
+            charMain.StopParticle();
+            //20220701 set char floating
+            if (isFloating) charMain.FloatStart();
+
+            charDict.Add(id, charMain);
+            dlgCharAmountUpdate?.Invoke(charDict.Count);
+
+            return goCreated;
+        }
+
+        [Button("Change 1 1")]
+        public void Change1()
+        {
+            var charMain = GetCharacter(1);
+            if (charMain)
+            {
+                ChangeAprcFast(1, Random.Range(0, charPrefabs.Count));
+            }
+        }
+
+        public void ChangeAprcFast(int userId, int aprcId)
+        {
+            if (!charDict.ContainsKey(userId))
+            {
+                return;
+            }
+            var charMain = charDict[userId];
+            var count = charPrefabs.Count;
+            var mod = aprcId % count;
+            var newAprcGO = charPrefabs[mod];
+            var spriteNew = newAprcGO.transform.GetComponentInChildren<SpriteRenderer>();
+            var spriteNewTransform = spriteNew.transform as RectTransform;
+            var oriSprite = charMain.sprite;
+            oriSprite.GetComponent<SpriteRenderer>().sprite = spriteNew.sprite;
+            var oriSpriteTransform = oriSprite.transform as RectTransform;
+            oriSpriteTransform.localScale = spriteNewTransform.localScale;
+            oriSpriteTransform.localPosition = spriteNewTransform.localPosition;
+            oriSprite.GetComponent<Animator>().runtimeAnimatorController = newAprcGO.GetComponent<Animator>().runtimeAnimatorController;
+        }
+        
         public void RemoveCharView(int id)
         {
             var charView = charDict[id];
@@ -302,7 +379,7 @@ namespace ET
             var charView = GetCharacter(userId);
             if (charView == null)
             {
-                Debug.LogError($"charview for {userId} not found");
+                Debug.LogError($"char view for {userId} not found");
                 return;
             }
             var pos = charView.transform.position;
@@ -315,21 +392,8 @@ namespace ET
             {
                 CharMgr.instance.RegisterMe(userId);
             }
-            
-            
         }
         
-        public void ShowBlankAprc(int userId)
-        {
-            var charView = GetCharacter(userId);
-            if (charView == null)
-            {
-                Debug.LogError($"charview for {userId} not found");
-                // todo create a blank aprc for userId
-                return;
-            }
-            
-        }
 
         public static KeyValuePair<int,CharMain>? GetRandomChar()
         {
