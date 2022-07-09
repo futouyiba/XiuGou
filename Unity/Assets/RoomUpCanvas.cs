@@ -54,6 +54,11 @@ namespace ET
             CharMgr.instance.CreateTestGuysByNum(1);
         }
 
+        public void Add10Guys()
+        {
+            CharMgr.instance.CreateTestGuysByNum(10);
+        }
+
         protected void UpdateCharAmount(int amount)
         {
             populationText.text = amount.ToString();

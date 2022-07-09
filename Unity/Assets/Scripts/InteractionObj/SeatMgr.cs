@@ -1,16 +1,20 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Sirenix.Serialization;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ET
 {
-    public class SeatMgr : MonoBehaviour
+    public class SeatMgr : SerializedMonoBehaviour
     {
+        //<userid, seat data>
         protected Dictionary<int, CharSeatData> sitData;
-        [OdinSerialize] public Dictionary<int, SeatController> sofas;
+        // [OdinSerialize] public Dictionary<int, SeatController> sofas;
+        //<sofa id,sofa  controller>
+        private SortedList<int, SeatController> sofas;
 
+        
+
+        #region singleton
 
         private static SeatMgr _instance;
 
@@ -19,6 +23,9 @@ namespace ET
             get => _instance;
             private set{}
         }
+
+        #endregion
+       
 
         private void Awake()
         {
@@ -34,7 +41,8 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
-        
+            sofas = new SortedList<int, SeatController>();
+            sitData = new Dictionary<int, CharSeatData>();
         }
 
         // Update is called once per frame
@@ -51,35 +59,46 @@ namespace ET
         /// <param name="userId"></param>
         /// <param name="sofaId"></param>
         /// <param name="seatId"></param>
-        public void Sit(int userId, int sofaId, int seatId)
+        public void Sit(int userId, int micId)
         {
-            //目标座位是不是有人了
+            //目标座位是不是有人了,20220708,除非出错，否则应该不会有人才对
             //这人是不是已经坐了
-            if (sitData.TryGetValue(userId, out var value))
+            CharSeatData originData = null;
+            if (sitData.TryGetValue(userId, out originData))
             {
-                LeaveSeat(userId);
-
+                if(originData.IsAlreadySat) LeaveSeat(userId);
             }
-            
-
-            CharSeatData data = new CharSeatData(userId, sofaId, seatId);
-            sitData.Add(userId,data);
-            //让人移动到座位上，若座位需要有变化也应有变化
-            if (!sofas.TryGetValue(sofaId, out var controller))
+            else
             {
-                Debug.LogError($"sofa id {sofaId} is not valid, exiting");
+                originData = new CharSeatData(userId, micId);
+                sitData.Add(userId, originData);
+            }
+
+            var sitInst = FindSeat(micId);
+            if (!sofas.TryGetValue(sitInst.sofaId, out SeatController sofa))
+            {
+                Debug.LogError($"sofa id {sitInst.sofaId} is not valid, exiting");
                 return;
             }
 
+            if (sofa.IsSeatTaken(sitInst.seatId))
+            {
+                Debug.LogError($"seat {sitInst.seatId} on sofa {sitInst.sofaId} is taken ");
+                return;
+            }
             var user = CharMgr.instance.GetCharacter(userId);
             if (!user)
             {
                 Debug.LogError($"char {userId} does not exist, exiting");
                 return;
             }
+
             
-            controller.TakeSeat(user.gameObject, seatId);
+            
+            //让人移动到座位上，若座位需要有变化也应有变化
+            sofa.TakeSeat(user.gameObject, sitInst.seatId);
             user.Sit();
+            originData.UpdateInstData(sitInst);
             
         }
 
@@ -91,31 +110,177 @@ namespace ET
                 Debug.LogError($"char {userId} does not exist, exiting");
                 return;
             }
-            if (!sitData.TryGetValue(userId, out var value))
+            if (!sitData.TryGetValue(userId, out var charSeatData))
             {
                 Debug.LogError($"char {userId} 's sit data is not found");
                 return;
             }
             
-            var seat = sofas[value.sofaId];
-            seat.LeaveSeat(value.seatId);
+            //find sofa,leave seat
             
+            var seat = sofas[charSeatData.instData.sofaId];
+            seat.LeaveSeat(charSeatData.instData.seatId);
+            
+            //user unsit
             user.UnSit();
+            
+            //SeatInstData update
+            charSeatData.instData = null;
+        }
+        
+        public void RegSofa(SeatController sofa)
+        {
+            if (sofas.TryGetValue(sofa.Priority, out var dupSofa))
+            {
+                Debug.LogError($"sofa with priority ={sofa.Priority} already exists");
+                return;
+            }
+
+            sofas.Add(sofa.Priority, sofa);
+        }
+
+        public void UnregSofa(SeatController sofa)
+        {
+            if (!sofas.TryGetValue(sofa.Priority, out var sofaGot))
+            {
+                Debug.LogError($"sofa with priority ={sofa.Priority} does not exist");
+                return;
+            }
+
+            if (sofaGot != sofa)
+            {
+                Debug.LogError($"sofa with priority does not match unregging sofa");
+                return;
+            }
+
+            sofas.Remove(sofa.Priority);
+            
+            //所有这个沙发上的instData都需要Refresh
+            foreach (var sit in sitData)
+            {
+                if (sit.Value.instData.sofaId == sofa.Priority)
+                {
+                    sit.Value.IsInstNeedRefresh = true;
+                }
+            }
+        }
+
+
+        protected SeatInstData FindSeat(int micId)
+        {
+            int sofaId = -1;
+            int seatId = -1;
+            var counter = 0;
+            
+            foreach (var sofa in sofas)
+            {
+                if (counter <= micId && counter + sofa.Value.Capability>micId)
+                {
+                    sofaId = sofa.Value.Priority;
+                    for (int i = 0; i < sofa.Value.Capability; i++)
+                    {
+                        if (counter + i == micId)
+                        {
+                            seatId = i;
+                        }
+                    }
+
+                    if (sofaId >= 0 && seatId >= 0)
+                    {
+                        SeatInstData instData = new SeatInstData
+                        {
+                            sofaId = sofaId,
+                            seatId = seatId
+                        };
+                        return instData;
+                    }
+                }
+
+                counter += sofa.Value.Capability;
+
+            }
+            Debug.LogError($"sofa position for {micId} does not found");
+            return null;
+
+        }
+
+
+        public void RefreshSitInstDataDelayed(int afterTime)
+        {
+            TimeMgr.instance.AddTimer(afterTime, RefreshSitInstData);
+        }
+        public void RefreshSitInstData()
+        {
+            foreach (var sit in sitData)
+            {
+                if (sit.Value.IsInstNeedRefresh )
+                {
+                    var newInstData = FindSeat(sit.Value.micId);
+                    if (newInstData==null)
+                    {
+                        Debug.LogError($"error finding new seat for {sit.Value.micId}");
+                        continue;
+                    }
+                    sit.Value.UpdateInstData(newInstData);
+                    
+                    //找到对应sofa 然后takeseat
+                    if (!sofas.TryGetValue(newInstData.sofaId, out var sofa))
+                    {
+                        Debug.LogError($"sofa {newInstData.sofaId} cannot find");
+                        return;
+                    }
+
+                    var userObj = CharMgr.instance.GetCharacter(sit.Value.userId);
+                    if (!userObj)
+                    {
+                        Debug.LogError($"user obj for {sit.Value.userId} does not exist");
+                        return;
+                    }
+                    sofa.TakeSeat(userObj.gameObject, newInstData.seatId);
+                }
+                    
+            }
         }
 
     }
+    
+
 
     public class CharSeatData
     {
+        
         public int userId;
+        public int micId;
+        //当角色坐的座位下线了，这个会被置为true
+        public bool IsInstNeedRefresh = false;
+        
+        //abandon on seat refresh
+        public SeatInstData instData;
+
+        public CharSeatData(int uid, int micId)
+        {
+            userId = uid;
+            this.micId = micId;
+            // this.sofaId = sofaId;
+            // this.seatId = seatId;
+        }
+
+        public void UpdateInstData(SeatInstData instData)
+        {
+            this.instData = instData;
+        }
+
+        public bool IsAlreadySat => (instData != null && !IsInstNeedRefresh);
+
+
+    }
+
+    public class SeatInstData
+    {
         public int sofaId;
         public int seatId;
 
-        public CharSeatData(int uid, int sofaId, int seatId)
-        {
-            userId = uid;
-            this.sofaId = sofaId;
-            this.seatId = seatId;
-        }
     }
+    
+    
 }

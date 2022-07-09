@@ -3,27 +3,49 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using ET.RoomUpgrade;
 using ET.Utility;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
+using UnityEngine.Rendering.Universal;
 
 namespace ET
 {
-    public class RoomUpgradeMgr : MonoBehaviour
+    public class RoomUpgradeMgr : SerializedMonoBehaviour
     {
-        [SerializeField] private RoomUpConfig config;
+        [NonSerialized, OdinSerialize] public RoomUpConfig config;
         private int currentAmount = -1;
-        [ReadOnly] public int currentLevel=0;
+
+        [ReadOnly] public int currentLevel = 0;
         // public Action<int> levelUp;
 
+        //reset 用的所有配置
+        [NonSerialized, OdinSerialize] public List<RoomUpObjectCollection> CamUpBehaviours;
+
+        [NonSerialized, OdinSerialize] public CameraPointCollection CameraPointCollection;
+
+        [NonSerialized, OdinSerialize] public List<GameObject> OtherInactives;
+
+        [NonSerialized, OdinSerialize] public List<GameObject> OtherActives;
+
+        [NonSerialized, OdinSerialize] public UpgradableCharMgr UpCharMgr;
+
+        [NonSerialized, OdinSerialize] public DowngradeTimer DowngradeTimer;
+
+        [NonSerialized, OdinSerialize] public StateMachine fsm;
+
+        [NonSerialized, OdinSerialize] public ParticleSystemCollection LevelUpEffect;
+        // [NonSerialized,OdinSerialize] public
         private static RoomUpgradeMgr _instance;
 
         public static RoomUpgradeMgr instance
         {
             get => _instance;
-            private set{}
+            private set { }
         }
 
         private void Awake()
@@ -46,6 +68,20 @@ namespace ET
             // CharMgr.instance.CreateTestGuysByNum(1);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                PowerFaultStart();
+            }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                CharAmountChanged(100);
+            }
+            
+        }
+
         /// <summary>
         /// 2022.6.30改动委托，因为需要Play Timeline时，区分是否跳过表现
         /// 
@@ -53,17 +89,46 @@ namespace ET
         /// <param name="amount"></param>
         protected void CharAmountChanged(int amount)
         {
+
+            //如果在停电时进来人，也不应该刷新
+            if (IsSupressLight)
+            {
+                return;
+            }
             var startAmout = currentAmount;
             var endAmount = amount;
             //先不管往回走的
-            if(endAmount<startAmout) return;
-            currentAmount = amount;
             var info = config.LevelInfos;
+            //20220706 是时候管往回走要怎么样了
+            if (endAmount < startAmout)
+            {
+                foreach (var item in info)
+                {
+                    if (item.TheLvl == currentLevel)
+                    {
+                        if (endAmount < item.GuysNeeded)
+                        {
+                            fsm.TriggerUnityEvent("DowngradeStart");
+                        }
+                    }
+                }
+                return;
+            }
+            //人数增加
+            currentAmount = amount;
+
             List<UnityEvent> toExec = new List<UnityEvent>();
             var camHandler = new CameraActionHandler();
-            
+
             foreach (var item in info)
             {
+                if (item.TheLvl == currentLevel)
+                {//如果人数满足了，发一下Downgrade Cancel
+                    if (endAmount >= item.GuysNeeded)
+                    {
+                        fsm.TriggerUnityEvent("DowngradeCancel");
+                    }
+                }
                 if (item.GuysNeeded > startAmout && item.GuysNeeded <= endAmount)
                 {
                     //2022.6.30 
@@ -74,10 +139,9 @@ namespace ET
                     currentLevel = currentLevel < item.TheLvl ? item.TheLvl : currentLevel;
                 }
             }
-            
-            //execute camera actions
-            camHandler.Invoke();
-            
+
+
+
             //execute other actions
             if (toExec.Count > 0)
             {
@@ -86,16 +150,27 @@ namespace ET
                 
                 foreach (var exec in toExec)
                 {
-                    
+
                     exec.Invoke();
-                    
+
                     // var actions = dict[exec];
                     // foreach (var action in actions)
                     // {
                     //     action.Invoke();
                     // }
                 }
+
+                //如果没东西就不播了
+                if (endAmount != 0)
+                {
+                    LevelUpEffect.PlayAll();    
+                }
+                
             }
+
+            //execute camera actions
+            camHandler.Invoke();
+            
 
         }
 
@@ -109,20 +184,94 @@ namespace ET
 
             foreach (var levelInfo in config.LevelInfos)
             {
+                // if (currentAmount == levelInfo.GuysNeeded)
+                // {
+                //     return 0;
+                // }
                 if (currentLevel + 1 == levelInfo.TheLvl)
                 {
-                    return levelInfo.GuysNeeded - currentAmount;
+                    return levelInfo.GuysNeeded - currentAmount - 1;
                 }
             }
+
             return 9999;
         }
 
 
-        public void SwitchCamAndPlay(CinemachineVirtualCamera targetCam, PlayableDirector targetDirector)
+        #region downgrading
+
+        private bool IsSupressLight = false;
+        /// <summary>
+        /// 倒计时到了，熄灯！
+        /// </summary>
+        public void PowerFaultStart()
         {
-            
+            fsm.TriggerUnityEvent("PowerFault");
         }
-    }
+
+        public void ftPowerFaultStart()
+        {
+            Debug.LogWarning("power fault start");
+            ResetAll();
+            //停一段时间，再打开
+            IsSupressLight = true;
+            TimeMgr.instance.AddTimer(10000, PowerFaultEnd);
+        }
+
+        public void PowerFaultEnd()
+        {
+            fsm.TriggerUnityEvent("PowerFaultEnd");
+        }
+
+        public void ftPowerFaultEnd()
+        {
+            Debug.LogWarning($"power fault end, char amount is {CharMgr.instance.CurrentCharAmount}");
+            IsSupressLight = false;
+            CharAmountChanged(CharMgr.instance.CurrentCharAmount);
+        }
+        protected void ResetAll()
+        {
+            foreach (var camUpBehaviour in CamUpBehaviours)
+            {
+                camUpBehaviour.ResetAll();
+            }
+            CameraPointCollection.ResetCollection();
+            foreach (var active in OtherActives)
+            {
+                active.SetActive(true);
+            }
+         
+            foreach (var inactive in OtherInactives)
+            {
+                inactive.SetActive(false);
+            }
+                     
+            // UpCharMgr.LevelTo(0);
+            UpCharMgr.FloatEnd();
+            UpCharMgr.SetAnimationSpeed(0);
+            //charmgr update char amount and level to new level
+            currentLevel = 0;
+            currentAmount = -1;
+        }
+
+        public void ftDownGradeStart()
+        {
+            DowngradeTimer.Show();
+            DowngradeTimer.StartTimer();
+        }
+
+        public void ftDownGradeEnd()
+        {
+            DowngradeTimer.StopTimer();
+            DowngradeTimer.ResetTimer();
+            DowngradeTimer.Hide();
+        }
+        
+
+        #endregion
+       
+        
+}
 
 
     public class CameraActionHandler

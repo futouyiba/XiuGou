@@ -15,6 +15,7 @@ namespace ET
     public class CharMgr : MonoBehaviour
     {
         [SerializeField] public List<GameObject> charPrefabs;
+        [SerializeField] public GameObject blankPrefab;
 
         public Dictionary<int, CharMain> charDict;
 
@@ -45,6 +46,7 @@ namespace ET
 
         public Vector2 myposStored = Vector2.zero;
 
+        public int CurrentCharAmount => charDict.Count;
 
         void Awake()
         {
@@ -65,6 +67,7 @@ namespace ET
             // }
             
             //场景一开始就先发一个Mypos，然后还得存起来
+            //refactor
             myposStored = DanceFloorHelper.GetRandomDanceFloorPos();
             var myPos = new MyPosition()
             {
@@ -127,7 +130,11 @@ namespace ET
             {
                 CreateTestGuysByNum(1);
             }
-            
+
+            if (Input.GetKeyDown(KeyCode.KeypadMinus))
+            {
+                testRemoveRandomGuy();
+            }
            
             
             #endif
@@ -135,17 +142,25 @@ namespace ET
 
         public void CreateTestGuysByNum(int num)
         {
-            var numStart = CharMgr.instance.charDict.Count;
+            //var numStart = CharMgr.instance.charDict.Count;
+            
             for (int i = 0; i < num; i++)
             {
-                var index = numStart + i;
-                var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {index}", -1,
+                var index = id;
+                var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}号", -1,
                     Color.white);
             }
 
 
-            dlgCharAmountUpdate?.Invoke(numStart + num);
+            // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
             // Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
+        }
+
+        public void testRemoveRandomGuy()
+        {
+            var random = Random.Range(0, charDict.Count);
+            var keyValue = charDict.ElementAt(random);
+            RemoveCharView(keyValue.Key);
         }
         
         public void Create100TestGuys()
@@ -167,7 +182,7 @@ namespace ET
                     RegisterMe(char_id);
                 }
             }
-            dlgCharAmountUpdate?.Invoke(charDict.Count);
+            // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
         }
         
         public void CreateCharNativeCall(string _params)
@@ -254,12 +269,16 @@ namespace ET
                 goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
             }
             
+            
+            
             //20220622 set char animate speed
             charView.AnimSpeed = curAnimateSpeed;
             charView.StopParticle();
-            charDict.Add(id, charView);
             //20220701 set char floating
             if(isFloating) charView.FloatStart();
+            
+            charDict.Add(id, charView);
+            dlgCharAmountUpdate?.Invoke(charDict.Count);
             
             return goCreated;
 
@@ -273,6 +292,7 @@ namespace ET
             {
                 charDict.Remove(id);
                 charView.CharLeave();
+                dlgCharAmountUpdate?.Invoke(charDict.Count);
             }
         }
         
@@ -296,6 +316,18 @@ namespace ET
                 CharMgr.instance.RegisterMe(userId);
             }
             
+            
+        }
+        
+        public void ShowBlankAprc(int userId)
+        {
+            var charView = GetCharacter(userId);
+            if (charView == null)
+            {
+                Debug.LogError($"charview for {userId} not found");
+                // todo create a blank aprc for userId
+                return;
+            }
             
         }
 

@@ -3,12 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace ET
 {
     public class SeatController : MonoBehaviour
     {
         [OdinSerialize] public SeatConfig config;
+
+        /// <summary>
+        /// 优先级，在注册时越小排在越前面
+        /// </summary>
+        [SerializeField] public int Priority = 9000;
+        /// <summary>
+        /// 能装几个人
+        /// </summary>
+        [SerializeField] public int Capability = 0;
         
         // Start is called before the first frame update
         void Start()
@@ -24,7 +34,20 @@ namespace ET
         {
         
         }
-        
+
+        /// <summary>
+        /// 在enable时向SeatMgr注册自己
+        /// </summary>
+        private void OnEnable()
+        {
+            SeatMgr.Instance.RegSofa(this);
+        }
+
+        private void OnDisable()
+        {
+            SeatMgr.Instance.UnregSofa(this);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             throw new NotImplementedException();
@@ -121,6 +144,18 @@ namespace ET
                 Gizmos.color= Color.yellow;
                 Gizmos.DrawSphere(leave.position, .1f);
             }
+        }
+
+        public bool IsSeatTaken(int seatId)
+        {
+            if (!config.seats.TryGetValue(seatId, out SeatData data))
+            {
+                Debug.LogError($"seatid {seatId} not valid");
+                return true;
+            }
+
+            if (data.sitCharObj) return true;
+            else return false;
         }
 
     }

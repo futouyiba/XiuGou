@@ -298,6 +298,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16882efee4280c2448cb33e98a518f15, type: 3}
+--- !u!114 &20182100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1838943820, guid: 16882efee4280c2448cb33e98a518f15,
+    type: 3}
+  m_PrefabInstance: {fileID: 20182099}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24f12a6c08d80a4abd8b63e27df404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &87255198 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1810661336484362808, guid: 275f660561e4be043b556a3988933515,
@@ -4005,7 +4017,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1539095042}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919008964}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b4629ab7edfe3b4ebbd9b2e63180218, type: 3}
   m_Name: 
@@ -5004,51 +5016,104 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
       value: '"path":"LevelInfos.[0]","value":{"$id":0,"$type":"ET.Utility.LevelInfo,
-        Assembly-CSharp","TheLvl":0,"GuysNeeded":0,"cameraBehaviour":{"$id":1,"$type":"System.Action`2[[System.Int32,
-        mscorlib],[System.Boolean, mscorlib]], mscorlib","target":$eref:0,"declaringType":{"$id":2,"$type":"System.RuntimeType,
-        mscorlib","ET.CinemachineMgr, Assembly-CSharp"},"methodName":"PlayAssetByLevel","delegateType":{"$id":3,"$type":"System.RuntimeType,
-        mscorlib","System.Action`2[[System.Int32, mscorlib],[System.Boolean, mscorlib]],
-        mscorlib"},"signature":{"$id":4,"$type":"System.Type[], mscorlib","$rlength":2,"$rcontent":[{"$id":5,"$type":"System.RuntimeType,
-        mscorlib","System.Int32, mscorlib"},{"$id":6,"$type":"System.RuntimeType,
-        mscorlib","System.Boolean, mscorlib"}]}},"cameraLvl":0,"otherBehaviour":{"$id":7,"$type":"UnityEngine.Events.UnityEvent,
-        UnityEngine.CoreModule","m_PersistentCalls":{"$id":8,"$type":"UnityEngine.Events.PersistentCallGroup,
-        UnityEngine.CoreModule","m_Calls":{"$id":9,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        Assembly-CSharp","TheLvl":0,"GuysNeeded":0,"cameraBehaviour":null,"otherBehaviour":{"$id":1,"$type":"UnityEngine.Events.UnityEvent,
+        UnityEngine.CoreModule","m_PersistentCalls":{"$id":2,"$type":"UnityEngine.Events.PersistentCallGroup,
+        UnityEngine.CoreModule","m_Calls":{"$id":3,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
         UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"LevelInfos.[0].cameraBehaviour","value":{"$id":0,"$type":"System.Action`2[[System.Int32,
-        mscorlib],[System.Boolean, mscorlib]], mscorlib","target":$eref:0,"declaringType":{"$id":1,"$type":"System.RuntimeType,
-        mscorlib","ET.CinemachineMgr, Assembly-CSharp"},"methodName":"PlayAssetByLevel","delegateType":{"$id":2,"$type":"System.RuntimeType,
-        mscorlib","System.Action`2[[System.Int32, mscorlib],[System.Boolean, mscorlib]],
-        mscorlib"},"signature":{"$id":3,"$type":"System.Type[], mscorlib","$rlength":2,"$rcontent":[{"$id":4,"$type":"System.RuntimeType,
-        mscorlib","System.Int32, mscorlib"},{"$id":5,"$type":"System.RuntimeType,
-        mscorlib","System.Boolean, mscorlib"}]}}'
+      value: '"path":"LevelInfos.[1]","value":{"$id":0,"$type":"ET.Utility.LevelInfo,
+        Assembly-CSharp","TheLvl":1,"GuysNeeded":1,"cameraBehaviour":null,"otherBehaviour":{"$id":1,"$type":"UnityEngine.Events.UnityEvent,
+        UnityEngine.CoreModule","m_PersistentCalls":{"$id":2,"$type":"UnityEngine.Events.PersistentCallGroup,
+        UnityEngine.CoreModule","m_Calls":{"$id":3,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"LevelInfos.[0].otherBehaviour.m_PersistentCalls","value":{"$id":0,"$type":"UnityEngine.Events.PersistentCallGroup,
-        UnityEngine.CoreModule","m_Calls":{"$id":1,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}}'
+      value: '"path":"LevelInfos.[2]","value":{"$id":0,"$type":"ET.Utility.LevelInfo,
+        Assembly-CSharp","TheLvl":2,"GuysNeeded":2,"cameraBehaviour":null,"otherBehaviour":{"$id":1,"$type":"UnityEngine.Events.UnityEvent,
+        UnityEngine.CoreModule","m_PersistentCalls":{"$id":2,"$type":"UnityEngine.Events.PersistentCallGroup,
+        UnityEngine.CoreModule","m_Calls":{"$id":3,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[3]
-      value: '"path":"LevelInfos.[0].otherBehaviour.m_PersistentCalls.m_Calls","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}'
+      value: '"path":"LevelInfos.[4]","value":{"$id":0,"$type":"ET.Utility.LevelInfo,
+        Assembly-CSharp","TheLvl":4,"GuysNeeded":20,"cameraBehaviour":null,"otherBehaviour":{"$id":1,"$type":"UnityEngine.Events.UnityEvent,
+        UnityEngine.CoreModule","m_PersistentCalls":{"$id":2,"$type":"UnityEngine.Events.PersistentCallGroup,
+        UnityEngine.CoreModule","m_Calls":{"$id":3,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}}}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"LevelInfos.[5]","value":{"$id":0,"$type":"ET.Utility.LevelInfo,
+        Assembly-CSharp","TheLvl":5,"GuysNeeded":35,"cameraBehaviour":null,"otherBehaviour":{"$id":1,"$type":"UnityEngine.Events.UnityEvent,
+        UnityEngine.CoreModule","m_PersistentCalls":{"$id":2,"$type":"UnityEngine.Events.PersistentCallGroup,
+        UnityEngine.CoreModule","m_Calls":{"$id":3,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}}}}'
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"CamUpBehaviours","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[ET.RoomUpgrade.RoomUpObjectCollection,
+        Assembly-CSharp]], mscorlib","$rlength":0,"$rcontent":[]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"config","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      value: '"path":"DowngradeTimer","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      value: '"path":"OtherActives","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"OtherInactives","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib","$rlength":0,"$rcontent":[]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[5]
+      value: '"path":"UpCharMgr","value":$eref:2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 1344539662}
+      objectReference: {fileID: 3674770188089328314}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 20182100}
+    - target: {fileID: 24619296, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 3674770188089328315}
     - target: {fileID: 418153679, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.Prefab
       value: 
@@ -5140,6 +5205,12 @@ PrefabInstance:
       propertyPath: lights.Array.data[1]
       value: 
       objectReference: {fileID: 4432207998247237254}
+    - target: {fileID: 3674770188089328316, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 3674770188089328316, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
     - target: {fileID: 3674770188671908930, guid: cbacc8d2d22bd234cb0e651759f587cc,
         type: 3}
       propertyPath: m_RootOrder
@@ -5200,8 +5271,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 7293989146496170243, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7293989146496170243, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+    - target: {fileID: 7299052466491363900, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7299052466491363900, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
+--- !u!114 &3674770188089328314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 3674770188089328313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4cb0cd7188345cb8506e30b4ad123db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3674770188089328315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 418153680, guid: cbacc8d2d22bd234cb0e651759f587cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 3674770188089328313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35168f567c37cd4f81ca557fc659221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4432207998247237253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6702,7 +6809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2122418321, guid: 275f660561e4be043b556a3988933515, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0038729932
+      value: 0.0038729934
       objectReference: {fileID: 0}
     - target: {fileID: 2122418325, guid: 275f660561e4be043b556a3988933515, type: 3}
       propertyPath: m_LookAt
@@ -6899,7 +7006,7 @@ PrefabInstance:
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9531896
+      value: 0.9531897
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
@@ -6909,12 +7016,12 @@ PrefabInstance:
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.18960796
+      value: 0.18960795
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336579709799, guid: 275f660561e4be043b556a3988933515,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.04595285
+      value: -0.04595284
       objectReference: {fileID: 0}
     - target: {fileID: 1810661336828078470, guid: 275f660561e4be043b556a3988933515,
         type: 3}

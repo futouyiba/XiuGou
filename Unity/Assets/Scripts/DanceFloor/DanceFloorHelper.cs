@@ -56,7 +56,7 @@ namespace ET
 
         public static Vector2 PosUnified2Scene(Vector2 unifiedPos)
         {
-            Debug.LogWarning($"uni pos is {unifiedPos}");
+            // Debug.LogWarning($"uni pos is {unifiedPos}");
             var pivot = GetGoFromScene("pivot").GetComponent<DanceFloorPivot>();
             var pos0 = pivot.small.position;
             var pos1 = pivot.big.position;

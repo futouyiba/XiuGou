@@ -31,7 +31,7 @@ namespace ET
     }
 
     
-    [Serializable]
+    // [Serializable]
     public class SeatData
     {
         [OdinSerialize]
@@ -57,7 +57,7 @@ namespace ET
 
         public void SetText(string text)
         {
-            btnText.text = text;
+            if(btnText) btnText.text = text;
         }
 
         public bool IsTaken => sitCharObj != null;

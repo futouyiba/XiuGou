@@ -56,13 +56,19 @@ namespace ET
             get => sprite.GetComponent<Animator>().speed;
             set => sprite.GetComponent<Animator>().speed = value;
         }
-        
+
+
+        private void Awake()
+        {
+            initSprScale = sprite.transform.localScale;
+            initRot = transform.rotation;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
             // oriScaleX = transform.GetChild(0).localScale.x;
-            initSprScale = sprite.transform.localScale;
-            initRot = transform.rotation;
+
             // SetPivotOffset();
             fsm.TriggerUnityEvent("DanceStart");
             // Move(DanceFloorHelper.GetRandomDanceFloorPos());
@@ -542,6 +548,10 @@ namespace ET
 
         public void FloatStart()
         {
+            // if (initRot == new Quaternion())
+            // {
+            //     initRot = transform.rotation;
+            // }
             fsm.TriggerUnityEvent("FloatStart");
         }
 
@@ -571,6 +581,7 @@ namespace ET
             Rigidbody rb = this.GetComponent<Rigidbody>();
             rb.angularDrag = 0.05f;
             rb.angularVelocity=Vector3.zero;
+            rb.velocity= Vector3.zero;
             transform.rotation = initRot;
             LockRotation(true);
             rb.useGravity = true;

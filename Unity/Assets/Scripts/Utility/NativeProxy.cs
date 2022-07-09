@@ -4,11 +4,11 @@ using System.Collections.Generic;
 // using LitJson;
 using UnityEngine;
 using System.Runtime.InteropServices;
-using LC.Newtonsoft.Json;
-using LC.Newtonsoft.Json.Linq;
+// using LC.Newtonsoft.Json;
+// using LC.Newtonsoft.Json.Linq;
 using Random = UnityEngine.Random;
-// using Newtonsoft.Json;
-// using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ET.Utility
 {
@@ -47,6 +47,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     Random.InitState((int)userEnter.userId);
                     CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,
                         userEnter.appearance, Color.white);
+                    
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
@@ -62,13 +63,16 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                 case "UserExit":
                     var userExit = GetOpdata<UserExit>(msg);
                     CharMgr.instance.RemoveCharView(userExit.userId);
-                    break;
+                    break; 
                 case "UserList":
                     var userList = GetOpdata<UserList>(msg);
                     var userInfos = userList.userInfos;
                     // Random.InitState(userList.);
                     foreach (var userInfo in userInfos)
                     {
+                        var userId = userInfo.userId;
+                        
+                        
                         var res = CharMgr.instance.GetCharacter(userInfo.userId);
                         if (res == null)
                         {
@@ -107,7 +111,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     break;
                 case "UserSit":
                     var userSit = GetOpdata<UserSit>(msg);
-                    SeatMgr.Instance.Sit(userSit.userId, userSit.sofaId, userSit.seatId);
+                    SeatMgr.Instance.Sit(userSit.userId, userSit.micId);
                     break;
                 
                 // case "Break":

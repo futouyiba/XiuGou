@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public class RotateGameObject : MonoBehaviour
 {
-    public enum RotateState
+    [SerializeField] public bool IsRotate;
+
+    [SerializeField]public enum RotateState
     {
         Free, Controllable
     }
@@ -12,11 +15,29 @@ public class RotateGameObject : MonoBehaviour
 	public float rot_speed_z=0;
 	public bool local=false;
 
+    private Quaternion initRot;
+
     [SerializeField] private RotateState rotateState = RotateState.Free;
 
-    public bool IsRotate { get; set; }
 
-	private void Update ()
+    private void Awake()
+    {
+        initRot = transform.rotation;
+    }
+
+    private void Start()
+    {
+        // IsRotate = false;
+        // rotateState = RotateState.Controllable;
+        Reset();
+    }
+
+    public void Reset()
+    {
+        transform.rotation = initRot;
+    }
+
+    private void Update ()
     {
         if (rotateState == RotateState.Controllable)
         {
