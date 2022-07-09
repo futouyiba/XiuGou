@@ -83,7 +83,7 @@ namespace ET.Utility
             
                // todo instantiate should be within main thread.     
 
-            return ETTask.CompletedTask;
+            return;
         }
 
         private void OnApplicationPause(bool pauseStatus)
