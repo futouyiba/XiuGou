@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.12745728, g: 0.12588999, b: 0.21698111, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 860a66ca4259b384f9ec01b687f71c3c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -36,9 +36,9 @@ RenderSettings:
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
-  m_CustomReflection: {fileID: 2800000, guid: 79465b05b9f8f6f4ebcf724e166deedb, type: 3}
+  m_CustomReflection: {fileID: 8900000, guid: 18ec2d52be8f4524a97c25a2ed27838e, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.04273124, g: 0.040191844, b: 0.04417602, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2603,18 +2603,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5296695341309073423}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &832699694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1856902367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3f1189902e66b43b07b2b7ec9cefc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &839613954
 GameObject:
   m_ObjectHideFlags: 0
@@ -6900,12 +6888,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1163227416}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1856902367 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9185309436173364438, guid: 84619b83b99dd384dbadb959d07b9eeb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1163227416}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1856902368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1477496131016052333, guid: 84619b83b99dd384dbadb959d07b9eeb,
@@ -7103,7 +7085,7 @@ MonoBehaviour:
   restServer: https://t4ls8bvw.lc-cn-n1-shared.com
   socketServer: cn-n1-cell1.leancloud.cn
   roomId: -5555
-  _currentGenUid: -1000
+  currentGenUid: -1000
 --- !u!114 &1929569609
 MonoBehaviour:
   m_ObjectHideFlags: 0
