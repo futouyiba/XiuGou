@@ -233,7 +233,7 @@ namespace ET.Utility
                  if (charMain != null)
                  {
                      // CharMgr.instance.ChangeAppearance(aprcId, mod);
-                     CharMgr.instance.onAprcChangedQueue.Enqueue((a, b) =>
+                     CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
                      {
                          CharMgr.instance.ChangeAprcFast(user.UserId, mod);
                      });
@@ -266,7 +266,7 @@ namespace ET.Utility
              });
          }
 
-         public void LeanGetAprcIds()
+         public void LeanGetRefreshAllAprcIds()
          {
                 var query = new LCQuery<LCObject>(USER_CLASS_NAME);
                 query.WhereContainedIn(USER_ID, CharMgr.instance.charDict.Keys);
@@ -283,10 +283,69 @@ namespace ET.Utility
                         {
                             var aprcId = (int)(user[APPEARANCE_ID]);
                             Debug.Log($"userId {user[USER_ID]} appearanceId {aprcId}");
-                            CharMgr.instance.onAprcChangedQueue.Enqueue(((userId, aId) =>
+                            CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
                             {
-                               CharMgr.instance.ChangeAprcFast(userId, aId); 
-                            }));
+                               CharMgr.instance.ChangeAprcFast((int)user[USER_ID], aprcId); 
+                            });
+                        }
+                    }
+                });
+         }
+         
+         public void LeanGetRefreshAprcId(int userId)
+         {
+             var query = new LCQuery<LCObject>(USER_CLASS_NAME);
+             query.WhereEqualTo(USER_ID, userId);
+             query.Find().ContinueWith(t =>
+             {
+                 if (t.IsFaulted)
+                 {
+                     Debug.LogError(t.Exception);
+                 }
+                 else
+                 {
+                     var users = t.Result;
+                     foreach (var user in users)
+                     {
+                         var aprcId = (int)(user[APPEARANCE_ID]);
+                         Debug.Log($"userId {user[USER_ID]} appearanceId {aprcId}");
+                         CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
+                         {
+                             CharMgr.instance.ChangeAprcFast((int)user[USER_ID], aprcId);
+                         });
+                     }
+                 }
+             });
+         }
+         
+         public void LeanRefreshMyAprc()
+         {
+                var userId = CharMgr.instance.GetMe().userId;
+                LeanGetRefreshAprcId(userId);
+         }
+
+         public void HardInitOrRest(int userId)
+         {
+                var query = new LCQuery<LCObject>(USER_CLASS_NAME);
+                query.WhereEqualTo(USER_ID, userId);
+                query.Find().ContinueWith(t =>
+                {
+                    if (t.IsFaulted)
+                    {
+                        Debug.LogError(t.Exception);
+                    }
+                    else
+                    {
+                        
+                        var users = t.Result;
+                        foreach (var user in users)
+                        {
+                            var aprcId = (int)(user[APPEARANCE_ID]);
+                            Debug.Log($"userId {user[USER_ID]} appearanceId {aprcId}");
+                            CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
+                            {
+                                CharMgr.instance.ChangeAprcFast((int)user[USER_ID], aprcId);
+                            });
                         }
                     }
                 });

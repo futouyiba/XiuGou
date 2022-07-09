@@ -16,7 +16,7 @@ namespace ET
     public class CharMgr : MonoBehaviour
     {
         public Action<int, int> OnAprcChanged;
-        public Queue<Action<int,int>> onAprcChangedQueue = new Queue<Action<int, int>>();
+        public Queue<Action> onAprcChangedQueue = new Queue<Action>();
 
         [SerializeField] public List<GameObject> charPrefabs;
         [SerializeField] public GameObject blankPrefab;
@@ -91,7 +91,7 @@ namespace ET
             if (onAprcChangedQueue.Count > 0)
             {
                 var action = onAprcChangedQueue.Dequeue();
-                action?.Invoke(myId, CurrentCharAmount);
+                action?.Invoke();
             }
             
             #if UNITY_EDITOR

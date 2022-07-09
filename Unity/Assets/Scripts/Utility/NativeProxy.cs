@@ -86,7 +86,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                             res.MoveStart(userInfo.position);
                         }
                     }
-                    LeanHelper.instance.LeanGetAprcIds();
+                    LeanHelper.instance.LeanGetRefreshAllAprcIds();
                     break;
                 case "UserMove":
                     var userMove = GetOpdata<UserMove>(msg);
