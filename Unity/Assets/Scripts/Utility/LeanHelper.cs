@@ -81,7 +81,11 @@ namespace ET.Utility
                 Debug.Log("user id " + userId + " has no appearance id");
                 return ;
             }
-            
+
+            CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
+            {
+                CharMgr.instance.ChangeAprcFast(userId, aprcId);
+            });
                // todo instantiate should be within main thread.     
 
             return;

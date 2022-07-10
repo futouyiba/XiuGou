@@ -332,15 +332,18 @@ namespace ET
             return goCreated;
         }
 
-        [Button("Change 1 1")]
+        [Button("Change start id random aprc")]
         public void Change1()
         {
-            var charMain = GetCharacter(1);
+            var charMain = GetCharacter(idStartPoint);
             if (charMain)
             {
                 ChangeAprcFast(1, Random.Range(0, charPrefabs.Count));
             }
         }
+
+        //[Button("change random char random aprc")]
+        //public void Change
 
         public void ChangeAprcFast(int userId, int aprcId)
         {
