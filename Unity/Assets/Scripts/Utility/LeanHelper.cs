@@ -174,7 +174,8 @@ namespace ET.Utility
         [Button("TestUpdate")]
         public async Task TestUpdate()
         {
-            var userId = UnityEngine.Random.Range(-1000, currentGenUid);
+            // var userId = UnityEngine.Random.Range(-1000, currentGenUid);
+            var userId = this.mySupposedIdForTest;
             var query = new LCQuery<LCObject>(USER_CLASS_NAME);
             query.WhereEqualTo(USER_ID, userId);
             var u = await query.First();
