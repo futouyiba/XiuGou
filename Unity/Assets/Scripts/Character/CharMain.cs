@@ -29,6 +29,19 @@ namespace ET
         [SerializeField] private StateMachine fsm;
         public int userId;
 
+        private int _appearanceId;
+
+        public int AppearanceId
+        {
+            get => _appearanceId;
+            set
+            {
+                _appearanceId = value; 
+                // CharMgr.instance.ChangeAprcFast(userId, _appearanceId); // todo add leancloud function and sprite changes here.
+            }
+        }
+
+
         [SerializeField]
         public float bubbleTime;
 
@@ -535,6 +548,8 @@ namespace ET
 
         [SerializeField]
         private float floatHeightOffset;
+
+
         public void LockRotation(bool isLock)
         {
             Rigidbody rb = this.GetComponent<Rigidbody>();

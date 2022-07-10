@@ -158,8 +158,9 @@ namespace ET
             for (int i = 0; i < num; i++)
             {
                 var index = id;
-                var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}号", -1,
-                    Color.white);
+                // var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}号", -1,
+                    // Color.white);
+                    CreateBlankView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}");
             }
 
 
@@ -332,13 +333,13 @@ namespace ET
             return goCreated;
         }
 
-        [Button("Change start id random aprc")]
-        public void Change1()
+        [Button("Change first char random aprc")]
+        public void ChangeFirstChar()
         {
             var charMain = GetCharacter(idStartPoint);
             if (charMain)
             {
-                ChangeAprcFast(1, Random.Range(0, charPrefabs.Count));
+                ChangeAprcFast(idStartPoint, Random.Range(0, charPrefabs.Count));
             }
         }
 
@@ -362,7 +363,7 @@ namespace ET
             var oriSpriteTransform = oriSprite.transform as RectTransform;
             oriSpriteTransform.localScale = spriteNewTransform.localScale;
             oriSpriteTransform.localPosition = spriteNewTransform.localPosition;
-            oriSprite.GetComponent<Animator>().runtimeAnimatorController = newAprcGO.GetComponent<Animator>().runtimeAnimatorController;
+            oriSprite.GetComponent<Animator>().runtimeAnimatorController = spriteNew.GetComponent<Animator>().runtimeAnimatorController;
         }
         
         public void RemoveCharView(int id)

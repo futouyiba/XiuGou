@@ -45,18 +45,22 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                 case "UserEnter":
                     var userEnter = GetOpdata<UserEnter>(msg);
                     Random.InitState((int)userEnter.userId);
-                    CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,
-                        userEnter.appearance, Color.white);
-                    
+                    // CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,
+                        // userEnter.appearance, Color.white);
+                    CharMgr.instance.CreateBlankView(userEnter.userId, userEnter.position, userEnter.nickName);
+                    LeanHelper.instance.LeanGetRefreshAprcId(userEnter.userId);
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
                     var pos = CharMgr.instance.myposStored;
                     Random.InitState((int)meEnter.userId);
-                    CharMgr.instance.CreateCharView(meEnter.userId, pos, meEnter.nickName, meEnter.appearance,
-                        Color.white);
+                    // CharMgr.instance.CreateCharView(meEnter.userId, pos, meEnter.nickName, meEnter.appearance,
+                        // Color.white);
+                    // todo receive position from server(userList is nice for this...)
+                    CharMgr.instance.CreateBlankView(meEnter.userId, pos, meEnter.nickName);
                     CharMgr.instance.RegisterMe(meEnter.userId);
-                    //2022.5.11顺序改了，一进场景CharMgr就发MyPos，然后等MeEnter
+                    LeanHelper.instance.LeanGetRefreshAprcId(meEnter.userId);
+                    //2022.5.11顺序改了，一进场景CharMgr就发MyPos，然后等MeEnter(todo check my pos first)
                     //MeEnter时才创建我自己
 
                     break;
@@ -79,14 +83,14 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                             Random.InitState(userInfo.userId);
                             // CharMgr.instance.CreateCharView(userInfo.userId, userInfo.position, userInfo.nickName,userInfo.appearance, Color.white);
                             CharMgr.instance.CreateBlankView(userId, userInfo.position, userInfo.nickName);
-                            
+                            LeanHelper.instance.LeanGetRefreshAprcId(userId);
                         }
                         else
                         {
                             res.MoveStart(userInfo.position);
                         }
                     }
-                    LeanHelper.instance.LeanGetRefreshAllAprcIds();
+                    // LeanHelper.instance.LeanGetRefreshAllAprcIds();
                     break;
                 case "UserMove":
                     var userMove = GetOpdata<UserMove>(msg);

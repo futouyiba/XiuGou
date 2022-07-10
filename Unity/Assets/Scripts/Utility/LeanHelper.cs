@@ -12,9 +12,11 @@ using LeanCloud.Realtime;
 // // 如有需要，导入 LiveQuery 模块
 using LeanCloud.LiveQuery;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
+using Random = System.Random;
 
 //
 namespace ET.Utility
@@ -99,7 +101,7 @@ namespace ET.Utility
             }
             else
             {
-                this.Awake();
+                this.Awake();// move it to "reInit" function...
             }
         }
 
@@ -140,6 +142,7 @@ namespace ET.Utility
                 var users = await query.First(); //actually it should be only 1 user. 
                 if (users != null)
                 {
+                    currentGenUid++;
                     Debug.Log("user already exists");
                     return;
                 }
@@ -184,7 +187,10 @@ namespace ET.Utility
             var appearanceId = UnityEngine.Random.Range(0, 100);
             System.Diagnostics.Debug.Assert(user != null, nameof(user) + " != null");
             user.AppearanceId = appearanceId;
-            await user.Save();
+            var savedBack = await user.Save();
+            // Debug.Log($"test update save back... {savedBack}");
+            // CharMgr.instance.ChangeAprcFast(userId, appearanceId);
+
         }
 
         //
@@ -211,7 +217,16 @@ namespace ET.Utility
                  }
              };
              LCObject.RegisterSubclass(USER_CLASS_NAME, ()=> new User());
+             // TestSave();
              Init();
+         }
+
+         private void TestSave()
+         {
+             // var testUser = new User(){}
+             // {
+             //     userid
+             // }
          }
 
          private async void Init()
@@ -219,34 +234,59 @@ namespace ET.Utility
              var query = new LCQuery<User>(USER_CLASS_NAME);
              query.WhereExists("objectId");
              _liveQuery = await query.Subscribe();
-             _liveQuery.OnCreate = obj =>
+             _liveQuery.OnCreate = ChangeOneAprcOnLiveQuery;
+             _liveQuery.OnUpdate = (lcObject, resCollection) =>
              {
-                 var user = obj as User;
-                 if (user == null)
+                 Debug.Log($"live query on update, lcObject is {lcObject}, resString is {resCollection}");
+                 resCollection.ForEach(resEle => Debug.Log($"\n resElement: {resEle}"));
+                 if (resCollection.Contains(APPEARANCE_ID))
                  {
-                     // usually it happens when a user first time enters a room, and the server doesn't have the user's data yet. 
-                     // since the user's unity receives "meEnter" first, and sends "setPos". before set pos the logic server has this user within the userList,
-                     // but user's data is not on lean cloud server yet. so the user's data is null.
-                     // When this happens. it is not a error, the user will create lcObject, and initialization would be done on liveQuery's "OnEnter".
-                     Debug.LogError("lc live query on enter, yet user is null");
-                     return;
-                 }
-                 var aprcId = (int)(obj[APPEARANCE_ID]);
-                 var mod = aprcId % CharMgr.instance.charPrefabs.Count;
-                 CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
-                 if (charMain != null)
-                 {
-                     // CharMgr.instance.ChangeAppearance(aprcId, mod);
-                     CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
-                     {
-                         CharMgr.instance.ChangeAprcFast(user.UserId, mod);
-                     });
-                 }
-                 else
-                 {
-                     Debug.LogError("charMain is null");// when init, should get appearance before creation of char prefab.
+                    ChangeOneAprcOnLiveQuery(lcObject);                     
                  }
              };
+             
+         }
+
+         private void ChangeOneAprcOnLiveQuery(LCObject obj)
+         {
+             var user = obj as User;
+             if (user == null)
+             {
+                 // usually it happens when a user first time enters a room, and the server doesn't have the user's data yet. 
+                 // since the user's unity receives "meEnter" first, and sends "setPos". before set pos the logic server has this user within the userList,
+                 // but user's data is not on lean cloud server yet. so the user's data is null.
+                 // When this happens. it is not a error, the user will create lcObject, and initialization would be done on liveQuery's "OnEnter".
+                 Debug.LogError("lc live query on enter, yet user is null");
+                 return;
+             }
+
+             var containsKey = CharMgr.instance.charDict.ContainsKey(user.UserId);
+             if (!containsKey)
+             {
+                 Debug.Log("receive live query, but this userId don't exist in this scene...");
+                 return;
+             }
+             var aprcId = (int)(obj[APPEARANCE_ID]);
+             var mod = aprcId % CharMgr.instance.charPrefabs.Count;
+             CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
+             if (charMain.AppearanceId == mod)
+             {
+                 Debug.Log($"user {user.UserId} aprc {user.AppearanceId}, same as current, not changing...");
+                 return;
+             }
+             if (charMain != null)
+             {
+                 // CharMgr.instance.ChangeAppearance(aprcId, mod);
+                 CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
+                 {
+                     CharMgr.instance.ChangeAprcFast(user.UserId, mod);
+                     charMain.AppearanceId = mod;
+                 });
+             }
+             else
+             {
+                 Debug.LogError("charMain is null"); // when init, should get appearance before creation of char prefab.
+             }
          }
 
          public void LeanChangeAppearance(int showGoId, int appearanceId)
@@ -294,6 +334,88 @@ namespace ET.Utility
                         }
                     }
                 });
+         }
+
+         public int mySupposedIdForTest = -1000;
+
+         // [Button]
+         // public async Task LeanCreateStartId()
+         // {
+             
+         // }
+         
+         [Button("LeanGetRefreshMe")]
+         public async Task LeanGetRefreshMe()
+         {
+             var charMain = CharMgr.instance.GetMe();
+             int myId;
+             if (charMain == null)
+             {
+                 myId = mySupposedIdForTest;
+             }
+             else
+             {
+                 myId = charMain.userId;
+             }
+             var query = new LCQuery<LCObject>(USER_CLASS_NAME);
+             query.WhereEqualTo(USER_ID, myId);
+            await query.Find().ContinueWith(async t =>
+            {
+                if (t.IsFaulted)
+                {
+                    Debug.LogError(t.Exception);
+                }
+                else
+                {
+                    var users = t.Result;
+                    var found = false;
+                    User myUser = null;
+                    foreach (var user in users)
+                    {
+                        found = true;
+                        myUser = (User)user;
+                        var aprcId = (int)(user[APPEARANCE_ID]);
+                        Debug.Log($"userId {user[USER_ID]} appearanceId {aprcId}");
+                        CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
+                        {
+                            CharMgr.instance.ChangeAprcFast((int)user[USER_ID], aprcId);
+                        });
+                        break;
+                    }
+
+                    if (!found)
+                    {
+                        Debug.Log($"my user id does not exist on leancloud, creating... you should call this function again...");
+                        var createdUser = new User()
+                        {
+                            UserId = myId
+                        };
+                        await createdUser.Save();
+                        return;
+                    }
+                     
+                     
+                    if (myUser[APPEARANCE_ID] ==null || myUser.AppearanceId <= 0)
+                    {
+                        var seed = myId + (int)new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds();
+                        var randomCtor = new Random(seed);
+                        var initAprcId = randomCtor.Next(1, CharMgr.instance.charPrefabs.Count);
+                        var setIdRequest = LCObject.CreateWithoutData(USER_CLASS_NAME, myUser.ObjectId);
+                        setIdRequest[APPEARANCE_ID] = initAprcId;
+                        var saved = (await setIdRequest.Save(true)) as User;
+                        if (saved ==null)
+                        {
+                            Debug.Log("saved is null when randomizing my user appearance. Could be init aprc failure...");
+                            return;
+                        }
+                        // CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
+                        // {
+                        //     CharMgr.instance.ChangeAprcFast(saved.UserId, saved.AppearanceId);
+                        // });
+                    }
+                }
+            });
+
          }
          
          public void LeanGetRefreshAprcId(int userId)
@@ -371,7 +493,8 @@ namespace ET.Utility
                  var mod = sgId % CharMgr.instance.charPrefabs.Count;
                  CharMain charMain = CharMgr.instance.GetCharacter(sgId);
                  if (charMain != null)
-                 {
+                 {//todo refactor , so that leancloud, char main aprcId and sprite are synced.
+                     charMain.AppearanceId = mod;
                      CharMgr.instance.ChangeAppearance(sgId, (int)(lcObject[APPEARANCE_ID]));
                  }
                  else
