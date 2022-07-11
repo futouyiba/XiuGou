@@ -270,6 +270,10 @@ namespace ET.Utility
              var aprcId = (int)(obj[APPEARANCE_ID]);
              var mod = aprcId % CharMgr.instance.charPrefabs.Count;
              CharMain charMain = CharMgr.instance.GetCharacter(user.UserId);
+             if (charMain==null)
+             {
+                 return;
+             }
              if (charMain.AppearanceId == mod)
              {
                  Debug.Log($"user {user.UserId} aprc {user.AppearanceId}, same as current, not changing...");
