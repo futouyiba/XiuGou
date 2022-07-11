@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -96,6 +97,24 @@ namespace ET
             return new Vector2(randomX, randomY);
         }
 
+        public Vector3 GetUpgradableRandomPos()
+        {
+            var floor = GameObject.FindWithTag("Ground");
+            var bounds = floor.GetComponent<MeshFilter>().mesh.bounds;
+            Bounds smaller = bounds;
+            smaller.extents = bounds.extents * 0.6f;
+            var x = Mathf.Lerp(bounds.min.x, bounds.max.x, Random.Range(0, 1f));
+            var z = Mathf.Lerp(bounds.min.z, bounds.max.z, Random.Range(0, 1f));
+            Ray r = new Ray()
+            {
+                direction = Vector3.down,
+                origin = new Vector3(x, 500f, z)
+            };
+            if (RaycastHit())
+            {
+                
+            }
+        }
 
         // public static Vector2 GetRandomDanceFloorPosRadius()
         // {

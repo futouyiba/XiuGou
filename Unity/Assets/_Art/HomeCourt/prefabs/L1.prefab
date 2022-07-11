@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2838502670316672878}
   m_Layer: 0
   m_Name: L1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8663238433233568787}
   m_Father: {fileID: 0}
@@ -42,6 +43,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VoxelFloor_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058945667807561878, guid: bc5d973e0910d784792ba15576f7d11f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6872038207916053036, guid: bc5d973e0910d784792ba15576f7d11f,
         type: 3}
