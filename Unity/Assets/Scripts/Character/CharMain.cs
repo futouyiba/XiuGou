@@ -217,7 +217,7 @@ namespace ET
         public void MoveEnd()
         {
             fsm.TriggerUnityEvent("MoveEnded");
-            if(isMe) CameraBolt.TriggerEvent("Follow2Idle");
+            // if(isMe) CameraBolt.TriggerEvent("Follow2Idle"); 
             // this.IsMoving = false;
             this.moveTarget = Vector3.negativeInfinity;
             cur_move_seq = null;
@@ -301,8 +301,8 @@ namespace ET
         public void FollowMe()
         {
             if(!isMe) return;
-            var cameraBolt = Camera.main.GetComponent<CameraBolt>();
-            CameraBolt.TriggerEvent("Idle2Follow");
+            // var cameraBolt = Camera.main.GetComponent<CameraBolt>();
+            // CameraBolt.TriggerEvent("Idle2Follow");
         }
 
         public bool TalkTimeCheck()

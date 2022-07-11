@@ -164,8 +164,16 @@ namespace ET
                 // var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}号", -1,
                     // Color.white);
                     CreateBlankView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}");
+                    LeanHelper.instance.LeanGetRefreshAprcId(index);
+
             }
 
+            if (myId == -1)
+            {
+                var key = UnityEngine.Random.Range(0, CharMgr.instance.charDict.Count);
+                RegisterMe(CharMgr.instance.charDict.ToList()[key].Key);  
+            }
+            
 
             // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
             // Debug.Log($"added {num} chars, now we have char count:{CharMgr.instance.charDict.Count}");
@@ -180,23 +188,24 @@ namespace ET
         
         public void Create100TestGuys()
         {
-            var random_me = -1;
-            for (int i = 0; i < 100; i++)
-            {
-                var char_id = this.id;
-                if (char_id == 1)
-                {
-                    random_me = Random.Range(idStartPoint, idStartPoint+50 );
-                    Debug.LogWarning($"my id is {random_me}");
-                }
-
-                var view = CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}", -1,
-                    Color.white);
-                if (char_id == random_me)
-                {
-                    RegisterMe(char_id);
-                }
-            }
+            CreateTestGuysByNum(100);
+            // var random_me = -1;
+            // for (int i = 0; i < 100; i++)
+            // {
+            //     var char_id = this.id;
+            //     if (char_id == 1)
+            //     {
+            //         random_me = Random.Range(idStartPoint, idStartPoint+50 );
+            //         Debug.LogWarning($"my id is {random_me}");
+            //     }
+            //
+            //     var view = CreateCharView(char_id, DanceFloorHelper.GetRandomDanceFloorPos(), $"i am {char_id}", -1,
+            //         Color.white);
+            //     if (char_id == random_me)
+            //     {
+            //         RegisterMe(char_id);
+            //     }
+            // }
             // dlgCharAmountUpdate?.Invoke(instance.charDict.Count);
         }
         
@@ -219,8 +228,8 @@ namespace ET
                 myId = id;
                 charMain.isMe = true;
                 charMain.SetNameColor(Color.yellow);
-                CameraBolt.TriggerEvent("Idle2Follow");
-                CameraBolt.TriggerEvent("Follow2Idle");
+                // CameraBolt.TriggerEvent("Idle2Follow");
+                // CameraBolt.TriggerEvent("Follow2Idle");
             }
             else
             {
@@ -230,7 +239,7 @@ namespace ET
 
         public CharMain GetMe()
         {
-            if (myId < 0)
+            if (myId < -5000)
             {
                 Debug.LogWarning($"my id is {myId}");
                 return null;

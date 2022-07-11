@@ -55,7 +55,7 @@ namespace ET.Utility
             var random = UnityEngine.Random.Range(0, charDictCount);
             var userId = CharMgr.instance.charDict.ElementAt(random).Key;
             // var userId = randomChar;
-            ChangeAprcForId(userId).Start();
+            ChangeAprcForId(userId);
         }
         
         [Button("ChangeMyAprc")]
@@ -63,7 +63,7 @@ namespace ET.Utility
         {
             var userId = CharMgr.instance.GetMe().userId;
             // var userId = randomChar;
-            ChangeAprcForId(userId).Start();
+            ChangeAprcForId(userId);
         }
 
 
@@ -171,12 +171,12 @@ namespace ET.Utility
         {
             if (Input.GetKey(KeyCode.Keypad7))
             {
-                TestAdd().Start();
+                TestAdd();
             }
 
             if (Input.GetKey(KeyCode.Keypad8))
             {
-                TestUpdate().Start();
+                TestUpdate();
             }
         }
         
