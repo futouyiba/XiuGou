@@ -71,6 +71,8 @@ namespace ET
         }
 
 
+        public bool IsRobot => (userId is >= -1000 and < -1) ? true : false;
+
         private void Awake()
         {
             initSprScale = sprite.transform.localScale;

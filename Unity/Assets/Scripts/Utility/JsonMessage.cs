@@ -124,6 +124,7 @@ namespace ET.Utility
         public string nickName;
         public int sex;
         public int appearance;
+        public Vector2 position;
     }
 
     public class UserExit : JsonCmd

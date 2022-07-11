@@ -52,7 +52,20 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
-                    var pos = CharMgr.instance.myposStored;
+                    // var pos = CharMgr.instance.myposStored;
+                    //20220711查看一下position，若不合法，则发MyPos
+                    var pos = meEnter.position;
+                    if (pos.x < -1000)
+                    {
+                        var randPos = DanceFloorHelper.GetRandomDanceFloorPos();
+                        var myPos = new MyPosition()
+                        {
+                            position = randPos,
+                            ts= (int) new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds()
+                        };
+                        var msgMyPos = NativeProxy.MakeOp(myPos);
+                        NativeProxy.Unity2NativeMsg(msgMyPos);
+                    }
                     Random.InitState((int)meEnter.userId);
                     // CharMgr.instance.CreateCharView(meEnter.userId, pos, meEnter.nickName, meEnter.appearance,
                         // Color.white);
@@ -62,6 +75,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     LeanHelper.instance.LeanGetRefreshMe().Start();
                     //2022.5.11顺序改了，一进场景CharMgr就发MyPos，然后等MeEnter(todo check my pos first)
                     //MeEnter时才创建我自己
+
 
                     break;
                 case "UserExit":
