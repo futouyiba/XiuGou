@@ -73,6 +73,9 @@ namespace ET
             
             //场景一开始就先发一个Mypos，然后还得存起来
             //refactor
+            //20220711改为不发，但MeEnter中会收到Position
+            //若Position不合法，则发MyPosition
+            //todo: remove this after server automatically send MeEnter
             myposStored = DanceFloorHelper.GetRandomDanceFloorPos();
             var myPos = new MyPosition()
             {
@@ -81,7 +84,7 @@ namespace ET
             };
             var msgMyPos = NativeProxy.MakeOp(myPos);
             NativeProxy.Unity2NativeMsg(msgMyPos);
-            
+            //todo: remove end
             
         }
 

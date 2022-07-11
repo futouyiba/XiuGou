@@ -116,6 +116,22 @@ namespace RoomUpgrade
                 accessories[1].SetActive(true);
             }
         }
+
+        
+        /// <summary>
+        /// 20220711只有border更新了
+        /// </summary>
+        /// <param name="id"></param>
+        public void ChangeRegion2(int id)
+        {
+            if (id < 0 || id > 2)
+            {
+                Debug.LogError($"{id} is not valid");
+                return;
+            }
+            pivot.UpdateBorder(id);
+        }
+        
         
     }
 }

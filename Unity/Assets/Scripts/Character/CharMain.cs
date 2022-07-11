@@ -71,6 +71,8 @@ namespace ET
         }
 
 
+        public bool IsRobot => (userId is >= -1000 and < -1) ? true : false;
+
         private void Awake()
         {
             initSprScale = sprite.transform.localScale;
@@ -169,9 +171,10 @@ namespace ET
             
             //20200513:不管在哪个状态都触发StartMove，在不同地方进行不同响应
             
-            var scenePos = DanceFloorHelper.PosUnifiedPolar2Scene(target);
-            // var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
-            // if (targetPos.x < -1000f) return;
+            // var scenePos = DanceFloorHelper.PosUnifiedPolar2Scene(target);
+            var scenePos = DanceFloorHelper.PosUnified2Scene(target);
+            var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
+            if (targetPos.x < -1000f) return;
             moveTarget = scenePos;
             fsm.TriggerUnityEvent("StartMove");
             if (isMe) NativeProxy.SendMeMove(target);

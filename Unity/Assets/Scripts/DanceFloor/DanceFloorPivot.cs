@@ -24,64 +24,64 @@ namespace ET
         [SerializeField] public Transform center;
 
         public float cur_Radius;
-        // [OdinSerialize] public Vector3 smallPos1;
-        // [OdinSerialize] public Vector3 bigPos1;
-        // [ButtonGroup]
-        // [Button(ButtonStyle.Box)]
-        // private void Save1()
-        // {
-        //     smallPos1 = small.position;
-        //     bigPos1 = big.position;
-        //     UpdateColliders();
-        // }
-        //
-        // [ButtonGroup]
-        // [Button(ButtonStyle.Box)]
-        // private void Load1()
-        // {
-        //     small.position = smallPos1;
-        //     big.position = bigPos1;
-        //     UpdateColliders();
-        // }
-        //
-        // [OdinSerialize] public Vector3 smallPos2;
-        // [OdinSerialize] public Vector3 bigPos2;
-        // [ButtonGroup]
-        // [Button(ButtonStyle.Box)]
-        // private void Save2()
-        // {
-        //     smallPos2 = small.position;
-        //     bigPos2 = big.position;
-        //     UpdateColliders();
-        // }
-        //
-        // [ButtonGroup]
-        // [Button(ButtonStyle.Box)]
-        // private void Load2()
-        // {
-        //     small.position = smallPos2;
-        //     big.position = bigPos2;
-        //     UpdateColliders();
-        // }
-        // [OdinSerialize] public Vector3 smallPos3;
-        // [OdinSerialize] public Vector3 bigPos3;
-        // [ButtonGroup]
-        // [Button(ButtonStyle.Box)]
-        // private void Save3()
-        // {
-        //     smallPos3 = small.position;
-        //     bigPos3 = big.position;
-        //     UpdateColliders();
-        // }
-        //
-        // [ButtonGroup]
-        // [Button(ButtonStyle.Box)]
-        // private void Load3()
-        // {
-        //     small.position = smallPos3;
-        //     big.position = bigPos3;
-        //     UpdateColliders();
-        // }
+        [OdinSerialize] public Vector3 smallPos1;
+        [OdinSerialize] public Vector3 bigPos1;
+        [ButtonGroup]
+        [Button(ButtonStyle.Box)]
+        private void Save1()
+        {
+            smallPos1 = small.position;
+            bigPos1 = big.position;
+            UpdateColliders();
+        }
+        
+        [ButtonGroup]
+        [Button(ButtonStyle.Box)]
+        private void Load1()
+        {
+            small.position = smallPos1;
+            big.position = bigPos1;
+            UpdateColliders();
+        }
+        
+        [OdinSerialize] public Vector3 smallPos2;
+        [OdinSerialize] public Vector3 bigPos2;
+        [ButtonGroup]
+        [Button(ButtonStyle.Box)]
+        private void Save2()
+        {
+            smallPos2 = small.position;
+            bigPos2 = big.position;
+            UpdateColliders();
+        }
+        
+        [ButtonGroup]
+        [Button(ButtonStyle.Box)]
+        private void Load2()
+        {
+            small.position = smallPos2;
+            big.position = bigPos2;
+            UpdateColliders();
+        }
+        [OdinSerialize] public Vector3 smallPos3;
+        [OdinSerialize] public Vector3 bigPos3;
+        [ButtonGroup]
+        [Button(ButtonStyle.Box)]
+        private void Save3()
+        {
+            smallPos3 = small.position;
+            bigPos3 = big.position;
+            UpdateColliders();
+        }
+        
+        [ButtonGroup]
+        [Button(ButtonStyle.Box)]
+        private void Load3()
+        {
+            small.position = smallPos3;
+            big.position = bigPos3;
+            UpdateColliders();
+        }
         
         
         // Start is called before the first frame update
@@ -225,6 +225,20 @@ namespace ET
             }
 
             cur_Radius = cylinderBorder.ScaleTo(id);
+
+            switch (id)
+            {
+                case 0:
+                    Load1();
+                    break;
+                case 1:
+                    Load2();
+                    break;
+                case 2:
+                    Load3();
+                    break;
+            }
+            
         }
 
 
