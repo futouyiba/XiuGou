@@ -15,7 +15,7 @@ using Sequence = DG.Tweening.Sequence;
 
 namespace ET
 {
-    
+       
     public class CharMain : MonoBehaviour
     {
         // protected bool IsMoving;

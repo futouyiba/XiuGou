@@ -449,7 +449,8 @@ namespace ET.Utility
                          var aprcId = (int)(lcObject[APPEARANCE_ID]);
                          if (aprcId==null || aprcId<=0)
                          {
-                             
+                                Debug.LogWarning($"userId {userId} has no appearanceId");
+                                return;
                          }
                          Debug.Log($"userId {lcObject[USER_ID]} appearanceId {aprcId}");
                          CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
@@ -461,11 +462,13 @@ namespace ET.Utility
              });
          }
          
-         public void LeanRefreshMyAprc()
-         {
-                var userId = CharMgr.instance.GetMe().userId;
-                LeanGetRefreshAprcId(userId);
-         }
+         
+         
+         // public void LeanRefreshMyAprc() // this should be different with me and others.
+         // {
+         //        var userId = CharMgr.instance.GetMe().userId;
+         //        LeanGetRefreshAprcId(userId);
+         // }
 
          public void HardInitOrRest(int userId)
          {
