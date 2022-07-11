@@ -59,7 +59,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     // todo receive position from server(userList is nice for this...)
                     CharMgr.instance.CreateBlankView(meEnter.userId, pos, meEnter.nickName);
                     CharMgr.instance.RegisterMe(meEnter.userId);
-                    LeanHelper.instance.LeanGetRefreshAprcId(meEnter.userId);
+                    LeanHelper.instance.LeanGetRefreshMe().Start();
                     //2022.5.11顺序改了，一进场景CharMgr就发MyPos，然后等MeEnter(todo check my pos first)
                     //MeEnter时才创建我自己
 
