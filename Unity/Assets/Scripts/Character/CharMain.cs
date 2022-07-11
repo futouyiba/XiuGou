@@ -84,7 +84,7 @@ namespace ET
         {
             // oriScaleX = transform.GetChild(0).localScale.x;
 
-            // SetPivotOffset();
+            
             fsm.TriggerUnityEvent("DanceStart");
             // Move(DanceFloorHelper.GetRandomDanceFloorPos());
         }
@@ -607,5 +607,10 @@ namespace ET
 
         #endregion
 
+
+        public void InitFinished()
+        {
+            fsm.TriggerUnityEvent("InitFinish");
+        }
     }
 }

@@ -289,6 +289,8 @@ namespace ET
             charView.StopParticle();
             //20220701 set char floating
             if(isFloating) charView.FloatStart();
+            charView.InitFinished();
+            
             
             charDict.Add(id, charView);
             dlgCharAmountUpdate?.Invoke(charDict.Count);
@@ -329,6 +331,7 @@ namespace ET
             charMain.StopParticle();
             //20220701 set char floating
             if (isFloating) charMain.FloatStart();
+            charMain.InitFinished();
 
             charDict.Add(id, charMain);
             dlgCharAmountUpdate?.Invoke(charDict.Count);
