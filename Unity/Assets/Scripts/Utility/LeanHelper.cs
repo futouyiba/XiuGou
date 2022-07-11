@@ -136,7 +136,7 @@ namespace ET.Utility
         public async Task TestAdd()
         {
             var query = new LCQuery<LCObject>(USER_CLASS_NAME);
-            query.WhereEqualTo(USER_ID, currentGenUid);
+            query.WhereEqualTo(USER_ID, mySupposedIdForTest);
             try
             {
                 var users = await query.First(); //actually it should be only 1 user. 
@@ -396,7 +396,7 @@ namespace ET.Utility
                             UserId = myId
                         };
                         await createdUser.Save();
-                        return;
+                        // return;
                     }
                      
                      
@@ -436,13 +436,25 @@ namespace ET.Utility
                  else
                  {
                      var users = t.Result;
-                     foreach (var user in users)
+                     if (users.Count == 0)
                      {
-                         var aprcId = (int)(user[APPEARANCE_ID]);
-                         Debug.Log($"userId {user[USER_ID]} appearanceId {aprcId}");
+                         Debug.Log($"userId {userId} does not exist on leancloud");
+                         var newLeanUser = LCObject.Create(USER_CLASS_NAME);
+                         newLeanUser[USER_ID] = userId;
+                         newLeanUser.Save();
+                         return;
+                     }
+                     foreach (var lcObject in users)
+                     {
+                         var aprcId = (int)(lcObject[APPEARANCE_ID]);
+                         if (aprcId==null || aprcId<=0)
+                         {
+                             
+                         }
+                         Debug.Log($"userId {lcObject[USER_ID]} appearanceId {aprcId}");
                          CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
                          {
-                             CharMgr.instance.ChangeAprcFast((int)user[USER_ID], aprcId);
+                             CharMgr.instance.ChangeAprcFast((int)lcObject[USER_ID], aprcId);
                          });
                      }
                  }
