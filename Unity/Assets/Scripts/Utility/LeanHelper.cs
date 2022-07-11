@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using LeanCloud;
 // // 导入存储模块
@@ -47,6 +48,53 @@ namespace ET.Utility
 
         // todo for performance we cache the object Ids of the users in the room. so we can use lcQuery.get instead of lcQuery.find.
 
+        [Button("ChangeRandomAprc")]
+        public void ChangeRandomAprc()
+        {
+            var charDictCount = CharMgr.instance.charDict.Count;
+            var random = UnityEngine.Random.Range(0, charDictCount);
+            var userId = CharMgr.instance.charDict.ElementAt(random).Key;
+            // var userId = randomChar;
+            ChangeAprcForId(userId).Start();
+        }
+        
+        [Button("ChangeMyAprc")]
+        public void ChangeMyAprc()
+        {
+            var userId = CharMgr.instance.GetMe().userId;
+            // var userId = randomChar;
+            ChangeAprcForId(userId).Start();
+        }
+
+
+
+        private async Task ChangeAprcForId(int userId)
+        {
+            var query = new LCQuery<LCObject>(USER_CLASS_NAME);
+            query.WhereEqualTo(USER_ID, userId);
+            var u = await query.First();
+            LCObject savedBack;
+            if (u == null)
+            {
+                Debug.Log("user not exists");
+                var newUser = new User()
+                {
+                    UserId = userId,
+                    AppearanceId = UnityEngine.Random.Range(0, CharMgr.instance.charPrefabs.Count),
+                };
+                savedBack = await newUser.Save();
+                Debug.Log(savedBack + " is the new saved user...");
+
+                return;
+            }
+            User user = LCObject.CreateWithoutData(USER_CLASS_NAME, u.ObjectId) as User;
+            var appearanceId = UnityEngine.Random.Range(0, CharMgr.instance.charPrefabs.Count);
+            System.Diagnostics.Debug.Assert(user != null, nameof(user) + " != null");
+            user.AppearanceId = appearanceId;
+            savedBack = await user.Save();
+            Debug.Log(savedBack + " is the aprc saved user...");
+        }
+        
         public async void UpdateViewForUserId(int userId)
         {
             string objectId;
@@ -83,7 +131,7 @@ namespace ET.Utility
                 Debug.Log("user id " + userId + " has no appearance id");
                 return ;
             }
-
+            //todo check same first
             CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
             {
                 CharMgr.instance.ChangeAprcFast(userId, aprcId);
