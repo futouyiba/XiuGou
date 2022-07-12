@@ -266,6 +266,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
             {"MeMove",typeof(MeMove)},
             {"MeTap",typeof(MeTap)},
             {"MyPos",typeof(MyPosition)},
+            {"UserSit", typeof(UserSit)},
             // {"Break",typeof(Break)},
         };
         
