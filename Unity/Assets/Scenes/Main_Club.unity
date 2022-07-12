@@ -3553,18 +3553,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1163227416}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1163227418 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1163227420, guid: 84619b83b99dd384dbadb959d07b9eeb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1163227416}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4d024685013cf4d972fec32241702d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1163227419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6178263803895091974, guid: 84619b83b99dd384dbadb959d07b9eeb,
@@ -5182,6 +5170,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5742777492804665141, guid: 15381052b25069545b326c341f5f3f56,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.68000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742777492804665141, guid: 15381052b25069545b326c341f5f3f56,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3099995
+      objectReference: {fileID: 0}
     - target: {fileID: 5742777493151667473, guid: 15381052b25069545b326c341f5f3f56,
         type: 3}
       propertyPath: m_Name
@@ -5241,6 +5239,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742777494680179880, guid: 15381052b25069545b326c341f5f3f56,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742777494680179880, guid: 15381052b25069545b326c341f5f3f56,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.6299992
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15381052b25069545b326c341f5f3f56, type: 3}
@@ -6045,17 +6053,14 @@ GameObject:
   - component: {fileID: 2072377899}
   - component: {fileID: 2072377898}
   - component: {fileID: 2072377897}
-  - component: {fileID: 2072377896}
   - component: {fileID: 2072377895}
   - component: {fileID: 2072377894}
   - component: {fileID: 2072377893}
-  - component: {fileID: 2072377892}
-  - component: {fileID: 2072377891}
-  - component: {fileID: 2072377890}
   - component: {fileID: 2072377889}
   - component: {fileID: 2072377888}
   - component: {fileID: 2072377887}
   - component: {fileID: 2072377886}
+  - component: {fileID: 2072377900}
   m_Layer: 0
   m_Name: Camera_HoneCourt
   m_TagString: MainCamera
@@ -6129,7 +6134,19 @@ MonoBehaviour:
       m_Calls: []
   m_CameraActivatedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2072377900}
+        m_TargetAssemblyTypeName: ET.UpgradeShakeVcam, Assembly-CSharp
+        m_MethodName: OnVCamChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2072377888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6207,61 +6224,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &2072377890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072377885}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efe58df89b5b74a97a123b5ed2b70422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
-    _objectReferences:
-    - {fileID: 11400000, guid: 0e99512544b5ace4ba94d6ab47c83498, type: 2}
---- !u!114 &2072377891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072377885}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db4dbf27cc012a4aa79d6569020c301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fsm: {fileID: 2072377890}
-  IsFollowing: 0
-  animator: {fileID: 2072377892}
-  enterIdleLerpDuration: 1.5
-  enterFollowLerpDuration: 1.5
-  enterFarWatchLerpDuration: 1.5
-  IsFarWatching: 0
---- !u!95 &2072377892
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072377885}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 25f012396c928466f85e3d7c6031d96e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2072377893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6275,13 +6237,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"cameraAnimator","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.Animator,
-      UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"ScriptSF","value":{"$content":1,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"ET.CameraBoltSF,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"cameraTransform","value":{"$content":2,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.Transform,
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"cameraAnimator","value":null,"typeHandle":{"Identification":"UnityEngine.Animator,
+      UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"ScriptSF","value":null,"typeHandle":{"Identification":"ET.CameraBoltSF,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"cameraTransform","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
-    - {fileID: 2072377892}
-    - {fileID: 2072377891}
     - {fileID: 2072377899}
 --- !u!114 &2072377894
 MonoBehaviour:
@@ -6314,26 +6274,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072377885}
   m_Enabled: 1
---- !u!114 &2072377896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072377885}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55cd80a68730e14794399a44c866940, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivityX: 5
-  sensitivityY: 5
-  minimumX: -360
-  maximumX: 360
-  minimumY: -90
-  maximumY: 90
-  smoothSpeed: 20
-  Speed: 100
 --- !u!124 &2072377897
 Behaviour:
   m_ObjectHideFlags: 0
@@ -6401,6 +6341,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 106.367, z: 0.008}
+--- !u!114 &2072377900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072377885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4d024685013cf4d972fec32241702d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.2
+  interval: 1
+  intensity: 0.1
+  ShakeDirection: 0
 --- !u!1 &2123347898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7852502532901490143, guid: 2402ccb3cbf92f74a92fd5525cd04758,
@@ -8142,7 +8098,8 @@ PrefabInstance:
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.size
       value: 540
@@ -8862,8 +8819,8 @@ PrefabInstance:
         UnityEngine.CoreModule","m_PersistentCalls":{"$id":1,"$type":"UnityEngine.Events.PersistentCallGroup,
         UnityEngine.CoreModule","m_Calls":{"$id":2,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
         UnityEngine.CoreModule]], mscorlib","$rlength":1,"$rcontent":[{"$id":3,"$type":"UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"UnityEngine.Behaviour,
-        UnityEngine","m_MethodName":"set_enabled","m_Mode":6,"m_Arguments":{"$id":4,"$type":"UnityEngine.Events.ArgumentCache,
+        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"ET.UpgradeShakeVcam,
+        Assembly-CSharp","m_MethodName":"set_IsOn","m_Mode":6,"m_Arguments":{"$id":4,"$type":"UnityEngine.Events.ArgumentCache,
         UnityEngine.CoreModule","m_ObjectArgument":$eref:20,"m_ObjectArgumentAssemblyTypeName":"UnityEngine.Object,
         UnityEngine","m_IntArgument":17,"m_FloatArgument":0,"m_StringArgument":"","m_BoolArgument":true},"m_CallState":2}]}}}'
       objectReference: {fileID: 0}
@@ -8872,8 +8829,8 @@ PrefabInstance:
       value: '"path":"LevelInfos.[19].otherBehaviour.m_PersistentCalls","value":{"$id":0,"$type":"UnityEngine.Events.PersistentCallGroup,
         UnityEngine.CoreModule","m_Calls":{"$id":1,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
         UnityEngine.CoreModule]], mscorlib","$rlength":1,"$rcontent":[{"$id":2,"$type":"UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"UnityEngine.Behaviour,
-        UnityEngine","m_MethodName":"set_enabled","m_Mode":6,"m_Arguments":{"$id":3,"$type":"UnityEngine.Events.ArgumentCache,
+        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"ET.UpgradeShakeVcam,
+        Assembly-CSharp","m_MethodName":"set_IsOn","m_Mode":6,"m_Arguments":{"$id":3,"$type":"UnityEngine.Events.ArgumentCache,
         UnityEngine.CoreModule","m_ObjectArgument":$eref:20,"m_ObjectArgumentAssemblyTypeName":"UnityEngine.Object,
         UnityEngine","m_IntArgument":17,"m_FloatArgument":0,"m_StringArgument":"","m_BoolArgument":true},"m_CallState":2}]}}'
       objectReference: {fileID: 0}
@@ -8881,16 +8838,16 @@ PrefabInstance:
       propertyPath: serializationData.PrefabModifications.Array.data[124]
       value: '"path":"LevelInfos.[19].otherBehaviour.m_PersistentCalls.m_Calls","value":{"$id":0,"$type":"System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
         UnityEngine.CoreModule]], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"UnityEngine.Behaviour,
-        UnityEngine","m_MethodName":"set_enabled","m_Mode":6,"m_Arguments":{"$id":2,"$type":"UnityEngine.Events.ArgumentCache,
+        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"ET.UpgradeShakeVcam,
+        Assembly-CSharp","m_MethodName":"set_IsOn","m_Mode":6,"m_Arguments":{"$id":2,"$type":"UnityEngine.Events.ArgumentCache,
         UnityEngine.CoreModule","m_ObjectArgument":$eref:20,"m_ObjectArgumentAssemblyTypeName":"UnityEngine.Object,
         UnityEngine","m_IntArgument":17,"m_FloatArgument":0,"m_StringArgument":"","m_BoolArgument":true},"m_CallState":2}]}'
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[125]
       value: '"path":"LevelInfos.[19].otherBehaviour.m_PersistentCalls.m_Calls.[0]","value":{"$id":0,"$type":"UnityEngine.Events.PersistentCall,
-        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"UnityEngine.Behaviour,
-        UnityEngine","m_MethodName":"set_enabled","m_Mode":6,"m_Arguments":{"$id":1,"$type":"UnityEngine.Events.ArgumentCache,
+        UnityEngine.CoreModule","m_Target":$eref:19,"m_TargetAssemblyTypeName":"ET.UpgradeShakeVcam,
+        Assembly-CSharp","m_MethodName":"set_IsOn","m_Mode":6,"m_Arguments":{"$id":1,"$type":"UnityEngine.Events.ArgumentCache,
         UnityEngine.CoreModule","m_ObjectArgument":$eref:20,"m_ObjectArgumentAssemblyTypeName":"UnityEngine.Object,
         UnityEngine","m_IntArgument":17,"m_FloatArgument":0,"m_StringArgument":"","m_BoolArgument":true},"m_CallState":2}'
       objectReference: {fileID: 0}
@@ -8937,7 +8894,7 @@ PrefabInstance:
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[134]
       value: '"path":"LevelInfos.[19].otherBehaviour.m_PersistentCalls.m_Calls.[0].m_MethodName","value":{"$id":0,"$type":"System.String,
-        mscorlib","set_enabled"}'
+        mscorlib","set_IsOn"}'
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[135]
@@ -8951,7 +8908,7 @@ PrefabInstance:
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[137]
       value: '"path":"LevelInfos.[19].otherBehaviour.m_PersistentCalls.m_Calls.[0].m_TargetAssemblyTypeName","value":{"$id":0,"$type":"System.String,
-        mscorlib","UnityEngine.Behaviour, UnityEngine"}'
+        mscorlib","ET.UpgradeShakeVcam, Assembly-CSharp"}'
       objectReference: {fileID: 0}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[138]
@@ -11459,7 +11416,7 @@ PrefabInstance:
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[19]
       value: 
-      objectReference: {fileID: 1163227418}
+      objectReference: {fileID: 2072377900}
     - target: {fileID: 24619295, guid: cbacc8d2d22bd234cb0e651759f587cc, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[20]
       value: 

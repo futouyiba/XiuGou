@@ -8,16 +8,21 @@ using UnityEngine.Timeline;
 
 namespace ET
 {
-    // [RequireComponent(typeof(CinemachineVirtualCamera))]
+    [RequireComponent(typeof(CinemachineBrain))]
     public class UpgradeShakeVcam : MonoBehaviour
     {
-        // protected CinemachineVirtualCamera vcam;
+        protected CinemachineBrain brain;
 
-        protected float duration = .2f;
+        [SerializeField] private bool _isOn;
+        public bool IsOn => _isOn;
 
-        protected float interval = 1f;
+        protected GameObject shakingVcamObj;
 
-        public float intensity = .1f;
+        [SerializeField]protected float duration = .2f;
+
+        [SerializeField]protected float interval = 1f;
+
+        [SerializeField]protected float intensity = .1f;
 
         public enum ShakeDirectionList
         {
@@ -39,8 +44,12 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
-            // vcam = GetComponent<CinemachineVirtualCamera>();
+            brain = GetComponent<CinemachineBrain>();
             startTime = Time.time;
+            if (brain.ActiveVirtualCamera != null)
+            {
+                shakingVcamObj = brain.ActiveVirtualCamera.VirtualCameraGameObject;
+            }
         }
 
         // Update is called once per frame
@@ -56,6 +65,8 @@ namespace ET
             //     }
             // }
 
+            if (!IsOn) return;
+            
             var lastFrameTime = Time.time - Time.deltaTime;
             var thisFrameTime = Time.time;
             int lastBeatCyc = Mathf.FloorToInt((lastFrameTime - startTime) / interval);
@@ -87,26 +98,32 @@ namespace ET
             switch (ShakeDirection)
             {
                 case ShakeDirectionList.Up:
-                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, intensity, 0), duration, 10));
+                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, intensity, 0), duration, 10));
                     break;
                 case ShakeDirectionList.Down:
-                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, -intensity, 0), duration, 10));
+                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, -intensity, 0), duration, 10));
                     break;
                 case ShakeDirectionList.Front:
-                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, 0, -intensity), duration, 10));
+                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, 0, -intensity), duration, 10));
                     break;
                 case ShakeDirectionList.Back:
-                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, 0, intensity), duration, 10));
+                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, 0, intensity), duration, 10));
                     break;
                 case ShakeDirectionList.Left:
-                    curSeq.Append(transform.DOPunchPosition(new Vector3(-intensity, 0, 0), duration, 10));
+                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(-intensity, 0, 0), duration, 10));
                     break;
                 case ShakeDirectionList.Right:
-                    curSeq.Append(transform.DOPunchPosition(new Vector3(intensity, 0, 0), duration, 10));
+                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(intensity, 0, 0), duration, 10));
                     break;
             }
 
             curSeq.Play();
+        }
+
+        public void OnVCamChange()
+        {
+            Debug.LogWarning($"switched to  {brain.ActiveVirtualCamera.VirtualCameraGameObject.gameObject.name}");
+            shakingVcamObj = brain.ActiveVirtualCamera.VirtualCameraGameObject;
         }
     }
 }
