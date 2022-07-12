@@ -182,19 +182,35 @@ namespace ET
                 return -1;
             }
 
+            int result = 9999;
+            Dictionary<int, int> level_guysneeded = new Dictionary<int, int>();
             foreach (var levelInfo in config.LevelInfos)
             {
                 // if (currentAmount == levelInfo.GuysNeeded)
                 // {
                 //     return 0;
                 // }
-                if (currentLevel + 1 == levelInfo.TheLvl)
-                {
-                    return levelInfo.GuysNeeded - currentAmount - 1;
-                }
+                level_guysneeded.Add(levelInfo.TheLvl, levelInfo.GuysNeeded);
             }
 
-            return 9999;
+            if (!level_guysneeded.TryGetValue(currentLevel + 1, out int nextlevelguys))
+            {
+                return result;
+            }
+
+            result = nextlevelguys - currentAmount - 1;
+            if (result == 0)
+            {
+                if (!level_guysneeded.TryGetValue(currentLevel + 2, out int next2levelguys))
+                {
+                    result = 9999;
+                    return result;
+                }
+
+                result = next2levelguys - currentAmount - 1;
+            }
+
+            return result;
         }
 
 

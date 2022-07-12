@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Timeline;
@@ -16,14 +17,13 @@ namespace ET
         [SerializeField] private bool _isOn;
         public bool IsOn => _isOn;
 
-        protected GameObject shakingVcamObj;
+        [ReadOnly]public GameObject shakingVcamObj;
 
         [SerializeField]protected float duration = .2f;
 
-        [SerializeField]protected float interval = 1f;
-
         [SerializeField]protected float intensity = .1f;
 
+        [SerializeField]protected float interval = 1f;
         public enum ShakeDirectionList
         {
             Up,
