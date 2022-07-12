@@ -88,6 +88,7 @@ namespace ET
         void Start()
         {
             floor = this.GetComponentInChildren<MeshCollider>();
+            Load1();
         }
 
         // Update is called once per frame

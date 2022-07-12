@@ -50,5 +50,10 @@ namespace ET
             
             
         }
+        
+        public void UIPointerDown()
+        {
+            OnMouseDown();
+        }
     }
 }

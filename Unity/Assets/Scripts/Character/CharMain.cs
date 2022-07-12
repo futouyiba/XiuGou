@@ -174,11 +174,12 @@ namespace ET
             // var scenePos = DanceFloorHelper.PosUnifiedPolar2Scene(target);
             var scenePos = DanceFloorHelper.PosUnified2Scene(target);
             var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
+            
             if (targetPos.x < -1000f) return;
             moveTarget = scenePos;
             fsm.TriggerUnityEvent("StartMove");
             if (isMe) NativeProxy.SendMeMove(target);
-            // Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
+            Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
             
         }
 
@@ -217,7 +218,7 @@ namespace ET
         public void MoveEnd()
         {
             fsm.TriggerUnityEvent("MoveEnded");
-            if(isMe) CameraBolt.TriggerEvent("Follow2Idle");
+            // if(isMe) CameraBolt.TriggerEvent("Follow2Idle"); 
             // this.IsMoving = false;
             this.moveTarget = Vector3.negativeInfinity;
             cur_move_seq = null;
@@ -301,8 +302,8 @@ namespace ET
         public void FollowMe()
         {
             if(!isMe) return;
-            var cameraBolt = Camera.main.GetComponent<CameraBolt>();
-            CameraBolt.TriggerEvent("Idle2Follow");
+            // var cameraBolt = Camera.main.GetComponent<CameraBolt>();
+            // CameraBolt.TriggerEvent("Idle2Follow");
         }
 
         public bool TalkTimeCheck()
