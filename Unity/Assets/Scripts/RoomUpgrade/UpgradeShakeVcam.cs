@@ -13,12 +13,24 @@ namespace ET
     {
         // protected CinemachineVirtualCamera vcam;
 
-        protected float intensity = .1f;
-
         protected float duration = .2f;
 
         protected float interval = 1f;
-        
+
+        public float intensity = .1f;
+
+        public enum ShakeDirectionList
+        {
+            Up,
+            Down,
+            Left,
+            Right,
+            Front,
+            Back
+        }
+
+        public ShakeDirectionList ShakeDirection = ShakeDirectionList.Up;
+
         // private float shakeTimer = 0f;
         private float startTime = 0f;
 
@@ -71,7 +83,29 @@ namespace ET
             }
             curSeq = DOTween.Sequence();
 
-            curSeq.Append(transform.DOShakePosition(duration, intensity, 10, 0));
+            //curSeq.Append(transform.DOShakePosition(duration, intensity, 10, 0));
+            switch (ShakeDirection)
+            {
+                case ShakeDirectionList.Up:
+                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, intensity, 0), duration, 10));
+                    break;
+                case ShakeDirectionList.Down:
+                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, -intensity, 0), duration, 10));
+                    break;
+                case ShakeDirectionList.Front:
+                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, 0, -intensity), duration, 10));
+                    break;
+                case ShakeDirectionList.Back:
+                    curSeq.Append(transform.DOPunchPosition(new Vector3(0, 0, intensity), duration, 10));
+                    break;
+                case ShakeDirectionList.Left:
+                    curSeq.Append(transform.DOPunchPosition(new Vector3(-intensity, 0, 0), duration, 10));
+                    break;
+                case ShakeDirectionList.Right:
+                    curSeq.Append(transform.DOPunchPosition(new Vector3(intensity, 0, 0), duration, 10));
+                    break;
+            }
+
             curSeq.Play();
         }
     }
