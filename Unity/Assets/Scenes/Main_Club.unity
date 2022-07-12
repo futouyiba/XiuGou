@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5070207, g: 0.36912602, b: 0.745283, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.66
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.12745728, g: 0.12588999, b: 0.21698111, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 860a66ca4259b384f9ec01b687f71c3c, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 04253c6e6956f4940a5d6932f0daff07, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -36,9 +36,9 @@ RenderSettings:
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
-  m_CustomReflection: {fileID: 8900000, guid: 18ec2d52be8f4524a97c25a2ed27838e, type: 3}
+  m_CustomReflection: {fileID: 8900000, guid: 15859894697b2ab449a57dc0e7a80f9e, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04434012, g: 0.039317153, b: 0.047051556, a: 1}
+  m_IndirectSpecularColor: {r: 0.003917689, g: 0.006531086, b: 0.042048447, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6412,7 +6412,7 @@ Camera:
   m_GameObject: {fileID: 2072377885}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.023529412, g: 0.003921569, b: 0.07450981, a: 0}
   m_projectionMatrixMode: 2
   m_GateFitMode: 2
