@@ -229,7 +229,8 @@ namespace ET
             IsSupressLight = false;
             CharAmountChanged(CharMgr.instance.CurrentCharAmount);
         }
-        protected void ResetAll()
+        
+        public void ResetAll()
         {
             foreach (var camUpBehaviour in CamUpBehaviours)
             {
