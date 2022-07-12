@@ -176,10 +176,11 @@ namespace ET
             var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
             
             if (targetPos.x < -1000f) return;
-            moveTarget = scenePos;
+            // moveTarget = scenePos;
+            moveTarget = targetPos;
             fsm.TriggerUnityEvent("StartMove");
             if (isMe) NativeProxy.SendMeMove(target);
-            Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
+            // Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
             
         }
 
