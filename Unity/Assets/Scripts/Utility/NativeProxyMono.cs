@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using LitJson;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace ET.Utility
 {
     public class NativeProxyMono : MonoBehaviour
     {
+        
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -40,6 +44,18 @@ namespace ET.Utility
         public void testSendProxyMsg()
         {
             NativeProxy.SendMyPos(new Vector2(.5f, .5f));
+        }
+
+        [Header("SimRecvUserMove")]
+        [OdinSerialize] public int userId;
+        [OdinSerialize] public Vector2 moveTarget;
+        [Button("SimUserMove")]
+        public void testSimRecvUserMove()
+        {
+            var msg =
+                "{\"Op\":\"UserMove\",\"OpData\":{\"userId\":"+userId+", \"ts\":\"1652352835457\", \"position\":{\"x\":" +
+                moveTarget.x + ",\"y\":" + moveTarget.y + "}}}";
+            NativeProxy.instance.Native2UnityMsg(msg);
         }
     }
 }
