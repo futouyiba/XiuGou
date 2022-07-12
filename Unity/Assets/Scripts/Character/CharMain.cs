@@ -174,11 +174,12 @@ namespace ET
             // var scenePos = DanceFloorHelper.PosUnifiedPolar2Scene(target);
             var scenePos = DanceFloorHelper.PosUnified2Scene(target);
             var targetPos = DanceFloorHelper.BuildWorldPosition(scenePos);
+            
             if (targetPos.x < -1000f) return;
             moveTarget = scenePos;
             fsm.TriggerUnityEvent("StartMove");
             if (isMe) NativeProxy.SendMeMove(target);
-            // Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
+            Debug.LogWarning($"my pos is {transform.position}, target is {moveTarget}");
             
         }
 
