@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5724078330572760425}
   - component: {fileID: 5985918891740950198}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: dancefloorBottom
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,14 +57,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2960387360267776851}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.68, y: 0, z: 0}
-  m_LocalScale: {x: 250, y: 250, z: 250}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5742777493151667474}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7424043541913660508
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2960387360267776851}
-  m_Mesh: {fileID: -7182876363431727958, guid: 4e49cef6096056b4db47012fd626f0b9, type: 3}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &5724078330572760425
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -7182876363431727958, guid: 4e49cef6096056b4db47012fd626f0b9, type: 3}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5560903306049956932
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742777492804665140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.68000007, y: 0, z: 1.3099995}
+  m_LocalPosition: {x: 2.13, y: 0, z: 2.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -268,10 +268,10 @@ MonoBehaviour:
   cur_Radius: 0
   smallPos1: {x: -1.56, y: 8.946, z: 22.37}
   bigPos1: {x: 1.3799999, y: 8.946, z: 25.31}
-  smallPos2: {x: -3.7200003, y: 8.946, z: 19.44}
-  bigPos2: {x: 3.52, y: 8.946, z: 26.61}
-  smallPos3: {x: -8.049999, y: 8.946, z: 15.61}
-  bigPos3: {x: 7.94, y: 8.946, z: 28.9}
+  smallPos2: {x: -3.5700002, y: 8.946, z: 21.89}
+  bigPos2: {x: 3.4099998, y: 8.946, z: 26.5}
+  smallPos3: {x: -7.2100005, y: 8.946, z: 19.35}
+  bigPos3: {x: 4.19, y: 8.946, z: 26.19}
 --- !u!1 &5742777494680179887
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742777494680179887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.62, y: 0, z: -1.6299992}
+  m_LocalPosition: {x: -9.27, y: 0, z: -4.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
