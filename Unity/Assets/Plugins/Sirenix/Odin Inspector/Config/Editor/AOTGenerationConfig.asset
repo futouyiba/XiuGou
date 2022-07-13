@@ -12,9 +12,146 @@ MonoBehaviour:
   m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
   m_Name: AOTGenerationConfig
   m_EditorClassIdentifier: 
-  automateBeforeBuilds: 0
+  automateBeforeBuilds: 1
   deleteDllAfterBuilds: 1
-  AutomateForAllAOTPlatforms: 1
-  automateForPlatforms: 0900000014000000
-  lastScan: 0
-  supportSerializedTypes: []
+  AutomateForAllAOTPlatforms: 0
+  automateForPlatforms: 0d000000
+  lastScan: 637933185990806366
+  supportSerializedTypes:
+  - TypeName: System.Action`1[[System.Boolean, mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Action`1[[System.Int32, mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.ActionParam, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Events.ArgumentCache, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Boolean, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.UI.Button, UnityEngine.UI
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.CameraPointCollection, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Single,
+      mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.GameObject,
+      UnityEngine.CoreModule]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.Collections.Generic.List`1[[ET.ActionParam,
+      Assembly-CSharp]], mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[ET.SeatData,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.DowngradeTimer, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Single, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.GameObject, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+      mscorlib]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.IEqualityComparer`1[[System.Int32, mscorlib]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Int32, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.Utility.LevelInfo, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[ET.ActionParam, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[ET.Utility.LevelInfo, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall,
+      UnityEngine.CoreModule]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[ET.RoomUpgrade.RoomUpObjectCollection,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Object, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Object, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Object[], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.ParticleSystemCollection, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Events.PersistentCall, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Events.PersistentListenerMode, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.Utility.RoomUpConfig, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.RoomUpgrade.RoomUpObjectCollection, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.SeatData, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: Unity.VisualScripting.StateMachine, Unity.VisualScripting.State
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.String, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.UI.Text, UnityEngine.UI
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Transform, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Type, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Type[], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Events.UnityEventCallState, UnityEngine.CoreModule
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.UpgradableCharMgr, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1

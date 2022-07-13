@@ -572,6 +572,7 @@ namespace ET
             // {
             //     initRot = transform.rotation;
             // }
+            Debug.LogError($"float starting");
             fsm.TriggerUnityEvent("FloatStart");
         }
 
@@ -593,6 +594,7 @@ namespace ET
 
         public void FloatEnd()
         {
+            Debug.LogError($"float ending");
             fsm.TriggerUnityEvent("FloatEnd");
         }
         
