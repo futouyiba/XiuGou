@@ -377,6 +377,7 @@ namespace ET
             oriSprite.GetComponent<SpriteRenderer>().sprite = spriteNew.sprite;
             var oriSpriteTransform = oriSprite.transform as RectTransform;
             oriSpriteTransform.localScale = spriteNewTransform.localScale;
+            charMain.UpdateInitSprScale(spriteNewTransform.localScale);
             oriSpriteTransform.localPosition = spriteNewTransform.localPosition;
             oriSprite.GetComponent<Animator>().runtimeAnimatorController = spriteNew.GetComponent<Animator>().runtimeAnimatorController;
         }

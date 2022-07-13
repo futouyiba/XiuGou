@@ -428,6 +428,13 @@ namespace ET
 
         }
 
+
+        public void UpdateInitSprScale(Vector3 newInitSprScale)
+        {
+            initSprScale = newInitSprScale;
+        }
+        
+
         #endregion
 
 
@@ -616,5 +623,7 @@ namespace ET
         {
             fsm.TriggerUnityEvent("InitFinish");
         }
+        
+        
     }
 }
