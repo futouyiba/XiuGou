@@ -43,15 +43,18 @@ namespace ET
                 else
                 {
                     result.y = hit.point.y;
+                    // Debug.Log($"hitting position is {result}, ray is hitting{hit.collider.gameObject.name},ray origin is {rayOrigin}, scene pos is {scenePos}");
                     break;
                 }
             }
 
+            
             if (result.y < -1000f)
             {
                 Debug.LogWarning($"not hitting any ground");
                 return Vector3.negativeInfinity;
             }
+            
             return result;
         }
 

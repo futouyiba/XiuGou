@@ -149,7 +149,7 @@ namespace ET
             var timerID = get_id;
             timers.Add(timerID,createTimer);
             UpdateMinTime(tillTime);
-            Debug.Log($"timer {timerID} added!");
+            // Debug.Log($"timer {timerID} added!");
             return timerID;
         }
 

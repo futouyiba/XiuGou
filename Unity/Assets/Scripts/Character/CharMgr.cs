@@ -557,7 +557,17 @@ namespace ET
         
 
         #endregion
-        
+
+
+        public void ResetCharacters()
+        {
+            foreach (var kvp in charDict)
+            {
+                charDict.Remove(kvp.Key);
+                var charMain = kvp.Value;
+                charMain.CharLeave();
+            }
+        }
         
     }
 }

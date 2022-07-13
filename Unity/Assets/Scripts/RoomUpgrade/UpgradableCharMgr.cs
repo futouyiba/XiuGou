@@ -50,13 +50,13 @@ namespace ET
 
         public void FloatStart()
         {
-            Debug.LogWarning($"float starting");
+            // Debug.LogWarning($"float starting");
             CharMgr.instance.FloatStart();
         }
 
         public void FloatEnd()
         {
-            Debug.LogWarning($"float ending");
+            // Debug.LogWarning($"float ending");
             CharMgr.instance.FloatEnd();
             
         }
