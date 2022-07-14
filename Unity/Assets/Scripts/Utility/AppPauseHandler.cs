@@ -24,7 +24,7 @@ namespace ET
 
         private void OnApplicationPause(bool pauseStatus)
         {
-            throw new NotImplementedException();
+            DisposeScene();
         }
 
 
