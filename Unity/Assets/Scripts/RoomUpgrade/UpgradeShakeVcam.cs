@@ -69,7 +69,7 @@ namespace ET
             //     }
             // }
 
-            if (!IsOn) return;
+            if (!_isOn) return;
             
             var lastFrameTime = Time.time - Time.deltaTime;
             var thisFrameTime = Time.time;
