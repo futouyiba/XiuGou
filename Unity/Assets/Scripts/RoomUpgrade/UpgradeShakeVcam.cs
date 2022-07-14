@@ -15,7 +15,11 @@ namespace ET
         protected CinemachineBrain brain;
 
         [SerializeField] private bool _isOn;
-        public bool IsOn => _isOn;
+
+        public void IsOn(bool isOn)
+        {
+            _isOn = isOn;
+        }
 
         [ReadOnly]public GameObject shakingVcamObj;
 
@@ -65,7 +69,7 @@ namespace ET
             //     }
             // }
 
-            if (!IsOn) return;
+            if (!_isOn) return;
             
             var lastFrameTime = Time.time - Time.deltaTime;
             var thisFrameTime = Time.time;
