@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   automateBeforeBuilds: 1
   deleteDllAfterBuilds: 1
-  AutomateForAllAOTPlatforms: 0
+  AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0d000000
-  lastScan: 637933185990806366
+  lastScan: 637933427994020430
   supportSerializedTypes:
   - TypeName: System.Action`1[[System.Boolean, mscorlib]], mscorlib
     IsCustom: 0
@@ -98,10 +98,10 @@ MonoBehaviour:
       Assembly-CSharp]], mscorlib
     IsCustom: 0
     Emit: 1
-  - TypeName: UnityEngine.Object, UnityEngine.CoreModule
+  - TypeName: System.Object, mscorlib
     IsCustom: 0
     Emit: 1
-  - TypeName: System.Object, mscorlib
+  - TypeName: UnityEngine.Object, UnityEngine.CoreModule
     IsCustom: 0
     Emit: 1
   - TypeName: System.Object[], mscorlib
@@ -138,12 +138,6 @@ MonoBehaviour:
     IsCustom: 0
     Emit: 1
   - TypeName: UnityEngine.Transform, UnityEngine.CoreModule
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Type, mscorlib
-    IsCustom: 0
-    Emit: 1
-  - TypeName: System.Type[], mscorlib
     IsCustom: 0
     Emit: 1
   - TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule

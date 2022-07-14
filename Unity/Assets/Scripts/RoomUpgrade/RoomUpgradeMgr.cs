@@ -151,7 +151,7 @@ namespace ET
                 foreach (var exec in toExec)
                 {
 
-                    exec.Invoke();
+                    exec?.Invoke();
 
                     // var actions = dict[exec];
                     // foreach (var action in actions)
@@ -183,7 +183,7 @@ namespace ET
             }
 
             int result = 9999;
-            Dictionary<int, int> level_guysneeded = new Dictionary<int, int>();
+            DictionaryExt<int, int> level_guysneeded = new DictionaryExt<int, int>();
             foreach (var levelInfo in config.LevelInfos)
             {
                 // if (currentAmount == levelInfo.GuysNeeded)
