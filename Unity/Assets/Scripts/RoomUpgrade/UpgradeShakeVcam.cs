@@ -15,7 +15,11 @@ namespace ET
         protected CinemachineBrain brain;
 
         [SerializeField] private bool _isOn;
-        public bool IsOn => _isOn;
+
+        public void IsOn(bool isOn)
+        {
+            _isOn = isOn;
+        }
 
         [ReadOnly]public GameObject shakingVcamObj;
 
