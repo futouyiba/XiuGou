@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using RoomUpgrade;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Sirenix.Utilities;
+using Unity.Entities.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
+using Object = UnityEngine.Object;
 
 namespace ET.Utility
 {
@@ -43,26 +46,43 @@ namespace ET.Utility
         // {
         //     Debug.Log("testUnityFunctionWithInt:"+param );
         // }
-        [Button("Upgrade")]
-        void Upgrade()
+        // [Button("Upgrade")]
+        // void Upgrade()
+        // {
+        //     levelForDebug++;
+        //     for (int i = 0; i < levelForDebug; i++)
+        //     {
+        //         LevelInfos[i].otherBehaviour.Invoke();
+        //     }
+        // }
+        //
+        // [Button("init")]
+        // void Init()
+        // {
+        //     GameObject.FindObjectsOfType<UpgradableObject>().ForEach(o =>
+        //     {
+        //         // if (o.GetType().HasElementType())
+        //         {
+        //             // o.SendMessage("Awake");
+        //         }
+        //     });
+        // }
+
+        [SerializeField] private TextAsset configTextAsset;
+        [Button("Save2File")]
+        public void SaveState()
         {
-            levelForDebug++;
-            for (int i = 0; i < levelForDebug; i++)
-            {
-                LevelInfos[i].otherBehaviour.Invoke();
-            }
+            List<Object> objects = new List<Object>();
+            var nodes = SerializationUtility.SerializeValue(LevelInfos,DataFormat.JSON,out objects);
+            File.WriteAllBytes("D:/temp/test.txt", nodes);
         }
-        
-        [Button("init")]
-        void Init()
+
+        [Button("LoadFromFile")]
+        public void LoadState()
         {
-            GameObject.FindObjectsOfType<UpgradableObject>().ForEach(o =>
-            {
-                // if (o.GetType().HasElementType())
-                {
-                    // o.SendMessage("Awake");
-                }
-            });
+            var bytes = File.ReadAllBytes("D:/temp/test.txt");
+            List<Object> objects = new List<Object>();
+            LevelInfos = SerializationUtility.DeserializeValue<List<LevelInfo>>(bytes, DataFormat.JSON, objects);
         }
     }
     

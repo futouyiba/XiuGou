@@ -590,12 +590,15 @@ namespace ET
             transform.position += Vector3.up * floatHeightOffset;
             LockRotation(false);
             transform.rotation = RandomFloatRotation();
-            rb.angularDrag = 0;
-            rb.angularVelocity = floatAngularVel;
-            if (!(rb.velocity == Vector3.zero))
-            {
-                rb.velocity = Vector3.zero;
-            }
+
+            Material mat = sprite.GetComponent<Renderer>().material;
+            mat.EnableKeyword("ROUNDWAVEUV_ON");
+            // rb.angularDrag = 0;
+            // rb.angularVelocity = floatAngularVel;
+            // if (!(rb.velocity == Vector3.zero))
+            // {
+            //     rb.velocity = Vector3.zero;
+            // }
 
         }
 
@@ -607,9 +610,12 @@ namespace ET
         
         public void ftFloatEnd()
         {
+            Material mat = sprite.GetComponent<Renderer>().material;
+            mat.DisableKeyword("ROUNDWAVEUV_ON");
+            
             Rigidbody rb = this.GetComponent<Rigidbody>();
-            rb.angularDrag = 0.05f;
-            rb.angularVelocity=Vector3.zero;
+            // rb.angularDrag = 0.05f;
+            // rb.angularVelocity=Vector3.zero;
             rb.velocity= Vector3.zero;
             transform.rotation = initRot;
             LockRotation(true);
