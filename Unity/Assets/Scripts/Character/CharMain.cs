@@ -568,9 +568,11 @@ namespace ET
             rb.constraints = isLock ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
         }
 
-        public static Quaternion RandomFloatRotation()
+        public Quaternion RandomFloatRotation()
         {
-            return Random.rotation;
+            var randZ = Random.Range(-60f, 60f);
+            Quaternion result= Quaternion.Euler(new Vector3(0,0,randZ));
+            return transform.rotation * result;
         }
 
         public void FloatStart()
@@ -588,11 +590,13 @@ namespace ET
             Rigidbody rb = this.GetComponent<Rigidbody>();
             rb.useGravity = false;
             transform.position += Vector3.up * floatHeightOffset;
+            rb.isKinematic = true;
             LockRotation(false);
             transform.rotation = RandomFloatRotation();
 
             Material mat = sprite.GetComponent<Renderer>().material;
             mat.EnableKeyword("ROUNDWAVEUV_ON");
+            mat.EnableKeyword("SHAKEUV_ON");
             // rb.angularDrag = 0;
             // rb.angularVelocity = floatAngularVel;
             // if (!(rb.velocity == Vector3.zero))
@@ -612,6 +616,8 @@ namespace ET
         {
             Material mat = sprite.GetComponent<Renderer>().material;
             mat.DisableKeyword("ROUNDWAVEUV_ON");
+            mat.DisableKeyword("SHAKEUV_ON");
+            
             
             Rigidbody rb = this.GetComponent<Rigidbody>();
             // rb.angularDrag = 0.05f;
@@ -620,6 +626,7 @@ namespace ET
             transform.rotation = initRot;
             LockRotation(true);
             rb.useGravity = true;
+            rb.isKinematic = false;
         }
 
         #endregion
