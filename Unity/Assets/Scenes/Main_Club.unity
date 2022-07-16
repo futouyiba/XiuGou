@@ -286,6 +286,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f101f718c16014ab4099969b5e4f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &49399777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 49399779}
+  - component: {fileID: 49399778}
+  m_Layer: 0
+  m_Name: CM TargetGroup1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &49399778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49399777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5eb80d8e62d9d145bb50fb783c0f731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionMode: 0
+  m_RotationMode: 0
+  m_UpdateMethod: 2
+  m_Targets: []
+--- !u!4 &49399779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49399777}
+  m_LocalRotation: {x: -0, y: -0.9848078, z: 0.17364816, w: 0}
+  m_LocalPosition: {x: -283.45926, y: 371.53326, z: -120.60233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2072377899}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129777999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,6 +3828,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6178263803979580162, guid: 84619b83b99dd384dbadb959d07b9eeb,
+        type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 49399779}
+    - target: {fileID: 6178263803979580164, guid: 84619b83b99dd384dbadb959d07b9eeb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6420323290504565349, guid: 84619b83b99dd384dbadb959d07b9eeb,
         type: 3}
       propertyPath: m_LookAt
@@ -6372,6 +6430,7 @@ GameObject:
   - component: {fileID: 2072377887}
   - component: {fileID: 2072377886}
   - component: {fileID: 2072377900}
+  - component: {fileID: 2072377901}
   m_Layer: 0
   m_Name: Camera_HoneCourt
   m_TagString: MainCamera
@@ -6449,6 +6508,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2072377900}
         m_TargetAssemblyTypeName: ET.UpgradeShakeVcam, Assembly-CSharp
+        m_MethodName: OnVCamChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2072377901}
+        m_TargetAssemblyTypeName: ET.CamTargetGroupHelper, Assembly-CSharp
         m_MethodName: OnVCamChange
         m_Mode: 1
         m_Arguments:
@@ -6648,7 +6719,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 12.78, z: 32.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 49399779}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 106.367, z: 0.008}
@@ -6670,6 +6742,19 @@ MonoBehaviour:
   intensity: 0.1
   interval: 1
   ShakeDirection: 0
+--- !u!114 &2072377901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072377885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d3744f8d2212148b08e9ffd15dcdb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetGroup: {fileID: 49399778}
 --- !u!1 &2123347898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7852502532901490143, guid: 2402ccb3cbf92f74a92fd5525cd04758,
