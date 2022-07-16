@@ -20,10 +20,12 @@ namespace ET
 
         [SerializeField] public List<GameObject> charPrefabs;
         [SerializeField] public GameObject blankPrefab;
+        [SerializeField] public CharDelayGenerator generator;
 
         public Dictionary<int, CharMain> charDict;
 
         private Action<int> dlgCharAmountUpdate;
+
         
         public int idStartPoint = -1000;
         private int _id = -1000;
@@ -228,6 +230,8 @@ namespace ET
                 myId = id;
                 charMain.isMe = true;
                 charMain.SetNameColor(Color.yellow);
+
+                CamTargetGroupHelper.Instance.UpdateCharWeight(id, 2);
                 // CameraBolt.TriggerEvent("Idle2Follow");
                 // CameraBolt.TriggerEvent("Follow2Idle");
             }
@@ -308,44 +312,51 @@ namespace ET
 
         }
 
-        public GameObject CreateBlankView(int id, Vector2 position, string name)
+        public void CreateBlankView(int id, Vector2 position, string name)
         {
-            if (charDict.TryGetValue(id, out CharMain charMainStored))
+
+            void CreateInstance()
             {
-                Debug.LogError($"user character :{id} already exists, skipping");
-                return charMainStored.gameObject;
+                if (charDict.TryGetValue(id, out CharMain charMainStored))
+                {
+                    Debug.LogError($"user character :{id} already exists, skipping");
+                    // return charMainStored.gameObject;
+                    return;
+                }
+                var toCreate = this.blankPrefab;
+                var goCreated = GameObject.Instantiate(toCreate);
+                var charMain = goCreated.GetComponent<CharMain>();
+                charMain.userId = id;
+                charMain.SetName(name);
+                charMain.SetNameColor(Color.white);
+                if (position.x < -100f && position.y < -100f)
+                {
+                    //未初始化
+                    charMain.SetVisible(false);
+                    var truePos = DanceFloorHelper.PosUnified2Scene(new Vector2(-1f, -1f));
+                    goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
+                }
+                else
+                {
+                    var truePos = DanceFloorHelper.PosUnified2Scene(position);
+                    goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
+                }
+
+                //20220622 set char animate speed
+                charMain.AnimSpeed = curAnimateSpeed;
+                charMain.StopParticle();
+                //20220701 set char floating
+                if (isFloating) charMain.FloatStart();
+                charMain.InitFinished();
+
+                charDict.Add(id, charMain);
+                dlgCharAmountUpdate?.Invoke(charDict.Count);
+                CamTargetGroupHelper.Instance.AddChar(id,1,1);
+                // return goCreated;
             }
+            
+            generator.AddCreateTask(CreateInstance);
 
-            var toCreate = this.blankPrefab;
-            var goCreated = GameObject.Instantiate(toCreate);
-            var charMain = goCreated.GetComponent<CharMain>();
-            charMain.userId = id;
-            charMain.SetName(name);
-            charMain.SetNameColor(Color.white);
-            if (position.x < -100f && position.y < -100f)
-            {
-                //未初始化
-                charMain.SetVisible(false);
-                var truePos = DanceFloorHelper.PosUnified2Scene(new Vector2(-1f, -1f));
-                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
-            }
-            else
-            {
-                var truePos = DanceFloorHelper.PosUnified2Scene(position);
-                goCreated.transform.position = new Vector3(truePos.x, DanceFloorHelper.GetPivotY(), truePos.y);
-            }
-
-            //20220622 set char animate speed
-            charMain.AnimSpeed = curAnimateSpeed;
-            charMain.StopParticle();
-            //20220701 set char floating
-            if (isFloating) charMain.FloatStart();
-            charMain.InitFinished();
-
-            charDict.Add(id, charMain);
-            dlgCharAmountUpdate?.Invoke(charDict.Count);
-
-            return goCreated;
         }
 
         [Button("Change first char random aprc")]
@@ -387,6 +398,8 @@ namespace ET
             var charView = charDict[id];
             if (charView != null)
             {
+                CamTargetGroupHelper.Instance.RmChar(id);
+                
                 charDict.Remove(id);
                 charView.CharLeave();
                 dlgCharAmountUpdate?.Invoke(charDict.Count);

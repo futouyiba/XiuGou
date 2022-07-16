@@ -14,8 +14,23 @@ namespace ET
         [SerializeField]protected CinemachineTargetGroup targetGroup;
         protected CinemachineBrain brain;
 
+        private static CamTargetGroupHelper _instance;
+
+        public static CamTargetGroupHelper Instance
+        {
+            get => _instance;
+            private set => _instance = value;
+        }
+        
+        
         private void Awake()
         {
+            if (!_instance) _instance = this;
+            else
+            {
+                Debug.LogError($"already existed, destroying");
+                Destroy(gameObject);
+            }
         }
 
         // Start is called before the first frame update
@@ -50,6 +65,20 @@ namespace ET
                 return;
             }
             targetGroup.RemoveMember(character.transform);
+        }
+
+        public void UpdateCharWeight(int userId, float weight)
+        {
+            var character = CharMgr.instance.GetCharacter(userId);
+            if (!character)
+            {
+                Debug.LogError($"charObj {userId} does not exist");
+                return;
+            }
+
+            var charIndex = targetGroup.FindMember(character.transform);
+            var charFound = targetGroup.m_Targets[charIndex];
+            charFound.weight = weight;
         }
         
         public void OnVCamChange()
