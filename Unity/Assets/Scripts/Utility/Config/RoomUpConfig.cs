@@ -6,9 +6,11 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Sirenix.Utilities;
 using Unity.Entities.Serialization;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using Object = UnityEngine.Object;
+using SerializationUtility = Sirenix.Serialization.SerializationUtility;
 
 namespace ET.Utility
 {
@@ -29,7 +31,31 @@ namespace ET.Utility
         //
         // public KeyValuePair<int, Action<int>> KeyValuePairActionWithInt = new KeyValuePair<int, Action<int>>();
 
-        [NonSerialized,OdinSerialize]
+        [Header("BackupUtils")]
+        [PropertyOrder(1)][SerializeField] private ConfigBackupUtil backupUtil;
+        // [SerializeField] private List<Object> refObjects;
+        // [SerializeField] private TextAsset configTextAsset;
+        [PropertyOrder(2)][Button("Save2File")]
+        public void SaveState()
+        {
+            // List<Object> objects = new List<Object>();
+            var nodes = SerializationUtility.SerializeValue(LevelInfos,DataFormat.JSON,out backupUtil.refObjects);
+            // var assetPath=AssetDatabase.GetAssetPath(configTextAsset);
+            // File.WriteAllBytes(assetPath, nodes);
+            backupUtil.WriteText(nodes);
+        }
+
+        [PropertyOrder(3)][Button("LoadFromFile")]
+        public void LoadState()
+        {
+            // var assetPath=AssetDatabase.GetAssetPath(configTextAsset);
+            // var bytes = File.ReadAllBytes(assetPath);
+            // List<Object> objects = new List<Object>();
+            var bytes = backupUtil.ReadText();
+            LevelInfos = SerializationUtility.DeserializeValue<List<LevelInfo>>(bytes, DataFormat.JSON, backupUtil.refObjects);
+        }
+        
+        [PropertyOrder(4)][NonSerialized,OdinSerialize]
         public List<LevelInfo> LevelInfos = new List<LevelInfo>();
         
         // [OdinSerialize]
@@ -68,22 +94,6 @@ namespace ET.Utility
         //     });
         // }
 
-        [SerializeField] private TextAsset configTextAsset;
-        [Button("Save2File")]
-        public void SaveState()
-        {
-            List<Object> objects = new List<Object>();
-            var nodes = SerializationUtility.SerializeValue(LevelInfos,DataFormat.JSON,out objects);
-            File.WriteAllBytes("D:/temp/test.txt", nodes);
-        }
-
-        [Button("LoadFromFile")]
-        public void LoadState()
-        {
-            var bytes = File.ReadAllBytes("D:/temp/test.txt");
-            List<Object> objects = new List<Object>();
-            LevelInfos = SerializationUtility.DeserializeValue<List<LevelInfo>>(bytes, DataFormat.JSON, objects);
-        }
     }
     
 
