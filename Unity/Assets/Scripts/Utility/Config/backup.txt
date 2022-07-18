@@ -1,0 +1,1842 @@
+{
+    "$id": 0,
+    "$type": "0|System.Collections.Generic.List`1[[ET.Utility.LevelInfo, Assembly-CSharp]], mscorlib",
+    "$rlength": 43,
+    "$rcontent": [
+        {
+            "$type": "1|ET.Utility.LevelInfo, Assembly-CSharp",
+            "TheLvl": 0,
+            "GuysNeeded": 0,
+            "cameraBehaviour": null,
+            "otherBehaviour": {
+                "$id": 1,
+                "$type": "2|UnityEngine.Events.UnityEvent, UnityEngine.CoreModule",
+                "m_PersistentCalls": {
+                    "$id": 2,
+                    "$type": "3|UnityEngine.Events.PersistentCallGroup, UnityEngine.CoreModule",
+                    "m_Calls": {
+                        "$id": 3,
+                        "$type": "4|System.Collections.Generic.List`1[[UnityEngine.Events.PersistentCall, UnityEngine.CoreModule]], mscorlib",
+                        "$rlength": 3,
+                        "$rcontent": [
+                            {
+                                "$id": 4,
+                                "$type": "5|UnityEngine.Events.PersistentCall, UnityEngine.CoreModule",
+                                "m_Target": $eref:0,
+                                "m_TargetAssemblyTypeName": "ET.CameraPointCollection, Assembly-CSharp",
+                                "m_MethodName": "SwitchLevel",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 5,
+                                    "$type": "6|UnityEngine.Events.ArgumentCache, UnityEngine.CoreModule",
+                                    "m_ObjectArgument": $eref:1,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 1
+                            },
+                            {
+                                "$id": 6,
+                                "$type": 5,
+                                "m_Target": $eref:2,
+                                "m_TargetAssemblyTypeName": "ET.UpgradableCharMgr, Assembly-CSharp",
+                                "m_MethodName": "FloatStart",
+                                "m_Mode": 1,
+                                "m_Arguments": {
+                                    "$id": 7,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:3,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 1
+                            },
+                            {
+                                "$id": 8,
+                                "$type": 5,
+                                "m_Target": $eref:2,
+                                "m_TargetAssemblyTypeName": "ET.UpgradableCharMgr, Assembly-CSharp",
+                                "m_MethodName": "SetAnimationSpeed",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 9,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:4,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 1
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 1,
+            "GuysNeeded": 1,
+            "cameraBehaviour": {
+                "$id": 10,
+                "$type": "7|System.Action`1[[System.Boolean, mscorlib]], mscorlib",
+                "target": $eref:5,
+                "declaringType": {
+                    "$id": 11,
+                    "$type": "8|System.RuntimeType, mscorlib",
+                    "ET.CamUpBehaviour, Assembly-CSharp"
+                },
+                "methodName": "PlayDirector",
+                "delegateType": {
+                    "$id": 12,
+                    "$type": 8,
+                    "System.Action`1[[System.Boolean, mscorlib]], mscorlib"
+                },
+                "signature": {
+                    "$id": 13,
+                    "$type": "9|System.Type[], mscorlib",
+                    "$rlength": 1,
+                    "$rcontent": [
+                        {
+                            "$id": 14,
+                            "$type": 8,
+                            "System.Boolean, mscorlib"
+                        }
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 15,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 16,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 17,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 2,
+            "GuysNeeded": 2,
+            "cameraBehaviour": {
+                "$id": 18,
+                "$type": 7,
+                "target": $eref:6,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 19,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 20,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 21,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 22,
+                        "$type": 4,
+                        "$rlength": 1,
+                        "$rcontent": [
+                            {
+                                "$id": 23,
+                                "$type": 5,
+                                "m_Target": $eref:0,
+                                "m_TargetAssemblyTypeName": "ET.CameraPointCollection, Assembly-CSharp",
+                                "m_MethodName": "SwitchLevel",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 24,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:7,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 2,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 1
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 3,
+            "GuysNeeded": 3,
+            "cameraBehaviour": {
+                "$id": 25,
+                "$type": 7,
+                "target": $eref:8,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 26,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 27,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 28,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 29,
+                        "$type": 4,
+                        "$rlength": 3,
+                        "$rcontent": [
+                            {
+                                "$id": 30,
+                                "$type": 5,
+                                "m_Target": $eref:2,
+                                "m_TargetAssemblyTypeName": "ET.UpgradableCharMgr, Assembly-CSharp",
+                                "m_MethodName": "FloatEnd",
+                                "m_Mode": 1,
+                                "m_Arguments": {
+                                    "$id": 31,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:9,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 3,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 1
+                            },
+                            {
+                                "$id": 32,
+                                "$type": 5,
+                                "m_Target": $eref:10,
+                                "m_TargetAssemblyTypeName": "RoomUpgrade.UpgradableFloor, Assembly-CSharp",
+                                "m_MethodName": "ChangeRegion2",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 33,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:11,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 1
+                            },
+                            {
+                                "$id": 34,
+                                "$type": 5,
+                                "m_Target": $eref:0,
+                                "m_TargetAssemblyTypeName": "ET.CameraPointCollection, Assembly-CSharp",
+                                "m_MethodName": "SwitchLevel",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 35,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:12,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 3,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 1
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 4,
+            "GuysNeeded": 5,
+            "cameraBehaviour": null,
+            "otherBehaviour": {
+                "$id": 36,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 37,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 38,
+                        "$type": 4,
+                        "$rlength": 1,
+                        "$rcontent": [
+                            {
+                                "$id": 39,
+                                "$type": 5,
+                                "m_Target": $eref:2,
+                                "m_TargetAssemblyTypeName": "ET.UpgradableCharMgr, Assembly-CSharp",
+                                "m_MethodName": "SetAnimationSpeed",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 40,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:13,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 4,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 5,
+            "GuysNeeded": 10,
+            "cameraBehaviour": {
+                "$id": 41,
+                "$type": 7,
+                "target": $eref:14,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 42,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 43,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 44,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 45,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 6,
+            "GuysNeeded": 15,
+            "cameraBehaviour": {
+                "$id": 46,
+                "$type": 7,
+                "target": $eref:15,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 47,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 48,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 49,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 50,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 7,
+            "GuysNeeded": 20,
+            "cameraBehaviour": {
+                "$id": 51,
+                "$type": 7,
+                "target": $eref:16,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 52,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 53,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 54,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 55,
+                        "$type": 4,
+                        "$rlength": 3,
+                        "$rcontent": [
+                            {
+                                "$id": 56,
+                                "$type": 5,
+                                "m_Target": $eref:0,
+                                "m_TargetAssemblyTypeName": "ET.CameraPointCollection, Assembly-CSharp",
+                                "m_MethodName": "SwitchLevel",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 57,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:17,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 7,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            },
+                            {
+                                "$id": 58,
+                                "$type": 5,
+                                "m_Target": $eref:18,
+                                "m_TargetAssemblyTypeName": "ET.RoomUpgrade.RoomUpObjectCollection, Assembly-CSharp",
+                                "m_MethodName": "ResetAll",
+                                "m_Mode": 1,
+                                "m_Arguments": {
+                                    "$id": 59,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:19,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            },
+                            {
+                                "$id": 60,
+                                "$type": 5,
+                                "m_Target": $eref:10,
+                                "m_TargetAssemblyTypeName": "RoomUpgrade.UpgradableFloor, Assembly-CSharp",
+                                "m_MethodName": "ChangeRegion2",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 61,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:20,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 1,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 8,
+            "GuysNeeded": 25,
+            "cameraBehaviour": {
+                "$id": 62,
+                "$type": 7,
+                "target": $eref:21,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 63,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 64,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 65,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 66,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 9,
+            "GuysNeeded": 35,
+            "cameraBehaviour": {
+                "$id": 67,
+                "$type": 7,
+                "target": $eref:22,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 68,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 69,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 70,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 71,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 10,
+            "GuysNeeded": 45,
+            "cameraBehaviour": {
+                "$id": 72,
+                "$type": 7,
+                "target": $eref:23,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 73,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 74,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 75,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 76,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 11,
+            "GuysNeeded": 55,
+            "cameraBehaviour": {
+                "$id": 77,
+                "$type": 7,
+                "target": $eref:24,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 78,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 79,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 80,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 81,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 12,
+            "GuysNeeded": 70,
+            "cameraBehaviour": {
+                "$id": 82,
+                "$type": 7,
+                "target": $eref:25,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 83,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 84,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 85,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 86,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 13,
+            "GuysNeeded": 85,
+            "cameraBehaviour": {
+                "$id": 87,
+                "$type": 7,
+                "target": $eref:26,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 88,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 89,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 90,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 91,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 14,
+            "GuysNeeded": 100,
+            "cameraBehaviour": {
+                "$id": 92,
+                "$type": 7,
+                "target": $eref:27,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 93,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 94,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 95,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 96,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 15,
+            "GuysNeeded": 115,
+            "cameraBehaviour": {
+                "$id": 97,
+                "$type": 7,
+                "target": $eref:28,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 98,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 99,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 100,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 101,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 16,
+            "GuysNeeded": 130,
+            "cameraBehaviour": {
+                "$id": 102,
+                "$type": 7,
+                "target": $eref:29,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 103,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 104,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 105,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 106,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 17,
+            "GuysNeeded": 150,
+            "cameraBehaviour": null,
+            "otherBehaviour": {
+                "$id": 107,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 108,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 109,
+                        "$type": 4,
+                        "$rlength": 1,
+                        "$rcontent": [
+                            {
+                                "$id": 110,
+                                "$type": 5,
+                                "m_Target": $eref:2,
+                                "m_TargetAssemblyTypeName": "ET.UpgradableCharMgr, Assembly-CSharp",
+                                "m_MethodName": "SetAnimationSpeed",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 111,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:30,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 17,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 18,
+            "GuysNeeded": 170,
+            "cameraBehaviour": {
+                "$id": 112,
+                "$type": 7,
+                "target": $eref:31,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 113,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 114,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 115,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 116,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 19,
+            "GuysNeeded": 190,
+            "cameraBehaviour": null,
+            "otherBehaviour": {
+                "$id": 117,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 118,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 119,
+                        "$type": 4,
+                        "$rlength": 1,
+                        "$rcontent": [
+                            {
+                                "$id": 120,
+                                "$type": 5,
+                                "m_Target": $eref:32,
+                                "m_TargetAssemblyTypeName": "ET.UpgradeShakeVcam, Assembly-CSharp",
+                                "m_MethodName": "set_IsOn",
+                                "m_Mode": 6,
+                                "m_Arguments": {
+                                    "$id": 121,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:33,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 17,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 20,
+            "GuysNeeded": 210,
+            "cameraBehaviour": {
+                "$id": 122,
+                "$type": 7,
+                "target": $eref:34,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 123,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 124,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 125,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 126,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 21,
+            "GuysNeeded": 230,
+            "cameraBehaviour": {
+                "$id": 127,
+                "$type": 7,
+                "target": $eref:35,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 128,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 129,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 130,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 131,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 22,
+            "GuysNeeded": 250,
+            "cameraBehaviour": {
+                "$id": 132,
+                "$type": 7,
+                "target": $eref:36,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 133,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 134,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 135,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 136,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 23,
+            "GuysNeeded": 270,
+            "cameraBehaviour": {
+                "$id": 137,
+                "$type": 7,
+                "target": $eref:37,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 138,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 139,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 140,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 141,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 24,
+            "GuysNeeded": 290,
+            "cameraBehaviour": {
+                "$id": 142,
+                "$type": 7,
+                "target": $eref:38,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 143,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 144,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 145,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 146,
+                        "$type": 4,
+                        "$rlength": 4,
+                        "$rcontent": [
+                            {
+                                "$id": 147,
+                                "$type": 5,
+                                "m_Target": $eref:39,
+                                "m_TargetAssemblyTypeName": "ET.RoomUpgrade.RoomUpObjectCollection, Assembly-CSharp",
+                                "m_MethodName": "ResetAll",
+                                "m_Mode": 1,
+                                "m_Arguments": {
+                                    "$id": 148,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:40,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            },
+                            {
+                                "$id": 149,
+                                "$type": 5,
+                                "m_Target": $eref:0,
+                                "m_TargetAssemblyTypeName": "ET.CameraPointCollection, Assembly-CSharp",
+                                "m_MethodName": "SwitchLevel",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 150,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:41,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 24,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            },
+                            {
+                                "$id": 151,
+                                "$type": 5,
+                                "m_Target": $eref:42,
+                                "m_TargetAssemblyTypeName": "ET.SeatMgr, Assembly-CSharp",
+                                "m_MethodName": "RefreshSitInstDataDelayed",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 152,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:43,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 1000,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            },
+                            {
+                                "$id": 153,
+                                "$type": 5,
+                                "m_Target": $eref:10,
+                                "m_TargetAssemblyTypeName": "RoomUpgrade.UpgradableFloor, Assembly-CSharp",
+                                "m_MethodName": "ChangeRegion2",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 154,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:44,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 2,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 25,
+            "GuysNeeded": 310,
+            "cameraBehaviour": {
+                "$id": 155,
+                "$type": 7,
+                "target": $eref:45,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 156,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 157,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 158,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 159,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 26,
+            "GuysNeeded": 330,
+            "cameraBehaviour": {
+                "$id": 160,
+                "$type": 7,
+                "target": $eref:46,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 161,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 162,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 163,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 164,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 27,
+            "GuysNeeded": 350,
+            "cameraBehaviour": null,
+            "otherBehaviour": {
+                "$id": 165,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 166,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 167,
+                        "$type": 4,
+                        "$rlength": 1,
+                        "$rcontent": [
+                            {
+                                "$id": 168,
+                                "$type": 5,
+                                "m_Target": $eref:2,
+                                "m_TargetAssemblyTypeName": "ET.UpgradableCharMgr, Assembly-CSharp",
+                                "m_MethodName": "SetAnimationSpeed",
+                                "m_Mode": 3,
+                                "m_Arguments": {
+                                    "$id": 169,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:47,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 27,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": false
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 28,
+            "GuysNeeded": 370,
+            "cameraBehaviour": {
+                "$id": 170,
+                "$type": 7,
+                "target": $eref:48,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 171,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 172,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 173,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 174,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 29,
+            "GuysNeeded": 390,
+            "cameraBehaviour": {
+                "$id": 175,
+                "$type": 7,
+                "target": $eref:49,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 176,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 177,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 178,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 179,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 30,
+            "GuysNeeded": 410,
+            "cameraBehaviour": {
+                "$id": 180,
+                "$type": 7,
+                "target": $eref:50,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 181,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 182,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 183,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 184,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 31,
+            "GuysNeeded": 440,
+            "cameraBehaviour": null,
+            "otherBehaviour": {
+                "$id": 185,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 186,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 187,
+                        "$type": 4,
+                        "$rlength": 1,
+                        "$rcontent": [
+                            {
+                                "$id": 188,
+                                "$type": 5,
+                                "m_Target": $eref:51,
+                                "m_TargetAssemblyTypeName": "UnityEngine.Behaviour, UnityEngine",
+                                "m_MethodName": "set_enabled",
+                                "m_Mode": 6,
+                                "m_Arguments": {
+                                    "$id": 189,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:52,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 32,
+            "GuysNeeded": 470,
+            "cameraBehaviour": {
+                "$id": 190,
+                "$type": 7,
+                "target": $eref:53,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 191,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 192,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 193,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 194,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 33,
+            "GuysNeeded": 500,
+            "cameraBehaviour": {
+                "$id": 195,
+                "$type": 7,
+                "target": $eref:54,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 196,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 197,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 198,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 199,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 34,
+            "GuysNeeded": 530,
+            "cameraBehaviour": {
+                "$id": 200,
+                "$type": 7,
+                "target": $eref:55,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 201,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 202,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 203,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 204,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 35,
+            "GuysNeeded": 570,
+            "cameraBehaviour": {
+                "$id": 205,
+                "$type": 7,
+                "target": $eref:56,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 206,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 207,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 208,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 209,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 36,
+            "GuysNeeded": 610,
+            "cameraBehaviour": {
+                "$id": 210,
+                "$type": 7,
+                "target": $eref:57,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 211,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 212,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 213,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 214,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 37,
+            "GuysNeeded": 650,
+            "cameraBehaviour": {
+                "$id": 215,
+                "$type": 7,
+                "target": $eref:58,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 216,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 217,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 218,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 219,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 38,
+            "GuysNeeded": 690,
+            "cameraBehaviour": {
+                "$id": 220,
+                "$type": 7,
+                "target": $eref:59,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 221,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 222,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 223,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 224,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 39,
+            "GuysNeeded": 730,
+            "cameraBehaviour": {
+                "$id": 225,
+                "$type": 7,
+                "target": $eref:60,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 226,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 227,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 228,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 229,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 40,
+            "GuysNeeded": 770,
+            "cameraBehaviour": null,
+            "otherBehaviour": {
+                "$id": 230,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 231,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 232,
+                        "$type": 4,
+                        "$rlength": 1,
+                        "$rcontent": [
+                            {
+                                "$id": 233,
+                                "$type": 5,
+                                "m_Target": $eref:61,
+                                "m_TargetAssemblyTypeName": "UnityEngine.Behaviour, UnityEngine",
+                                "m_MethodName": "set_enabled",
+                                "m_Mode": 6,
+                                "m_Arguments": {
+                                    "$id": 234,
+                                    "$type": 6,
+                                    "m_ObjectArgument": $eref:62,
+                                    "m_ObjectArgumentAssemblyTypeName": "UnityEngine.Object, UnityEngine",
+                                    "m_IntArgument": 0,
+                                    "m_FloatArgument": 0,
+                                    "m_StringArgument": "",
+                                    "m_BoolArgument": true
+                                },
+                                "m_CallState": 2
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 41,
+            "GuysNeeded": 810,
+            "cameraBehaviour": {
+                "$id": 235,
+                "$type": 7,
+                "target": $eref:63,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 236,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 237,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 238,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 239,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "$type": 1,
+            "TheLvl": 42,
+            "GuysNeeded": 1010,
+            "cameraBehaviour": {
+                "$id": 240,
+                "$type": 7,
+                "target": $eref:64,
+                "declaringType": $iref:11,
+                "methodName": "PlayDirector",
+                "delegateType": $iref:12,
+                "signature": {
+                    "$id": 241,
+                    "$type": 9,
+                    "$rlength": 1,
+                    "$rcontent": [
+                        $iref:14
+                    ]
+                }
+            },
+            "otherBehaviour": {
+                "$id": 242,
+                "$type": 2,
+                "m_PersistentCalls": {
+                    "$id": 243,
+                    "$type": 3,
+                    "m_Calls": {
+                        "$id": 244,
+                        "$type": 4,
+                        "$rlength": 0,
+                        "$rcontent": [
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
