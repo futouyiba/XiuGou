@@ -636,7 +636,12 @@ namespace ET
         {
             fsm.TriggerUnityEvent("InitFinish");
         }
-        
-        
+
+        public void TrainStart() {
+            fsm.TriggerUnityEvent("StartTrain");
+        }
+        public void TrainStop() {
+            fsm.TriggerUnityEvent("StopTrain");
+        }
     }
 }
