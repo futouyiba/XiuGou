@@ -21,113 +21,128 @@ namespace ET
             _isOn = isOn;
         }
 
-        [ReadOnly]public GameObject shakingVcamObj;
+        //震动时间
+        [SerializeField, Range(0.01f, 3f)] protected float shaketime = .4f;
+        //震动间隔
+        [SerializeField, Range(0.01f, 8f)] protected float pausetime = .6f;
+        //震动强度
+        [SerializeField, Range(0.01f, 5f)] protected float strength = 4f;
+        //单次振动频率
+        [SerializeField, Range(0.01f, 10f)] protected float frequency = 8f;
 
-        [SerializeField]protected float duration = .2f;
-
-        [SerializeField]protected float intensity = .1f;
-
-        [SerializeField]protected float interval = 1f;
-        public enum ShakeDirectionList
-        {
-            Up,
-            Down,
-            Left,
-            Right,
-            Front,
-            Back
-        }
-
-        public ShakeDirectionList ShakeDirection = ShakeDirectionList.Up;
-
-        // private float shakeTimer = 0f;
-        private float startTime = 0f;
-
-        private Sequence curSeq = null;
+        private CinemachineBasicMultiChannelPerlin[] cinemachineBasicMultiChannelPerlins;
         
+        public NoiseSettings ShakingNoise;
+
+        //震动和震动间隔的计时器
+        private float shakeTimer = 0.2f;
+
+        //是否是停止震动状态
+        private bool shakeIsCut = false;
+
+
         // Start is called before the first frame update
         void Start()
         {
+            //载入震动曲线
+            ShakingNoise = Resources.Load<NoiseSettings>("CameraShakingNoise");
             brain = GetComponent<CinemachineBrain>();
-            startTime = Time.time;
-            if (brain.ActiveVirtualCamera != null)
-            {
-                shakingVcamObj = brain.ActiveVirtualCamera.VirtualCameraGameObject;
-            }
+            //监听镜头切换
+            brain.m_CameraActivatedEvent.AddListener(CameraActivatedEvent);
+            shakeTimer = shaketime;
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            // if (shakeTimer > 0)
-            // {
-            //     shakeTimer -= Time.deltaTime;
-            //     if (shakeTimer <= 0f)
-            //     {
-            //         var multiChannelPerlin = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-            //         multiChannelPerlin.m_AmplitudeGain = 0f;
-            //     }
-            // }
 
             if (!_isOn) return;
-            
-            var lastFrameTime = Time.time - Time.deltaTime;
-            var thisFrameTime = Time.time;
-            int lastBeatCyc = Mathf.FloorToInt((lastFrameTime - startTime) / interval);
-            int thisBeatCyc = Mathf.FloorToInt((thisFrameTime - startTime) / interval);
-            if (thisBeatCyc > lastBeatCyc)
-            {
-                // Shake();
-                Shake2();
-            }
-            
-        }
 
-        void Shake()
-        {
-            // var multiChannelPerlin = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-            // multiChannelPerlin.m_AmplitudeGain = intensity;
-            // shakeTimer = duration;
-        }
-
-        void Shake2()
-        {
-            if (curSeq != null)
+            if (shakeTimer > 0)
             {
-                curSeq.Kill();
-            }
-            curSeq = DOTween.Sequence();
+                shakeTimer -= Time.deltaTime;
+                if (shakeTimer <= 0f)
+                {
+                    Noise2Cut(shakeIsCut);
+                    shakeIsCut = !shakeIsCut;
+                    shakeTimer = shakeIsCut ? shaketime : pausetime;
 
-            //curSeq.Append(transform.DOShakePosition(duration, intensity, 10, 0));
-            switch (ShakeDirection)
-            {
-                case ShakeDirectionList.Up:
-                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, intensity, 0), duration, 10));
-                    break;
-                case ShakeDirectionList.Down:
-                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, -intensity, 0), duration, 10));
-                    break;
-                case ShakeDirectionList.Front:
-                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, 0, -intensity), duration, 10));
-                    break;
-                case ShakeDirectionList.Back:
-                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(0, 0, intensity), duration, 10));
-                    break;
-                case ShakeDirectionList.Left:
-                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(-intensity, 0, 0), duration, 10));
-                    break;
-                case ShakeDirectionList.Right:
-                    curSeq.Append(shakingVcamObj.transform.DOPunchPosition(new Vector3(intensity, 0, 0), duration, 10));
-                    break;
+                }
+
             }
 
-            curSeq.Play();
         }
 
-        public void OnVCamChange()
+        //关闭上一个摄像机的震动强度
+        void EraseNoise(ICinemachineCamera lastCamera)
         {
-            Debug.LogWarning($"switched to  {brain.ActiveVirtualCamera.VirtualCameraGameObject.gameObject.name}");
-            shakingVcamObj = brain.ActiveVirtualCamera.VirtualCameraGameObject;
+            //只留下面这句重置全部
+            //lastCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>().AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+            cinemachineBasicMultiChannelPerlins = lastCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCameraBase>().GetComponentsInChildren<CinemachineBasicMultiChannelPerlin>();
+
+
+            foreach (var item in cinemachineBasicMultiChannelPerlins)
+            {
+                item.m_AmplitudeGain = 0f;
+            }
         }
+
+        //设置当前摄像机的所有Noise参数
+        void SetNoise2(ICinemachineCamera liveCamera)
+        {
+
+            //此时brain.ActiveVirtualCamera即liveCamera
+            brain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>().AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+            cinemachineBasicMultiChannelPerlins = brain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCameraBase>().GetComponentsInChildren<CinemachineBasicMultiChannelPerlin>();
+
+            foreach (var item in cinemachineBasicMultiChannelPerlins)
+            {
+                if (shakeIsCut)
+                {
+                    item.m_AmplitudeGain = strength;
+                }
+                else
+                {
+                    item.m_AmplitudeGain = 0f;
+                }
+                item.m_FrequencyGain = frequency;
+                item.m_NoiseProfile = ShakingNoise;
+
+            }
+        }
+
+        //切换震动状态
+        void Noise2Cut(bool cut)
+        {
+
+            cinemachineBasicMultiChannelPerlins = brain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCameraBase>().GetComponentsInChildren<CinemachineBasicMultiChannelPerlin>();
+
+            foreach (var item in cinemachineBasicMultiChannelPerlins)
+            {
+                if (cut)
+                {
+                    item.m_AmplitudeGain = 0f;
+                }
+                else
+                {
+                    item.m_AmplitudeGain = strength;
+                }
+                item.m_FrequencyGain = frequency;
+            }
+        }
+
+        //当摄像机切换执行
+        void CameraActivatedEvent(ICinemachineCamera liveCamera, ICinemachineCamera lastCamera)
+        {
+            if (_isOn)
+            {
+                EraseNoise(lastCamera);
+                SetNoise2(liveCamera);
+            }
+        }
+
     }
 }
