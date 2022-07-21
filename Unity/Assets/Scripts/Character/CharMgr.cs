@@ -166,14 +166,21 @@ namespace ET
                 // var view = CreateCharView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}号", -1,
                     // Color.white);
                     CreateBlankView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}");
-                    LeanHelper.instance.LeanGetRefreshAprcId(index);
-
+                    this.generator.AddCreateTask(() =>
+                    {
+                        LeanHelper.instance.LeanGetRefreshAprcId(index);
+                    }); 
             }
 
             if (myId == -1)
             {
-                var key = UnityEngine.Random.Range(0, CharMgr.instance.charDict.Count);
-                RegisterMe(CharMgr.instance.charDict.ToList()[key].Key);  
+
+                generator.AddCreateTask(() => {
+                var random = new System.Random();
+                int index = random.Next(charDict.Count);
+                var randomKey = charDict.Keys.ElementAt(index);
+                this.RegisterMe(randomKey);
+            });
             }
             
 
@@ -369,9 +376,11 @@ namespace ET
             }
         }
 
-        //[Button("change random char random aprc")]
-        //public void Change
-
+        /// <summary>
+        /// this method no longer instantiate a new char, but just change the sprite, transform, animator within existing game object.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="aprcId"></param>
         public void ChangeAprcFast(int userId, int aprcId)
         {
             if (!charDict.ContainsKey(userId))

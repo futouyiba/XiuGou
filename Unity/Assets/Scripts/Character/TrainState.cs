@@ -9,14 +9,18 @@ namespace ET
     /// </summary>
     public class TrainState : MonoBehaviour
     {
+        #region 变量
         private int index = -1;//在列表中的位置
         private Vector3 target;//移动到的目标点
         private float speed = 5;//移动速度
         private float rotateSpeed = 70;//旋转速度
         private float space = 0.3f;//角色间距
         private Vector3 InitPos;//角色的初始位置
-        private bool isExit = false;
-        public List<Transform> runCharacterList;
+        private bool isExit = false;//是否退出跑圈
+        public List<Transform> runCharacterList;//跑圈角色列表 
+        #endregion
+
+        #region 属性
         public int Index
         {
             get { return index; }
@@ -26,7 +30,9 @@ namespace ET
         {
             get { return isExit; }
             private set { }
-        }
+        } 
+        #endregion
+
         private void Start()
         {
             runCharacterList = TrainSystem.instance.runCharacterList;
@@ -40,6 +46,7 @@ namespace ET
             }
         }
 
+        #region Train状态用到的3个方法
         public void OnStart()
         {
             isExit = false;
@@ -49,26 +56,23 @@ namespace ET
         }
         public void OnUpdate()
         {
-            if (Input.GetKey(KeyCode.E))//结束跑酷
-            {
-                this.gameObject.GetComponent<CharMain>().TrainStop();
-                runCharacterList.Clear();
-            }
             JoinTrain(TrainSystem.instance.transform, TrainSystem.instance.Radius);
         }
         public void OnExit()
         {
             Reset();
         }
+        #endregion
 
 
+        #region 加入/退出  跑圈
         /// <summary>
         /// 加入火车
         /// </summary>
         /// <param name="center"></param>
         /// <param name="r"></param>
         /// <param name="runCharacterList"></param>
-        public void JoinTrain(Transform center, float r)
+        private void JoinTrain(Transform center, float r)
         {
             if (index == 0)
             {
@@ -108,21 +112,25 @@ namespace ET
         /// <summary>
         /// 退出火车
         /// </summary>
-        public void ExitTrain()
+        private void ExitTrain()
         {
 
             Vector3 dir = (InitPos - transform.position).normalized;
             if (Vector3.Distance(transform.position, InitPos) > 0.02f)
             {
-                transform.Translate(dir * speed * Time.deltaTime,Space.World);
+                transform.Translate(dir * speed * Time.deltaTime, Space.World);
             }
             else
             {
                 isExit = false;
             }
-        }
+        } 
+        #endregion
 
-        public void Reset()
+        /// <summary>
+        /// 重置
+        /// </summary>
+        private void Reset()
         {
             index = -1;
             isExit = true;
