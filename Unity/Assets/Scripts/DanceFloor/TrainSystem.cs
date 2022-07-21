@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ET
 {
     /// <summary>
-    /// 跑火车系统
+    /// 跑圈系统
     /// </summary>
     public class TrainSystem : MonoBehaviour
     {
@@ -32,7 +32,7 @@ namespace ET
         {
             SetRadius(RoomUpgradeMgr.instance.currentLevel);
 
-            //鼠标点击切换 加入/退出
+            //鼠标点击切换 加入/退出跑圈
             if (Input.GetMouseButtonUp(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -52,8 +52,19 @@ namespace ET
                     }
                 }
             }
-            
-      
+            //结束跑圈
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (runCharacterList != null && runCharacterList.Count > 0)
+                {
+                    foreach (var item in runCharacterList)
+                    {
+                        item.GetComponent<CharMain>().TrainStop();
+                    }
+                    runCharacterList.Clear();
+                }
+            }
+
             //退跑重新设置剩余角色的index，移除退跑角色
             if (runCharacterList != null && runCharacterList.Count > 0)
             {
