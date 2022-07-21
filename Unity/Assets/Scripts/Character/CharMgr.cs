@@ -172,8 +172,9 @@ namespace ET
 
             if (myId == -1)
             {
-                var key = UnityEngine.Random.Range(0, CharMgr.instance.charDict.Count);
-                RegisterMe(CharMgr.instance.charDict.ToList()[key].Key);  
+                var random = new System.Random();
+                int index = random.Next(charDict.Count);
+                var randomKey = charDict.Keys.ElementAt(index);
             }
             
 
