@@ -70,6 +70,7 @@ namespace ET
             set => sprite.GetComponent<Animator>().speed = value;
         }
 
+        
 
         public bool IsRobot => (userId is >= -1000 and < -1) ? true : false;
 
@@ -397,10 +398,12 @@ namespace ET
 
         protected bool isBreathWidth;
         private Vector3 initSprScale;
+        private float SpriteScaleMultiply = 1f;
+        private Vector3 curSprScale => initSprScale * SpriteScaleMultiply;
         private Sequence _curBreathSeq;
         [SerializeField] private float breathScale = 1.1f;
         [SerializeField] private float breathInterval = .5f;
-        protected void sprBreath()
+        protected void  sprBreath()
         {
             if (!_curBreathSeq.active || _curBreathSeq.IsPlaying())
             {
@@ -410,17 +413,17 @@ namespace ET
             if (isBreathWidth)
             {
                 _curBreathSeq.Append(sprite.transform.DOScale(
-                    new Vector3(initSprScale.x * breathScale, initSprScale.y / breathScale, initSprScale.z),
+                    new Vector3(curSprScale.x * breathScale, curSprScale.y / breathScale, curSprScale.z),
                     breathInterval/2f).OnComplete(()=>
-                    sprite.transform.DOScale(initSprScale, breathInterval / 2).OnComplete(sprBreath)));
+                    sprite.transform.DOScale(curSprScale, breathInterval / 2).OnComplete(sprBreath)));
                 _curBreathSeq.Play();
             }
             else
             {
                 _curBreathSeq.Append(sprite.transform.DOScale(
-                    new Vector3(initSprScale.x / breathScale, initSprScale.y * breathScale, initSprScale.z),
+                    new Vector3(curSprScale.x / breathScale, curSprScale.y * breathScale, curSprScale.z),
                     breathInterval/2f).OnComplete(()=>
-                    sprite.transform.DOScale(initSprScale, breathInterval / 2).OnComplete(sprBreath)));
+                    sprite.transform.DOScale(curSprScale, breathInterval / 2).OnComplete(sprBreath)));
                 _curBreathSeq.Play();
             }
 
@@ -432,6 +435,16 @@ namespace ET
         public void UpdateInitSprScale(Vector3 newInitSprScale)
         {
             initSprScale = newInitSprScale;
+        }
+        
+        /// <summary>
+        /// 设为>1的值可以让角色变大
+        /// </summary>
+        /// <param name="multiply"></param>
+        public void UpdateSpriteScaleMultiply(float multiply)
+        {
+            SpriteScaleMultiply = multiply;
+            transform.localScale = curSprScale;
         }
         
 
