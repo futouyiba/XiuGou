@@ -30,7 +30,7 @@ namespace ET.Utility
         // public KeyValuePair<int, int> KeyValuePairIntInt = new KeyValuePair<int, int>();
         //
         // public KeyValuePair<int, Action<int>> KeyValuePairActionWithInt = new KeyValuePair<int, Action<int>>();
-
+#if UNITY_EDITOR
         [Header("BackupUtils")]
         [PropertyOrder(1)][SerializeField] private ConfigBackupUtil backupUtil;
         // [SerializeField] private List<Object> refObjects;
@@ -54,7 +54,7 @@ namespace ET.Utility
             var bytes = backupUtil.ReadText();
             LevelInfos = SerializationUtility.DeserializeValue<List<LevelInfo>>(bytes, DataFormat.JSON, backupUtil.refObjects);
         }
-        
+#endif
         [PropertyOrder(4)][NonSerialized,OdinSerialize]
         public List<LevelInfo> LevelInfos = new List<LevelInfo>();
         
