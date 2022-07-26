@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 4805134367480743525}
   - component: {fileID: 4805134367480743524}
   - component: {fileID: 6501257903179285786}
+  - component: {fileID: 966537202825971641}
+  - component: {fileID: 1330599719273386451}
+  - component: {fileID: 564522693698773991}
   m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
@@ -122,6 +125,184 @@ SortingGroup:
   m_SortingLayerID: 1921347341
   m_SortingLayer: 0
   m_SortingOrder: 5
+--- !u!114 &966537202825971641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33564094710934385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76281e19edee47a5aa954dc1141ac675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: intensity
+      Entry: 7
+      Data: 0|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _BlurIntensity
+    - Name: OnVal
+      Entry: 4
+      Data: 1.5
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: isLowQuality
+      Entry: 7
+      Data: 1|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Boolean, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _BlurHD
+    - Name: OnVal
+      Entry: 5
+      Data: true
+    - Name: OffVal
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+  mat: {fileID: 0}
+--- !u!114 &1330599719273386451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33564094710934385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7099e7a5014214b6b1dbb248928757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: glitchAmount
+      Entry: 7
+      Data: 0|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _GlitchAmount
+    - Name: OnVal
+      Entry: 4
+      Data: 3
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: glitchSize
+      Entry: 7
+      Data: 1|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _GlitchSize
+    - Name: OnVal
+      Entry: 4
+      Data: 1
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+  mat: {fileID: 0}
+--- !u!114 &564522693698773991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33564094710934385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61ef863182d4621b79243379527af09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: colorBoost
+      Entry: 7
+      Data: 0|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _GhostColorBoost
+    - Name: OnVal
+      Entry: 4
+      Data: 0.71
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: transparency
+      Entry: 7
+      Data: 1|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _GhostTransparency
+    - Name: OnVal
+      Entry: 4
+      Data: 0.042
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: blend
+      Entry: 7
+      Data: 2|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _GhostBlend
+    - Name: OnVal
+      Entry: 4
+      Data: 0.832
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+  mat: {fileID: 0}
 --- !u!1 &4849913528757473190
 GameObject:
   m_ObjectHideFlags: 0

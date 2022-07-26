@@ -9,16 +9,18 @@ namespace ET.Utility.AllIn1SpriteShader
         public ShaderVar<float> intensity;
         public ShaderVar<bool> isLowQuality;
 
-        private void Start()
-        {
-            intensity = new ShaderVar<float>("_Blurintensity", 10, 0, mat);
-            isLowQuality = new ShaderVar<bool>("_BlurHD", true, false, mat);
-        }
+        // private void Start()
+        // {
+        //     intensity = new ShaderVar<float>("_Blurintensity", 10, 0, this);
+        //     isLowQuality = new ShaderVar<bool>("_BlurHD", true, false, this);
+        // }
 
         public override void ApplyValues(bool isOn)
         {
-            intensity.ApplyValue(isOn);
-            isLowQuality.ApplyValue(isOn);
+            ExecVal(intensity, isOn);
+            ExecVal(isLowQuality, isOn);
+            // intensity.ApplyValue(isOn);
+            // isLowQuality.ApplyValue(isOn);
         }
     }
 }
