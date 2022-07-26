@@ -9324,8 +9324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isOn: 0
-  shaketime: 0.4
-  pausetime: 0.6
   strength: 4
   frequency: 8
   ShakingNoise: {fileID: 0}
@@ -16835,14 +16833,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3674770188184694292, guid: cbacc8d2d22bd234cb0e651759f587cc,
         type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674770188184694292, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
       propertyPath: m_Volume
-      value: 0.35
+      value: 0.523
       objectReference: {fileID: 0}
     - target: {fileID: 3674770188184694292, guid: cbacc8d2d22bd234cb0e651759f587cc,
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 091ddb06f8ae8684cbb9d2d167bdb42f, type: 3}
+      objectReference: {fileID: 8300000, guid: 7ba47e22c2abaaa4ead00db233dce7e8, type: 3}
     - target: {fileID: 3674770188671908930, guid: cbacc8d2d22bd234cb0e651759f587cc,
         type: 3}
       propertyPath: m_RootOrder
@@ -17650,6 +17653,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6217d6697fc685f46b2ef5a8559bd9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bRespondEnergy: 0
+  bRespondKick: 1
+  bRespondSnare: 0
+  bRespondHitHat: 0
 --- !u!114 &5195952263845513428
 MonoBehaviour:
   m_ObjectHideFlags: 0
