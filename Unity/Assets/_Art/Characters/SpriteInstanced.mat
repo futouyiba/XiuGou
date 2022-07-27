@@ -14,6 +14,8 @@ Material:
   - GHOST_ON
   - GLITCH_ON
   - OUTBASE_ON
+  - OUTDIST_ON
+  - OUTTEX_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -93,7 +95,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
-        m_Texture: {fileID: 2800000, guid: 74087f6d03f233e4a8a142fa01f9e5cf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 253ade5030af1b643bf9a54cceb26f01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OverlayTex:
@@ -213,14 +215,14 @@ Material:
     - _OnlyInnerOutline: 0
     - _OnlyOutline: 0
     - _OutlineAlpha: 1
-    - _OutlineDistortAmount: 0.5
-    - _OutlineDistortTexXSpeed: 5
-    - _OutlineDistortTexYSpeed: 5
+    - _OutlineDistortAmount: 0.282
+    - _OutlineDistortTexXSpeed: 1
+    - _OutlineDistortTexYSpeed: 1.5
     - _OutlineGlow: 1.5
     - _OutlinePixelWidth: 1
     - _OutlineTexXSpeed: 10
     - _OutlineTexYSpeed: 0
-    - _OutlineWidth: 0.004
+    - _OutlineWidth: 0.01
     - _OverlayBlend: 1
     - _OverlayGlow: 1
     - _Parallax: 0.02

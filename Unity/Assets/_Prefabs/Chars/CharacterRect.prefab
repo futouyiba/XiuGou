@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 966537202825971641}
   - component: {fileID: 1330599719273386451}
   - component: {fileID: 564522693698773991}
+  - component: {fileID: 7235063111780063122}
+  - component: {fileID: 1968833311099047016}
   m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
@@ -299,6 +301,213 @@ MonoBehaviour:
     - Name: OffVal
       Entry: 4
       Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+  mat: {fileID: 0}
+--- !u!114 &7235063111780063122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33564094710934385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df52792a4bb64a47aa060ae4539cc0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 2800000, guid: 74087f6d03f233e4a8a142fa01f9e5cf, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: OnOff
+      Entry: 7
+      Data: 0|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Boolean, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: OUTBASE_ON
+    - Name: OnVal
+      Entry: 5
+      Data: true
+    - Name: OffVal
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: baseWidth
+      Entry: 7
+      Data: 1|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _OutlineWidth
+    - Name: OnVal
+      Entry: 4
+      Data: 0.01
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: textureOn
+      Entry: 7
+      Data: 2|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Boolean, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: OUTTEX_ON
+    - Name: OnVal
+      Entry: 5
+      Data: true
+    - Name: OffVal
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: outlineTexture
+      Entry: 7
+      Data: 3|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[UnityEngine.Texture, UnityEngine.CoreModule]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _OutlineTexture
+    - Name: OnVal
+      Entry: 10
+      Data: 0
+    - Name: OffVal
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  mat: {fileID: 0}
+--- !u!114 &1968833311099047016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33564094710934385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d66b87480c157428f38d0f7fd3f585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 2800000, guid: 253ade5030af1b643bf9a54cceb26f01, type: 3}
+    - {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: OnOff
+      Entry: 7
+      Data: 0|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Boolean, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: OUTBASE_ON
+    - Name: OnVal
+      Entry: 5
+      Data: true
+    - Name: OffVal
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: baseWidth
+      Entry: 7
+      Data: 1|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _OutlineWidth
+    - Name: OnVal
+      Entry: 4
+      Data: 0.01
+    - Name: OffVal
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: textureOn
+      Entry: 7
+      Data: 2|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Boolean, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: OUTTEX_ON
+    - Name: OnVal
+      Entry: 5
+      Data: true
+    - Name: OffVal
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: outlineTexture
+      Entry: 7
+      Data: 3|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[UnityEngine.Texture, UnityEngine.CoreModule]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _OutlineTexture
+    - Name: OnVal
+      Entry: 10
+      Data: 0
+    - Name: OffVal
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: distortOn
+      Entry: 7
+      Data: 4|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Boolean, mscorlib]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: OUTDIST_ON
+    - Name: OnVal
+      Entry: 5
+      Data: true
+    - Name: OffVal
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: distortTexture
+      Entry: 7
+      Data: 5|ET.Utility.AllIn1SpriteShader.ShaderVar`1[[UnityEngine.Texture, UnityEngine.CoreModule]],
+        Assembly-CSharp
+    - Name: name
+      Entry: 1
+      Data: _OutlineDistortionTexture
+    - Name: OnVal
+      Entry: 10
+      Data: 1
+    - Name: OffVal
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
