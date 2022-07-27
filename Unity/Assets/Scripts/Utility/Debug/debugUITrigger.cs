@@ -1,17 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace ET
 {
-    public class debugUITrigger : MonoBehaviour
+    public class debugUITrigger : SerializedMonoBehaviour,IDebugOnOff
     {
         [SerializeField] protected int clickTimes;
         
         private int clicked = 0;
 
         [SerializeField] private GameObject debugUI;
+
+        [NonSerialized,OdinSerialize] public List<IDebugOnOff> debugOnOffs;
         // Start is called before the first frame update
         void Start()
         {
@@ -44,7 +48,8 @@ namespace ET
             idleTime = 0;
             if (clicked >= clickTimes)
             {
-                debugUI.SetActive(!debugUI.activeSelf);
+                Switch();
+                
                 ResetClicked();
             }
             
@@ -55,5 +60,20 @@ namespace ET
         {
             OnMouseDown();
         }
+
+        public void Switch()
+        {
+            debugUI.SetActive(!debugUI.activeSelf);
+            foreach (var debugOnOff in debugOnOffs)
+            {
+                debugOnOff.Switch();
+            }
+        }
+    }
+
+
+    public interface IDebugOnOff
+    {
+        public void Switch();
     }
 }

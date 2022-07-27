@@ -9,7 +9,7 @@ using UnityEngine;
 namespace ET
 {
     [ExecuteInEditMode]
-    public class DanceFloorPivot : MonoBehaviour
+    public class DanceFloorPivot : MonoBehaviour, IDebugOnOff
     {
         [SerializeField] public Transform small;
 
@@ -120,8 +120,8 @@ namespace ET
             
             #if PLATFORM_ANDROID || PLATFORM_IOS
             // 20220714,手机设备上不再点击移动
-            //20220719,把移动加回来
-             if (Input.touchCount > 0)
+            // 20220719,把移动加回来
+             if (Input.touchCount > 0 && isDebugOn)
              {
                  for (int i = 0; i < Input.touchCount; i++)
                  {
@@ -252,6 +252,12 @@ namespace ET
                 var target = DanceFloorHelper.PosUnifiedPolar2Scene(new Vector2(0, 0));
                 Gizmos.DrawSphere(target, .5f);
             }
+        }
+
+        protected bool isDebugOn = false;
+        public void Switch()
+        {
+            isDebugOn = !isDebugOn;
         }
     }
 }
