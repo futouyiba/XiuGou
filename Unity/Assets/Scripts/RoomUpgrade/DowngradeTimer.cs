@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
+using VLB;
 
 namespace ET
 {
@@ -14,6 +17,11 @@ namespace ET
         [SerializeField] private int InitTime;
         [SerializeField] private Text text;
         [SerializeField] private UnityEvent TimeUpDlg;
+        [SerializeField] private Light alarmLight;
+        [SerializeField] private float tweenIntensityMax;
+        [SerializeField] private AudioSource alarmAudioSource;
+        [SerializeField] private AudioClip alarmCountDown;
+        [SerializeField] private AudioClip powerFault;
         [ReadOnly] public float TimerTime;
         [ReadOnly] public bool IsTimerOn;
         // Start is called before the first frame update
@@ -23,23 +31,34 @@ namespace ET
             Hide();
         }
 
-        public void testTimeUp()
-        {
-            Debug.LogWarning("test time up!");
-        }
-        
+        static int[] alarmTime = {9, 7, 5, 3, 2, 1};
         // Update is called once per frame
         void Update()
         {
             if (IsTimerOn)
             {
+                int prevtime = Mathf.FloorToInt(TimerTime);
                 TimerTime -= Time.deltaTime;
-                if (TimerTime <= 0)
+                int thistime = Mathf.FloorToInt(TimerTime);
+                bool isSecChange = prevtime != thistime;
+                if (isSecChange)
                 {
-                    TimerTime = 0;
-                    TimeUp();
-                }
-                text.text = (OutPutString() != text.text) ? OutPutString() : text.text;
+                    if (TimerTime <= 0)
+                    {
+                        TimerTime = 0;
+                        TimeUp();
+                    }
+
+                    
+                    if (alarmTime.Contains(thistime))
+                    {
+                        Alarm();
+                    }
+                    text.text = OutPutString();
+                } 
+
+                
+                
             }
         }
 
@@ -53,6 +72,7 @@ namespace ET
             TimerTime = InitTime;
         }
         
+        [ButtonGroup("TestBtn")]
         [Button("Start")]
         public void StartTimer()
         {
@@ -63,7 +83,7 @@ namespace ET
         // {
         //      
         // }
-
+        [ButtonGroup("TestBtn")]
         [Button("Stop")]
         public void StopTimer()
         {
@@ -74,6 +94,7 @@ namespace ET
         /// <summary>
         /// 隐藏UI
         /// </summary>
+        [ButtonGroup("TestBtn")]
         [Button("Hide")]
         public void Hide()
         {
@@ -87,6 +108,7 @@ namespace ET
         /// <summary>
         /// 显示UI
         /// </summary>
+        [ButtonGroup("TestBtn")]
         [Button("Show")]
         public void Show()
         {
@@ -100,11 +122,13 @@ namespace ET
         /// <summary>
         /// 倒计时结束做什么
         /// </summary>
+        [ButtonGroup("TestBtn")]
         [Button("TimeUp")]
         public void TimeUp()
         {
             StopTimer();
             TimeUpDlg?.Invoke();
+            PowerFaultSE();
         }
 
 
@@ -119,7 +143,30 @@ namespace ET
             //todo: critical time应该表现有所不同，红字/闪烁?
             return $"{min}:{sec}";
         }
-        
+
+        protected void Alarm()
+        {
+            Sequence seq = DOTween.Sequence();
+            //闪红灯
+            var volLight = alarmLight.GetComponent<VolumetricLightBeam>();
+            volLight.intensityFromLight = true;
+            seq.Append(alarmLight.DOIntensity(tweenIntensityMax, .4f)
+                .OnComplete(() => alarmLight.DOIntensity(0f, .4f)));
+            
+            // seq.Join()
+            
+            seq.Play();
+            //警报音效
+            if (alarmAudioSource.clip != alarmCountDown) alarmAudioSource.clip = alarmCountDown;
+            alarmAudioSource.Play();
+        }
+
+        protected void PowerFaultSE()
+        {
+            //停电音效
+            if (alarmAudioSource.clip != powerFault) alarmAudioSource.clip = powerFault;
+            alarmAudioSource.Play();
+        }
         
     }
 }
