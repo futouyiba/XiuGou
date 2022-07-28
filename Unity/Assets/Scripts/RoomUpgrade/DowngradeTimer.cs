@@ -149,11 +149,15 @@ namespace ET
             Sequence seq = DOTween.Sequence();
             //闪红灯
             var volLight = alarmLight.GetComponent<VolumetricLightBeam>();
-            volLight.intensityFromLight = true;
-            seq.Append(alarmLight.DOIntensity(tweenIntensityMax, .4f)
-                .OnComplete(() => alarmLight.DOIntensity(0f, .4f)));
+            // volLight.intensityFromLight = true;
+            float half_duration = .4f;
+            seq.Append(alarmLight.DOIntensity(tweenIntensityMax, half_duration)
+                .OnComplete(() => alarmLight.DOIntensity(0f, half_duration)));
+
+            DOTween.To(() => volLight.intensityInside, x => volLight.intensityInside = x, tweenIntensityMax, 0.4f)
+                .OnComplete(
+                    () => DOTween.To(() => volLight.intensityInside, x => volLight.intensityInside = x, 0f, 0.4f));
             
-            // seq.Join()
             
             seq.Play();
             //警报音效
