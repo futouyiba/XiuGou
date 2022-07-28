@@ -18,6 +18,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
 using Random = System.Random;
+#pragma warning disable CS4014
 
 //
 namespace ET.Utility
