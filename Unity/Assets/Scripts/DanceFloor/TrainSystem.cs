@@ -30,6 +30,7 @@ namespace ET
 
         void Update()
         {
+            if (RoomUpgradeMgr.instance.currentLevel < 3) return;
             SetRadius(RoomUpgradeMgr.instance.currentLevel);
 
             //鼠标点击切换 加入/退出跑圈

@@ -23,14 +23,8 @@ namespace ET
         {
         
         }
-
-
-       
-
-
     }
 
-    
     // [Serializable]
     public class SeatData
     {
@@ -46,6 +40,42 @@ namespace ET
         public Text btnText;
         [OdinSerialize] public Transform leavePivot;
 
+        /// <summary>
+        /// 座位的拥有者
+        /// </summary>
+        public CharMain owner;
+
+        /// <summary>
+        /// 每个座位的显示界面
+        /// </summary>
+        public SeatPointUI seatPointUI = null;//SeatUI
+
+        /// <summary>
+        /// SeatUI位置
+        /// </summary>
+        [OdinSerialize]
+        public Transform m_SeatUIPos;
+
+        /// <summary>
+        /// SeatUI预制体
+        /// </summary>
+        private GameObject m_SeatUIPrefab;
+
+        /// <summary>
+        /// 初始化SeatUI预制体，到指定位置
+        /// </summary>
+        public void InitSeatUIPrefab()
+        {
+            m_SeatUIPrefab = Resources.Load<GameObject>("Prefabs/UI/SeatPointItem 1");
+            GameObject seatUIObj =GameObject.Instantiate(m_SeatUIPrefab);
+            seatUIObj.transform.SetParent(m_SeatUIPos);
+            seatUIObj.transform.localScale = Vector3.one;
+            seatUIObj.transform.localPosition = Vector3.zero;
+
+            seatPointUI = seatUIObj.GetComponent<SeatPointUI>();
+            seatPointUI.SetSeatData(this);
+            seatPointUI.gameObject.SetActive(false);
+        }
         public void Init()
         {
             if (btn)
@@ -53,6 +83,8 @@ namespace ET
                 btnText= btn.transform.GetChild(0).GetComponent<Text>();
                 SetText("Empty");
             }
+            InitSeatUIPrefab(); //初始化SeatUI预制体，到指定位置
+            pivot.GetComponent<SeatPoint>().SetSeatData(this);
         }
 
         public void SetText(string text)
@@ -61,6 +93,7 @@ namespace ET
         }
 
         public bool IsTaken => sitCharObj != null;
+
 
         public Vector3 pivotPos => pivot.position;
     }

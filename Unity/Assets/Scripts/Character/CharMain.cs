@@ -54,6 +54,7 @@ namespace ET
         public bool isMe = false;
         public bool isMoving = false;
         public bool isTalking = false;
+        private bool isSit = false;
         public float talkTime = 0f;
         public float mvIdleTime = 0f;
 
@@ -64,6 +65,10 @@ namespace ET
         private Quaternion initRot;
         // private float oriScaleX;
         
+        public bool IsSit {
+            get { return isSit; }
+            private set { }
+        }
         public float AnimSpeed
         {
             get => sprite.GetComponent<Animator>().speed;
@@ -251,11 +256,13 @@ namespace ET
 
         public void Sit()
         {
+            isSit = true;
             fsm.TriggerUnityEvent("Sit");
         }
 
         public void UnSit()
         {
+            isSit = false;
             fsm.TriggerUnityEvent("LeaveSeat");
         }
 
@@ -274,7 +281,9 @@ namespace ET
         {
             nameTmp.SetText(Name);
         }
-
+        public string GetName() {
+            return nameTmp.text;
+        }
         public void SetNameColor(Color color)
         {
             nameTmp.color = color;

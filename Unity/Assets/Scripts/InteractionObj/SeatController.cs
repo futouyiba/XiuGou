@@ -9,6 +9,7 @@ namespace ET
 {
     public class SeatController : MonoBehaviour
     {
+        //UserProfileSoundEffect temp;
         [OdinSerialize] public SeatConfig config;
 
         /// <summary>
@@ -19,22 +20,70 @@ namespace ET
         /// 能装几个人
         /// </summary>
         [SerializeField] public int Capability = 0;
-        
+
+        private CharMain owner = null;//SeatOwner
+
+        [SerializeField]
+        private List<CharMain> list = null;//在座的人
+
+        public CharMain Owner
+        {
+            get { return owner; }
+        }
+
         // Start is called before the first frame update
         void Start()
         {
             foreach (var data in config.seats)
             {
                 data.Value.Init();
+                data.Value.seatPointUI.onClick = OnSeatUIClick;
             }
+           //temp = AudioMgr.Instance.gameObject.GetComponent<UserProfileSoundEffect>();
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            foreach (var data in config.seats)
+            {
+                data.Value.seatPointUI.SetState(UnityEngine.Random.Range(0.3f, 0.7f));//temp.state
+            }
         }
-
+        private void OnSeatUIClick(SeatData seatData)
+        {
+            if (list == null) list = new List<CharMain>();
+            if (list.Count >= Capability)//没有座位
+            {
+                RoomNotify.Instance.DisplayNotify("卡坐满了，找别的座位吧", 1);
+                return;
+            }
+            if (seatData.IsTaken)
+            {
+                RoomNotify.Instance.DisplayNotify("卡坐有人了，找别的座位吧", 1);
+                return;
+            }
+            CharMain me = CharMgr.instance.GetMe();
+            
+            //2-maxCount位
+            if (owner != null)
+            {
+                //给owner发申请加入
+                //me.RequestJoinSeat(owner);
+                return;
+            }
+            //owner位
+            SeatMgr.Instance.Sit(me.userId,this,seatData);
+            if (me.IsSit)
+            {
+                Sprite s = Resources.Load<Sprite>("");
+                seatData.seatPointUI.SetPhoto(s);//显示玩家头像
+                seatData.owner = me;
+                owner = me;
+                list.Add(me);
+            }
+        }
+        
         /// <summary>
         /// 在enable时向SeatMgr注册自己
         /// </summary>
@@ -98,11 +147,9 @@ namespace ET
             
             var sitChar = charObj.GetComponent<CharMain>();
             sitChar.Sit();
-
-
             charObj.transform.position = seatData.pivotPos;
             seatData.sitCharObj = charObj;
-            seatData.SetText("Seated");
+            //seatData.SetText("Seated");
 
 
         }

@@ -7,10 +7,10 @@ namespace ET
     public class SeatMgr : SerializedMonoBehaviour
     {
         //<userid, seat data>
-        protected Dictionary<int, CharSeatData> sitData;
+        protected Dictionary<int, CharSeatData> sitData;//所有有角色座位
         // [OdinSerialize] public Dictionary<int, SeatController> sofas;
         //<sofa id,sofa  controller>
-        private SortedList<int, SeatController> sofas;
+        private SortedList<int, SeatController> sofas;//所有沙发
 
         
 
@@ -35,7 +35,6 @@ namespace ET
                 Debug.LogError($"instance of seatMgr already exists");
                 Destroy(this.gameObject);
             }
-                
         }
 
         // Start is called before the first frame update
@@ -51,6 +50,10 @@ namespace ET
         
         }
 
+        public void Sit(int userId,SeatController seatCtrl, SeatData seatData) {
+            GetMicID(seatCtrl.Priority, seatData.seatId);
+            Sit(userId, GetMicID(seatCtrl.Priority,seatData.seatId)); 
+        }
 
         /// <summary>
         /// 某人要坐在某位置
@@ -59,7 +62,7 @@ namespace ET
         /// <param name="userId"></param>
         /// <param name="sofaId"></param>
         /// <param name="seatId"></param>
-        public void Sit(int userId, int micId)
+        public void Sit(int userId, int micId)//坐位
         {
             //目标座位是不是有人了,20220708,除非出错，否则应该不会有人才对
             //这人是不是已经坐了
@@ -93,14 +96,16 @@ namespace ET
                 return;
             }
 
-            
+          
             
             //让人移动到座位上，若座位需要有变化也应有变化
             sofa.TakeSeat(user.gameObject, sitInst.seatId);
-            user.Sit();
+            //user.Sit();
             originData.UpdateInstData(sitInst);
             
         }
+   
+
 
         public void LeaveSeat(int userId)
         {
@@ -127,7 +132,10 @@ namespace ET
             //SeatInstData update
             charSeatData.instData = null;
         }
-        
+        /// <summary>
+        /// 添加到字典
+        /// </summary>
+        /// <param name="sofa"></param>
         public void RegSofa(SeatController sofa)
         {
             if (sofas.TryGetValue(sofa.Priority, out var dupSofa))
@@ -139,6 +147,10 @@ namespace ET
             sofas.Add(sofa.Priority, sofa);
         }
 
+        /// <summary>
+        /// 从字典移除
+        /// </summary>
+        /// <param name="sofa"></param>
         public void UnregSofa(SeatController sofa)
         {
             if (!sofas.TryGetValue(sofa.Priority, out var sofaGot))
@@ -164,7 +176,20 @@ namespace ET
                 }
             }
         }
-
+        private int GetMicID(int sofaID,int seatID)
+        {
+            int micID = 0;
+            foreach (var sofa in sofas)
+            {
+                if (sofaID==sofa.Value.Priority)
+                {
+                    micID += seatID;
+                    return micID;
+                }
+                micID += sofa.Value.Capability;
+            }
+            return -1;
+        }
 
         protected SeatInstData FindSeat(int micId)
         {

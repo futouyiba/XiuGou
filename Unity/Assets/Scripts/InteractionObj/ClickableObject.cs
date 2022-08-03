@@ -19,7 +19,7 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
-        
+            OnStart();
         }
 
         // Update is called once per frame
@@ -36,9 +36,9 @@ namespace ET
                     if(hit.collider.gameObject==gameObject) OnClick();
                 }
 
-            }   
-        #endif
-        #if PLATFORM_IOS || PLATFORM_ANDROID
+            }
+#endif
+#if PLATFORM_IOS || PLATFORM_ANDROID
             if (Input.touchCount > 0)
             {
                 for (int i = 0; i < Input.touchCount; i++)
@@ -57,8 +57,8 @@ namespace ET
                 }
 
             }
-        #endif
-
+#endif
+            OnUpdate();
         }
 
         // private void OnMouseDown()
@@ -80,6 +80,7 @@ namespace ET
         /// 在子类中实现这个函数，以对应不同的点击需求
         /// </summary>
         protected abstract void OnClick();
-        
+        protected virtual void OnStart() { }
+        protected virtual void OnUpdate() { }
     }
 }

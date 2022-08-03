@@ -13,12 +13,13 @@ namespace ET
         // Start is called before the first frame update
         void Start()
         {
+            OnStart();
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            OnUpdate();
         }
 
 
@@ -32,6 +33,7 @@ namespace ET
 
         protected void OnTriggerEnter(Collider other)
         {
+            
             if (other.CompareTag("Character"))
             {
                 var charMain = other.GetComponent<CharMain>();
@@ -55,7 +57,8 @@ namespace ET
             Gizmos.DrawWireSphere(transform.position+sphereCollider.center, sphereCollider.radius);
         }
 
-
+        protected virtual void OnStart() { }
+        protected virtual void OnUpdate() { }
         public abstract void OnCharacterEnter(int userId);
 
         public abstract void OnCharacterLeave(int userId);
