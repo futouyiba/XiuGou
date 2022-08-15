@@ -7,7 +7,7 @@ using TMPro;
 namespace ET
 {
     /// <summary>
-    /// ÑûÇëItemÊµÌåÀà
+    /// é‚€è¯·Itemå®ä½“ç±»
     /// </summary>
     public class InviteItemEntity
     {
@@ -18,7 +18,7 @@ namespace ET
         public string nickName;
     }
     /// <summary>
-    /// ÑûÇëItem¹ÜÀíÀà
+    /// é‚€è¯·Itemç®¡ç†ç±»
     /// </summary>
     public class InviteItemEntityMgr : Singleton<InviteItemEntityMgr>
     {
@@ -26,7 +26,7 @@ namespace ET
         private List<InviteItemEntity> list;
 
         /// <summary>
-        /// ³õÊ¼»¯ÑûÇëÁĞ±íĞèÒªµÄÊı¾İ
+        /// åˆå§‹åŒ–é‚€è¯·åˆ—è¡¨éœ€è¦çš„æ•°æ®
         /// </summary>
         public void Init() {
             if (CharMgr.instance.charDict == null) return;
@@ -43,14 +43,14 @@ namespace ET
             }
         }
         /// <summary>
-        /// »ñÈ¡ÑûÇëÁĞ±íÊı¾İ
+        /// è·å–é‚€è¯·åˆ—è¡¨æ•°æ®
         /// </summary>
         public List<InviteItemEntity> GetInviteEntityList() {
             Init();
             return list;
         }
         /// <summary>
-        /// Í¨¹ıID»ñÈ¡Item
+        /// é€šè¿‡IDè·å–Item
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -70,21 +70,21 @@ namespace ET
     }
 
     /// <summary>
-    /// UIÏÔÊ¾Àà
+    /// UIæ˜¾ç¤ºç±»
     /// </summary>
     public class InviteItemView : MonoBehaviour
     {
         [SerializeField]
-        private Image imgPhoto;//Íæ¼ÒÍ·ÏñÏÔÊ¾
+        private Image imgPhoto;//ç©å®¶å¤´åƒæ˜¾ç¤º
 
         [SerializeField]
-        private TMP_Text txtNickName;//Íæ¼ÒêÇ³Æ
+        private TMP_Text txtNickName;//ç©å®¶æ˜µç§°
 
         [SerializeField]
-        private Button btnInvite;//ÑûÇë°´Å¥
+        private Button btnInvite;//é‚€è¯·æŒ‰é’®
 
         private InviteItemEntity m_CurrentInviteData;
-        public Action<InviteItemEntity> OnInviteClick;//ÑûÇë°´Å¥µÄµã»÷ÊÂ¼ş
+        public Action<InviteItemEntity> OnInviteClick;//é‚€è¯·æŒ‰é’®çš„ç‚¹å‡»äº‹ä»¶
 
         private void Start()
         {

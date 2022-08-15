@@ -5,12 +5,12 @@ using UnityEngine;
 namespace ET
 {
     /// <summary>
-    /// ¼ì²âÊÇ·ñtrigger¸Ã×ùÎ»
+    /// æ£€æµ‹æ˜¯å¦triggerè¯¥åº§ä½
     /// </summary>
     public class SeatPoint : RemoteSensor
     {
         /// <summary>
-        /// Ã¿¸ö×ùÎ»
+        /// æ¯ä¸ªåº§ä½
         /// </summary>
         private SeatData m_SeatData = null;
 
