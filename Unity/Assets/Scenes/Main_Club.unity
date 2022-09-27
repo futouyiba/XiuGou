@@ -9716,7 +9716,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 22, y: 7.41}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 6.4172482
+  m_FocalLength: 35
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -9725,7 +9725,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 12.085327
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -9750,8 +9750,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072377885}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.016966764, y: 8.66, z: 40.96}
+  m_LocalRotation: {x: 0, y: 0.9848078, z: -0.17364816, w: 0}
+  m_LocalPosition: {x: 0, y: 12.78, z: 32.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9772,9 +9772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isOn: 0
-  strength: 4
-  frequency: 8
-  ShakingNoise: {fileID: 0}
 --- !u!114 &2072377901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15293,6 +15290,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6229857659710172204, guid: 716259dba642ee241916f7b03e92550f,
         type: 3}
+    - target: {fileID: 3674770187975186822, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+      propertyPath: charPrefabs.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674770187975186822, guid: cbacc8d2d22bd234cb0e651759f587cc,
+        type: 3}
+      propertyPath: charPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 9029538193465864291, guid: 47fbec9ed1c71224bb93bfe730de34d2,
+        type: 3}
     - target: {fileID: 3674770188089328315, guid: cbacc8d2d22bd234cb0e651759f587cc,
         type: 3}
       propertyPath: lights.Array.size
@@ -18101,10 +18109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6217d6697fc685f46b2ef5a8559bd9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impulseSource: {fileID: 0}
   bRespondEnergy: 0
   bRespondKick: 1
   bRespondSnare: 0
   bRespondHitHat: 0
+  strength: 1
+  AverageGain: 0
 --- !u!114 &5195952263845513428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19242,6 +19253,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 283759100}
     m_Modifications:
+    - target: {fileID: 623383493, guid: a3c87b35f1d0a7048a91750c37064684, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 623383493, guid: a3c87b35f1d0a7048a91750c37064684, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322321435, guid: a3c87b35f1d0a7048a91750c37064684, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757579113, guid: a3c87b35f1d0a7048a91750c37064684, type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1380667171154899499, guid: a3c87b35f1d0a7048a91750c37064684,
         type: 3}
       propertyPath: m_Name
@@ -19300,6 +19327,11 @@ PrefabInstance:
     - target: {fileID: 1380667171154899500, guid: a3c87b35f1d0a7048a91750c37064684,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543849159343005510, guid: a3c87b35f1d0a7048a91750c37064684,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20243,6 +20275,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234554479561003473, guid: 595780ca9cf642d40b26dfd39a47db4d,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7234554480455521324, guid: 595780ca9cf642d40b26dfd39a47db4d,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7234554480495778414, guid: 595780ca9cf642d40b26dfd39a47db4d,
         type: 3}

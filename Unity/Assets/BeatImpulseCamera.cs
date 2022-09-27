@@ -43,7 +43,7 @@ namespace ET
                         if (bRespondKick)
                         {
                             impulseSource.GenerateImpulse(new Vector3(0, 0, -AverageGain * strength));
-                            Debug.Log($"Kick strength is {AverageGain}");
+                            //Debug.Log($"Kick strength is {AverageGain}");
                         }
                         break;
                     case BeatDetection.EventType.Snare:
