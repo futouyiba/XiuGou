@@ -168,7 +168,7 @@ namespace ET
                     CreateBlankView(index, DanceFloorHelper.GetRandomDanceFloorPos(), $"我是{index}");
                     this.generator.AddCreateTask(() =>
                     {
-                        LeanHelper.instance.LeanGetRefreshAprcId(index);
+                        LeanHelper.instance.LeanGetRefreshAprcIdMock(index);
                     }); 
             }
 

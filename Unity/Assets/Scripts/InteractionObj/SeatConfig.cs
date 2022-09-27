@@ -84,7 +84,7 @@ namespace ET
                 SetText("Empty");
             }
             InitSeatUIPrefab(); //初始化SeatUI预制体，到指定位置
-            pivot.GetComponent<SeatPoint>().SetSeatData(this);
+            // pivot.GetComponent<SeatPoint>().SetSeatData(this);
         }
 
         public void SetText(string text)

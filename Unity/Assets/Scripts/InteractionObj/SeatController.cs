@@ -47,7 +47,7 @@ namespace ET
         {
             foreach (var data in config.seats)
             {
-                data.Value.seatPointUI.SetState(UnityEngine.Random.Range(0.3f, 0.7f));//temp.state
+                // data.Value.seatPointUI.SetState(UnityEngine.Random.Range(0.3f, 0.7f));//temp.state
             }
         }
         private void OnSeatUIClick(SeatData seatData)

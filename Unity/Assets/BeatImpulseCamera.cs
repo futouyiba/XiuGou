@@ -13,7 +13,7 @@ namespace ET
         [SerializeField] protected bool bRespondSnare = true;
         [SerializeField] protected bool bRespondHitHat = true;
 
-        //ÐÅºÅÇ¿¶ÈÓÉstrengthºÍÒôÁ¿´óÐ¡Ò»Í¬¿ØÖÆ
+        //ï¿½Åºï¿½Ç¿ï¿½ï¿½ï¿½ï¿½strengthï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Ò»Í¬ï¿½ï¿½ï¿½ï¿½
         [SerializeField, Range(0.1f, 3f)] protected float strength = 1f;
 
         [SerializeField] private float AverageGain;
@@ -43,7 +43,7 @@ namespace ET
                         if (bRespondKick)
                         {
                             impulseSource.GenerateImpulse(new Vector3(0, 0, -AverageGain * strength));
-                            Debug.Log($"Kick strength is {AverageGain}");
+                            // Debug.Log($"Kick strength is {AverageGain}");
                         }
                         break;
                     case BeatDetection.EventType.Snare:
@@ -68,7 +68,7 @@ namespace ET
         // Update is called once per frame
         void FixedUpdate()
         {
-            //»ñÈ¡µ±Ç°µÄÒôÁ¿´óÐ¡
+            //ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡
             GetComponent<AudioSource>().GetSpectrumData(OutputData, 0, FFTWindow.BlackmanHarris);
             float sum = 0f;
             foreach (var i in OutputData)

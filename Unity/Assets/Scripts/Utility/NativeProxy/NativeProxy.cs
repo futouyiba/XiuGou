@@ -48,7 +48,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                     // CharMgr.instance.CreateCharView(userEnter.userId, userEnter.position, userEnter.nickName,
                         // userEnter.appearance, Color.white);
                     CharMgr.instance.CreateBlankView(userEnter.userId, userEnter.position, userEnter.nickName);
-                    LeanHelper.instance.LeanGetRefreshAprcId(userEnter.userId);
+                    LeanHelper.instance.LeanGetRefreshAprcIdMock(userEnter.userId);
                     break;
                 case "MeEnter":
                     var meEnter = GetOpdata<MeEnter>(msg);
@@ -97,7 +97,7 @@ private static extern void Unity2NativeMsgIOS(string opJson);
                             Random.InitState(userInfo.userId);
                             // CharMgr.instance.CreateCharView(userInfo.userId, userInfo.position, userInfo.nickName,userInfo.appearance, Color.white);
                             CharMgr.instance.CreateBlankView(userId, userInfo.position, userInfo.nickName);
-                            LeanHelper.instance.LeanGetRefreshAprcId(userId);
+                            LeanHelper.instance.LeanGetRefreshAprcIdMock(userId);
                         }
                         else
                         {

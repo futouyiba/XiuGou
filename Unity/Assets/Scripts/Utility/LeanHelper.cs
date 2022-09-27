@@ -510,7 +510,15 @@ namespace ET.Utility
                  }
              });
          }
-         
+
+         public void LeanGetRefreshAprcIdMock(int userId)
+         {
+             int randId = UnityEngine.Random.Range(0, 50);
+             CharMgr.instance.onAprcChangedQueue.Enqueue(() =>
+             {
+                 CharMgr.instance.ChangeAprcFast(userId, randId);
+             });
+         }
          
          
          // public void LeanRefreshMyAprc() // this should be different with me and others.
