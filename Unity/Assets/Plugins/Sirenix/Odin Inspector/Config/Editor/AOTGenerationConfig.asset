@@ -16,7 +16,7 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 0
   automateForPlatforms: 0d000000
-  lastScan: 637944387804221782
+  lastScan: 637998985979370854
   supportSerializedTypes:
   - TypeName: System.Action`1[[System.Boolean, mscorlib]], mscorlib
     IsCustom: 0
@@ -37,6 +37,9 @@ MonoBehaviour:
     IsCustom: 0
     Emit: 1
   - TypeName: ET.CameraPointCollection, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.CharMain, Assembly-CSharp
     IsCustom: 0
     Emit: 1
   - TypeName: System.DateTime, mscorlib
@@ -71,6 +74,9 @@ MonoBehaviour:
       mscorlib]], mscorlib
     IsCustom: 0
     Emit: 1
+  - TypeName: ET.IDebugOnOff, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
   - TypeName: System.Collections.Generic.IEqualityComparer`1[[System.Int32, mscorlib]],
       mscorlib
     IsCustom: 0
@@ -89,6 +95,10 @@ MonoBehaviour:
       mscorlib
     IsCustom: 0
     Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[ET.IDebugOnOff, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
   - TypeName: System.Collections.Generic.List`1[[ET.Utility.LevelInfo, Assembly-CSharp]],
       mscorlib
     IsCustom: 0
@@ -101,10 +111,10 @@ MonoBehaviour:
       Assembly-CSharp]], mscorlib
     IsCustom: 0
     Emit: 1
-  - TypeName: System.Object, mscorlib
+  - TypeName: UnityEngine.Object, UnityEngine.CoreModule
     IsCustom: 0
     Emit: 1
-  - TypeName: UnityEngine.Object, UnityEngine.CoreModule
+  - TypeName: System.Object, mscorlib
     IsCustom: 0
     Emit: 1
   - TypeName: System.Object[], mscorlib
@@ -131,6 +141,21 @@ MonoBehaviour:
   - TypeName: ET.SeatData, Assembly-CSharp
     IsCustom: 0
     Emit: 1
+  - TypeName: ET.SeatPointUI, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Boolean, mscorlib]],
+      Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.Utility.AllIn1SpriteShader.ShaderVar`1[[System.Single, mscorlib]],
+      Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: ET.Utility.AllIn1SpriteShader.ShaderVar`1[[UnityEngine.Texture, UnityEngine.CoreModule]],
+      Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
   - TypeName: Unity.VisualScripting.StateMachine, Unity.VisualScripting.State
     IsCustom: 0
     Emit: 1
@@ -138,6 +163,9 @@ MonoBehaviour:
     IsCustom: 0
     Emit: 1
   - TypeName: UnityEngine.UI.Text, UnityEngine.UI
+    IsCustom: 0
+    Emit: 1
+  - TypeName: UnityEngine.Texture, UnityEngine.CoreModule
     IsCustom: 0
     Emit: 1
   - TypeName: UnityEngine.Transform, UnityEngine.CoreModule
